@@ -48,9 +48,9 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""3D Vector"",
+                    ""name"": ""WASD"",
                     ""id"": ""f20224e5-358f-4b96-a532-89c424be3575"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""3DVector(mode=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
