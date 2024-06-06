@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
     {
         yield return null;
         GameManager.PlayerIsAttacking = false;
-        Debug.Log(GameManager.PlayerIsAttacking);
     }
+        
 
     
 
