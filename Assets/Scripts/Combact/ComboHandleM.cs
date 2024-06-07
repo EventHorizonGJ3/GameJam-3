@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ComboHandleM : MonoBehaviour
 {
-
+	public float AttackDelay;
+	public float ComboCooldown;
 }
 public class ComboInput
 {
@@ -17,15 +18,14 @@ public class ComboInput
 
 	public virtual void Tick() { }
 	public virtual void CheckInput() { }
-
 	public virtual void Exit() { }
 }
-public class PlayerInput : ComboInput
+public class PlayerInputG : ComboInput
 {
 	ActionMap inuptActions;
 	int counter = 0;
 	int comboLenght;
-	public PlayerInput(float _AttackDelay, float _ComboReset, int _comboLenght) : base(_AttackDelay, _ComboReset)
+	public PlayerInputG(float _AttackDelay, float _ComboReset, int _comboLenght) : base(_AttackDelay, _ComboReset)
 	{
 		inuptActions = InputManager.ActionMap;
 		inuptActions.Player.Attack.performed += Attack;
@@ -35,6 +35,6 @@ public class PlayerInput : ComboInput
 
 	private void Attack(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-
+		CheckInput();
 	}
 }
