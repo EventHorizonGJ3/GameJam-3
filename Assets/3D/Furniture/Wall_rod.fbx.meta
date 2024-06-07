@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 9e9232bf7df117144a0f6248a469a571
+guid: db3627148c1982f4984e61c317ddf633
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall_rod1
-    second: {fileID: 2100000, guid: c5c11c44ffc123e489255c4887df7e46, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wall rod_standardSurface1_BaseColor.1001
-    second: {fileID: 2800000, guid: 0a3dcdf479519ed4c845872e8070a102, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wall rod_standardSurface1_Metallic.1001
-    second: {fileID: 2800000, guid: 7f1b57b9fd0f925468cfb316491885ff, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wall rod_standardSurface1_Roughness.1001
-    second: {fileID: 2800000, guid: 23a9391dbb2a57744a03694f52424449, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
