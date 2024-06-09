@@ -21,10 +21,7 @@ public class WeaponsPooler : MonoBehaviour
         CreatePool();
     }
 
-    void Start()
-    {
-        
-    }
+    
 
     void CreatePool()
     {

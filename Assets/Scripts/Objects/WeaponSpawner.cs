@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSpawner : MonoBehaviour
+public class WeaponSpawner : MonoBehaviour, ISpawner
 {
     [Header("Parameters")]
     [SerializeField][Tooltip("Altezza dal suolo")] float offset = 0.2f;
@@ -58,6 +58,7 @@ public class WeaponSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnCooldown);
         canSpawn = true;
+        SpawnWeapon();
     }
 
     void AutoCorrectPosition()
@@ -70,10 +71,9 @@ public class WeaponSpawner : MonoBehaviour
             transform.position = new(colliderCenter.x, colliderCenter.y + 1, colliderCenter.z);
         }
     }
-       
-       
-        
-        
-        
 
+    public void StartRespawn()
+    {
+        StartCoroutine(StartCooldown());
+    }
 }
