@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMelee : MeleeWeapon
+public class TestMelee : MeleeWeapon, IPickable
 {
 
-    Collider meleeCollider;
+    [field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
+
+    public Transform Transform => transform;
 
     private void Awake()
     {
-        meleeCollider = GetComponent<Collider>();
+        
     }
     protected override void Start()
     {
         base.Start();
         durability *= 2;
-        meleeCollider.isTrigger = false;
+        
     }
 
     private void OnTriggerEnter(Collider other)
