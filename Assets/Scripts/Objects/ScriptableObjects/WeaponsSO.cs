@@ -20,7 +20,7 @@ public class WeaponsSO : ScriptableObject
 	public Action<int> LastAttack;
 	public Action OnBreak;
 
-
-
-	public int WeaponID;
 }
+
+
+	

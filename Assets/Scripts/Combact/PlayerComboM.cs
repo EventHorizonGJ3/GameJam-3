@@ -41,7 +41,7 @@ public class PlayerComboM : MonoBehaviour
 	private void Start()
 	{
 		UpdateCurrentWeapon(punches);
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 	}
 
 	private void Update()
@@ -49,7 +49,7 @@ public class PlayerComboM : MonoBehaviour
 		EndAttack();
 	}
 
-	void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	public void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
 	{
 		currentWeapon = _NewWeapon;
 		Debug.Log("currentWeapon = " + currentWeapon.name);

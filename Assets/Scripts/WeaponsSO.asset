@@ -13,3 +13,12 @@ MonoBehaviour:
   m_Name: WeaponsSO
   m_EditorClassIdentifier: 
   WeaponID: 0
+  Prefab: {fileID: 0}
+  NumberOfUses: 6
+  AttackCombo:
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+    Dmg: 0
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+    Dmg: 0
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+    Dmg: 0

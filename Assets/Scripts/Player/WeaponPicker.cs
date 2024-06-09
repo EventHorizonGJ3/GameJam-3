@@ -7,6 +7,7 @@ public class WeaponPicker : MonoBehaviour
 {
     [SerializeField] Transform handTransfrom;
     [SerializeField] LayerMask weaponLayer;
+    [SerializeField] PlayerComboM playerComboM;
     
     Collider[] allWeaponsColliders;
     IPickable pickableWeapon;
@@ -70,9 +71,10 @@ public class WeaponPicker : MonoBehaviour
         {
             pickableWeapon.Transform.position = handTransfrom.position;
             pickableWeapon.Transform.parent = handTransfrom;
-
+            playerComboM.UpdateCurrentWeapon(pickableWeapon.WeaponsSO);
         }
     }
+
 
     private void OnDrawGizmos()
     {
