@@ -3,5 +3,5 @@ using UnityEngine;
 public class AttackG
 {
 	public AnimatorOverrideController AnimOverrider;
-	public float Dmg;
+	public int Dmg;
 }

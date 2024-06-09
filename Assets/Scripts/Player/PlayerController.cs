@@ -16,39 +16,32 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void OnEnable()
-    {
-        InputManager.ActionMap.Player.Attack.started += SetAttackState;
-        
-    }
+    // private void OnEnable()
+    // {
+    //     InputManager.ActionMap.Player.Attack.started += SetAttackState;
+
+    // }
 
     private void FixedUpdate()
     {
-        if(InputManager.IsMoving(out Vector3 direction))
+        if (InputManager.IsMoving(out Vector3 direction))
         {
             rb.velocity = new Vector3(direction.x * movingSpeed, 0, direction.z * movingSpeed);
         }
         else rb.velocity = Vector3.zero;
     }
 
-    void SetAttackState(InputAction.CallbackContext context)
-    {
-        GameManager.PlayerIsAttacking = true;
-        meshHandler.StartCombo();
-        StartCoroutine(SetAttackStateFalse());
-    }
+    // void SetAttackState(InputAction.CallbackContext context)
+    // {
+    //     GameManager.PlayerIsAttacking = true;
+    //     meshHandler.StartCombo();
+    //     StartCoroutine(SetAttackStateFalse());
+    // }
 
-    IEnumerator SetAttackStateFalse()
-    {
-        yield return null;
-        GameManager.PlayerIsAttacking = false;
-    }
-        
-
-    
-
-
-   
-
+    // IEnumerator SetAttackStateFalse()
+    // {
+    //     yield return null;
+    //     GameManager.PlayerIsAttacking = false;
+    // }
 
 }
