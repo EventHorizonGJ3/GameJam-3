@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Action<PlayerController> OnPlayerReady;
+
     [Header("Parameters")]
     [SerializeField] float movingSpeed;
     [Header("Refs")]
@@ -16,11 +19,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    // private void OnEnable()
-    // {
-    //     InputManager.ActionMap.Player.Attack.started += SetAttackState;
 
-    // }
+
+    private void Start()
+    {
+        OnPlayerReady?.Invoke(this);
+    }
+
 
     private void FixedUpdate()
     {
@@ -29,6 +34,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(direction.x * movingSpeed, 0, direction.z * movingSpeed);
         }
         else rb.velocity = Vector3.zero;
+    }
+
+    private void Update()
+    {
+        GameManager.enemyTargetPosition = transform.position;
     }
 
     // void SetAttackState(InputAction.CallbackContext context)

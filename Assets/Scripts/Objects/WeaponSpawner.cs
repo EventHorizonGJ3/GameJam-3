@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSpawner : MonoBehaviour, ISpawner
+public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
 {
     [Header("Parameters")]
     [SerializeField][Tooltip("Altezza dal suolo")] float offset = 0.2f;
