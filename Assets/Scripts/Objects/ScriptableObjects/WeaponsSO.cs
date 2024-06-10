@@ -17,10 +17,10 @@ public class WeaponsSO : ScriptableObject
 
 	// Actions: 
 	public Action<int> OnAttack;
-	public Action<int> LastAttack;
+	public Action AttackEnd;
+	public Action LastAttack;
 	public Action OnBreak;
 
 }
 
 
-	

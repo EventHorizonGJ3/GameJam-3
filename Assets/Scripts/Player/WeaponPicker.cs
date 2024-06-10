@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +7,7 @@ public class WeaponPicker : MonoBehaviour
     [SerializeField] Transform handTransfrom;
     [SerializeField] LayerMask weaponLayer;
     [SerializeField] PlayerComboM playerComboM;
-    
+
     Collider[] allWeaponsColliders;
     IPickable pickableWeapon;
 
@@ -38,25 +37,25 @@ public class WeaponPicker : MonoBehaviour
             allWeaponsColliders[i] = weaponList[i].Transform.GetComponent<Collider>();
         }
     }
-        
-            
-        
+
+
+
 
     private void Update()
     {
-        if(InputManager.IsMoving(out Vector3 direction))
+        if (InputManager.IsMoving(out Vector3 direction))
         {
             interactPos = transform.position + direction;
         }
         Collider[] colliderInRange = new Collider[allWeaponsColliders.Length];
         int numberOfWeapons = Physics.OverlapSphereNonAlloc(interactPos, interactionRadius, colliderInRange, weaponLayer);
         canInteract = false;
-        
 
-        for (int i = 0;i < numberOfWeapons;i++)
+
+        for (int i = 0; i < numberOfWeapons; i++)
         {
             Collider weaponsCol = colliderInRange[i];
-            if(Vector3.Distance(transform.position, weaponsCol.transform.position) <= interactionOffest)
+            if (Vector3.Distance(transform.position, weaponsCol.transform.position) <= interactionOffest)
             {
                 canInteract = true;
                 pickableWeapon = weaponsCol.GetComponent<IPickable>();
@@ -88,7 +87,7 @@ public class WeaponPicker : MonoBehaviour
         }
 
         // Disegna la sfera di interazione
-        Gizmos.DrawWireSphere(interactPos, interactionRadius );
+        Gizmos.DrawWireSphere(interactPos, interactionRadius);
     }
 
 
