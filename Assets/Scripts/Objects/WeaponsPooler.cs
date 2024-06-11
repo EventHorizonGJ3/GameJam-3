@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
+
 
 public class WeaponsPooler : MonoBehaviour
 {
@@ -21,19 +19,19 @@ public class WeaponsPooler : MonoBehaviour
         CreatePool();
     }
 
-    
+
 
     void CreatePool()
     {
-        
-        foreach(GameObject weapon in weaponsToPull)
+
+        foreach (GameObject weapon in weaponsToPull)
         {
             for (int i = 0; i < amountToPool; i++)
             {
                 GameObject tmp = Instantiate(weapon);
                 tmp.transform.position = transform.position;
                 tmp.SetActive(false);
-                if(tmp.TryGetComponent(out IPickable pickable)) pooledWeapons.Add(pickable);
+                if (tmp.TryGetComponent(out IPickable pickable)) pooledWeapons.Add(pickable);
             }
         }
     }
@@ -47,5 +45,5 @@ public class WeaponsPooler : MonoBehaviour
 
 
 
-  
+
 }

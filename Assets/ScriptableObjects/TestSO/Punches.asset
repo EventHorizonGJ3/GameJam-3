@@ -16,11 +16,9 @@ MonoBehaviour:
   Prefab: {fileID: 0}
   NumberOfUses: 1000
   AttackCombo:
-  - AnimOverrider: {fileID: 22100000, guid: 182a49a702230ac499e40920e1f47955, type: 2}
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
     Dmg: 2
-  - AnimOverrider: {fileID: 22100000, guid: 24a6bf19b782ea04a9405eff7e2c6527, type: 2}
-    Dmg: 1
-  - AnimOverrider: {fileID: 22100000, guid: 24a6bf19b782ea04a9405eff7e2c6527, type: 2}
-    Dmg: 1
-  - AnimOverrider: {fileID: 22100000, guid: 24a6bf19b782ea04a9405eff7e2c6527, type: 2}
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+    Dmg: 2
+  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
     Dmg: 2
