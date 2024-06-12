@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: b28a5938a1fab324db03d14ecf94f305
+guid: 868b009999ffb694a96bdc522cd5acc6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Road_sign_blu
-    second: {fileID: 2100000, guid: 5ace8da6d6915894d83d45925732e33a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rock
-    second: {fileID: 2100000, guid: d7b0f22785c25804aa0d3e187bcc1b68, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
