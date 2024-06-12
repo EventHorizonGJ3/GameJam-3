@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,9 +9,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerComboM : MonoBehaviour
 {
+	[Header("Weapon Settings:")]
 	[SerializeField] WeaponsSO currentWeapon;
 	[SerializeField] WeaponsSO punches;
 	[SerializeField] string attackAnimationName;
+
+	[Tooltip("The angle that the player sees in fron of him")]
+	[SerializeField] float fieldOfView;
 
 	[Tooltip("the time it waits after an attack")]
 	public float AttackDelay = 0.2f;
@@ -32,11 +37,11 @@ public class PlayerComboM : MonoBehaviour
 	}
 	private void OnEnable()
 	{
-		inputs.Player.Attack.started += StartAttack;
+
 	}
 	private void OnDisable()
 	{
-		inputs.Player.Attack.started -= StartAttack;
+		inputs.Player.Attack.started -= MeleeAttack;
 	}
 
 	private void Start()
@@ -49,14 +54,66 @@ public class PlayerComboM : MonoBehaviour
 	{
 		EndAttack();
 	}
-
+	void BackToPunches()
+	{
+		UpdateCurrentWeapon(punches);
+	}
 	public void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
 	{
+		if (currentWeapon != null)
+		{
+			if (currentWeapon.IsRanged)
+			{
+				inputs.Player.Attack.started -= RangedAttack;
+			}
+			else
+			{
+				inputs.Player.Attack.started -= MeleeAttack;
+			}
+			currentWeapon.OnBreak -= BackToPunches;
+		}
+
 		currentWeapon = _NewWeapon;
-		Debug.Log("currentWeapon = " + currentWeapon.name);
+		comboCounter = 0;
+		lastComboTime = 0;
+		lastAttackTime = 0;
+
+		if (currentWeapon.IsRanged)
+		{
+			inputs.Player.Attack.started += RangedAttack;
+		}
+		else
+		{
+			inputs.Player.Attack.started += MeleeAttack;
+		}
+		currentWeapon.OnBreak += BackToPunches;
 	}
 
-	void StartAttack(InputAction.CallbackContext _Context)
+	private void RangedAttack(InputAction.CallbackContext _Context)
+	{
+		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.Range);
+		var _minDistance = 999f;
+		Transform _target = null;
+		foreach (var _coll in _colliders)
+		{
+			if (Vector3.Dot(_coll.transform.position, transform.position) < fieldOfView)
+			{
+				var _dist = Vector3.Distance(transform.position, _coll.transform.position);
+				if (_dist < _minDistance)
+				{
+					_target = _coll.transform;
+					_minDistance = _dist;
+				}
+			}
+		}
+
+		MeleeAttack(_Context);
+
+		if (_target != null)
+			currentWeapon.GetTarget?.Invoke(_target);
+	}
+
+	void MeleeAttack(InputAction.CallbackContext _Context)
 	{
 		if (resetCombo != null)
 		{
@@ -64,14 +121,17 @@ public class PlayerComboM : MonoBehaviour
 			resetCombo = null;
 		}
 
-		if (Time.time - lastComboTime < ComboDelay || comboCounter > currentWeapon.AttackCombo.Count || Time.time - lastAttackTime < AttackDelay)
+		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count)
 			return;
 
 		lastAttackTime = Time.time;
 
-		if (comboCounter - 1 > 0)
+		if (comboCounter - 1 >= 0)
+		{
+			Debug.Log(comboCounter);
 			if (currentWeapon.AttackCombo[comboCounter].AnimOverrider == currentWeapon.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
+		}
 
 
 		// animation: 
@@ -87,7 +147,7 @@ public class PlayerComboM : MonoBehaviour
 
 		comboCounter++;
 
-		if (comboCounter > currentWeapon.AttackCombo.Count)
+		if (comboCounter >= currentWeapon.AttackCombo.Count)
 			comboCounter = 0;
 	}
 
@@ -108,4 +168,20 @@ public class PlayerComboM : MonoBehaviour
 		lastComboTime = Time.time;
 		comboCounter = 0;
 	}
+
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+		if (currentWeapon != null)
+		{
+			Gizmos.DrawWireSphere(transform.position, currentWeapon.Range);
+		}
+		else
+		{
+			Gizmos.DrawWireSphere(transform.position, punches.Range);
+		}
+	}
+#endif
 }
+
