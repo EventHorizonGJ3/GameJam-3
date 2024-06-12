@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponsPooler : MonoBehaviour
 {
     public static WeaponsPooler SharedInstance;
-    private List<GameObject> pooledObjects;
+    //private List<GameObject> pooledObjects;
     private List<IPickable> pooledWeapons;
     public List<GameObject> weaponsToPull;
     public int amountToPool;
@@ -13,7 +13,7 @@ public class WeaponsPooler : MonoBehaviour
     void Awake()
     {
         SharedInstance = this;
-        pooledObjects = new List<GameObject>();
+        //pooledObjects = new List<GameObject>();
         pooledWeapons = new List<IPickable>();
 
         CreatePool();
