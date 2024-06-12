@@ -3,12 +3,7 @@ guid: beb3b5ade33320040aed7f8c333a1e71
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Road_sign_stop
-    second: {fileID: 2100000, guid: 9690ee0af1cd03e4887e3279756c3fc3, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
