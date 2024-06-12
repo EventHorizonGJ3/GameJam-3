@@ -12,7 +12,7 @@ public interface IDamageable
 	/// deactivate navmesh and use power to applay an impulse force on RB
 	/// <param name="_Power"> the kcockback force </param>
 	///</summary>
-	public void Kncokback(float _Power);
+	public void Knockback(float _Power);
 
 	public void NoHP();
 }

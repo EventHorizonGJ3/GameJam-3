@@ -30,21 +30,26 @@ public class PlayerComboM : MonoBehaviour
 	Coroutine resetCombo;
 	Animator anim;
 	ActionMap inputs;
+	//bool canAttack = true;
 
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;
 	}
-	private void OnEnable()
-	{
-
+    private void OnDisable()
+    {
+		if (currentWeapon.IsRanged)
+		{
+			inputs.Player.Attack.started -= RangedAttack;
+		}
+		else
+		{
+			inputs.Player.Attack.started -= MeleeAttack;
+		}
+		currentWeapon.OnBreak -= BackToPunches;
 	}
-	private void OnDisable()
-	{
-		inputs.Player.Attack.started -= MeleeAttack;
-	}
 
-	private void Start()
+    private void Start()
 	{
 		UpdateCurrentWeapon(punches);
 		anim = GetComponentInChildren<Animator>();
@@ -54,10 +59,12 @@ public class PlayerComboM : MonoBehaviour
 	{
 		EndAttack();
 	}
+
 	void BackToPunches()
 	{
 		UpdateCurrentWeapon(punches);
 	}
+
 	public void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
 	{
 		if (currentWeapon != null)
@@ -121,18 +128,18 @@ public class PlayerComboM : MonoBehaviour
 			resetCombo = null;
 		}
 
-		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count)
+		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count/*|| canAttack == false*/)
 			return;
 
 		lastAttackTime = Time.time;
+		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
+		//canAttack = false;
 
 		if (comboCounter - 1 >= 0)
 		{
-			Debug.Log(comboCounter);
 			if (currentWeapon.AttackCombo[comboCounter].AnimOverrider == currentWeapon.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
-		}
-
+		} 
 
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
@@ -142,8 +149,6 @@ public class PlayerComboM : MonoBehaviour
 		{
 			currentWeapon.LastAttack?.Invoke();
 		}
-
-		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 
 		comboCounter++;
 
@@ -155,8 +160,11 @@ public class PlayerComboM : MonoBehaviour
 	{
 		if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimationName))
 		{
-			//  if null then:
+			//canAttack = true;
+
+			//  if resetCombo == null then:
 			resetCombo ??= StartCoroutine(EndCombo());
+
 			currentWeapon.AttackEnd?.Invoke();
 		}
 	}

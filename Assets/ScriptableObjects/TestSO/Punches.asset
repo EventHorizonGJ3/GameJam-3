@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
   m_Name: Punches
   m_EditorClassIdentifier: 
-  WeaponID: 1
-  Prefab: {fileID: 0}
   NumberOfUses: 1000
+  IsRanged: 0
+  Range: 0
   AttackCombo:
   - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    Dmg: 2
+    Dmg: 1
   - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    Dmg: 2
+    Dmg: 1
   - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    Dmg: 2
+    Dmg: 5
