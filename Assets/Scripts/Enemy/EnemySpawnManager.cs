@@ -18,16 +18,13 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] int amountToPool;
     [Header("Ref")]
-    [SerializeField] EnemyPoolerSO EnemyPooler;
+
+
 
 
 
     Dictionary<EnemyType, GameObject> EnemyDictionary;
 
-    enum EnemyType
-    {
-        MANAGER, POLICE, ARMY, STACY, SUPREME
-    }
 
     private void Awake()
     {
@@ -45,18 +42,23 @@ public class EnemySpawnManager : MonoBehaviour
         foreach (EnemyType enemyType in EnemyDictionary.Keys)
         {
             if (enemyType == EnemyType.STACY) break;
-            EnemyPooler.amount = amountToPool;
-            EnemyPooler.prefab = EnemyDictionary[enemyType];
-            EnemyPooler.CreateEnemyPool(transform);
+            EnemyPooler.Instance.amount = amountToPool;
+            EnemyPooler.Instance.prefab = EnemyDictionary[enemyType];
+            EnemyPooler.Instance.CreateEnemyPool(transform);
         }
-
-
-
     }
-
-
-
-
-
-
 }
+public enum EnemyType
+{
+    MANAGER, POLICE, ARMY, STACY, SUPREME
+}
+
+
+
+
+
+
+
+
+
+

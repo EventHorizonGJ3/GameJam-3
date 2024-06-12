@@ -526,7 +526,6 @@ MonoBehaviour:
   enemy_Stacy: {fileID: 2612003217692454266, guid: cc7165510fb9cc444b44e086b9b543c6, type: 3}
   enemy_Supreme: {fileID: 2612003217692454266, guid: cc7165510fb9cc444b44e086b9b543c6, type: 3}
   amountToPool: 5
-  EnemyPooler: {fileID: 11400000, guid: 1d5b8715ec9b9f5419cf53e81fb025d8, type: 2}
 --- !u!4 &1113298746
 Transform:
   m_ObjectHideFlags: 0
@@ -537,6 +536,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222418093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222418095}
+  - component: {fileID: 1222418094}
+  m_Layer: 0
+  m_Name: EnemyPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1222418094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222418093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df9966aab0df2447969cbc0bcca2338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0
+  prefab: {fileID: 0}
+--- !u!4 &1222418095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222418093}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.16116, y: -122.72127, z: 181.59402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -705,3 +750,4 @@ SceneRoots:
   - {fileID: 1806823308}
   - {fileID: 587176657}
   - {fileID: 1113298746}
+  - {fileID: 1222418095}
