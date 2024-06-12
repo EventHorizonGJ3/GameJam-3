@@ -36,8 +36,8 @@ public class PlayerComboM : MonoBehaviour
 	{
 		inputs = InputManager.ActionMap;
 	}
-    private void OnDisable()
-    {
+	private void OnDisable()
+	{
 		if (currentWeapon.IsRanged)
 		{
 			inputs.Player.Attack.started -= RangedAttack;
@@ -49,7 +49,7 @@ public class PlayerComboM : MonoBehaviour
 		currentWeapon.OnBreak -= BackToPunches;
 	}
 
-    private void Start()
+	private void Start()
 	{
 		UpdateCurrentWeapon(punches);
 		anim = GetComponentInChildren<Animator>();
@@ -128,27 +128,26 @@ public class PlayerComboM : MonoBehaviour
 			resetCombo = null;
 		}
 
-		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count/*|| canAttack == false*/)
+		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count)
 			return;
-
-		lastAttackTime = Time.time;
-		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
-		//canAttack = false;
 
 		if (comboCounter - 1 >= 0)
 		{
 			if (currentWeapon.AttackCombo[comboCounter].AnimOverrider == currentWeapon.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
-		} 
+		}
 
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
+		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 
 		if (comboCounter == currentWeapon.AttackCombo.Count - 1)
 		{
 			currentWeapon.LastAttack?.Invoke();
 		}
+
+		lastAttackTime = Time.time;
 
 		comboCounter++;
 
@@ -172,7 +171,7 @@ public class PlayerComboM : MonoBehaviour
 	IEnumerator EndCombo()
 	{
 		yield return new WaitForSeconds(ComboResetTime);
-		Debug.Log("we have waited");
+		//Debug.Log("we have waited");
 		lastComboTime = Time.time;
 		comboCounter = 0;
 	}
