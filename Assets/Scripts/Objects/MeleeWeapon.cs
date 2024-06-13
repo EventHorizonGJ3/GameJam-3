@@ -18,6 +18,9 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 
 	public Transform Transform => transform;
 
+	//! to remove:
+	bool redGizmo;
+
 	[field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
 	private void Start()
 	{
@@ -80,6 +83,7 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 
 	private void ActivateKnockBack()
 	{
+		redGizmo = true;
 		currentKnockBack = KnockBackPower;
 	}
 
@@ -87,12 +91,13 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 	///<summary>
 	/// disables trigger and eneables collider
 	///</summary>
-	private void DeactivateTrigger()
+	private void DeactivateTrigger()    // OnAttackEnd
 	{
 		//Debug.Log("deactivate trigger");
 		UpdateTrigger(false);
 	}
 
+	// OnAttack
 	private void GetDamage(int _Dmg)
 	{
 		myDmg = _Dmg;
@@ -111,7 +116,10 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 		float dist = Vector3.Distance(bot.position, top.position) / 2;
 		Vector3 center = bot.position + bot.up * dist;
 		Gizmos.color = Color.green;
+		if (redGizmo)
+			Gizmos.color = Color.red;
 		Gizmos.DrawWireCube(center, new Vector3(radius, dist * 2, radius));
+		redGizmo = false;
 	}
 #endif
 }

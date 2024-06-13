@@ -16,6 +16,7 @@ public class PlayerComboM : MonoBehaviour
 
 	[Tooltip("The angle that the player sees in fron of him")]
 	[SerializeField] float fieldOfView;
+	[SerializeField] float animTime = 0.3f;
 
 	[Tooltip("the time it waits after an attack")]
 	public float AttackDelay = 0.2f;
@@ -142,17 +143,16 @@ public class PlayerComboM : MonoBehaviour
 		anim.Play(attackAnimationName);
 		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 
-		if (comboCounter == currentWeapon.AttackCombo.Count - 1)
-		{
-			currentWeapon.LastAttack?.Invoke();
-		}
 
 		lastAttackTime = Time.time;
 
 		comboCounter++;
 
 		if (comboCounter >= currentWeapon.AttackCombo.Count)
+		{
+			currentWeapon.LastAttack?.Invoke();
 			comboCounter = 0;
+		}
 	}
 
 	void EndAttack()
@@ -180,6 +180,7 @@ public class PlayerComboM : MonoBehaviour
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.yellow;
+
 		if (currentWeapon != null)
 		{
 			Gizmos.DrawWireSphere(transform.position, currentWeapon.Range);
