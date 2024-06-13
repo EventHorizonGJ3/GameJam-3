@@ -39,6 +39,16 @@ public class EnemySpawnManager : MonoBehaviour
 
 
 
+
+    }
+
+    private void Start()
+    {
+        if (EnemyPooler.Instance == null)
+        {
+            Debug.LogError("EnemyPooler instance is null");
+            return;
+        }
         foreach (EnemyType enemyType in EnemyDictionary.Keys)
         {
             if (enemyType == EnemyType.STACY) break;
@@ -46,6 +56,7 @@ public class EnemySpawnManager : MonoBehaviour
             EnemyPooler.Instance.prefab = EnemyDictionary[enemyType];
             EnemyPooler.Instance.CreateEnemyPool(transform);
         }
+        
     }
 }
 public enum EnemyType

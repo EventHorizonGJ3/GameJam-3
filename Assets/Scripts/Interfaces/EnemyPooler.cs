@@ -27,7 +27,7 @@ public class EnemyPooler : MonoBehaviour
         {
             var enemy = Instantiate(prefab, transform);
             enemy.SetActive(false);
-            if (prefab.TryGetComponent(out IEnemy pooledEnemy))
+            if (enemy.TryGetComponent(out IEnemy pooledEnemy))
             {
                 switch (pooledEnemy.Type)
                 {
@@ -37,9 +37,20 @@ public class EnemyPooler : MonoBehaviour
                 }
             }
         }
-        Debug.Log(managers.Count);
-        Debug.Log(police.Count);
-        Debug.Log(army.Count);  
+        //Debug.Log($"Managers: {managers.Count}");
+        //Debug.Log($"Police: {police.Count}");
+        //Debug.Log($"Army: {army.Count}");
+    }
+
+    public List<IEnemy> GetEnemy(EnemyType enemyType)
+    {
+        switch(enemyType)
+        {
+            case EnemyType.MANAGER: return managers;
+            case EnemyType.POLICE: return police;
+            case EnemyType.ARMY: return army;
+            default: return null;
+        }
     }
 
 
