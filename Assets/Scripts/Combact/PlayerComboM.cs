@@ -99,7 +99,7 @@ public class PlayerComboM : MonoBehaviour
 
 	private void RangedAttack(InputAction.CallbackContext _Context)
 	{
-		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.Range);
+		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.RangedRange);
 		var _minDistance = 999f;
 		Transform _target = null;
 		foreach (var _coll in _colliders)
@@ -183,11 +183,11 @@ public class PlayerComboM : MonoBehaviour
 
 		if (currentWeapon != null)
 		{
-			Gizmos.DrawWireSphere(transform.position, currentWeapon.Range);
+			Gizmos.DrawWireSphere(transform.position, currentWeapon.RangedRange);
 		}
 		else
 		{
-			Gizmos.DrawWireSphere(transform.position, punches.Range);
+			Gizmos.DrawWireSphere(transform.position, punches.RangedRange);
 		}
 	}
 #endif
