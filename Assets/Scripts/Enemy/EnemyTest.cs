@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyTest : MonoBehaviour, IDamageable
 {
-	[SerializeField] float invincibilityTIme;
 	[SerializeField] float knockbackDur = 3;
 	[field: SerializeField] public int HP { get; set; }
+	public Transform colliderTransform { get; set; }
+
 	[Header("Yello ray settings: ")]
 	[SerializeField] float rayHight;
 	[SerializeField] float rayLenght;
+	[SerializeField] LayerMask obstacleLayer;
 	NavMeshAgent agent;
 	bool isKnockbacked;
 	float timer = 0;
 	float backPower;
 	Vector3 startPos;
-	float lastHitTime;
+	Vector3 endPos;
+	Vector3 dir;
 
 
 	private void Awake()
@@ -28,7 +29,7 @@ public class EnemyTest : MonoBehaviour, IDamageable
 	{
 		if (isKnockbacked)
 		{
-			if (Physics.Raycast(transform.position + Vector3.up * rayHight, -transform.forward, out RaycastHit hit, rayLenght))
+			if (Physics.Raycast(transform.position + Vector3.up * rayHight, dir, out RaycastHit hit, rayLenght, obstacleLayer))
 			{
 				Debug.Log("i hit this: ", hit.transform);
 				isKnockbacked = false;
@@ -38,13 +39,14 @@ public class EnemyTest : MonoBehaviour, IDamageable
 
 			if (timer < knockbackDur)
 			{
+				Debug.Log($"startPos: {startPos} \nendPos: {endPos}");
 				timer += Time.deltaTime;
-				transform.position = Vector3.Lerp(startPos, startPos - transform.forward * backPower, timer / knockbackDur);
+				transform.position = Vector3.Lerp(startPos, endPos, timer / knockbackDur);
 			}
 			else
 			{
 				isKnockbacked = false;
-				transform.position = startPos - transform.forward * backPower;
+				transform.position = endPos;
 				backPower = 0;
 				//agent.enabled = true;
 			}
@@ -58,11 +60,24 @@ public class EnemyTest : MonoBehaviour, IDamageable
 	}
 	public void Knockback(float _Power)
 	{
-		Debug.Log("kncokback");
+		isKnockbacked = false;
+
+		timer = 0;
 		startPos = transform.position;
+		Vector3 _ColliderStartPos = colliderTransform.position;
+		dir = startPos - _ColliderStartPos;
+		dir.y = 0;
+
+		//! to remove:
+		Debug.DrawRay(transform.position + Vector3.up * (rayHight + 3), dir * 100, Color.magenta, 10);
+
 		backPower = _Power;
-		//agent.enabled = false;
+		dir = dir.normalized;
+
+		endPos = startPos + dir * _Power;
+
 		isKnockbacked = true;
+		//Debug.Log("kncokback");
 	}
 
 	public void NoHP()
@@ -72,11 +87,11 @@ public class EnemyTest : MonoBehaviour, IDamageable
 
 	public void TakeDamage(int _Dmg)
 	{
-		if (Time.time - lastHitTime < invincibilityTIme)
-			return;
+		//? if (Time.time - lastHitTime < invincibilityTIme)
+		//? 	return;
+		//? lastHitTime = Time.time;
 
 		HP -= _Dmg;
-		lastHitTime = Time.time;
 		if (HP <= 0)
 		{
 			NoHP();
@@ -86,7 +101,9 @@ public class EnemyTest : MonoBehaviour, IDamageable
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawRay(transform.position + Vector3.up * rayHight, -transform.forward * rayLenght);
+		Gizmos.DrawRay(transform.position + Vector3.up * rayHight, dir * rayLenght);
+		Gizmos.color = Color.magenta;
+		Debug.DrawRay(transform.position + Vector3.up * rayHight, dir * backPower);
 	}
 
 }

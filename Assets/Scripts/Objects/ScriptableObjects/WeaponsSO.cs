@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapons/Combo")]
 public class WeaponsSO : ScriptableObject
 {
+	[Header("Genaral Settings: ")]
 	public int NumberOfUses = 6;
+	public LayerMask EnemyLayer;
 
 	[Header("Settings Melee: ")]
-	//public int WeaponID;
-	[Tooltip("number of hits you can do before the item breaks\n(should be at least greater then the number of combos)")]
-	//public GameObject Prefab;
+	public float KnockBackPower;
 
-	[Header("Settings Ranged")]
+	[Header("Settings Ranged: ")]
 	public bool IsRanged;
 	public float Range;
 

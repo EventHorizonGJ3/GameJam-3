@@ -143,13 +143,13 @@ public class PlayerComboM : MonoBehaviour
 		anim.Play(attackAnimationName);
 		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 
-
 		lastAttackTime = Time.time;
 
 		comboCounter++;
 
 		if (comboCounter >= currentWeapon.AttackCombo.Count)
 		{
+			//Debug.Log("last attack: " + comboCounter);
 			currentWeapon.LastAttack?.Invoke();
 			comboCounter = 0;
 		}

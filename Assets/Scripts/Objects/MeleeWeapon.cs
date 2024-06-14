@@ -4,12 +4,13 @@ using UnityEditor;
 public class MeleeWeapon : MonoBehaviour, IPickable
 {
 	[Header("Settings: ")]
-	[SerializeField] LayerMask enemyLayer;
+
 	[SerializeField] float radius;
 	[SerializeField] Transform top;
 	[SerializeField] Transform bot;
+	[field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
+
 	[Header("only when used by the player: ")]
-	[SerializeField] float KnockBackPower;
 	float currentKnockBack = 0;
 
 	bool isTriggerActive;
@@ -20,8 +21,10 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 
 	//! to remove:
 	bool redGizmo;
+	//!
 
-	[field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
+	bool firstHit;
+
 	private void Start()
 	{
 		top = transform.GetChild(0);
@@ -47,30 +50,58 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 
 	private void Update()
 	{
+		// if (isTriggerActive)
+		// {
+		// 	Collider[] enemyHit = new Collider[20];
+		// 	int _NumberOfEnemyes = Physics.OverlapCapsuleNonAlloc(bot.position, top.position, radius, enemyHit, WeaponsSO.EnemyLayer);
+		// 	if (_NumberOfEnemyes > 0)
+		// 	{
+		// 		for (int i = 0; i < _NumberOfEnemyes; i++)
+		// 		{
+		// 			if (enemyHit[i] != null)
+		// 			{
+		// 				if (enemyHit[i].TryGetComponent(out IDamageable hp))
+		// 				{
+		// 					hitCounter++;
+		// 					hp.TakeDamage(myDmg);
+		// 					hp.Knockback(currentKnockBack);
+		// 					Debug.Log("diomerda");
+
+		// 					if (hitCounter >= WeaponsSO.NumberOfUses)
+		// 					{
+		// 						WeaponsSO.OnBreak?.Invoke();
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+
+	private void OnTriggerEnter(Collider _Other)
+	{
+
 		if (isTriggerActive)
 		{
-			Collider[] enemyHit = new Collider[20];
-			int _NumberOfEnemyes = Physics.OverlapCapsuleNonAlloc(bot.position, top.position, radius, enemyHit);
-			if (_NumberOfEnemyes > 0)
+			if (_Other.TryGetComponent(out IDamageable hp))
 			{
-				for (int i = 0; i < _NumberOfEnemyes; i++)
+				hp.colliderTransform = transform.root;
+				hp.TakeDamage(myDmg);
+				hp.Knockback(currentKnockBack);
+				if (firstHit)
 				{
-					if (enemyHit[i] != null)
+					firstHit = false;
+					hitCounter++;
+					if (hitCounter >= WeaponsSO.NumberOfUses)
 					{
-						if (enemyHit[i].TryGetComponent(out IDamageable hp))
-						{
-							hitCounter++;
-							hp.TakeDamage(myDmg);
-							hp.Knockback(currentKnockBack);
-
-							if (hitCounter >= WeaponsSO.NumberOfUses)
-							{
-								WeaponsSO.OnBreak?.Invoke();
-							}
-						}
+						WeaponsSO.OnBreak?.Invoke();
 					}
 				}
 			}
+		}
+		else
+		{
+			firstHit = true;
 		}
 	}
 
@@ -84,7 +115,8 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 	private void ActivateKnockBack()
 	{
 		redGizmo = true;
-		currentKnockBack = KnockBackPower;
+		currentKnockBack = WeaponsSO.KnockBackPower;
+		Debug.Log("activate knockback");
 	}
 
 
@@ -105,9 +137,9 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 		UpdateTrigger(true);
 	}
 
-	void UpdateTrigger(bool x)
+	void UpdateTrigger(bool _X)
 	{
-		isTriggerActive = x;
+		isTriggerActive = _X;
 	}
 
 #if UNITY_EDITOR
