@@ -9,15 +9,16 @@ public class EnemyTest : MonoBehaviour, IEnemy
     NavMeshAgent agent;
 
     public EnemyType Type { get => enemyType; private set => enemyType = value; }
+    public Transform Transform { get => transform; }
 
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        enemyType = EnemyType.MANAGER;
+        //agent = GetComponent<NavMeshAgent>();
     }
+        
 
     private void Update()
     {
-        agent.SetDestination(GameManager.enemyTargetPosition);
+        //agent.SetDestination(GameManager.enemyTargetPosition);
     }
 }

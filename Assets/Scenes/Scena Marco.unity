@@ -167,6 +167,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f197a328733152749ba2f353ac760271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &313957703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313957705}
+  - component: {fileID: 313957704}
+  m_Layer: 0
+  m_Name: EenemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &313957704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313957703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0895e14362de24cb4cbfb70d733423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFrequancy: 10
+  waves:
+  - waveName: 
+    probabilities:
+      Manager_Chance: 1
+      Police_Chance: 0
+      Army_Chance: 0
+--- !u!4 &313957705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313957703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 3.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550531969
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +229,7 @@ GameObject:
   - component: {fileID: 550531970}
   - component: {fileID: 550531972}
   - component: {fileID: 550531971}
+  - component: {fileID: 550531973}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -259,6 +311,37 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!114 &550531973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550531969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 6b8159fd3bcbd7642a29e7fb5db73143, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &587176653
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +826,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 199073176}
+  - {fileID: 1222418095}
   - {fileID: 705507995}
   - {fileID: 636440031}
   - {fileID: 5524634361690635164}
@@ -750,4 +834,4 @@ SceneRoots:
   - {fileID: 1806823308}
   - {fileID: 587176657}
   - {fileID: 1113298746}
-  - {fileID: 1222418095}
+  - {fileID: 313957705}

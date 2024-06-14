@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IEnemy 
 {
     EnemyType Type { get; }
+
+    Transform Transform { get; }
 }
