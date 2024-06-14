@@ -1,39 +1,15 @@
 using UnityEngine;
 using UnityEditor;
 
-public class MeleeWeapon : MonoBehaviour, IPickable
+public class MeleeWeapon : Weapon
 {
-	[Header("Settings: ")]
-
-	[SerializeField] float radius;
-	[SerializeField] Transform top;
-	[SerializeField] Transform bot;
-	[field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
-
-	[Header("only when used by the player: ")]
-	float currentKnockBack = 0;
-
-	bool isTriggerActive;
-	int myDmg;
-	int hitCounter;
-
-	public Transform Transform => transform;
-
-	//! to remove:
-	bool redGizmo;
-	//!
-
 	bool firstHit;
-
-	private void Start()
-	{
-		top = transform.GetChild(0);
-	}
-
 	private void OnEnable()
 	{
-		WeaponsSO.OnAttack += GetDamage;
-		WeaponsSO.AttackEnd += DeactivateTrigger;
+		TryGetComponent(out trigger);
+		UpdateTrigger(false);
+		WeaponsSO.OnAttack += OnAttack;
+		WeaponsSO.AttackEnd += OnAttackEnd;
 		WeaponsSO.LastAttack += ActivateKnockBack;
 		WeaponsSO.OnBreak += Break;
 	}
@@ -42,66 +18,29 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 	{
 		hitCounter = 0;
 		currentKnockBack = 0;
-		WeaponsSO.OnAttack -= GetDamage;
-		WeaponsSO.AttackEnd -= DeactivateTrigger;
+		WeaponsSO.OnAttack -= OnAttack;
+		WeaponsSO.AttackEnd -= OnAttackEnd;
 		WeaponsSO.LastAttack -= ActivateKnockBack;
 		WeaponsSO.OnBreak -= Break;
 	}
 
-	private void Update()
+	protected override void OnTriggerEnter(Collider _Other)
 	{
-		// if (isTriggerActive)
-		// {
-		// 	Collider[] enemyHit = new Collider[20];
-		// 	int _NumberOfEnemyes = Physics.OverlapCapsuleNonAlloc(bot.position, top.position, radius, enemyHit, WeaponsSO.EnemyLayer);
-		// 	if (_NumberOfEnemyes > 0)
-		// 	{
-		// 		for (int i = 0; i < _NumberOfEnemyes; i++)
-		// 		{
-		// 			if (enemyHit[i] != null)
-		// 			{
-		// 				if (enemyHit[i].TryGetComponent(out IDamageable hp))
-		// 				{
-		// 					hitCounter++;
-		// 					hp.TakeDamage(myDmg);
-		// 					hp.Knockback(currentKnockBack);
-		// 					Debug.Log("diomerda");
-
-		// 					if (hitCounter >= WeaponsSO.NumberOfUses)
-		// 					{
-		// 						WeaponsSO.OnBreak?.Invoke();
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
-	}
-
-	private void OnTriggerEnter(Collider _Other)
-	{
-
-		if (isTriggerActive)
+		Debug.Log("trigger active and hit");
+		if (_Other.TryGetComponent(out IDamageable hp))
 		{
-			if (_Other.TryGetComponent(out IDamageable hp))
+			hp.colliderTransform = transform.root;
+			hp.TakeDamage(myDmg);
+			hp.Knockback(currentKnockBack);
+			if (firstHit)
 			{
-				hp.colliderTransform = transform.root;
-				hp.TakeDamage(myDmg);
-				hp.Knockback(currentKnockBack);
-				if (firstHit)
+				firstHit = false;
+				hitCounter++;
+				if (hitCounter >= WeaponsSO.NumberOfUses)
 				{
-					firstHit = false;
-					hitCounter++;
-					if (hitCounter >= WeaponsSO.NumberOfUses)
-					{
-						WeaponsSO.OnBreak?.Invoke();
-					}
+					WeaponsSO.OnBreak?.Invoke();
 				}
 			}
-		}
-		else
-		{
-			firstHit = true;
 		}
 	}
 
@@ -114,44 +53,28 @@ public class MeleeWeapon : MonoBehaviour, IPickable
 
 	private void ActivateKnockBack()
 	{
-		redGizmo = true;
 		currentKnockBack = WeaponsSO.KnockBackPower;
-		Debug.Log("activate knockback");
 	}
 
 
 	///<summary>
 	/// disables trigger and eneables collider
 	///</summary>
-	private void DeactivateTrigger()    // OnAttackEnd
-	{
-		//Debug.Log("deactivate trigger");
-		UpdateTrigger(false);
-	}
+
 
 	// OnAttack
-	private void GetDamage(int _Dmg)
+	protected override void OnAttack(int _Dmg)
 	{
-		myDmg = _Dmg;
-		currentKnockBack = 0;
-		UpdateTrigger(true);
+		firstHit = true;
+		base.OnAttack(_Dmg);
+	}
+	protected override void OnAttackEnd()
+	{
+		base.OnAttackEnd();
+	}
+	protected override void UpdateTrigger(bool _X)
+	{
+		base.UpdateTrigger(_X);
 	}
 
-	void UpdateTrigger(bool _X)
-	{
-		isTriggerActive = _X;
-	}
-
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		float dist = Vector3.Distance(bot.position, top.position) / 2;
-		Vector3 center = bot.position + bot.up * dist;
-		Gizmos.color = Color.green;
-		if (redGizmo)
-			Gizmos.color = Color.red;
-		Gizmos.DrawWireCube(center, new Vector3(radius, dist * 2, radius));
-		redGizmo = false;
-	}
-#endif
 }

@@ -65,14 +65,9 @@ public class EnemyTest : MonoBehaviour, IDamageable
 		timer = 0;
 		startPos = transform.position;
 		Vector3 _ColliderStartPos = colliderTransform.position;
-		dir = startPos - _ColliderStartPos;
+		dir = (startPos - _ColliderStartPos).normalized;
 		dir.y = 0;
-
-		//! to remove:
-		Debug.DrawRay(transform.position + Vector3.up * (rayHight + 3), dir * 100, Color.magenta, 10);
-
 		backPower = _Power;
-		dir = dir.normalized;
 
 		endPos = startPos + dir * _Power;
 
@@ -87,9 +82,9 @@ public class EnemyTest : MonoBehaviour, IDamageable
 
 	public void TakeDamage(int _Dmg)
 	{
-		//? if (Time.time - lastHitTime < invincibilityTIme)
-		//? 	return;
-		//? lastHitTime = Time.time;
+		//// if (Time.time - lastHitTime < invincibilityTIme)
+		//// 	return;
+		//// lastHitTime = Time.time; 
 
 		HP -= _Dmg;
 		if (HP <= 0)
