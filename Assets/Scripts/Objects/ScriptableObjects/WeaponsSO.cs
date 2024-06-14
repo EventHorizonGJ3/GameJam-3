@@ -14,7 +14,7 @@ public class WeaponsSO : ScriptableObject
 
 	[Header("Settings Ranged: ")]
 	public bool IsRanged;
-	public float Range;
+	public float RangedRange;
 
 	[Header("Combo: ")]
 	public List<AttackG> AttackCombo;
