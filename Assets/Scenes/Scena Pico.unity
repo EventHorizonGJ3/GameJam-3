@@ -879,6 +879,10 @@ PrefabInstance:
       propertyPath: fieldOfView
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 2457169236099575048, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: weaponLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7298516049432503370, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: m_Name
       value: PLAYER
@@ -1120,7 +1124,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1282,9 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.15
-  top: {fileID: 1394888474}
-  bot: {fileID: 1903643796}
   <WeaponsSO>k__BackingField: {fileID: 11400000, guid: ec43214771819ef4c83902833dd09d48, type: 2}
 --- !u!4 &2142100297 stripped
 Transform:
