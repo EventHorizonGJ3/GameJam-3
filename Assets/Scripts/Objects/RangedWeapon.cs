@@ -6,18 +6,18 @@ public class RangedWeapon : Weapon
 	Vector3 startPos;
 	bool isThrowned;
 	float timer = 0;
-	protected override void Start()
+	protected override void Awake()
 	{
-		base.Start();
+		base.Awake();
 	}
 	protected override void OnEnable()
 	{
-		WeaponsSO.GetTarget += GetTarget;
+		WeaponSo.GetTarget += GetTarget;
 		base.OnEnable();
 	}
 	protected override void OnDisable()
 	{
-		WeaponsSO.GetTarget -= GetTarget;
+		WeaponSo.GetTarget -= GetTarget;
 		base.OnDisable();
 	}
 	protected override void OnBreak()
@@ -40,29 +40,35 @@ public class RangedWeapon : Weapon
 	{
 		if (isThrowned)
 		{
-			if (timer < WeaponsSO.ThrowDuration)
+			if (timer < WeaponSo.ThrowDuration)
 			{
-				transform.position = Vector3.Lerp(startPos, target.position, timer / WeaponsSO.ThrowDuration);
+				transform.position = Vector3.Lerp(startPos, target.position, timer / WeaponSo.ThrowDuration);
 				timer += Time.deltaTime;
 			}
 			else
 			{
 				timer = 0;
 				transform.position = target.position;
+				if (target.TryGetComponent(out IDamageable _Hp))
+				{
+					_Hp.TakeDamage(myDmg);
+					gameObject.SetActive(false);
+				}
 			}
 		}
 	}
-	protected override void OnTriggerEnter(Collider _Other)
-	{
-		base.OnTriggerEnter(_Other);
-	}
+
 	protected override void UpdateTrigger(bool _X)
 	{
 		base.UpdateTrigger(_X);
-		gameObject.SetActive(_X);
 	}
 	void GetTarget(Transform _Target)
 	{
 		target = _Target;
+	}
+
+	protected override void OnGrabbed()
+	{
+		base.OnGrabbed();
 	}
 }

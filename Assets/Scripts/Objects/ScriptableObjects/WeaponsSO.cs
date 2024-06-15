@@ -26,6 +26,7 @@ public class WeaponsSO : ScriptableObject
 	public Action AttackEnd;
 	public Action LastAttack;
 	public Action OnBreak;
+	public Action OnGrabbed;
 }
 
 

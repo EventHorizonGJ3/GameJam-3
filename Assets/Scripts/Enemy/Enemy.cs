@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class EnemyTest : MonoBehaviour, /*IEnemy,*/ IDamageable
+public class Enemy : MonoBehaviour, IEnemy, IDamageable
 {
 	EnemyType enemyType = EnemyType.MANAGER;
 

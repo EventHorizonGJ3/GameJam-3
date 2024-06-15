@@ -25,26 +25,26 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
         List<IPickable> AllWeapons = WeaponsPooler.SharedInstance.GetWeaponList();
         foreach (IPickable weapon in AllWeapons)
         {
-            if(weapon.WeaponsSO == weaponToSpawn && !weapon.Transform.gameObject.activeInHierarchy && canSpawn)
+            if (weapon.WeaponSo == weaponToSpawn && !weapon.Transform.gameObject.activeInHierarchy && canSpawn)
             {
                 float targetY = SetSpawnHeight(weapon.Transform);
-                weapon.Transform.position = new Vector3(transform.position.x, targetY , transform.position.z);
+                weapon.Transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
                 loadedWeapon = weapon.Transform.gameObject;
                 loadedWeapon.transform.parent = this.transform;
                 canSpawn = false;
                 break;
-                
+
             }
         }
     }
-        
-        
+
+
 
     float SetSpawnHeight(Transform obj)
     {
         float floorY = 0;
         Ray ray = new(transform.position, Vector3.down);
-        if(Physics.Raycast(ray,out RaycastHit hit) )
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             floorY = hit.point.y;
         }

@@ -1,9 +1,8 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class WeaponPicker : MonoBehaviour
+public class ShittiWeaponPicker : MonoBehaviour
 {
+
 	[SerializeField] Transform handTransfrom;
 	[SerializeField] LayerMask weaponLayer;
 	[SerializeField] PlayerComboM playerComboM;
@@ -43,34 +42,28 @@ public class WeaponPicker : MonoBehaviour
 
 	private void Update()
 	{
-		if (InputManager.IsMoving(out Vector3 direction))
-		{
-			interactPos = transform.position + direction;
-		}
+
+	}
+
+	void PickUpWeapon(InputAction.CallbackContext context)
+	{
+		InputManager.IsMoving(out Vector3 direction);
+		interactPos = transform.position + direction;
 		Collider[] colliderInRange = new Collider[allWeaponsColliders.Length];
 		int numberOfWeapons = Physics.OverlapSphereNonAlloc(interactPos, interactionRadius, colliderInRange, weaponLayer);
 		canInteract = false;
-
 
 		for (int i = 0; i < numberOfWeapons; i++)
 		{
 			Collider weaponsCol = colliderInRange[i];
 			if (Vector3.Distance(transform.position, weaponsCol.transform.position) <= interactionOffest)
 			{
-				canInteract = true;
 				pickableWeapon = weaponsCol.GetComponent<IPickable>();
+				pickableWeapon.Transform.position = handTransfrom.position;
+				pickableWeapon.Transform.parent = handTransfrom;
+				playerComboM.UpdateCurrentWeapon(pickableWeapon.WeaponSo);
 				break;
 			}
-		}
-	}
-
-	void PickUpWeapon(InputAction.CallbackContext context)
-	{
-		if (canInteract)
-		{
-			pickableWeapon.Transform.position = handTransfrom.position;
-			pickableWeapon.Transform.parent = handTransfrom;
-			playerComboM.UpdateCurrentWeapon(pickableWeapon.WeaponSo);
 		}
 	}
 
@@ -89,6 +82,5 @@ public class WeaponPicker : MonoBehaviour
 		// Disegna la sfera di interazione
 		Gizmos.DrawWireSphere(interactPos, interactionRadius);
 	}
-
 
 }

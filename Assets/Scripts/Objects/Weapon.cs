@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour, IPickable
@@ -8,27 +9,34 @@ public class Weapon : MonoBehaviour, IPickable
 	protected float currentKnockBack = 0;
 	protected Collider trigger;
 	protected IDamageable hp;
+	[field: SerializeField] public WeaponsSO WeaponSo { get; set; }
 
 
-	[field: SerializeField] public WeaponsSO WeaponsSO { get; set; }
-	protected virtual void Start()
+	protected virtual void Awake()
 	{
-		this.trigger = GetComponent<Collider>();
+		TryGetComponent(out this.trigger);
 	}
 	protected virtual void OnEnable()
 	{
-		this.UpdateTrigger(false);
-		WeaponsSO.OnAttack += this.OnAttack;
-		WeaponsSO.AttackEnd += this.OnAttackEnd;
-		WeaponsSO.OnBreak += this.OnBreak;
+		WeaponSo.OnGrabbed += this.OnGrabbed;
+		WeaponSo.OnAttack += this.OnAttack;
+		WeaponSo.AttackEnd += this.OnAttackEnd;
+		WeaponSo.OnBreak += this.OnBreak;
 	}
+
+	protected virtual void OnGrabbed()
+	{
+		this.UpdateTrigger(false);
+	}
+
 	protected virtual void OnDisable()
 	{
 		hitCounter = 0;
 		currentKnockBack = 0;
-		WeaponsSO.OnAttack -= OnAttack;
-		WeaponsSO.AttackEnd -= OnAttackEnd;
-		WeaponsSO.OnBreak -= OnBreak;
+		WeaponSo.OnAttack -= this.OnAttack;
+		WeaponSo.AttackEnd -= this.OnAttackEnd;
+		WeaponSo.OnBreak -= this.OnBreak;
+		WeaponSo.OnGrabbed -= this.OnGrabbed;
 	}
 	protected virtual void OnBreak()
 	{
@@ -37,9 +45,9 @@ public class Weapon : MonoBehaviour, IPickable
 	}
 	protected virtual void OnAttack(int _Dmg)
 	{
-		currentKnockBack = 0;
+		this.currentKnockBack = 0;
 		this.myDmg = _Dmg;
-		this.UpdateTrigger(true); // isTriggerActive = true;
+		this.UpdateTrigger(true);
 	}
 
 	protected virtual void OnAttackEnd()

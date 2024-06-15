@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +10,6 @@ using UnityEngine.InputSystem;
 public class PlayerComboM : MonoBehaviour
 {
 	[Header("Weapon Settings:")]
-	[SerializeField] WeaponsSO currentWeapon;
 	[SerializeField] WeaponsSO punches;
 	[SerializeField] string attackAnimationName;
 
@@ -18,13 +18,14 @@ public class PlayerComboM : MonoBehaviour
 	[SerializeField] float animTime = 0.3f;
 
 	[Tooltip("the time it waits after an attack")]
-	public float AttackDelay = 0.2f;
+	[SerializeField] float AttackDelay = 0.2f;
 
 	[Tooltip("the time it waits after a combo \nif you don't want it make it 0")]
-	public float ComboDelay = 0.5f;
+	[SerializeField] float ComboDelay = 0.5f;
 
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
-	public float ComboResetTime = 1f;
+	[SerializeField] float ComboResetTime = 1f;
+	WeaponsSO currentWeapon;
 	float lastAttackTime = 0, lastComboTime;
 	int comboCounter;
 	Coroutine resetCombo;
@@ -36,6 +37,7 @@ public class PlayerComboM : MonoBehaviour
 	{
 		inputs = InputManager.ActionMap;
 	}
+
 	private void OnDisable()
 	{
 		if (currentWeapon.IsRanged)

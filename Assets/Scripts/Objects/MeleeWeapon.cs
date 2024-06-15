@@ -3,16 +3,19 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
 	bool firstHit;
+	protected override void Awake()
+	{
+		base.Awake();
+	}
 	protected override void OnEnable()
 	{
-		TryGetComponent(out trigger);
-		WeaponsSO.LastAttack += ActivateKnockBack;
+		WeaponSo.LastAttack += ActivateKnockBack;
 		base.OnEnable();
 	}
 
 	protected override void OnDisable()
 	{
-		WeaponsSO.LastAttack -= ActivateKnockBack;
+		WeaponSo.LastAttack -= ActivateKnockBack;
 		base.OnDisable();
 	}
 
@@ -28,9 +31,9 @@ public class MeleeWeapon : Weapon
 			{
 				firstHit = false;
 				hitCounter++;
-				if (hitCounter >= WeaponsSO.NumberOfUses)
+				if (hitCounter >= WeaponSo.NumberOfUses)
 				{
-					WeaponsSO.OnBreak?.Invoke();
+					WeaponSo.OnBreak?.Invoke();
 				}
 			}
 		}
@@ -43,7 +46,7 @@ public class MeleeWeapon : Weapon
 
 	private void ActivateKnockBack()
 	{
-		currentKnockBack = WeaponsSO.KnockBackPower;
+		currentKnockBack = WeaponSo.KnockBackPower;
 	}
 
 
