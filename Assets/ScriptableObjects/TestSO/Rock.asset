@@ -10,25 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
-  m_Name: Punches
+  m_Name: Rock
   m_EditorClassIdentifier: 
-  NumberOfUses: 1000
+  NumberOfUses: 1
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 0
   KnockBackPower: 10
   IsRanged: 0
-  Range: 0
+  RangedRange: 0
   AttackCombo:
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    PeakAnimPercent: 0.6
+  - AnimOverrider: {fileID: 0}
+    PeakAnimPercent: 0
     AttackRadius: 0
-    Dmg: 1
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    PeakAnimPercent: 0.6
-    AttackRadius: 0
-    Dmg: 1
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    PeakAnimPercent: 0.6
-    AttackRadius: 0
-    Dmg: 5
+    Dmg: 0

@@ -8,9 +8,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerComboM : MonoBehaviour
 {
+	[Header("Weapon Settings:")]
 	[SerializeField] WeaponsSO currentWeapon;
 	[SerializeField] WeaponsSO punches;
 	[SerializeField] string attackAnimationName;
+
+	[Tooltip("The angle that the player sees in fron of him")]
+	[SerializeField] float fieldOfView;
+	[SerializeField] float animTime = 0.3f;
 
 	[Tooltip("the time it waits after an attack")]
 	public float AttackDelay = 0.2f;
@@ -25,18 +30,23 @@ public class PlayerComboM : MonoBehaviour
 	Coroutine resetCombo;
 	Animator anim;
 	ActionMap inputs;
+	//bool canAttack = true;
 
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;
 	}
-	private void OnEnable()
-	{
-		inputs.Player.Attack.started += StartAttack;
-	}
 	private void OnDisable()
 	{
-		inputs.Player.Attack.started -= StartAttack;
+		if (currentWeapon.IsRanged)
+		{
+			inputs.Player.Attack.started -= RangedAttack;
+		}
+		else
+		{
+			inputs.Player.Attack.started -= MeleeAttack;
+		}
+		currentWeapon.OnBreak -= BackToPunches;
 	}
 
 	private void Start()
@@ -50,13 +60,67 @@ public class PlayerComboM : MonoBehaviour
 		EndAttack();
 	}
 
-	public void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	void BackToPunches()
 	{
-		currentWeapon = _NewWeapon;
-		Debug.Log("currentWeapon = " + currentWeapon.name);
+		UpdateCurrentWeapon(punches);
 	}
 
-	void StartAttack(InputAction.CallbackContext _Context)
+	public void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	{
+		if (currentWeapon != null)
+		{
+			if (currentWeapon.IsRanged)
+			{
+				inputs.Player.Attack.started -= RangedAttack;
+			}
+			else
+			{
+				inputs.Player.Attack.started -= MeleeAttack;
+			}
+			currentWeapon.OnBreak -= BackToPunches;
+		}
+
+		currentWeapon = _NewWeapon;
+		comboCounter = 0;
+		lastComboTime = 0;
+		lastAttackTime = 0;
+
+		if (currentWeapon.IsRanged)
+		{
+			inputs.Player.Attack.started += RangedAttack;
+		}
+		else
+		{
+			inputs.Player.Attack.started += MeleeAttack;
+		}
+		currentWeapon.OnBreak += BackToPunches;
+	}
+
+	private void RangedAttack(InputAction.CallbackContext _Context)
+	{
+		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.RangedRange);
+		var _minDistance = 999f;
+		Transform _target = null;
+		foreach (var _coll in _colliders)
+		{
+			if (Vector3.Dot(_coll.transform.position, transform.position) < fieldOfView)
+			{
+				var _dist = Vector3.Distance(transform.position, _coll.transform.position);
+				if (_dist < _minDistance)
+				{
+					_target = _coll.transform;
+					_minDistance = _dist;
+				}
+			}
+		}
+		if (_target != null)
+		{
+			currentWeapon.GetTarget?.Invoke(_target);
+			MeleeAttack(_Context);
+		}
+	}
+
+	void MeleeAttack(InputAction.CallbackContext _Context)
 	{
 		if (resetCombo != null)
 		{
@@ -64,39 +128,41 @@ public class PlayerComboM : MonoBehaviour
 			resetCombo = null;
 		}
 
-		if (Time.time - lastComboTime < ComboDelay || comboCounter > currentWeapon.AttackCombo.Count || Time.time - lastAttackTime < AttackDelay)
+		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count)
 			return;
 
-		lastAttackTime = Time.time;
-
-		if (comboCounter - 1 > 0)
+		if (comboCounter - 1 >= 0)
+		{
 			if (currentWeapon.AttackCombo[comboCounter].AnimOverrider == currentWeapon.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
-
+		}
 
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
-
-		if (comboCounter == currentWeapon.AttackCombo.Count - 1)
-		{
-			currentWeapon.LastAttack?.Invoke();
-		}
-
 		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
+
+		lastAttackTime = Time.time;
 
 		comboCounter++;
 
-		if (comboCounter > currentWeapon.AttackCombo.Count)
+		if (comboCounter >= currentWeapon.AttackCombo.Count)
+		{
+			//Debug.Log("last attack: " + comboCounter);
+			currentWeapon.LastAttack?.Invoke();
 			comboCounter = 0;
+		}
 	}
 
 	void EndAttack()
 	{
 		if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimationName))
 		{
-			//  if null then:
+			//canAttack = true;
+
+			//  if resetCombo == null then:
 			resetCombo ??= StartCoroutine(EndCombo());
+
 			currentWeapon.AttackEnd?.Invoke();
 		}
 	}
@@ -104,8 +170,25 @@ public class PlayerComboM : MonoBehaviour
 	IEnumerator EndCombo()
 	{
 		yield return new WaitForSeconds(ComboResetTime);
-		Debug.Log("we have waited");
+		//Debug.Log("we have waited");
 		lastComboTime = Time.time;
 		comboCounter = 0;
 	}
+
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+
+		if (currentWeapon != null)
+		{
+			Gizmos.DrawWireSphere(transform.position, currentWeapon.RangedRange);
+		}
+		else
+		{
+			Gizmos.DrawWireSphere(transform.position, punches.RangedRange);
+		}
+	}
+#endif
 }
+

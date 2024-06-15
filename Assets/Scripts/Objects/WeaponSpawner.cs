@@ -25,7 +25,7 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
         List<IPickable> AllWeapons = WeaponsPooler.SharedInstance.GetWeaponList();
         foreach (IPickable weapon in AllWeapons)
         {
-            if(weapon.WeaponsSO.WeaponID == weaponToSpawn.WeaponID && !weapon.Transform.gameObject.activeInHierarchy && canSpawn)
+            if(weapon.WeaponsSO == weaponToSpawn && !weapon.Transform.gameObject.activeInHierarchy && canSpawn)
             {
                 float targetY = SetSpawnHeight(weapon.Transform);
                 weapon.Transform.position = new Vector3(transform.position.x, targetY , transform.position.z);

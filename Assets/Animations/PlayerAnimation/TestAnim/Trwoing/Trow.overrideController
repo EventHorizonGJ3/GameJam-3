@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Punch Right
+  m_Name: Trow
   m_Controller: {fileID: 9100000, guid: 9e73296304d28bd4e9d60e976810c9c2, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: ef65009f1fa05474fb6db363d9c00257, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 494b1d26acb028245886ab29608facd9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 28641e735550109499c2b1cbb665fd1a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c652630af30c8f0409447f15e1eff4c3, type: 2}
