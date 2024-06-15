@@ -1,27 +1,19 @@
 using UnityEngine;
-using UnityEditor;
 
 public class MeleeWeapon : Weapon
 {
 	bool firstHit;
-	private void OnEnable()
+	protected override void OnEnable()
 	{
 		TryGetComponent(out trigger);
-		UpdateTrigger(false);
-		WeaponsSO.OnAttack += OnAttack;
-		WeaponsSO.AttackEnd += OnAttackEnd;
 		WeaponsSO.LastAttack += ActivateKnockBack;
-		WeaponsSO.OnBreak += Break;
+		base.OnEnable();
 	}
 
-	private void OnDisable()
+	protected override void OnDisable()
 	{
-		hitCounter = 0;
-		currentKnockBack = 0;
-		WeaponsSO.OnAttack -= OnAttack;
-		WeaponsSO.AttackEnd -= OnAttackEnd;
 		WeaponsSO.LastAttack -= ActivateKnockBack;
-		WeaponsSO.OnBreak -= Break;
+		base.OnDisable();
 	}
 
 	protected override void OnTriggerEnter(Collider _Other)
@@ -44,11 +36,9 @@ public class MeleeWeapon : Weapon
 		}
 	}
 
-	private void Break()
+	protected override void OnBreak()
 	{
-		transform.parent = null;
-		// play weapon breaking breaking sound 
-		gameObject.SetActive(false);
+		base.OnBreak();
 	}
 
 	private void ActivateKnockBack()

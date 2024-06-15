@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -114,11 +113,11 @@ public class PlayerComboM : MonoBehaviour
 				}
 			}
 		}
-
-		MeleeAttack(_Context);
-
 		if (_target != null)
+		{
 			currentWeapon.GetTarget?.Invoke(_target);
+			MeleeAttack(_Context);
+		}
 	}
 
 	void MeleeAttack(InputAction.CallbackContext _Context)
