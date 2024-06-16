@@ -5,22 +5,35 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapons/Combo")]
 public class WeaponsSO : ScriptableObject
 {
-	public int WeaponID;
-	public GameObject Prefab;
-
-	[Header("Settings: ")]
-	[Tooltip("number of hits you can do before the item breaks\n(should be at least greater then the number of combos)")]
+	[Header("Genaral Settings: ")]
 	public int NumberOfUses = 6;
+	public LayerMask EnemyLayer;
+
+	[Header("Settings Melee: ")]
+	public float KnockBackPower;
+
+	[Header("Settings Ranged: ")]
+	public bool IsRanged;
+	public float RangedRange;
+	public float ThrowDuration = 0.5f;
 
 	[Header("Combo: ")]
 	public List<AttackG> AttackCombo;
 
 	// Actions: 
 	public Action<int> OnAttack;
-	public Action<int> LastAttack;
+	public Action<Transform> GetTarget;
+	public Action AttackEnd;
+	public Action LastAttack;
 	public Action OnBreak;
+	public Action OnGrabbed;
 
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+
+	}
+#endif
 }
 
 
-	

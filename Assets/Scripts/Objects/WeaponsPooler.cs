@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
+
 
 public class WeaponsPooler : MonoBehaviour
 {
     public static WeaponsPooler SharedInstance;
-    private List<GameObject> pooledObjects;
+    //private List<GameObject> pooledObjects;
     private List<IPickable> pooledWeapons;
     public List<GameObject> weaponsToPull;
     public int amountToPool;
@@ -15,25 +13,25 @@ public class WeaponsPooler : MonoBehaviour
     void Awake()
     {
         SharedInstance = this;
-        pooledObjects = new List<GameObject>();
+        //pooledObjects = new List<GameObject>();
         pooledWeapons = new List<IPickable>();
 
         CreatePool();
     }
 
-    
+
 
     void CreatePool()
     {
-        
-        foreach(GameObject weapon in weaponsToPull)
+
+        foreach (GameObject weapon in weaponsToPull)
         {
             for (int i = 0; i < amountToPool; i++)
             {
                 GameObject tmp = Instantiate(weapon);
                 tmp.transform.position = transform.position;
                 tmp.SetActive(false);
-                if(tmp.TryGetComponent(out IPickable pickable)) pooledWeapons.Add(pickable);
+                if (tmp.TryGetComponent(out IPickable pickable)) pooledWeapons.Add(pickable);
             }
         }
     }
@@ -47,5 +45,5 @@ public class WeaponsPooler : MonoBehaviour
 
 
 
-  
+
 }

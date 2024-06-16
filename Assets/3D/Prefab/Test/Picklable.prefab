@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1401574970215665571}
   - component: {fileID: 4263059353654991818}
   - component: {fileID: 4021769844441482899}
-  - component: {fileID: 8243299780967308724}
+  - component: {fileID: 4423844327279686512}
   m_Layer: 6
   m_Name: Picklable
   m_TagString: Weapon
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8243299780967308724
+--- !u!114 &4423844327279686512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7442446482291474942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9660d791e780dde45b01d868d75bfa04, type: 3}
+  m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KnockBackPower: 0
   <WeaponsSO>k__BackingField: {fileID: 11400000, guid: db683d878735caa43b6dbfa0a243f816, type: 2}
