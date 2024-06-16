@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Nemico spawnato: " + currentSpawned);
+        //Debug.Log("Nemico spawnato: " + currentSpawned);
         
     }
 
