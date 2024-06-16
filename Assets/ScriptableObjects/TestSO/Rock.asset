@@ -15,12 +15,11 @@ MonoBehaviour:
   NumberOfUses: 1
   EnemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   KnockBackPower: 10
-  IsRanged: 0
-  RangedRange: 0
+  IsRanged: 1
+  RangedRange: 2.98
+  ThrowDuration: 0.5
   AttackCombo:
-  - AnimOverrider: {fileID: 0}
-    PeakAnimPercent: 0
-    AttackRadius: 0
-    Dmg: 0
+  - AnimOverrider: {fileID: 22100000, guid: e6e007c070e85b049b8fa423cced1fee, type: 2}
+    Dmg: 1

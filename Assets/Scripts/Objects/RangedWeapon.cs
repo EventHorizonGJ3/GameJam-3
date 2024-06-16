@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class RangedWeapon : Weapon
 {
 	Transform target;
 	Vector3 startPos;
-	bool isThrowned;
+
 	float timer = 0;
 	protected override void Awake()
 	{
@@ -22,7 +23,7 @@ public class RangedWeapon : Weapon
 	}
 	protected override void OnBreak()
 	{
-		base.OnBreak();
+		//base.OnBreak();
 	}
 	protected override void OnAttack(int _Dmg)
 	{
@@ -33,29 +34,27 @@ public class RangedWeapon : Weapon
 	{
 		transform.parent = null;
 		startPos = transform.position;
-		isThrowned = true;
 		timer = 0;
+		StartCoroutine(ThrowObject());
 	}
-	private void Update()
+
+	IEnumerator ThrowObject()
 	{
-		if (isThrowned)
+		while (timer < WeaponSo.ThrowDuration)
 		{
-			if (timer < WeaponSo.ThrowDuration)
-			{
-				transform.position = Vector3.Lerp(startPos, target.position, timer / WeaponSo.ThrowDuration);
-				timer += Time.deltaTime;
-			}
-			else
-			{
-				timer = 0;
-				transform.position = target.position;
-				if (target.TryGetComponent(out IDamageable _Hp))
-				{
-					_Hp.TakeDamage(myDmg);
-					gameObject.SetActive(false);
-				}
-			}
+			transform.position = Vector3.Lerp(startPos, target.position + Vector3.up * 0.5f, timer / WeaponSo.ThrowDuration);
+			timer += Time.deltaTime;
+			yield return null;
 		}
+
+		timer = 0;
+		transform.position = target.position;
+		if (target.TryGetComponent(out IDamageable _Hp))
+		{
+			_Hp.TakeDamage(myDmg);
+		}
+		gameObject.SetActive(false);
+		WeaponSo.OnBreak?.Invoke();
 	}
 
 	protected override void UpdateTrigger(bool _X)
@@ -65,13 +64,15 @@ public class RangedWeapon : Weapon
 	void GetTarget(Transform _Target)
 	{
 		target = _Target;
+		Debug.Log("target = " + target, target);
 	}
 
 	protected override void OnGrabbed()
 	{
 		base.OnGrabbed();
 	}
-
+	protected override void OnTriggerEnter(Collider _Other)
+	{ }
 
 #if UNITY_EDITOR
 	private void OnDrawGizmos()

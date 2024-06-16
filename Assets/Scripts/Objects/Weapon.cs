@@ -11,7 +11,6 @@ public class Weapon : MonoBehaviour, IPickable
 	protected IDamageable hp;
 	[field: SerializeField] public WeaponsSO WeaponSo { get; set; }
 
-
 	protected virtual void Awake()
 	{
 		TryGetComponent(out this.trigger);

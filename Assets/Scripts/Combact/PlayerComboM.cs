@@ -26,14 +26,15 @@ public class PlayerComboM : MonoBehaviour
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
 	[SerializeField] float ComboResetTime = 1f;
 	[SerializeField] WeaponsSO currentWeapon;
+	[SerializeField] Transform meshHolder;
 	float lastAttackTime = 0, lastComboTime;
 	int comboCounter;
 	Coroutine resetCombo;
 	Animator anim;
 	ActionMap inputs;
+	float animStopTime = 0.9f;
 	//bool canAttack = true;
 
-	//! guarda come fai il range check 
 
 	private void Awake()
 	{
@@ -92,25 +93,30 @@ public class PlayerComboM : MonoBehaviour
 		if (currentWeapon.IsRanged)
 		{
 			inputs.Player.Attack.started += RangedAttack;
+			animStopTime = 0.8f;
 		}
 		else
 		{
 			inputs.Player.Attack.started += MeleeAttack;
+			animStopTime = 0.9f;
 		}
 		currentWeapon.OnBreak += BackToPunches;
 	}
 
 	private void RangedAttack(InputAction.CallbackContext _Context)
 	{
-		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.RangedRange, 7);
-		var _minDistance = 999f;
+		Collider[] _Colliders = new Collider[10];
+		var _NumberOfColl = Physics.OverlapSphereNonAlloc(transform.position, currentWeapon.RangedRange, _Colliders, currentWeapon.EnemyLayer);
+		var _minDistance = Mathf.Infinity;
 		Transform _target = null;
-		foreach (var _coll in _colliders)
+		for (int i = 0; i < _NumberOfColl; i++)
 		{
-			if (Vector3.Dot(_coll.transform.position, transform.position) < fieldOfView)
+			var _coll = _Colliders[i];
+			var _Dir = (_coll.transform.position - transform.position).normalized;
+			if (Vector3.Dot(_Dir, meshHolder.forward) >= fieldOfView)
 			{
 				var _dist = Vector3.Distance(transform.position, _coll.transform.position);
-				if (_dist < _minDistance)
+				if (_dist <= _minDistance)
 				{
 					_target = _coll.transform;
 					_minDistance = _dist;
@@ -120,10 +126,10 @@ public class PlayerComboM : MonoBehaviour
 		Debug.Log(_target.IsUnityNull());
 		if (_target != null)
 		{
+			currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 			currentWeapon.GetTarget?.Invoke(_target);
 			anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
 			anim.Play(attackAnimationName);
-			currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 		}
 	}
 
@@ -156,14 +162,20 @@ public class PlayerComboM : MonoBehaviour
 		if (comboCounter >= currentWeapon.AttackCombo.Count)
 		{
 			//Debug.Log("last attack: " + comboCounter);
+			if (resetCombo != null)
+			{
+				StopAllCoroutines();
+				resetCombo = null;
+			}
 			currentWeapon.LastAttack?.Invoke();
+			lastComboTime = Time.time;
 			comboCounter = 0;
 		}
 	}
 
 	void EndAttack()
 	{
-		if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimationName))
+		if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > animStopTime && anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimationName))
 		{
 			//canAttack = true;
 
@@ -181,6 +193,13 @@ public class PlayerComboM : MonoBehaviour
 		lastComboTime = Time.time;
 		comboCounter = 0;
 	}
+
+	// #if UNITY_EDITOR
+	// 	private void OnDrawGizmos()
+	// 	{
+
+	// 	}
+	// #endif
 
 }
 
