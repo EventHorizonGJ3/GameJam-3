@@ -8,6 +8,7 @@ public class WeaponsSO : ScriptableObject
 	[Header("Genaral Settings: ")]
 	public int NumberOfUses = 6;
 	public LayerMask EnemyLayer;
+	public GameObject weaponPrefab;
 
 	[Header("Settings Melee: ")]
 	public float KnockBackPower;
