@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,13 +25,15 @@ public class PlayerComboM : MonoBehaviour
 
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
 	[SerializeField] float ComboResetTime = 1f;
-	WeaponsSO currentWeapon;
+	[SerializeField] WeaponsSO currentWeapon;
 	float lastAttackTime = 0, lastComboTime;
 	int comboCounter;
 	Coroutine resetCombo;
 	Animator anim;
 	ActionMap inputs;
 	//bool canAttack = true;
+
+	//! guarda come fai il range check 
 
 	private void Awake()
 	{
@@ -100,7 +102,7 @@ public class PlayerComboM : MonoBehaviour
 
 	private void RangedAttack(InputAction.CallbackContext _Context)
 	{
-		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.RangedRange);
+		var _colliders = Physics.OverlapSphere(transform.position, currentWeapon.RangedRange, 7);
 		var _minDistance = 999f;
 		Transform _target = null;
 		foreach (var _coll in _colliders)
@@ -115,10 +117,13 @@ public class PlayerComboM : MonoBehaviour
 				}
 			}
 		}
+		Debug.Log(_target.IsUnityNull());
 		if (_target != null)
 		{
 			currentWeapon.GetTarget?.Invoke(_target);
-			MeleeAttack(_Context);
+			anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
+			anim.Play(attackAnimationName);
+			currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
 		}
 	}
 
@@ -177,20 +182,5 @@ public class PlayerComboM : MonoBehaviour
 		comboCounter = 0;
 	}
 
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.yellow;
-
-		if (currentWeapon != null)
-		{
-			Gizmos.DrawWireSphere(transform.position, currentWeapon.RangedRange);
-		}
-		else
-		{
-			Gizmos.DrawWireSphere(transform.position, punches.RangedRange);
-		}
-	}
-#endif
 }
 

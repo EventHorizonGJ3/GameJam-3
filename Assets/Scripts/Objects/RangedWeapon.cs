@@ -71,4 +71,13 @@ public class RangedWeapon : Weapon
 	{
 		base.OnGrabbed();
 	}
+
+
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+
+		Gizmos.DrawWireSphere(transform.root.position, WeaponSo.RangedRange);
+	}
+#endif
 }

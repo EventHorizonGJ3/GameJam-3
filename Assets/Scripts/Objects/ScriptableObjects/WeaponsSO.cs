@@ -27,6 +27,13 @@ public class WeaponsSO : ScriptableObject
 	public Action LastAttack;
 	public Action OnBreak;
 	public Action OnGrabbed;
+
+#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+
+	}
+#endif
 }
 
 

@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsToPull:
-  - {fileID: 7442446482291474942, guid: 864474a20c648084a86e05d1afd98c8c, type: 3}
+  - {fileID: 761487771}
   amountToPool: 1
 --- !u!4 &669713681
 Transform:
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad0b57e2a0d2a4e8899183e8a4404d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponsSO>k__BackingField: {fileID: 11400000, guid: d80ddc1df6d75e34a868e37747fd9159, type: 2}
+  <WeaponSo>k__BackingField: {fileID: 11400000, guid: d80ddc1df6d75e34a868e37747fd9159, type: 2}
 --- !u!1 &997486410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1018,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2457169236099575048, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2949072798763041045, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
@@ -1451,7 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponsSO>k__BackingField: {fileID: 11400000, guid: ec43214771819ef4c83902833dd09d48, type: 2}
+  <WeaponSo>k__BackingField: {fileID: 11400000, guid: ec43214771819ef4c83902833dd09d48, type: 2}
 --- !u!4 &2142100297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2949072798763041045, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}

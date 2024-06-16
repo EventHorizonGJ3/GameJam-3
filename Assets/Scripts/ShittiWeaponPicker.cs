@@ -50,6 +50,8 @@ public class ShittiWeaponPicker : MonoBehaviour
 		InputManager.IsMoving(out Vector3 direction);
 		interactPos = transform.position + direction;
 		Collider[] colliderInRange = new Collider[allWeaponsColliders.Length];
+		if (colliderInRange.Length < 0)
+			colliderInRange = new Collider[3];
 		int numberOfWeapons = Physics.OverlapSphereNonAlloc(interactPos, interactionRadius, colliderInRange, weaponLayer);
 		canInteract = false;
 
