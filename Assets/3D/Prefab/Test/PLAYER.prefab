@@ -338,12 +338,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punches: {fileID: 11400000, guid: ec43214771819ef4c83902833dd09d48, type: 2}
   attackAnimationName: Attack
-  fieldOfView: 70
+  fieldOfView: 0.7
   animTime: 0.3
   AttackDelay: 0.2
   ComboDelay: 0.5
   ComboResetTime: 1
   currentWeapon: {fileID: 0}
+  meshHolder: {fileID: 4276272281254428665}
 --- !u!114 &7833678405143100355
 MonoBehaviour:
   m_ObjectHideFlags: 0

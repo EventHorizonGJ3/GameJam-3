@@ -20,20 +20,14 @@ public class WeaponsSO : ScriptableObject
 	[Header("Combo: ")]
 	public List<AttackG> AttackCombo;
 
-	// Actions: 
+	//- "Actions: "
 	public Action<int> OnAttack;
 	public Action<Transform> GetTarget;
 	public Action AttackEnd;
 	public Action LastAttack;
 	public Action OnBreak;
 	public Action OnGrabbed;
-
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-
-	}
-#endif
+	public Action StartAttack;
 }
 
 

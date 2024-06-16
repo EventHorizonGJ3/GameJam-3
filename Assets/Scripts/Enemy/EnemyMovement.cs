@@ -2,30 +2,30 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Enemy : MonoBehaviour, IEnemy, IDamageable
+public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 {
-	EnemyType enemyType = EnemyType.MANAGER;
-
-	public EnemyType Type { get => enemyType; private set => enemyType = value; }
+	[Header("References:")]
+	NavMeshAgent agent;
+	public Transform colliderTransform { get; set; }
 	public Transform Transform { get => transform; }
 
-
-	[SerializeField] float knockbackDur = 3;
+	[field: Header("Settings: ")]
 	[field: SerializeField] public int HP { get; set; }
-	public Transform colliderTransform { get; set; }
+	EnemyType enemyType = EnemyType.MANAGER;
+	public EnemyType Type { get => enemyType; private set => enemyType = value; }
+	[SerializeField] WeaponsSO weaponScriptable;
 
-	[Header("Yello ray settings: ")]
-	[SerializeField] float rayHight;
-	[SerializeField] float rayLenght;
+	[Header("knockback Settings")]
+	[SerializeField] float knockbackDur = 3;
+	[SerializeField] float backRayHight;
+	[SerializeField] float backRayLenght;
 	[SerializeField] LayerMask obstacleLayer;
-	NavMeshAgent agent;
-	bool isKnockbacked;
-	float timer = 0;
 	float backPower;
+	float knockbackTimer = 0;
+	bool isKnockbacked;
 	Vector3 startPos;
 	Vector3 endPos;
 	Vector3 dir;
-
 
 	private void Awake()
 	{
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamageable
 	{
 		if (isKnockbacked)
 		{
-			if (Physics.Raycast(transform.position + Vector3.up * rayHight, dir, out RaycastHit hit, rayLenght, obstacleLayer))
+			if (Physics.Raycast(transform.position + Vector3.up * backRayHight, dir, out RaycastHit hit, backRayLenght, obstacleLayer))
 			{
 				Debug.Log("i hit this: ", hit.transform);
 				isKnockbacked = false;
@@ -44,23 +44,24 @@ public class Enemy : MonoBehaviour, IEnemy, IDamageable
 				return;
 			}
 
-			if (timer < knockbackDur)
+			if (knockbackTimer < knockbackDur)
 			{
 				Debug.Log($"startPos: {startPos} \nendPos: {endPos}");
-				timer += Time.deltaTime;
-				transform.position = Vector3.Lerp(startPos, endPos, timer / knockbackDur);
+				knockbackTimer += Time.deltaTime;
+				transform.position = Vector3.Lerp(startPos, endPos, knockbackTimer / knockbackDur);
 			}
 			else
 			{
 				isKnockbacked = false;
 				transform.position = endPos;
 				backPower = 0;
-				//agent.enabled = true;
+				agent.enabled = true;
 			}
 		}
 		else
 		{
-			//agent.SetDestination(GameManager.enemyTargetPosition);
+			weaponScriptable.StartAttack?.Invoke();
+			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
 
 
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamageable
 	{
 		isKnockbacked = false;
 
-		timer = 0;
+		knockbackTimer = 0;
 		startPos = transform.position;
 		Vector3 _ColliderStartPos = colliderTransform.position;
 		dir = (startPos - _ColliderStartPos).normalized;
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamageable
 
 	public void NoHP()
 	{
-		Destroy(gameObject);
+		gameObject.SetActive(false);
 	}
 
 	public void TakeDamage(int _Dmg)
@@ -103,10 +104,12 @@ public class Enemy : MonoBehaviour, IEnemy, IDamageable
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawRay(transform.position + Vector3.up * rayHight, dir * rayLenght);
+		Gizmos.DrawRay(transform.position + Vector3.up * backRayHight, dir * backRayLenght);
 		Gizmos.color = Color.magenta;
-		Debug.DrawRay(transform.position + Vector3.up * rayHight, dir * backPower);
+		Debug.DrawRay(transform.position + Vector3.up * backRayHight, dir * backPower);
 	}
 
 
 }
+
+// states -> chaseing and attacking 
