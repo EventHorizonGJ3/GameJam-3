@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	[field: SerializeField] public int HP { get; set; }
 	EnemyType enemyType = EnemyType.MANAGER;
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
-	[SerializeField] WeaponsSO weaponScriptable;
+	[SerializeField] Weapon weaponScriptable;
 
 	[Header("knockback Settings")]
 	[SerializeField] float knockbackDur = 3;
@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	Vector3 startPos;
 	Vector3 endPos;
 	Vector3 dir;
+
 
 	private void Awake()
 	{
@@ -60,7 +61,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		}
 		else
 		{
-			weaponScriptable.StartAttack?.Invoke();
+			weaponScriptable?.StartAttack?.Invoke();
 			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
 

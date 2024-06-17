@@ -43,7 +43,7 @@ public class EnemyCombo : Combo
 	{
 		base.RangedAttack();
 	}
-	public override void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
 		base.UpdateCurrentWeapon(_NewWeapon);
 	}

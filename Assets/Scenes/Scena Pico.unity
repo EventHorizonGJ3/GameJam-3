@@ -681,7 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad0b57e2a0d2a4e8899183e8a4404d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponSo>k__BackingField: {fileID: 11400000, guid: d80ddc1df6d75e34a868e37747fd9159, type: 2}
+  <MyWeapon>k__BackingField: {fileID: 0}
+  WeaponSo: {fileID: 0}
 --- !u!1 &997486410
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2455690654499995101, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: punches
+      value: 
+      objectReference: {fileID: 1417807977}
+    - target: {fileID: 2455690654499995101, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: meshHolder
       value: 
       objectReference: {fileID: 1758142657}
@@ -976,6 +981,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+--- !u!114 &1417807977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+  m_PrefabInstance: {fileID: 1417807976}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1658937147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1120,10 +1136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDur: 3
   <HP>k__BackingField: 999
-  rayHight: 0.3
-  rayLenght: 1.19
+  weaponScriptable: {fileID: 0}
+  knockbackDur: 3
+  backRayHight: 0
+  backRayLenght: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -1279,10 +1296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDur: 3
   <HP>k__BackingField: 999
-  rayHight: 0.3
-  rayLenght: 1.19
+  weaponScriptable: {fileID: 0}
+  knockbackDur: 3
+  backRayHight: 0
+  backRayLenght: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0

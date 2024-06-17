@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Combo : MonoBehaviour
 {
 	[Header("Weapon Settings:")]
-	[SerializeField] protected WeaponsSO punches;
+	[SerializeField] protected Weapon punches;
 	[SerializeField] protected string attackAnimationName;
 
 	[Tooltip("The angle that the player sees in fron of him")]
@@ -21,7 +21,7 @@ public class Combo : MonoBehaviour
 
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
 	[SerializeField] protected float ComboResetTime = 1f;
-	[SerializeField] protected WeaponsSO currentWeapon;
+	[SerializeField] protected Weapon currentWeapon;
 	[SerializeField] protected Transform meshHolder;
 	protected float lastAttackTime = 0, lastComboTime;
 	protected int comboCounter;
@@ -31,7 +31,7 @@ public class Combo : MonoBehaviour
 
 	protected virtual void OnDisable()
 	{
-		currentWeapon.OnBreak -= BackToPunches;
+		currentWeapon.Break -= BackToPunches;
 	}
 
 	protected virtual void Start()
@@ -50,11 +50,11 @@ public class Combo : MonoBehaviour
 		UpdateCurrentWeapon(punches);
 	}
 
-	public virtual void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	public virtual void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
 		if (currentWeapon != null)
 		{
-			if (currentWeapon.IsRanged)
+			if (currentWeapon.WeaponSo.IsRanged)
 			{
 				currentWeapon.StartAttack -= RangedAttack;
 			}
@@ -62,7 +62,7 @@ public class Combo : MonoBehaviour
 			{
 				currentWeapon.StartAttack -= MeleeAttack;
 			}
-			currentWeapon.OnBreak -= BackToPunches;
+			currentWeapon.Break -= BackToPunches;
 		}
 
 		currentWeapon = _NewWeapon;
@@ -70,7 +70,7 @@ public class Combo : MonoBehaviour
 		lastComboTime = 0;
 		lastAttackTime = 0;
 
-		if (currentWeapon.IsRanged)
+		if (currentWeapon.WeaponSo.IsRanged)
 		{
 			currentWeapon.StartAttack += RangedAttack;
 			animStopTime = 0.7f;
@@ -80,13 +80,13 @@ public class Combo : MonoBehaviour
 			currentWeapon.StartAttack += MeleeAttack;
 			animStopTime = 0.9f;
 		}
-		currentWeapon.OnBreak += BackToPunches;
+		currentWeapon.Break += BackToPunches;
 	}
 
 	protected virtual void RangedAttack()
 	{
 		Collider[] _Colliders = new Collider[10];
-		var _NumberOfColl = Physics.OverlapSphereNonAlloc(transform.position, currentWeapon.RangedRange, _Colliders, currentWeapon.EnemyLayer);
+		var _NumberOfColl = Physics.OverlapSphereNonAlloc(transform.position, currentWeapon.WeaponSo.RangedRange, _Colliders, currentWeapon.WeaponSo.EnemyLayer);
 		var _minDistance = Mathf.Infinity;
 		Transform _target = null;
 		for (int i = 0; i < _NumberOfColl; i++)
@@ -105,9 +105,9 @@ public class Combo : MonoBehaviour
 		}
 		if (_target != null)
 		{
-			currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
-			currentWeapon.GetTarget?.Invoke(_target);
-			anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
+			currentWeapon.Attack?.Invoke(currentWeapon.WeaponSo.AttackCombo[comboCounter].Dmg);
+			currentWeapon.Target?.Invoke(_target);
+			anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 			anim.Play(attackAnimationName);
 		}
 	}
@@ -120,25 +120,25 @@ public class Combo : MonoBehaviour
 			resetCombo = null;
 		}
 
-		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.AttackCombo.Count)
+		if (Time.time - lastComboTime < ComboDelay || Time.time - lastAttackTime < AttackDelay || comboCounter > currentWeapon.WeaponSo.AttackCombo.Count)
 			return;
 
 		if (comboCounter - 1 >= 0)
 		{
-			if (currentWeapon.AttackCombo[comboCounter].AnimOverrider == currentWeapon.AttackCombo[comboCounter - 1].AnimOverrider)
+			if (currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider == currentWeapon.WeaponSo.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
 		}
 
 		// animation: 
-		anim.runtimeAnimatorController = currentWeapon.AttackCombo[comboCounter].AnimOverrider;
+		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
-		currentWeapon.OnAttack?.Invoke(currentWeapon.AttackCombo[comboCounter].Dmg);
+		currentWeapon.Attack?.Invoke(currentWeapon.WeaponSo.AttackCombo[comboCounter].Dmg);
 
 		lastAttackTime = Time.time;
 
 		comboCounter++;
 
-		if (comboCounter >= currentWeapon.AttackCombo.Count)
+		if (comboCounter >= currentWeapon.WeaponSo.AttackCombo.Count)
 		{
 			//Debug.Log("last attack: " + comboCounter);
 			if (resetCombo != null)

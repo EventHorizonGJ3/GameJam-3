@@ -43,9 +43,10 @@ public class PlayerComboM : Combo
 		currentWeapon.StartAttack?.Invoke();
 	}
 
-	public override void UpdateCurrentWeapon(WeaponsSO _NewWeapon)
+	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
 		base.UpdateCurrentWeapon(_NewWeapon);
+		PlayerActions.PlayerWeapon?.Invoke(_NewWeapon);
 	}
 
 	protected override void BackToPunches()

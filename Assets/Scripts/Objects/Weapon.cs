@@ -9,7 +9,17 @@ public class Weapon : MonoBehaviour, IPickable
 	protected float currentKnockBack = 0;
 	protected Collider trigger;
 	protected IDamageable hp;
-	[field: SerializeField] public WeaponsSO WeaponSo { get; set; }
+	[SerializeField] public Weapon MyWeapon { get => this; set => MyWeapon = value; }
+	public WeaponsSO WeaponSo;
+
+	//- "Actions: "
+	public Action<int> Attack;
+	public Action<Transform> Target;
+	public Action AttackEnd;
+	public Action LastAttack;
+	public Action Break;
+	public Action Grabbed;
+	public Action StartAttack;
 
 	protected virtual void Awake()
 	{
@@ -17,10 +27,10 @@ public class Weapon : MonoBehaviour, IPickable
 	}
 	protected virtual void OnEnable()
 	{
-		WeaponSo.OnGrabbed += this.OnGrabbed;
-		WeaponSo.OnAttack += this.OnAttack;
-		WeaponSo.AttackEnd += this.OnAttackEnd;
-		WeaponSo.OnBreak += this.OnBreak;
+		Grabbed += this.OnGrabbed;
+		Attack += this.OnAttack;
+		AttackEnd += this.OnAttackEnd;
+		Break += this.OnBreak;
 	}
 
 	protected virtual void OnGrabbed()
@@ -32,10 +42,10 @@ public class Weapon : MonoBehaviour, IPickable
 	{
 		hitCounter = 0;
 		currentKnockBack = 0;
-		WeaponSo.OnAttack -= this.OnAttack;
-		WeaponSo.AttackEnd -= this.OnAttackEnd;
-		WeaponSo.OnBreak -= this.OnBreak;
-		WeaponSo.OnGrabbed -= this.OnGrabbed;
+		this.Attack -= this.OnAttack;
+		this.AttackEnd -= this.OnAttackEnd;
+		this.Break -= this.OnBreak;
+		this.Grabbed -= this.OnGrabbed;
 	}
 	protected virtual void OnBreak()
 	{

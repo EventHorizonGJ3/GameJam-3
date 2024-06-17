@@ -19,15 +19,6 @@ public class WeaponsSO : ScriptableObject
 
 	[Header("Combo: ")]
 	public List<AttackG> AttackCombo;
-
-	//- "Actions: "
-	public Action<int> OnAttack;
-	public Action<Transform> GetTarget;
-	public Action AttackEnd;
-	public Action LastAttack;
-	public Action OnBreak;
-	public Action OnGrabbed;
-	public Action StartAttack;
 }
 
 
