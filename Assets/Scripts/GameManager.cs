@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public partial class GameManager : MonoBehaviour
 {
     //Events
+    
     public static Action OnPause;
 
     public static bool PlayerIsAttacking;
@@ -15,10 +16,16 @@ public partial class GameManager : MonoBehaviour
     public static Vector3 enemyTargetPosition;
 
     public static bool gameOnPause;
+    public static bool usingGamePad;
 
     private void Awake()
     {
         Application.targetFrameRate = 100;
+    }
+
+    private void Start()
+    {
+        gameOnPause = false; usingGamePad = false;
     }
     private void OnEnable()
     {
@@ -29,12 +36,17 @@ public partial class GameManager : MonoBehaviour
         InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
     }
 
-    void PauseFunction(InputAction.CallbackContext context)
+    void PauseFunction(InputAction.CallbackContext used)
     {
+        var usedDevice = used.control;
+        if (usedDevice.device is Gamepad) usingGamePad = true; else usingGamePad = false;
+
         gameOnPause = !gameOnPause;
         
         if(gameOnPause ) InputManager.SwitchToUIInputs(); OnPause?.Invoke(); Time.timeScale = 0;
         if(!gameOnPause ) InputManager.SwitchPlayerInputs(); OnPause?.Invoke(); Time.timeScale = 1;
+
+        Debug.Log("uso del gamepad:"+usingGamePad);
     }
 
   

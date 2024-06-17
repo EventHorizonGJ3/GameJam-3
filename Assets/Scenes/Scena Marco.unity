@@ -924,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1772194457}
   settingsMenu: {fileID: 574923583}
-  button: {fileID: 1545723217}
+  resumeButton: {fileID: 1545723215}
 --- !u!1 &277418585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4178,7 +4178,7 @@ GameObject:
   - component: {fileID: 1545723219}
   - component: {fileID: 1545723218}
   - component: {fileID: 1545723217}
-  - component: {fileID: 1545723220}
+  - component: {fileID: 1545723221}
   m_Layer: 0
   m_Name: Resume_button
   m_TagString: Untagged
@@ -4230,7 +4230,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4288,7 +4288,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545723215}
   m_CullTransparentMesh: 1
---- !u!114 &1545723220
+--- !u!114 &1545723221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4297,42 +4297,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545723215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 262572126}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: TestTrigger
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 262572126}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: TestTrigger2
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  buttonSizeMultiplier: 1.5
+  animationDuration: 0.1
 --- !u!1 &1589807501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4962,7 +4931,7 @@ GameObject:
   - component: {fileID: 1767672744}
   - component: {fileID: 1767672743}
   - component: {fileID: 1767672742}
-  - component: {fileID: 1767672746}
+  - component: {fileID: 1767672747}
   m_Layer: 0
   m_Name: Retry_button
   m_TagString: Untagged
@@ -5072,29 +5041,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767672739}
   m_CullTransparentMesh: 1
---- !u!223 &1767672746
-Canvas:
+--- !u!114 &1767672747
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767672739}
   m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSizeMultiplier: 1.5
+  animationDuration: 0.1
 --- !u!1 &1772194457
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,6 +5892,7 @@ GameObject:
   - component: {fileID: 1955737568}
   - component: {fileID: 1955737567}
   - component: {fileID: 1955737566}
+  - component: {fileID: 1955737569}
   m_Layer: 0
   m_Name: MainMenu_button
   m_TagString: Untagged
@@ -6041,6 +6002,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955737564}
   m_CullTransparentMesh: 1
+--- !u!114 &1955737569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955737564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSizeMultiplier: 1.5
+  animationDuration: 0.1
 --- !u!1 &1979358016
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,6 +6189,7 @@ GameObject:
   - component: {fileID: 2089424887}
   - component: {fileID: 2089424886}
   - component: {fileID: 2089424885}
+  - component: {fileID: 2089424888}
   m_Layer: 0
   m_Name: Options_button
   m_TagString: Untagged
@@ -6323,6 +6299,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089424883}
   m_CullTransparentMesh: 1
+--- !u!114 &2089424888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089424883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSizeMultiplier: 1.5
+  animationDuration: 0.1
 --- !u!1001 &5524634361690635164
 PrefabInstance:
   m_ObjectHideFlags: 0

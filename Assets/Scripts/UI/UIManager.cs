@@ -9,9 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject settingsMenu;
 
-    //Buttons
-    [SerializeField] Button button;
-
+    //Refs
+    [SerializeField] GameObject resumeButton;
 
     private void OnEnable()
     {
@@ -32,6 +31,8 @@ public class UIManager : MonoBehaviour
         if (GameManager.gameOnPause)
         {
             pauseMenu.SetActive(true);
+            if(GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(resumeButton);
+            else EventSystem.current.SetSelectedGameObject(null);
         }
             
         if(!GameManager.gameOnPause)
@@ -42,14 +43,6 @@ public class UIManager : MonoBehaviour
             
     }
 
-    public void TestTrigger(BaseEventData eventData)
-    {
-        button.transform.localScale *= 2;
-    }
-    public void TestTrigger2(BaseEventData eventData)
-    {
-        button.transform.localScale /=  2;
-    }
 
 
 }
