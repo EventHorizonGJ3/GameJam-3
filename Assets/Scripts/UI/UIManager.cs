@@ -8,9 +8,17 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject settingsMenu;
+    [SerializeField] RectTransform menuHolder;
+    Vector3 menuHolderOriginPos;
 
     //Refs
     [SerializeField] GameObject resumeButton;
+    [SerializeField] RectTransform pauseRect;
+
+    private void Awake()
+    {
+        menuHolderOriginPos = menuHolder.anchoredPosition;
+    }
 
     private void OnEnable()
     {
@@ -31,17 +39,49 @@ public class UIManager : MonoBehaviour
         if (GameManager.gameOnPause)
         {
             pauseMenu.SetActive(true);
+            StartCoroutine(MenuLerpIn());
             if(GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(resumeButton);
             else EventSystem.current.SetSelectedGameObject(null);
         }
             
         if(!GameManager.gameOnPause)
         {
-            pauseMenu.SetActive(false);
-            settingsMenu.SetActive(false);
+            StartCoroutine(MenuLerpOut());
         }
             
     }
+
+    IEnumerator MenuLerpIn()
+    {
+        float time = 0.2f;
+        float elapsedTime = 0;
+        Vector2 targetPos = Vector3.zero;
+        while (elapsedTime < time)
+        {
+            menuHolder.anchoredPosition = Vector2.Lerp(menuHolderOriginPos, targetPos, elapsedTime/time);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        menuHolder.anchoredPosition = targetPos;
+    }
+
+    IEnumerator MenuLerpOut()
+    {
+        float time = 0.2f;
+        float elapsedTime = 0;
+        Vector2 targetPos = menuHolderOriginPos;
+        while (elapsedTime < time)
+        {
+            menuHolder.anchoredPosition = Vector2.Lerp(menuHolder.anchoredPosition, targetPos, elapsedTime/time);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        menuHolder.anchoredPosition = targetPos;
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+    }
+        
+        
 
 
 

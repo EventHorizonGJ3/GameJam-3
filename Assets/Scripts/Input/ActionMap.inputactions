@@ -88,6 +88,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "997fbe2b-6418-4eaa-b395-7a9a8bc7da7c",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "8a0ce7d6-a3cf-4213-b036-2a643edbc020",
                     "path": "<Keyboard>/d",
@@ -99,9 +110,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "right",
+                    "id": "7d35caf3-b0aa-4097-9524-a9c16e7c2d9e",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "717cd86d-264e-4332-a7a5-202b83ca1188",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "forward",
                     "id": "87e24876-9d84-4dab-8d8e-1b5e9ec807bd",
-                    "path": "<Keyboard>/w",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -113,6 +146,17 @@
                     "name": "backward",
                     "id": "3a4e5686-396c-4dba-bd73-6bf95597686a",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "879489b3-5a82-4b8f-9398-c7f697da2264",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
