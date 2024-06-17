@@ -156,11 +156,11 @@
             ]
         },
         {
-            "name": "Pause",
+            "name": "UI_Toggle",
             "id": "af04ff81-0df7-4cb4-bee8-c883f22ae124",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "97b5035a-0653-4e9b-845e-96783b87c472",
                     "expectedControlType": "Button",
@@ -173,11 +173,11 @@
                 {
                     "name": "",
                     "id": "2915f67d-701e-4775-97fb-ef1de00a538b",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -188,9 +188,18 @@
             "id": "d122b53f-bdbe-4a7f-8c51-8008996b2ff1",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "Navigate",
+                    "type": "Value",
                     "id": "4b5fe1b5-f89a-4f15-8d45-43c3c82efbb2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "e2b9d116-3e67-48da-af6d-97e979305e2f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -199,13 +208,68 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "ed542838-f3c1-4d76-9555-c155557a898d",
-                    "path": "",
+                    "name": "2D Vector",
+                    "id": "1f373827-4d7e-4e30-82a1-07bff32a00d8",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "ddecb3d9-37fb-4f7a-93f4-0c0182f09475",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "13eac779-078d-492b-9ac5-20c55d02625b",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "682332c1-35ea-4206-b877-7c95326a7f81",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "524572ec-9713-4869-ac6b-36a91af985dc",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ab2778cc-237b-482e-92aa-7bb4067e1c67",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

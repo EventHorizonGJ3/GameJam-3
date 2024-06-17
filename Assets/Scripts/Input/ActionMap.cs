@@ -178,11 +178,11 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Pause"",
+            ""name"": ""UI_Toggle"",
             ""id"": ""af04ff81-0df7-4cb4-bee8-c883f22ae124"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""97b5035a-0653-4e9b-845e-96783b87c472"",
                     ""expectedControlType"": ""Button"",
@@ -195,11 +195,11 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2915f67d-701e-4775-97fb-ef1de00a538b"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -210,9 +210,18 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             ""id"": ""d122b53f-bdbe-4a7f-8c51-8008996b2ff1"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""name"": ""Navigate"",
+                    ""type"": ""Value"",
                     ""id"": ""4b5fe1b5-f89a-4f15-8d45-43c3c82efbb2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""e2b9d116-3e67-48da-af6d-97e979305e2f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -221,13 +230,68 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""ed542838-f3c1-4d76-9555-c155557a898d"",
-                    ""path"": """",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1f373827-4d7e-4e30-82a1-07bff32a00d8"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ddecb3d9-37fb-4f7a-93f4-0c0182f09475"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""13eac779-078d-492b-9ac5-20c55d02625b"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""682332c1-35ea-4206-b877-7c95326a7f81"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""524572ec-9713-4869-ac6b-36a91af985dc"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab2778cc-237b-482e-92aa-7bb4067e1c67"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -242,12 +306,13 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        // Pause
-        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
-        m_Pause_Newaction = m_Pause.FindAction("New action", throwIfNotFound: true);
+        // UI_Toggle
+        m_UI_Toggle = asset.FindActionMap("UI_Toggle", throwIfNotFound: true);
+        m_UI_Toggle_Pause = m_UI_Toggle.FindAction("Pause", throwIfNotFound: true);
         // UserInterface
         m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
-        m_UserInterface_Newaction = m_UserInterface.FindAction("New action", throwIfNotFound: true);
+        m_UserInterface_Navigate = m_UserInterface.FindAction("Navigate", throwIfNotFound: true);
+        m_UserInterface_Select = m_UserInterface.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,61 +441,63 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
 
-    // Pause
-    private readonly InputActionMap m_Pause;
-    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
-    private readonly InputAction m_Pause_Newaction;
-    public struct PauseActions
+    // UI_Toggle
+    private readonly InputActionMap m_UI_Toggle;
+    private List<IUI_ToggleActions> m_UI_ToggleActionsCallbackInterfaces = new List<IUI_ToggleActions>();
+    private readonly InputAction m_UI_Toggle_Pause;
+    public struct UI_ToggleActions
     {
         private @ActionMap m_Wrapper;
-        public PauseActions(@ActionMap wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Pause_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public UI_ToggleActions(@ActionMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_UI_Toggle_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_UI_Toggle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
-        public void AddCallbacks(IPauseActions instance)
+        public static implicit operator InputActionMap(UI_ToggleActions set) { return set.Get(); }
+        public void AddCallbacks(IUI_ToggleActions instance)
         {
-            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            if (instance == null || m_Wrapper.m_UI_ToggleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UI_ToggleActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
-        private void UnregisterCallbacks(IPauseActions instance)
+        private void UnregisterCallbacks(IUI_ToggleActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
-        public void RemoveCallbacks(IPauseActions instance)
+        public void RemoveCallbacks(IUI_ToggleActions instance)
         {
-            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_UI_ToggleActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPauseActions instance)
+        public void SetCallbacks(IUI_ToggleActions instance)
         {
-            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_UI_ToggleActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_UI_ToggleActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PauseActions @Pause => new PauseActions(this);
+    public UI_ToggleActions @UI_Toggle => new UI_ToggleActions(this);
 
     // UserInterface
     private readonly InputActionMap m_UserInterface;
     private List<IUserInterfaceActions> m_UserInterfaceActionsCallbackInterfaces = new List<IUserInterfaceActions>();
-    private readonly InputAction m_UserInterface_Newaction;
+    private readonly InputAction m_UserInterface_Navigate;
+    private readonly InputAction m_UserInterface_Select;
     public struct UserInterfaceActions
     {
         private @ActionMap m_Wrapper;
         public UserInterfaceActions(@ActionMap wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UserInterface_Newaction;
+        public InputAction @Navigate => m_Wrapper.m_UserInterface_Navigate;
+        public InputAction @Select => m_Wrapper.m_UserInterface_Select;
         public InputActionMap Get() { return m_Wrapper.m_UserInterface; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,16 +507,22 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Navigate.started += instance.OnNavigate;
+            @Navigate.performed += instance.OnNavigate;
+            @Navigate.canceled += instance.OnNavigate;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
         }
 
         private void UnregisterCallbacks(IUserInterfaceActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Navigate.started -= instance.OnNavigate;
+            @Navigate.performed -= instance.OnNavigate;
+            @Navigate.canceled -= instance.OnNavigate;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
         }
 
         public void RemoveCallbacks(IUserInterfaceActions instance)
@@ -474,12 +547,13 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
     }
-    public interface IPauseActions
+    public interface IUI_ToggleActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUserInterfaceActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
