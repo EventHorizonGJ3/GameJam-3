@@ -681,8 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad0b57e2a0d2a4e8899183e8a4404d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MyWeapon>k__BackingField: {fileID: 0}
-  WeaponSo: {fileID: 0}
+  WeaponSo: {fileID: 11400000, guid: d80ddc1df6d75e34a868e37747fd9159, type: 2}
 --- !u!1 &997486410
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +971,14 @@ PrefabInstance:
       propertyPath: fieldOfView
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: WeaponSo
+      value: 
+      objectReference: {fileID: 11400000, guid: ec43214771819ef4c83902833dd09d48, type: 2}
+    - target: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: <MyWeapon>k__BackingField
+      value: 
+      objectReference: {fileID: 1417807977}
     - target: {fileID: 7298516049432503370, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: m_Name
       value: PLAYER
