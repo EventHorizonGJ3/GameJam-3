@@ -23,14 +23,14 @@ public class Weapon : MonoBehaviour, IPickable
 
 	protected virtual void Awake()
 	{
-		TryGetComponent(out this.trigger);
+		this.TryGetComponent(out this.trigger);
 	}
 	protected virtual void OnEnable()
 	{
-		Grabbed += this.OnGrabbed;
-		Attack += this.OnAttack;
-		AttackEnd += this.OnAttackEnd;
-		Break += this.OnBreak;
+		this.Grabbed += this.OnGrabbed;
+		this.Attack += this.OnAttack;
+		this.AttackEnd += this.OnAttackEnd;
+		this.Break += this.OnBreak;
 	}
 
 	protected virtual void OnGrabbed()
@@ -40,8 +40,8 @@ public class Weapon : MonoBehaviour, IPickable
 
 	protected virtual void OnDisable()
 	{
-		hitCounter = 0;
-		currentKnockBack = 0;
+		this.hitCounter = 0;
+		this.currentKnockBack = 0;
 		this.Attack -= this.OnAttack;
 		this.AttackEnd -= this.OnAttackEnd;
 		this.Break -= this.OnBreak;
@@ -50,7 +50,7 @@ public class Weapon : MonoBehaviour, IPickable
 	protected virtual void OnBreak()
 	{
 		this.transform.parent = null;
-		gameObject.SetActive(false);
+		this.gameObject.SetActive(false);
 	}
 	protected virtual void OnAttack(int _Dmg)
 	{
@@ -61,7 +61,7 @@ public class Weapon : MonoBehaviour, IPickable
 
 	protected virtual void OnAttackEnd()
 	{
-		currentKnockBack = 0;
+		this.currentKnockBack = 0;
 		this.UpdateTrigger(false);
 	}
 	protected virtual void UpdateTrigger(bool _X)

@@ -33,9 +33,9 @@ public class PlayerComboM : Combo
 		base.Start();
 	}
 
-	protected override void Update()
+	void Update()
 	{
-		base.Update();
+		this.EndAttack();
 	}
 
 	private void Attack(InputAction.CallbackContext context)
@@ -46,7 +46,6 @@ public class PlayerComboM : Combo
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
 		base.UpdateCurrentWeapon(_NewWeapon);
-		PlayerActions.PlayerWeapon?.Invoke(_NewWeapon);
 	}
 
 	protected override void BackToPunches()
@@ -74,5 +73,13 @@ public class PlayerComboM : Combo
 		base.RangedAttack();
 	}
 
+	protected void ActivateBerserk(int _Dmg)
+	{
+		extraDmg = _Dmg;
+	}
+	protected override int Damage()
+	{
+		return base.Damage();
+	}
 }
 

@@ -13,13 +13,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	[field: SerializeField] public int HP { get; set; }
 	EnemyType enemyType = EnemyType.MANAGER;
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
-	[SerializeField] Weapon weaponScriptable;
-
 	[Header("knockback Settings")]
 	[SerializeField] float knockbackDur = 3;
 	[SerializeField] float backRayHight;
 	[SerializeField] float backRayLenght;
 	[SerializeField] LayerMask obstacleLayer;
+	[SerializeField] EnemyCombo combo;
 	float backPower;
 	float knockbackTimer = 0;
 	bool isKnockbacked;
@@ -47,7 +46,6 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 			if (knockbackTimer < knockbackDur)
 			{
-				Debug.Log($"startPos: {startPos} \nendPos: {endPos}");
 				knockbackTimer += Time.deltaTime;
 				transform.position = Vector3.Lerp(startPos, endPos, knockbackTimer / knockbackDur);
 			}
@@ -61,14 +59,15 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		}
 		else
 		{
-			weaponScriptable?.StartAttack?.Invoke();
+			combo.CheckAttack();
 			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
-
-
 	}
+
 	public void Knockback(float _Power)
 	{
+		if (_Power <= 0)
+			return;
 		isKnockbacked = false;
 
 		knockbackTimer = 0;
@@ -91,10 +90,6 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	public void TakeDamage(int _Dmg)
 	{
-		//// if (Time.time - lastHitTime < invincibilityTIme)
-		//// 	return;
-		//// lastHitTime = Time.time; 
-
 		HP -= _Dmg;
 		if (HP <= 0)
 		{

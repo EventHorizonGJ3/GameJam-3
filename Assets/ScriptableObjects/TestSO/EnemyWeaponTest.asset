@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
+  m_Name: EnemyWeaponTest
+  m_EditorClassIdentifier: 
+  NumberOfUses: 6
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  KnockBackPower: 0
+  IsRanged: 0
+  RangedRange: 0
+  ThrowDuration: 0.5
+  AttackCombo:
+  - AnimOverrider: {fileID: 22100000, guid: 807a749fa16efcb499d96d63881df014, type: 2}
+    Dmg: 1
+  - AnimOverrider: {fileID: 22100000, guid: 807a749fa16efcb499d96d63881df014, type: 2}
+    Dmg: 3
