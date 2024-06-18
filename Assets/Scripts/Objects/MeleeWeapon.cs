@@ -21,7 +21,7 @@ public class MeleeWeapon : Weapon
 
 	protected override void OnTriggerEnter(Collider _Other)
 	{
-		Debug.Log("trigger active and hit");
+
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
 			hp.colliderTransform = transform.root;

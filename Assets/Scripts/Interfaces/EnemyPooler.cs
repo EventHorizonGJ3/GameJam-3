@@ -37,14 +37,14 @@ public class EnemyPooler : MonoBehaviour
                 }
             }
         }
-        //Debug.Log($"Managers: {managers.Count}");
-        //Debug.Log($"Police: {police.Count}");
-        //Debug.Log($"Army: {army.Count}");
+        // ($"Managers: {managers.Count}");
+        // ($"Police: {police.Count}");
+        // ($"Army: {army.Count}");
     }
 
     public List<IEnemy> GetEnemy(EnemyType enemyType)
     {
-        switch(enemyType)
+        switch (enemyType)
         {
             case EnemyType.MANAGER: return managers;
             case EnemyType.POLICE: return police;

@@ -135,7 +135,7 @@ public class Combo : MonoBehaviour
 
 		if (this.comboCounter >= this.currentWeapon.WeaponSo.AttackCombo.Count)
 		{
-			//Debug.Log("last attack: " + comboCounter);
+			// ("last attack: " + comboCounter);
 			if (this.resetCombo != null)
 			{
 				this.StopAllCoroutines();

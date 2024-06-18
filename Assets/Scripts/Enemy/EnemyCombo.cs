@@ -50,7 +50,7 @@ public class EnemyCombo : Combo
 			if (currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider == currentWeapon.WeaponSo.AttackCombo[comboCounter - 1].AnimOverrider)
 				anim.Play("IdleHand");
 		}
-		Debug.Log("i am:", transform);
+
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
@@ -62,7 +62,7 @@ public class EnemyCombo : Combo
 
 		if (comboCounter >= currentWeapon.WeaponSo.AttackCombo.Count)
 		{
-			//Debug.Log("last attack: " + comboCounter);
+			// ("last attack: " + comboCounter);
 			if (resetCombo != null)
 			{
 				StopAllCoroutines();

@@ -64,7 +64,7 @@ public class RangedWeapon : Weapon
 	void GetTarget(Transform _Target)
 	{
 		target = _Target;
-		Debug.Log("target = " + target, target);
+
 	}
 
 	protected override void OnGrabbed()

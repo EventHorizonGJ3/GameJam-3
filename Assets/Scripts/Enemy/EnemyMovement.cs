@@ -38,7 +38,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		{
 			if (Physics.Raycast(transform.position + Vector3.up * backRayHight, dir, out RaycastHit hit, backRayLenght, obstacleLayer))
 			{
-				Debug.Log("i hit this: ", hit.transform);
+
 				isKnockbacked = false;
 				backPower = 0;
 				return;
@@ -80,7 +80,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		endPos = startPos + dir * _Power;
 
 		isKnockbacked = true;
-		//Debug.Log("kncokback");
+		// ("kncokback");
 	}
 
 	public void NoHP()
@@ -91,6 +91,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	public void TakeDamage(int _Dmg)
 	{
 		HP -= _Dmg;
+		Score.OnDmg?.Invoke(_Dmg);
+		RageBar.Rage?.Invoke();
 		if (HP <= 0)
 		{
 			NoHP();

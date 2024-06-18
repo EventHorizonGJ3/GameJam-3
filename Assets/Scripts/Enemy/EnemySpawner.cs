@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<Wave> waves;
 
     int currentWaveIndex = 0;
-    
+
     private void Start()
     {
         if (waves.Count > 0)
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (totalChance <= 0f)
         {
-            Debug.Log("chance impostata male");
+
             return;
         }
 
@@ -65,27 +65,27 @@ public class EnemySpawner : MonoBehaviour
         }
 
         SpawnEnemy();
-        
+
     }
 
     void SpawnEnemy()
     {
         List<IEnemy> selectedList = EnemyPooler.Instance.GetEnemy(currentSpawned);
-        foreach(IEnemy enemy in selectedList)
+        foreach (IEnemy enemy in selectedList)
         {
             GameObject tmp;
-            if(!enemy.Transform.gameObject.activeInHierarchy)
+            if (!enemy.Transform.gameObject.activeInHierarchy)
             {
                 tmp = enemy.Transform.gameObject;
                 enemy.Transform.position = transform.position;
-                Debug.Log("tentativo di spawnare:"+tmp.name,tmp);
+
                 tmp.SetActive(true);
-                
+
                 break;
             }
         }
-        Debug.Log("Nemico spawnato: " + currentSpawned);
-        
+
+
     }
 
     void SetCurrentWave(int index)
@@ -93,7 +93,6 @@ public class EnemySpawner : MonoBehaviour
         if (index >= 0 && index < waves.Count)
         {
             currentWaveIndex = index;
-            Debug.Log("Onda corrente impostata a: " + currentWaveIndex);
         }
         else
         {

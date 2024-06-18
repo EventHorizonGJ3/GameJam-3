@@ -20,6 +20,7 @@ public class PlayerComboM : Combo
 	private void OnEnable()
 	{
 		inputs.Player.Attack.started += Attack;
+		RageBar.OnBerserkActivate += ActivateBerserk;
 	}
 
 	protected override void OnDisable()
