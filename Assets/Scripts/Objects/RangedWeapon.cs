@@ -13,12 +13,12 @@ public class RangedWeapon : Weapon
 	}
 	protected override void OnEnable()
 	{
-		WeaponSo.GetTarget += GetTarget;
+		Target += GetTarget;
 		base.OnEnable();
 	}
 	protected override void OnDisable()
 	{
-		WeaponSo.GetTarget -= GetTarget;
+		Target -= GetTarget;
 		base.OnDisable();
 	}
 	protected override void OnBreak()
@@ -54,7 +54,7 @@ public class RangedWeapon : Weapon
 			_Hp.TakeDamage(myDmg);
 		}
 		gameObject.SetActive(false);
-		WeaponSo.OnBreak?.Invoke();
+		Break?.Invoke();
 	}
 
 	protected override void UpdateTrigger(bool _X)
@@ -64,7 +64,7 @@ public class RangedWeapon : Weapon
 	void GetTarget(Transform _Target)
 	{
 		target = _Target;
-		Debug.Log("target = " + target, target);
+
 	}
 
 	protected override void OnGrabbed()

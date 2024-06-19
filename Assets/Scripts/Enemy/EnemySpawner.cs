@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     EnemyType currentSpawned;
-    [SerializeField][Tooltip("Ritardo di Spawn in secondi reali")] float spawnFrequancy;
+    [SerializeField][Tooltip("Intervallo tra un nemico e l'altro")] float spawnFrequancy;
     [Header("Eventi di Spawn")]
     [SerializeField] List<Wave> waves;
 
@@ -29,10 +29,23 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(spawnFrequancy);
+            while (GameManager.gameOnPause) yield return null;
+            
+            float elapsedTime = 0f;
+            while (elapsedTime < spawnFrequancy)
+            {
+                if (!GameManager.gameOnPause)
+                {
+                    elapsedTime += Time.deltaTime;
+                }
+                yield return null;
+            }
+
             SelectEnemyToSpawn();
         }
     }
+
+            
 
     void SelectEnemyToSpawn()
     {

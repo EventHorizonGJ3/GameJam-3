@@ -9,19 +9,19 @@ public class MeleeWeapon : Weapon
 	}
 	protected override void OnEnable()
 	{
-		WeaponSo.LastAttack += ActivateKnockBack;
+		LastAttack += ActivateKnockBack;
 		base.OnEnable();
 	}
 
 	protected override void OnDisable()
 	{
-		WeaponSo.LastAttack -= ActivateKnockBack;
+		LastAttack -= ActivateKnockBack;
 		base.OnDisable();
 	}
 
 	protected override void OnTriggerEnter(Collider _Other)
 	{
-		Debug.Log("trigger active and hit");
+
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
 			hp.colliderTransform = transform.root;
@@ -33,7 +33,7 @@ public class MeleeWeapon : Weapon
 				hitCounter++;
 				if (hitCounter >= WeaponSo.NumberOfUses)
 				{
-					WeaponSo.OnBreak?.Invoke();
+					Break?.Invoke();
 				}
 			}
 		}
@@ -49,13 +49,6 @@ public class MeleeWeapon : Weapon
 		currentKnockBack = WeaponSo.KnockBackPower;
 	}
 
-
-	///<summary>
-	/// disables trigger and eneables collider
-	///</summary>
-
-
-	// OnAttack
 	protected override void OnAttack(int _Dmg)
 	{
 		firstHit = true;

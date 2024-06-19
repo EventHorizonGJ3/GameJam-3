@@ -20,4 +20,17 @@ public static class InputManager
 		return direction != Vector3.zero;
 	}
 
+	public static void SwitchToUIInputs()
+	{
+		ActionMap.Player.Disable();
+		ActionMap.UserInterface.Enable();
+	}
+	public static void SwitchPlayerInputs()
+	{
+		ActionMap.Player.Enable();
+		ActionMap.UserInterface.Disable();
+    }
+
+
+
 }

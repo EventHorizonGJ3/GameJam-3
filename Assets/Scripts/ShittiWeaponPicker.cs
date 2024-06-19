@@ -63,7 +63,7 @@ public class ShittiWeaponPicker : MonoBehaviour
 				pickableWeapon = weaponsCol.GetComponent<IPickable>();
 				pickableWeapon.Transform.position = handTransfrom.position;
 				pickableWeapon.Transform.parent = handTransfrom;
-				playerComboM.UpdateCurrentWeapon(pickableWeapon.WeaponSo);
+				playerComboM.UpdateCurrentWeapon(pickableWeapon.MyWeapon);
 				break;
 			}
 		}
