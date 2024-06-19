@@ -86,13 +86,13 @@ public class EnemySpawner : MonoBehaviour
         List<IEnemy> selectedList = EnemyPooler.Instance.GetEnemy(currentSpawned);
         foreach(IEnemy enemy in selectedList)
         {
-            GameObject tmp;
+            
             if(!enemy.Transform.gameObject.activeInHierarchy)
             {
-                tmp = enemy.Transform.gameObject;
-                enemy.Transform.position = transform.position;
-                Debug.Log("tentativo di spawnare:"+tmp.name,tmp);
-                tmp.SetActive(true);
+                
+                enemy.Transform.position = transform.localPosition;
+                
+                enemy.Transform.gameObject.SetActive(true);
                 
                 break;
             }

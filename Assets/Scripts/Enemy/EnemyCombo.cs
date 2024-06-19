@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,11 @@ public class EnemyCombo : Combo
 	[Header("Enemy settings: ")]
 	[SerializeField] float attackRange;
 
+	protected override void OnEnable()
+	{
+		UpdateCurrentWeapon(defaultWeapon);
+		base.OnEnable();
+	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
@@ -13,7 +19,6 @@ public class EnemyCombo : Combo
 
 	protected override void Start()
 	{
-		UpdateCurrentWeapon(defaultWeapon);
 		anim = GetComponentInChildren<Animator>();
 	}
 
@@ -51,6 +56,7 @@ public class EnemyCombo : Combo
 				anim.Play("IdleHand");
 		}
 
+		currentWeapon.HitCounter = 0;
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
@@ -76,7 +82,7 @@ public class EnemyCombo : Combo
 
 	protected override void RangedAttack()
 	{
-		base.RangedAttack();
+
 	}
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
@@ -91,7 +97,7 @@ public class EnemyCombo : Combo
 			{
 				currentWeapon.StartAttack -= MeleeAttack;
 			}
-			
+
 		}
 
 		currentWeapon = _NewWeapon;
@@ -109,6 +115,7 @@ public class EnemyCombo : Combo
 			currentWeapon.StartAttack += MeleeAttack;
 			animStopTime = 0.9f;
 		}
+
 	}
 
 	public void CheckAttack()
