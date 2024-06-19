@@ -81,7 +81,34 @@ public class EnemyCombo : Combo
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
-		base.UpdateCurrentWeapon(_NewWeapon);
+		if (currentWeapon != null)
+		{
+			if (currentWeapon.WeaponSo.IsRanged)
+			{
+				currentWeapon.StartAttack -= RangedAttack;
+			}
+			else
+			{
+				currentWeapon.StartAttack -= MeleeAttack;
+			}
+			
+		}
+
+		currentWeapon = _NewWeapon;
+		comboCounter = 0;
+		lastComboTime = 0;
+		lastAttackTime = 0;
+
+		if (currentWeapon.WeaponSo.IsRanged)
+		{
+			currentWeapon.StartAttack += RangedAttack;
+			animStopTime = 0.7f;
+		}
+		else
+		{
+			currentWeapon.StartAttack += MeleeAttack;
+			animStopTime = 0.9f;
+		}
 	}
 
 	public void CheckAttack()
