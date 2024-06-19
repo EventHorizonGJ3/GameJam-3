@@ -47,7 +47,7 @@ public class WeaponPicker : MonoBehaviour
     {
         if (InputManager.IsMoving(out Vector3 direction))
         {
-            interactPos = transform.position + direction;
+            interactPos = transform.position + direction/2;
         }
         Collider[] colliderInRange = new Collider[allWeaponsColliders.Length];
         int numberOfWeapons = Physics.OverlapSphereNonAlloc(interactPos, interactionRadius, colliderInRange, weaponLayer);

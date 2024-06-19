@@ -7,30 +7,25 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
     [Header("Parameters")]
     [SerializeField][Tooltip("Altezza dal suolo")] float offset = 0.2f;
     [SerializeField] float respawnCooldown = 10f;
-    [Space]
-    [SerializeField] bool isOnEnemy;
     [Header("References)")]
     [SerializeField] WeaponsSO weaponToSpawn;
+
 
     GameObject loadedWeapon;
     bool canSpawn;
 
-    private void Awake()
-    {
-        if(TryGetComponent<EnemyMovement>(out _)) isOnEnemy = true; 
-        else isOnEnemy = false;
-    }
-    private void OnDisable()
-    {
-        if(isOnEnemy) SpawnOnChance();
-    }
+
+
 
     private void Start()
     {
         canSpawn = true;
+
+
         AutoCorrectPosition();
-        if (!isOnEnemy) 
-            SpawnWeapon();
+        SpawnWeapon();
+
+
     }
 
     void SpawnWeapon()
@@ -87,13 +82,9 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
 
     public void StartRespawn()
     {
-        if(!isOnEnemy)
-            StartCoroutine(StartCooldown());
+
+        StartCoroutine(StartCooldown());
     }
 
-    void SpawnOnChance()
-    {
-        int chance = Random.Range(0, 1);
-        if (chance == 1 ) SpawnWeapon();
-    }
+
 }
