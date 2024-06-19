@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -76,7 +77,7 @@ public class EnemyCombo : Combo
 
 	protected override void RangedAttack()
 	{
-		base.RangedAttack();
+		
 	}
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
@@ -91,7 +92,7 @@ public class EnemyCombo : Combo
 			{
 				currentWeapon.StartAttack -= MeleeAttack;
 			}
-			
+
 		}
 
 		currentWeapon = _NewWeapon;
@@ -109,9 +110,10 @@ public class EnemyCombo : Combo
 			currentWeapon.StartAttack += MeleeAttack;
 			animStopTime = 0.9f;
 		}
+
 	}
 
-	public void CheckAttack()
+    public void CheckAttack()
 	{
 		EndAttack();
 		var dir = (GameManager.enemyTargetPosition.position - transform.position).normalized;

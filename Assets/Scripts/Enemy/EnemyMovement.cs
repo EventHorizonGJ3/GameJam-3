@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	public Transform Transform { get => transform; }
 
 	[field: Header("Settings: ")]
-	[field: SerializeField] public int HP { get; set; }
+	[field: SerializeField] public float HP { get; set; }
 	EnemyType enemyType = EnemyType.MANAGER;
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
 	[Header("knockback Settings")]
@@ -92,7 +92,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	{
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
-		RageBar.Rage?.Invoke();
+		RageBar.OnRage?.Invoke();
 		if (HP <= 0)
 		{
 			NoHP();

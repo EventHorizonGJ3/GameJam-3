@@ -21,6 +21,7 @@ public class Combo : MonoBehaviour
 	[SerializeField] protected float ComboResetTime = 1f;
 	[SerializeField] protected Weapon currentWeapon;
 	[SerializeField] protected Transform meshHolder;
+	[SerializeField] protected Transform weaponHolder;
 	protected float lastAttackTime = 0, lastComboTime;
 	protected int comboCounter;
 	protected Coroutine resetCombo;

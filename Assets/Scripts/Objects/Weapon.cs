@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour, IPickable
 	public Transform Transform => this.transform;
 	protected int myDmg;
 	protected int hitCounter;
+	public int HitCounter { get => hitCounter; set => hitCounter = value; }
 	protected float currentKnockBack = 0;
 	protected Collider trigger;
 	protected IDamageable hp;

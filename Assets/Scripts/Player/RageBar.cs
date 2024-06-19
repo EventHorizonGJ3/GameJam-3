@@ -6,48 +6,72 @@ using UnityEngine.UI;
 
 public class RageBar : MonoBehaviour
 {
-	public static Action Rage;
-	public static Action<int> OnBerserkActivate;
+	public static Action OnRage;
+	public static Action<int> OnBerserkExtraDmg;
+	public static Action<float, float> OnBerserkHeal;
+	[Header("Berserk settings: ")]
+	[SerializeField] float berserkDuration;
+	[SerializeField] float berserkCooldown;
 	[SerializeField] int BerserkExtraDmg;
-	[SerializeField] int healAmount;
+	[SerializeField] float healAmount;
+	[Tooltip("make this < or = to berserkDuration")]
+	[SerializeField] float healDuration;
+
+    [Header("RageBar settings: ")]
+	[SerializeField] Image bar;
 	[SerializeField] float fullBarAmount;
 	[SerializeField] float berserkCost;
-	[SerializeField] Image bar;
-	[SerializeField] float ResetTimer;
-	float currentRage = 99;
+	[SerializeField] float barResetTimer;
+	
+
+    float lastBerserkTime;
+	float currentBar = 0;
 	ActionMap inputs;
 	Vector2 lastRage;
-	float lastTot;
+	float lastTot = 1;
+	bool isBerserkActive;
 	Coroutine coroutine;
 
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;
-		currentRage = 0;
+		currentBar = 0;
 	}
 	private void OnEnable()
 	{
 		inputs.Player.Berserk.performed += ActivateBerserk;
-		Rage += AddRage;
+		OnRage += AddRage;
 	}
 	private void OnDisable()
 	{
 		inputs.Player.Berserk.performed -= ActivateBerserk;
-		Rage -= AddRage;
+		OnRage -= AddRage;
 	}
+    private void Update()
+    {
+        if (isBerserkActive)
+        {
+			if(Time.time-lastBerserkTime >= berserkDuration)
+            {
+				isBerserkActive = false;
+            }
+        }
+		bar.fillAmount = currentBar / fullBarAmount;
+	}
+    private void AddRage()
+ 	{
+		if (isBerserkActive)
+			return;
 
-	private void AddRage()
-	{
 		Debug.Log("WOW");
 		lastRage.y = lastRage.x;
 		lastRage.x = lastTot;
 		lastTot = lastRage.x + lastRage.y;
-		currentRage += lastTot;
-		if (currentRage > fullBarAmount)
+		currentBar += lastTot;
+		if (currentBar > fullBarAmount)
 		{
-			currentRage = fullBarAmount;
+			currentBar = fullBarAmount;
 		}
-		UpdateBar();
 
 		//coroutine = StartCoroutine(ResetRage());
 	}
@@ -57,17 +81,19 @@ public class RageBar : MonoBehaviour
 
 	// }
 
-	private void UpdateBar()
-	{
-		bar.fillAmount = Mathf.Lerp(0, 1, currentRage / fullBarAmount);
-	}
+	
 
 	private void ActivateBerserk(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		if (currentRage - berserkCost < 0)
+		if (Time.time - lastBerserkTime < berserkCooldown)
 			return;
 
-		currentRage -= berserkCost;
-		OnBerserkActivate?.Invoke(BerserkExtraDmg);
+		if (currentBar - berserkCost < 0)
+			return;
+		currentBar -= berserkCost;
+		lastBerserkTime = Time.time;
+		isBerserkActive = true;
+		OnBerserkExtraDmg?.Invoke(BerserkExtraDmg);
+		OnBerserkHeal?.Invoke(healAmount,healDuration);
 	}
 }

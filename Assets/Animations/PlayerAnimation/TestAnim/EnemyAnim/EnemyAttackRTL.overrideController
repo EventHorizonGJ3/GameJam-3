@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyAttackLTR
+  m_Name: EnemyAttackRTL
   m_Controller: {fileID: 9100000, guid: 9e73296304d28bd4e9d60e976810c9c2, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 28641e735550109499c2b1cbb665fd1a, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 262d0da4815fbe847a2923eef4b68601, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 91c099ef59e66f94fbbc722395e5aa94, type: 2}
