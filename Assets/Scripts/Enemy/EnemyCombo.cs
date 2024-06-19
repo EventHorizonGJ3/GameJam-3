@@ -52,6 +52,7 @@ public class EnemyCombo : Combo
 				anim.Play("IdleHand");
 		}
 
+		currentWeapon.HitCounter = 0;
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
@@ -77,7 +78,7 @@ public class EnemyCombo : Combo
 
 	protected override void RangedAttack()
 	{
-		
+
 	}
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
@@ -113,7 +114,7 @@ public class EnemyCombo : Combo
 
 	}
 
-    public void CheckAttack()
+	public void CheckAttack()
 	{
 		EndAttack();
 		var dir = (GameManager.enemyTargetPosition.position - transform.position).normalized;
