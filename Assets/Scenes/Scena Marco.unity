@@ -200,6 +200,11 @@ MonoBehaviour:
   waves:
   - waveName: 
     probabilities:
+      Manager_Chance: 0.25
+      Police_Chance: 0.25
+      Army_Chance: 0.25
+  - waveName: 
+    probabilities:
       Manager_Chance: 1
       Police_Chance: 0
       Army_Chance: 0
