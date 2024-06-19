@@ -70,7 +70,7 @@ public class WeaponPicker : MonoBehaviour
 		{
 			pickableWeapon.Transform.position = handTransfrom.position;
 			pickableWeapon.Transform.parent = handTransfrom;
-			playerComboM.UpdateCurrentWeapon(pickableWeapon.WeaponSo);
+			playerComboM.UpdateCurrentWeapon(pickableWeapon.MyWeapon);
 		}
 	}
 
