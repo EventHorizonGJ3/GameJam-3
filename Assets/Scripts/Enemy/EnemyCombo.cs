@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -51,6 +52,7 @@ public class EnemyCombo : Combo
 				anim.Play("IdleHand");
 		}
 
+		currentWeapon.HitCounter = 0;
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
@@ -76,7 +78,7 @@ public class EnemyCombo : Combo
 
 	protected override void RangedAttack()
 	{
-		base.RangedAttack();
+
 	}
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
@@ -91,7 +93,7 @@ public class EnemyCombo : Combo
 			{
 				currentWeapon.StartAttack -= MeleeAttack;
 			}
-			
+
 		}
 
 		currentWeapon = _NewWeapon;
@@ -109,6 +111,7 @@ public class EnemyCombo : Combo
 			currentWeapon.StartAttack += MeleeAttack;
 			animStopTime = 0.9f;
 		}
+
 	}
 
 	public void CheckAttack()

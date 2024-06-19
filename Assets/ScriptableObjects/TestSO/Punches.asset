@@ -15,7 +15,8 @@ MonoBehaviour:
   NumberOfUses: 1000
   EnemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  weaponPrefab: {fileID: 0}
   KnockBackPower: 10
   IsRanged: 0
   RangedRange: 1.72

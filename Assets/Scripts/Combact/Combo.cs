@@ -19,8 +19,9 @@ public class Combo : MonoBehaviour
 
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
 	[SerializeField] protected float ComboResetTime = 1f;
-	[SerializeField] protected Weapon currentWeapon;
 	[SerializeField] protected Transform meshHolder;
+	[SerializeField] protected Transform weaponHolder;
+	[SerializeField] public Weapon currentWeapon;
 	protected float lastAttackTime = 0, lastComboTime;
 	protected int comboCounter;
 	protected Coroutine resetCombo;
@@ -166,7 +167,10 @@ public class Combo : MonoBehaviour
 
 	protected virtual int Damage()
 	{
-		return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg + this.extraDmg;
+		if (extraDmg != 0)
+			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg * this.extraDmg;
+		else
+			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg;
 	}
 
 
