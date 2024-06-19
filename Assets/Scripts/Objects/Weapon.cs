@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour, IPickable
 	protected IDamageable hp;
 	[SerializeField] public Weapon MyWeapon { get => this; set => MyWeapon = value; }
 	public WeaponsSO WeaponSo;
+	[field: SerializeField] public bool IsEnemyWeapon { get; set; }
 
 	//- "Actions: "
 	public Action<int> Attack;

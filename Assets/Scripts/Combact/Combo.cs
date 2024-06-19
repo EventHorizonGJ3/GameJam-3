@@ -29,6 +29,11 @@ public class Combo : MonoBehaviour
 	[SerializeField] protected float animStopTime = 0.9f;
 	protected int extraDmg;
 
+	protected virtual void OnEnable()
+	{
+		this.UpdateCurrentWeapon(defaultWeapon);
+
+	}
 	protected virtual void OnDisable()
 	{
 		this.currentWeapon.Break -= BackToPunches;
@@ -36,7 +41,6 @@ public class Combo : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		this.UpdateCurrentWeapon(defaultWeapon);
 		this.anim = GetComponentInChildren<Animator>();
 	}
 

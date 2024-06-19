@@ -17,8 +17,9 @@ public class PlayerComboM : Combo
 		inputs = InputManager.ActionMap;
 	}
 
-	private void OnEnable()
+	protected override void OnEnable()
 	{
+		base.OnEnable();
 		inputs.Player.Attack.started += Attack;
 		RageBar.OnBerserkExtraDmg += ActivateBerserk;
 	}

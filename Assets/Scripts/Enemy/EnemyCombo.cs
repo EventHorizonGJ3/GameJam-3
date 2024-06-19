@@ -7,6 +7,11 @@ public class EnemyCombo : Combo
 	[Header("Enemy settings: ")]
 	[SerializeField] float attackRange;
 
+	protected override void OnEnable()
+	{
+		UpdateCurrentWeapon(defaultWeapon);
+		base.OnEnable();
+	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
@@ -14,7 +19,6 @@ public class EnemyCombo : Combo
 
 	protected override void Start()
 	{
-		UpdateCurrentWeapon(defaultWeapon);
 		anim = GetComponentInChildren<Animator>();
 	}
 
