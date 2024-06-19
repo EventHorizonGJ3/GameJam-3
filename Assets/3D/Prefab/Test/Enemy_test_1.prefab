@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2224848361266540956}
   - component: {fileID: 936114836696555769}
   - component: {fileID: 6166025389205283053}
+  - component: {fileID: -8195667564894202328}
   m_Layer: 0
   m_Name: Enemy_test_1
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7071293259953279437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 3.26}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,8 +139,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7071293259953279437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <HP>k__BackingField: 0
+  knockbackDur: 3
+  backRayHight: 0
+  backRayLenght: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  combo: {fileID: 0}
+--- !u!114 &-8195667564894202328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7071293259953279437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fbb4ac7f6e069448fcb94699e15072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0.2
+  respawnCooldown: 10
+  isOnEnemy: 0
+  weaponToSpawn: {fileID: 11400000, guid: db683d878735caa43b6dbfa0a243f816, type: 2}
