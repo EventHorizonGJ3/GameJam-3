@@ -10,14 +10,22 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
     [Header("References)")]
     [SerializeField] WeaponsSO weaponToSpawn;
 
+
     GameObject loadedWeapon;
     bool canSpawn;
+
+
+
 
     private void Start()
     {
         canSpawn = true;
+
+
         AutoCorrectPosition();
         SpawnWeapon();
+
+
     }
 
     void SpawnWeapon()
@@ -74,6 +82,9 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
 
     public void StartRespawn()
     {
+
         StartCoroutine(StartCooldown());
     }
+
+
 }

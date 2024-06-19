@@ -4,7 +4,7 @@ using UnityEngine;
 public class Combo : MonoBehaviour
 {
 	[Header("Weapon Settings:")]
-	[SerializeField] protected Weapon defaultWeapon;
+	[SerializeField] public Weapon defaultWeapon;
 	[SerializeField] protected string attackAnimationName;
 
 	[Tooltip("The angle that the player sees in fron of him")]
