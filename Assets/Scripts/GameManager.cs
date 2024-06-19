@@ -13,9 +13,10 @@ public partial class GameManager : MonoBehaviour
     public static bool PlayerIsAttacking;
     public static bool IsHoldingMelee;
     public static bool IsHoldingRanged;
-    public static Vector3 enemyTargetPosition;
+    public static Transform enemyTargetPosition;
 
     public static bool gameOnPause;
+
     public static bool usingGamePad;
 
     private void Awake()

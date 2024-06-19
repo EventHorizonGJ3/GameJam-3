@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.enemyTargetPosition = transform;
         OnPlayerReady?.Invoke(this);
         dashIsAvailable = true;
     }
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        GameManager.enemyTargetPosition = transform.position;
+        
 
         if (InputManager.ActionMap.Player.Dash.WasPerformedThisFrame() && dashIsAvailable)
         {

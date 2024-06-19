@@ -2064,6 +2064,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589254890}
   m_CullTransparentMesh: 1
+--- !u!4 &601572188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4276272281254428665, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+  m_PrefabInstance: {fileID: 5524634361690635164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &635252802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,6 +2176,17 @@ Transform:
   - {fileID: 550531970}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668912542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+  m_PrefabInstance: {fileID: 5524634361690635164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &689245818
 GameObject:
   m_ObjectHideFlags: 0
@@ -5210,7 +5226,7 @@ GameObject:
   - component: {fileID: 1806823308}
   - component: {fileID: 1806823307}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: WeaponSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6399,6 +6415,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2455690654499995101, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: meshHolder
+      value: 
+      objectReference: {fileID: 601572188}
+    - target: {fileID: 2455690654499995101, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 668912542}
     - target: {fileID: 7298516049432503370, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: m_Name
       value: PLAYER
