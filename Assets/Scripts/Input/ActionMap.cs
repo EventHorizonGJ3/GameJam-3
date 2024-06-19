@@ -62,6 +62,15 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Berserk"",
+                    ""type"": ""Button"",
+                    ""id"": ""b00447fb-4ada-4029-aec7-23ee8ef0d70f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9adf8103-021e-43dc-8951-e37d67bb21d9"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Berserk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -361,6 +381,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Berserk = m_Player.FindAction("Berserk", throwIfNotFound: true);
         // UI_Toggle
         m_UI_Toggle = asset.FindActionMap("UI_Toggle", throwIfNotFound: true);
         m_UI_Toggle_Pause = m_UI_Toggle.FindAction("Pause", throwIfNotFound: true);
@@ -433,6 +454,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Berserk;
     public struct PlayerActions
     {
         private @ActionMap m_Wrapper;
@@ -441,6 +463,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Berserk => m_Wrapper.m_Player_Berserk;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -462,6 +485,9 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Berserk.started += instance.OnBerserk;
+            @Berserk.performed += instance.OnBerserk;
+            @Berserk.canceled += instance.OnBerserk;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -478,6 +504,9 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Berserk.started -= instance.OnBerserk;
+            @Berserk.performed -= instance.OnBerserk;
+            @Berserk.canceled -= instance.OnBerserk;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -601,6 +630,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnBerserk(InputAction.CallbackContext context);
     }
     public interface IUI_ToggleActions
     {
