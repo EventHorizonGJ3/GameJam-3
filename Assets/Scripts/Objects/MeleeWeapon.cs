@@ -7,6 +7,7 @@ public class MeleeWeapon : Weapon
 	{
 		base.Awake();
 	}
+
 	protected override void OnEnable()
 	{
 		LastAttack += ActivateKnockBack;
@@ -42,6 +43,11 @@ public class MeleeWeapon : Weapon
 	protected override void OnBreak()
 	{
 		base.OnBreak();
+	}
+
+	protected override void OnGrabbed()
+	{
+		base.OnGrabbed();
 	}
 
 	private void ActivateKnockBack()

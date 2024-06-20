@@ -12,43 +12,44 @@ public class PlayerHp : MonoBehaviour, IDamageable
 
 	[SerializeField] Image hpBar;
 
-    private void OnEnable()
-    {
+	private void OnEnable()
+	{
 		maxHP = HP;
 		RageBar.OnBerserkHeal += Heal;
-    }
-    private void OnDisable()
-    {
+	}
+	private void OnDisable()
+	{
 		RageBar.OnBerserkHeal -= Heal;
 	}
 
-    private void Heal(float _heal,float _dur)
-    {
-        if(HP+_heal > maxHP)
-        {//   5   -= 6  +    5  -  10 --> 5 -= 11-10 --> 5-= 1 --> 4 so now HP+_Heal = maxHP;
+	private void Heal(float _heal, float _dur)
+	{
+		if (HP + _heal > maxHP)
+		{//   5   -= 6  +   5   -  10   --> 5 -= 11-10 --> 5-= 1 --> 4 so now HP+_Heal = maxHP;
 			_heal -= HP + _heal - maxHP;
-        }
+		}
 		StartCoroutine(HealInTime(_heal, _dur));
-    }
+	}
 
-    private IEnumerator HealInTime(float _heal, float _dur)
-    {
-		var _healTick = (_heal - HP) / _dur;
-		float _target = HP + _heal;
-        while (HP < _target)
-        {
+	private IEnumerator HealInTime(float _heal, float _dur)
+	{
+
+		float _healAmount = 0;
+		var _healTick = _heal / _dur;
+		while (_healAmount < _heal)
+		{
 			HP += _healTick;
+			_healAmount += _healTick;
 			UpdateHpBar();
 			yield return null;
-        }
-		HP = _target;
-    }
+		}
+	}
 	void UpdateHpBar()
-    {
+	{
 		hpBar.fillAmount = HP / maxHP;
 	}
-    public void Knockback(float _Power)
-	{}
+	public void Knockback(float _Power)
+	{ }
 
 	public void NoHP()
 	{
