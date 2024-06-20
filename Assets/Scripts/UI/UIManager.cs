@@ -80,9 +80,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
     }
-        
-        
-
-
-
+    
+    
+    
 }
