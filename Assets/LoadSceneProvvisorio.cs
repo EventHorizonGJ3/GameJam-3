@@ -24,4 +24,14 @@ public class LoadSceneProvvisorio: MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    
+    public void playAle()
+    {
+        SceneManager.LoadScene(2);
+    }
+    
+    public void playMarco()
+    {
+        SceneManager.LoadScene(3);
+    }
 }
