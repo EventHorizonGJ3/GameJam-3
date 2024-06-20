@@ -14659,6 +14659,83 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3577224241316421043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8448925019047785023}
+  - component: {fileID: 8724570985275407166}
+  - component: {fileID: 4226177985423844331}
+  m_Layer: 3
+  m_Name: Forest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8448925019047785023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577224241316421043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 33919750183207728}
+  - {fileID: 2931085736967408404}
+  m_Father: {fileID: 5027366043295939513}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8724570985275407166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577224241316421043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 4, z: 100}
+  m_Center: {x: 60, y: 2, z: -4.85}
+--- !u!65 &4226177985423844331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577224241316421043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 136.68207, y: 4, z: 20}
+  m_Center: {x: 1.6589786, y: 2, z: -48.000023}
 --- !u!1 &3578927193356608443
 GameObject:
   m_ObjectHideFlags: 0
@@ -16814,7 +16891,7 @@ Transform:
   m_GameObject: {fileID: 4181257067989769357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.169975, y: 3.7432284, z: -41.97113}
+  m_LocalPosition: {x: 17.16998, y: 3.7432284, z: -41.971138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16925,7 +17002,7 @@ Transform:
   - {fileID: 659761151865897015}
   - {fileID: 7118840635100755207}
   - {fileID: 6758623619525185307}
-  m_Father: {fileID: 5027366043295939513}
+  m_Father: {fileID: 8448925019047785023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4190418962392287848
 GameObject:
@@ -29594,8 +29671,7 @@ Transform:
   m_Children:
   - {fileID: 6480683923535264788}
   - {fileID: 4413037881187283493}
-  - {fileID: 33919750183207728}
-  - {fileID: 2931085736967408404}
+  - {fileID: 8448925019047785023}
   m_Father: {fileID: 2066457321485116338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7333589079557823606
@@ -34216,7 +34292,7 @@ Transform:
   m_GameObject: {fileID: 8467187799681928160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.94822, y: 3.7432284, z: -51.223938}
+  m_LocalPosition: {x: 22.94822, y: 3.7432284, z: -51.223946}
   m_LocalScale: {x: 1.1, y: 1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34327,7 +34403,7 @@ Transform:
   - {fileID: 5520934431082042920}
   - {fileID: 7652800403857217179}
   - {fileID: 7522737526221742826}
-  m_Father: {fileID: 5027366043295939513}
+  m_Father: {fileID: 8448925019047785023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8475077947414234614
 GameObject:

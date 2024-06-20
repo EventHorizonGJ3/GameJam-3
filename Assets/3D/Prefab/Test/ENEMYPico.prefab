@@ -179,8 +179,8 @@ GameObject:
   - component: {fileID: 4866130881599920285}
   - component: {fileID: 7380880731007203447}
   - component: {fileID: 2993775963336881276}
-  - component: {fileID: 7496827692739001959}
   - component: {fileID: 4797282934976125955}
+  - component: {fileID: 7496827692739001959}
   m_Layer: 7
   m_Name: ENEMYPico
   m_TagString: Untagged
@@ -292,6 +292,21 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   animStopTime: 0.9
   attackRange: 2.34
+--- !u!114 &4797282934976125955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613140822054342988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapFloor:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!195 &7496827692739001959
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -314,21 +329,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4797282934976125955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3613140822054342988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapFloor:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &4585272902365821901
 GameObject:
   m_ObjectHideFlags: 0

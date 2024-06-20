@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<Wave> waves;
 
     int currentWaveIndex = 0;
-    
+
     private void Start()
     {
         if (waves.Count > 0)
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             while (GameManager.gameOnPause) yield return null;
-            
+
             float elapsedTime = 0f;
             while (elapsedTime < spawnFrequancy)
             {
@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-            
+
 
     void SelectEnemyToSpawn()
     {
@@ -78,27 +78,27 @@ public class EnemySpawner : MonoBehaviour
         }
 
         SpawnEnemy();
-        
+
     }
 
     void SpawnEnemy()
     {
         List<IEnemy> selectedList = EnemyPooler.Instance.GetEnemy(currentSpawned);
-        foreach(IEnemy enemy in selectedList)
+        foreach (IEnemy enemy in selectedList)
         {
-            
-            if(!enemy.Transform.gameObject.activeInHierarchy)
+
+            if (!enemy.Transform.gameObject.activeInHierarchy)
             {
-                
+
                 enemy.Transform.position = transform.localPosition;
-                
+
                 enemy.Transform.gameObject.SetActive(true);
-                
+
                 break;
             }
         }
         //Debug.Log("Nemico spawnato: " + currentSpawned);
-        
+
     }
 
     void SetCurrentWave(int index)
