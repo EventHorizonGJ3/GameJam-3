@@ -7,99 +7,73 @@ using UnityEngine.UI;
 
 public class ButtonAnimation : MonoBehaviour
 {
-    [SerializeField] float buttonSizeMultiplier = 1.2f;
+    [SerializeField] float elementSizeMultiplier = 1.2f;
     [SerializeField] float animationDuration = 0.2f;
-    Button button;
-    Coroutine currentCoroutine;
-    Vector3 originalButtonScale;
+    private RectTransform rectTransform;
+    private Coroutine currentCoroutine;
+    private Vector3 originalElementScale;
 
     private void Awake()
     {
-        button = GetComponent<Button>();
+        rectTransform = GetComponent<RectTransform>();
+        originalElementScale = rectTransform.localScale;
 
-        
         EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
 
-        
-        EventTrigger.Entry entryEnter = new EventTrigger.Entry();
-        entryEnter.eventID = EventTriggerType.PointerEnter;
-        entryEnter.callback.AddListener((eventData) => { Animation_Expand((BaseEventData)eventData); });
-        trigger.triggers.Add(entryEnter);
-
-        EventTrigger.Entry entryEnter2 = new EventTrigger.Entry();
-        entryEnter2.eventID = EventTriggerType.Select;
-        entryEnter2.callback.AddListener((eventData) => { Animation_Expand((BaseEventData)eventData); });
-        trigger.triggers.Add(entryEnter2);
-
-
-        EventTrigger.Entry entryExit = new EventTrigger.Entry();
-        entryExit.eventID = EventTriggerType.PointerExit;
-        entryExit.callback.AddListener((eventData) => { Animation_Shrink((BaseEventData)eventData); });
-        trigger.triggers.Add(entryExit);
-
-        EventTrigger.Entry entryExit2 = new EventTrigger.Entry();
-        entryExit2.eventID = EventTriggerType.Deselect;
-        entryExit2.callback.AddListener((eventData) => { Animation_Shrink((BaseEventData)eventData); });
-        trigger.triggers.Add(entryExit2);
+        AddEventTrigger(trigger, EventTriggerType.PointerEnter, Animation_Expand);
+        AddEventTrigger(trigger, EventTriggerType.Select, Animation_Expand);
+        AddEventTrigger(trigger, EventTriggerType.PointerExit, Animation_Shrink);
+        AddEventTrigger(trigger, EventTriggerType.Deselect, Animation_Shrink);
     }
 
-    private void Start()
+    private void AddEventTrigger(EventTrigger trigger, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> action)
     {
-        originalButtonScale = button.transform.localScale;
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = eventType };
+        entry.callback.AddListener(action);
+        trigger.triggers.Add(entry);
     }
 
-    public void Animation_Expand(BaseEventData eventData)
+    private void Animation_Expand(BaseEventData eventData)
     {
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
-        currentCoroutine = StartCoroutine(Expand());
+        currentCoroutine = StartCoroutine(AnimateScale(originalElementScale * elementSizeMultiplier));
     }
 
-    public void Animation_Shrink(BaseEventData eventData)
+    private void Animation_Shrink(BaseEventData eventData)
     {
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
-        currentCoroutine = StartCoroutine(Shrink());
+        currentCoroutine = StartCoroutine(AnimateScale(originalElementScale));
     }
 
-    IEnumerator Expand()
+    private IEnumerator AnimateScale(Vector3 targetScale)
     {
-
-        Vector3 targetScale = originalButtonScale * buttonSizeMultiplier;
-
+        Vector3 initialScale = rectTransform.localScale;
         float time = 0;
+
         while (time < animationDuration)
         {
-            button.transform.localScale = Vector3.Lerp(originalButtonScale, targetScale, time / animationDuration);
+            rectTransform.localScale = Vector3.Lerp(initialScale, targetScale, time / animationDuration);
             time += Time.deltaTime;
             yield return null;
         }
-        button.transform.localScale = targetScale;
+        rectTransform.localScale = targetScale;
     }
 
-    IEnumerator Shrink()
+    public void BackToOriginalScale()
     {
-        Vector3 originalScale = button.transform.localScale;
-        Vector3 targetScale = originalButtonScale;
-
-        float time = 0;
-        while (time < animationDuration)
-        {
-            button.transform.localScale = Vector3.Lerp(originalScale, targetScale, time / animationDuration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        button.transform.localScale = targetScale;
+        rectTransform.localScale = originalElementScale;
     }
 
-    public void BackToOriginalSize()
+    private void OnDisable()
     {
-        button.transform.localScale = originalButtonScale;
+        BackToOriginalScale();
     }
 
-    
+
 }

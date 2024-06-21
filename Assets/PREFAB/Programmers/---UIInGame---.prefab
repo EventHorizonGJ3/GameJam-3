@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6599515360539246787}
   - component: {fileID: 2634279305839454174}
   m_Layer: 0
-  m_Name: Options_button
+  m_Name: Esc_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 401494233473075325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 675305358267539876}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackToPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2634279305839454174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSizeMultiplier: 1.3
+  elementSizeMultiplier: 1.2
   animationDuration: 0.1
 --- !u!1 &513418567936287709
 GameObject:
@@ -530,8 +542,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -606,7 +618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.5, y: -0.5}
+  m_AnchoredPosition: {x: -7.5000076, y: -0.5}
   m_SizeDelta: {x: -35, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9221247541322618319
@@ -1071,7 +1083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8132202873937343184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1176,7 +1188,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 675305358267539876}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnDisable
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3201326021190835228}
+        m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+        m_MethodName: BackToOriginalScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1198,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSizeMultiplier: 1.3
+  elementSizeMultiplier: 1.2
   animationDuration: 0.1
 --- !u!1 &1942525965428629974
 GameObject:
@@ -1389,7 +1413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7741926384508102708
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1492,13 +1516,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 675305358267539876}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1888599706149828408}
+        m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+        m_MethodName: BackToOriginalScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1516,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSizeMultiplier: 1.3
+  elementSizeMultiplier: 1.2
   animationDuration: 0.1
 --- !u!1 &2738724967890798699
 GameObject:
@@ -1990,7 +2026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1200}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3779597459201924153
@@ -3470,6 +3506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8462813547310815195}
   - component: {fileID: 5476457710645182659}
+  - component: {fileID: 8490536241156151472}
   m_Layer: 0
   m_Name: Master_Slider
   m_TagString: Untagged
@@ -3551,6 +3588,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8490536241156151472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020348620725559000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementSizeMultiplier: 1.2
+  animationDuration: 0.2
 --- !u!1 &5539176045619290315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,7 +3811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4045974059975290000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3863,13 +3914,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 675305358267539876}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3526146435802395541}
+        m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+        m_MethodName: BackToOriginalScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3887,7 +3950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSizeMultiplier: 1.3
+  elementSizeMultiplier: 1.2
   animationDuration: 0.1
 --- !u!1 &5766013396060730284
 GameObject:
@@ -4084,6 +4147,8 @@ GameObject:
   - component: {fileID: 5577426769731448159}
   - component: {fileID: 3310241799021220162}
   - component: {fileID: 4818253961944502114}
+  - component: {fileID: 6686269144881031070}
+  - component: {fileID: 1454935083698948586}
   m_Layer: 0
   m_Name: Resolutions_ddm
   m_TagString: Untagged
@@ -4212,6 +4277,33 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &6686269144881031070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310918507159405719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72b5ae3bd19a7a45888dd5ad743e7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 4818253961944502114}
+--- !u!114 &1454935083698948586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310918507159405719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementSizeMultiplier: 1.2
+  animationDuration: 0.2
 --- !u!1 &6446060286540142445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,6 +4464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5661513706070586629}
   - component: {fileID: 3836775500827981220}
+  - component: {fileID: 4118768662715331851}
   m_Layer: 0
   m_Name: SFX_Slider
   m_TagString: Untagged
@@ -4453,6 +4546,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4118768662715331851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668315336841183836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementSizeMultiplier: 1.2
+  animationDuration: 0.2
 --- !u!1 &6791637518856668373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,7 +4579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1552192166946123425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4574,7 +4681,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8936978811698068838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 675305358267539876}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ActivateSettingsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8040345804132783345}
+        m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+        m_MethodName: BackToOriginalScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8040345804132783345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4587,7 +4718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSizeMultiplier: 1.3
+  elementSizeMultiplier: 1.2
   animationDuration: 0.1
 --- !u!1 &6833847547516393048
 GameObject:
@@ -4635,6 +4766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114240889720807183}
   - component: {fileID: 7445502929976963056}
+  - component: {fileID: 925057979995722823}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -4712,6 +4844,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &925057979995722823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999037144603173164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02ffa330eb68bd4a8a7274288df0a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedColor: {r: 0.5568628, g: 0.7490196, b: 0.8941177, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  imageComponent: {fileID: 0}
 --- !u!1 &7140881893172661943
 GameObject:
   m_ObjectHideFlags: 0
@@ -4946,6 +5093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1565674012933299041}
   - component: {fileID: 6453579257420239950}
+  - component: {fileID: 4711606224672994210}
   m_Layer: 0
   m_Name: Music_Slider
   m_TagString: Untagged
@@ -5027,6 +5175,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4711606224672994210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485577648811556310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementSizeMultiplier: 1.2
+  animationDuration: 0.2
 --- !u!1 &7488497566062547331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,6 +5369,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3872725375168823392}
   - component: {fileID: 7140561254079132703}
+  - component: {fileID: 2449120219176609963}
+  - component: {fileID: 6768229346245106374}
   m_Layer: 0
   m_Name: Fullscreen_toogle
   m_TagString: Untagged
@@ -5283,6 +5447,32 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2449120219176609963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888243386888787610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cde14b553733784a84b57e392ab673d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6768229346245106374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888243386888787610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb46d72d3b76c43a60659ec62415e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementSizeMultiplier: 1.2
+  animationDuration: 0.2
 --- !u!1 &7941456191491609584
 GameObject:
   m_ObjectHideFlags: 0
@@ -6223,6 +6413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662415817479183249}
   - component: {fileID: 675305358267539876}
+  - component: {fileID: 5490652247500173552}
   m_Layer: 0
   m_Name: ---UIInGame---
   m_TagString: Untagged
@@ -6264,8 +6455,28 @@ MonoBehaviour:
   pauseMenu: {fileID: 8244264000874464633}
   settingsMenu: {fileID: 8818561412864908944}
   menuHolder: {fileID: 158762282476737470}
-  resumeButton: {fileID: 1655048781022941067}
-  pauseRect: {fileID: 2623052485902958102}
+  allMainButtons:
+  - {fileID: 1655048781022941067}
+  - {fileID: 6791637518856668373}
+  - {fileID: 2269300173901835142}
+  - {fileID: 5700737064064148755}
+  preselectedOnSetting: {fileID: 7888243386888787610}
+--- !u!114 &5490652247500173552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897598895489516264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffd2bdb0768b048b1dea3dd143e2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mixer: {fileID: 24100000, guid: 2c47fbdd4d6a183438eab23aa175be35, type: 2}
+  MasterSlider: {fileID: 5476457710645182659}
+  MusicSlider: {fileID: 6453579257420239950}
+  SFXSlider: {fileID: 3836775500827981220}
 --- !u!1 &8908804724422462032
 GameObject:
   m_ObjectHideFlags: 0

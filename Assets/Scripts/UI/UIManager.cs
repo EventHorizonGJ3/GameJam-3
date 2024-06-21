@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     {
         menuHolderOriginPos = menuHolder.anchoredPosition;
     }
-       
+
 
     private void OnEnable()
     {
@@ -45,14 +45,18 @@ public class UIManager : MonoBehaviour
         if (GameManager.gameOnPause)
         {
             pauseMenu.SetActive(true);
+            MainButtonsSetActive(true);
             StartCoroutine(MenuLerpIn());
             if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(allMainButtons[0]);
             else EventSystem.current.SetSelectedGameObject(null);
+            AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_OpenPauseMenu);
         }
 
         if (!GameManager.gameOnPause)
         {
             StartCoroutine(MenuLerpOut());
+            settingsMenu.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
     }
@@ -101,7 +105,9 @@ public class UIManager : MonoBehaviour
     {
         MainButtonsSetActive(false);
         settingsMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(preselectedOnSetting);
+        if (GameManager.usingGamePad)
+            EventSystem.current.SetSelectedGameObject(preselectedOnSetting);
+        AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
     }
 
     public void BackToPause()
@@ -109,21 +115,25 @@ public class UIManager : MonoBehaviour
         MainButtonsSetActive(true);
         settingsMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(allMainButtons[0]);
+        AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
     }
 
     public void ResumeGame()
     {
         GameManager.OnResume?.Invoke();
+        AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
     }
 
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
+        AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
     }
 
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
     }
 
 
