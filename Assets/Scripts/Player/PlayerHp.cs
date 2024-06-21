@@ -38,8 +38,9 @@ public class PlayerHp : MonoBehaviour, IDamageable
 		var _healTick = _heal / _dur;
 		while (_healAmount < _heal)
 		{
-			HP += _healTick;
-			_healAmount += _healTick;
+			HP += _healTick * Time.deltaTime;
+			_healAmount += _healTick * Time.deltaTime;
+			Debug.Log("healAmount = " + _healAmount);
 			UpdateHpBar();
 			yield return null;
 		}
