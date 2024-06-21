@@ -11,6 +11,8 @@ public class Score : MonoBehaviour
 	[SerializeField] float comboDur;
 	[Tooltip("how long it takes for the Gameobject canvas to dissapear")]
 	[SerializeField] float dissapearAfterTime;
+	[SerializeField, Range(0.0001f, 0.9f)] float multPerHits;
+	float totMult;
 	[SerializeField] GameObject canvas;
 	float score = 0;
 	float totDmg;
@@ -43,13 +45,14 @@ public class Score : MonoBehaviour
 
 		totDmg += _Dmg;
 		numberOfHits++;
+		totMult = 1 + numberOfHits * multPerHits;
 		UpdateNumbers();
 		coroutine = StartCoroutine(Timer());
 	}
 	void UpdateNumbers()
 	{
 		totDmgTxt.text = totDmg.ToString();
-		numberOfHitsTxt.text = numberOfHits.ToString();
+		numberOfHitsTxt.text = totMult.ToString();
 	}
 	IEnumerator Timer()
 	{
@@ -62,13 +65,14 @@ public class Score : MonoBehaviour
 			yield return null;
 		}
 
-		score += totDmg * numberOfHits;
+		score += totDmg * totMult;
 		OnScoreChanged?.Invoke(score);
 		scoreTxt.text = $"{score}";
 		totDmg = 0;
 		numberOfHits = 0;
-		UpdateNumbers();
+		totMult = 0;
 		time = 0;
+		UpdateNumbers();
 		while (time < dissapearAfterTime)
 		{
 			time += Time.deltaTime;

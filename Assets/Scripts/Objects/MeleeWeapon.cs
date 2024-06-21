@@ -57,6 +57,7 @@ public class MeleeWeapon : Weapon
 
 	protected virtual void ActivateKnockBack()
 	{
+		this.UpdateTrigger(true);
 		currentKnockBack = WeaponSo.KnockBackPower;
 		otherWeapon?.ActivateKnockBack();
 	}

@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	[SerializeField] EnemyType enemyType;
 
 	[Header("Stager Settings: ")]
-	[SerializeField] float stagerDur;
+	[SerializeField, Min(1f)] float stagerDur;
 
 
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
