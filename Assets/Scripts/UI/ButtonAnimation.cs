@@ -96,5 +96,10 @@ public class ButtonAnimation : MonoBehaviour
         button.transform.localScale = targetScale;
     }
 
+    public void BackToOriginalSize()
+    {
+        button.transform.localScale = originalButtonScale;
+    }
+
     
 }

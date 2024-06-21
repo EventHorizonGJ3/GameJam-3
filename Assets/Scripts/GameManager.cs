@@ -9,6 +9,7 @@ public partial class GameManager : MonoBehaviour
     //Events
     
     public static Action OnPause;
+    public static Action OnResume;
 
     public static bool PlayerIsAttacking;
     public static bool IsHoldingMelee;
@@ -27,14 +28,17 @@ public partial class GameManager : MonoBehaviour
     private void Start()
     {
         gameOnPause = false; usingGamePad = false;
+        InputManager.SwitchPlayerInputs();
     }
     private void OnEnable()
     {
         InputManager.ActionMap.UI_Toggle.Pause.performed += PauseFunction;
+        OnResume += UnPauseByUI;
     }
     private void OnDisable()
     {
         InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
+        OnResume -= UnPauseByUI;
     }
 
     void PauseFunction(InputAction.CallbackContext used)
@@ -44,10 +48,20 @@ public partial class GameManager : MonoBehaviour
 
         gameOnPause = !gameOnPause;
         
-        if(gameOnPause ) InputManager.SwitchToUIInputs(); OnPause?.Invoke(); Time.timeScale = 0;
-        if(!gameOnPause ) InputManager.SwitchPlayerInputs(); OnPause?.Invoke(); Time.timeScale = 1;
+        if(gameOnPause ) InputManager.SwitchToUIInputs();Time.timeScale = 0;
+        if(!gameOnPause ) InputManager.SwitchPlayerInputs();Time.timeScale = 1;
+        OnPause?.Invoke();
 
         Debug.Log("uso del gamepad:"+usingGamePad);
+    }
+
+    void UnPauseByUI()
+    {
+        gameOnPause = !gameOnPause;
+
+        if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0;
+        if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
+        OnPause?.Invoke();
     }
 
   
