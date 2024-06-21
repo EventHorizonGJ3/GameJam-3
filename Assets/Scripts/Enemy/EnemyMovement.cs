@@ -49,6 +49,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void OnDisable()
 	{
 		GameManager.OnPause += Pause;
+		canMove = true;
+		isKnockbacked = false;
 	}
 
 	private void Pause()

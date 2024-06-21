@@ -11,6 +11,15 @@ public class EnemySpawner : MonoBehaviour
 
     int currentWaveIndex = 0;
 
+    private void OnEnable()
+    {
+        Score.OnScoreChanged += CheckScore;
+    }
+    private void OnDisable()
+    {
+        Score.OnScoreChanged -= CheckScore;
+    }
+
     private void Start()
     {
         if (waves.Count > 0)
@@ -101,6 +110,16 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    void CheckScore(float score)
+    {
+        if (currentWaveIndex + 1 >= waves.Count) return;
+        if (score >= waves[currentWaveIndex+1].scoreForThisWave)
+        {
+            SetCurrentWave(currentWaveIndex+1);
+        }
+        Debug.Log("Wave corrente "+currentWaveIndex);
+    }
+
     void SetCurrentWave(int index)
     {
         if (index >= 0 && index < waves.Count)
@@ -118,6 +137,7 @@ public class EnemySpawner : MonoBehaviour
     public class Wave
     {
         [Tooltip("Nome dell'onda")]
+        public float scoreForThisWave;
         public string waveName;
         public WaveProbabilities probabilities;
     }

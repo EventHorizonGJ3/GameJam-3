@@ -108,7 +108,7 @@ public class EnemyCombo : Combo
 	public void CheckAttack(out bool canMove)
 	{
 		var dir = (GameManager.enemyTargetPosition.position - transform.position).normalized;
-		Debug.Log("distance= " + Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) + "\nAttackRange= " + attackRange);
+		//Debug.Log("distance= " + Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) + "\nAttackRange= " + attackRange);
 		if (Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) < attackRange &&
 			Physics.Raycast(transform.position + Vector3.up * 0.5f, dir, attackRange))
 		{
