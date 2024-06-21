@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 4611325273315985939}
   - component: {fileID: 6099717752742987842}
   - component: {fileID: 3466617654054236655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fem_client
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,6 +585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 13
+  enemyType: 0
+  stagerDur: 0
   knockbackDur: 3
   backRayHight: 1
   backRayLenght: 0.5
@@ -669,6 +671,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7766768217581603765}
     m_Modifications:
+    - target: {fileID: 664001773609813258, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 664001773609813258, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664001773609813258, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664001773609813258, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2695891455479344331, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
       propertyPath: m_Name
       value: Hands
@@ -713,6 +731,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6962483463911899645, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962483463911899645, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962483463911899645, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -720,9 +750,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 44136454068907771, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8650260514565389913}
-    - targetCorrespondingSourceObject: {fileID: 44136454068907771, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 962710622027693165, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2747451421201882925}
+      addedObject: {fileID: 6619021965339386838}
   m_SourcePrefab: {fileID: 100100000, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
 --- !u!1 &2719621990501513619 stripped
 GameObject:
@@ -743,27 +773,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponSo: {fileID: 11400000, guid: c016de0ef2db9cd42820fac74d1c36f7, type: 2}
   <IsEnemyWeapon>k__BackingField: 1
---- !u!135 &2747451421201882925
-SphereCollider:
+  otherWeapon: {fileID: 6619021965339386838}
+--- !u!1 &2918042426217491205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 962710622027693165, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
+  m_PrefabInstance: {fileID: 2675916725387712360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6619021965339386838
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2719621990501513619}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.3
-  m_Center: {x: 0.0000038072467, y: -0.000000011175871, z: 0.000001911074}
+  m_GameObject: {fileID: 2918042426217491205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f539386945fcf419853c597c8a008c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponSo: {fileID: 0}
+  <IsEnemyWeapon>k__BackingField: 0
+  otherWeapon: {fileID: 0}
 --- !u!4 &8705096124409562878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6767910613114753430, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}

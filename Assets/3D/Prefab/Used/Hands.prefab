@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5536900506248007615}
   - component: {fileID: 5643699224880934762}
   - component: {fileID: 8499171327940666714}
+  - component: {fileID: 6962483463911899645}
   m_Layer: 0
   m_Name: Hand_Dx
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6962483463911899645
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44136454068907771}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0.0000038072467, y: -0.000000011175871, z: 0.000001911074}
 --- !u!1 &962710622027693165
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +116,7 @@ GameObject:
   - component: {fileID: 3837505220372445195}
   - component: {fileID: 1117440293880387945}
   - component: {fileID: 8659934996470436663}
+  - component: {fileID: 664001773609813258}
   m_Layer: 0
   m_Name: Hand_sx
   m_TagString: Untagged
@@ -166,6 +189,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &664001773609813258
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962710622027693165}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0.0000038072467, y: -0.000000011175871, z: 0.000001911074}
 --- !u!1 &2695891455479344331
 GameObject:
   m_ObjectHideFlags: 0

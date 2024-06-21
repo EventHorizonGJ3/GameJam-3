@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-	bool firstHit;
-	protected override void Awake()
+	protected bool firstHit;
+	[SerializeField] OtherWeapon otherWeapon;
+	private protected override void Awake()
 	{
 		base.Awake();
+		if (otherWeapon != null)
+			otherWeapon.WeaponSo = WeaponSo;
 	}
 
 	protected override void OnEnable()
 	{
-		LastAttack += ActivateKnockBack;
+		this.LastAttack += ActivateKnockBack;
 		base.OnEnable();
 	}
 
@@ -22,7 +25,6 @@ public class MeleeWeapon : Weapon
 
 	protected override void OnTriggerEnter(Collider _Other)
 	{
-
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
 			hp.colliderTransform = transform.root;
@@ -43,30 +45,37 @@ public class MeleeWeapon : Weapon
 	protected override void OnBreak()
 	{
 		base.OnBreak();
+		if (otherWeapon != null)
+			otherWeapon.transform.parent = transform;
 	}
 
-	protected override void OnGrabbed()
+	protected override void OnGrabbed(Transform _leftHand)
 	{
-		base.OnGrabbed();
+		base.OnGrabbed(_leftHand);
+		otherWeapon?.OnGrabbed(_leftHand);
 	}
 
-	private void ActivateKnockBack()
+	protected virtual void ActivateKnockBack()
 	{
 		currentKnockBack = WeaponSo.KnockBackPower;
+		otherWeapon?.ActivateKnockBack();
 	}
 
 	protected override void OnAttack(int _Dmg)
 	{
 		firstHit = true;
+		otherWeapon?.OnAttack(_Dmg);
 		base.OnAttack(_Dmg);
 	}
 	protected override void OnAttackEnd()
 	{
 		base.OnAttackEnd();
+		otherWeapon?.OnAttackEnd();
 	}
 	protected override void UpdateTrigger(bool _X)
 	{
 		base.UpdateTrigger(_X);
+		otherWeapon?.UpdateTrigger(_X);
 	}
 
 }

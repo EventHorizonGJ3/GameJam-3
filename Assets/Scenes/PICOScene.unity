@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EenemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 92595075782003512, guid: cc58509079d05c04197e6fd1790fb721, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5582908576059129961, guid: cc58509079d05c04197e6fd1790fb721, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -421,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 9171392433904743944, guid: cc58509079d05c04197e6fd1790fb721, type: 3}
       propertyPath: waves.Array.data[0].probabilities.Army_Chance
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171392433904743944, guid: cc58509079d05c04197e6fd1790fb721, type: 3}
+      propertyPath: waves.Array.data[0].probabilities.Police_Chance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -618,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 8006747516499901111, guid: 19e116acaf9d2e74e95dae7e3c77d2d0, type: 3}
       propertyPath: m_Name
       value: EnemyPooler
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006747516499901111, guid: 19e116acaf9d2e74e95dae7e3c77d2d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -877,6 +889,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5753478380427097972, guid: 8dd092e60ab7e274ab3fa012200e060a, type: 3}
   m_PrefabInstance: {fileID: 671556140}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1511191559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1676754478771714258, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+  m_PrefabInstance: {fileID: 2037667511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1511191563
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511191559}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1519866985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6444041810784425536, guid: 1982c138f671d2d4aa84008fd11f5733, type: 3}
@@ -1065,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3825568938514177747, guid: d223e5743967f084bb7649a1d53fb219, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5057810547271314614, guid: d223e5743967f084bb7649a1d53fb219, type: 3}
       propertyPath: enemy_Army
       value: 
@@ -1206,7 +1248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6161917368936683894, guid: 0063c5f3ac4f9db40bc1fa5e4b61ba3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.088171
+      value: 25.59
       objectReference: {fileID: 0}
     - target: {fileID: 6161917368936683894, guid: 0063c5f3ac4f9db40bc1fa5e4b61ba3f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1214,7 +1256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6161917368936683894, guid: 0063c5f3ac4f9db40bc1fa5e4b61ba3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.16738892
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 6161917368936683894, guid: 0063c5f3ac4f9db40bc1fa5e4b61ba3f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1353,6 +1395,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.62
       objectReference: {fileID: 0}
+    - target: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: triggers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: triggers.Array.data[0]
+      value: 
+      objectReference: {fileID: 2068745970}
+    - target: {fileID: 5086621310998597556, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      propertyPath: triggers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1511191563}
     - target: {fileID: 6751933107411327536, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1392,7 +1446,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1646157851283929796, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 962364}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1676754478771714258, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1511191563}
   m_SourcePrefab: {fileID: 100100000, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
 --- !u!1001 &2039129549
 PrefabInstance:
@@ -1451,6 +1508,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce005686d7e38cc43a91bd80fde952b2, type: 3}
+--- !u!135 &2068745970 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 532607607859916032, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
+  m_PrefabInstance: {fileID: 2037667511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2119610454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8295380539629602531, guid: 0dd0eb470825b0f49a3435025616697e, type: 3}

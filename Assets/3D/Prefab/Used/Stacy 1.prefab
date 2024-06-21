@@ -375,6 +375,8 @@ GameObject:
   - component: {fileID: 6672533890241405405}
   - component: {fileID: 2669623745131375566}
   - component: {fileID: 8383702755473667235}
+  - component: {fileID: 5479001201697006115}
+  - component: {fileID: 7382432168784436047}
   m_Layer: 0
   m_Name: Hand_sx
   m_TagString: Untagged
@@ -448,6 +450,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5479001201697006115
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634263873353273859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7382432168784436047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634263873353273859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f539386945fcf419853c597c8a008c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponSo: {fileID: 0}
+  <IsEnemyWeapon>k__BackingField: 0
+  otherWeapon: {fileID: 0}
 --- !u!1 &3546472562317544253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1237,7 @@ GameObject:
   - component: {fileID: 2033315250729458068}
   - component: {fileID: 8171428306144270271}
   - component: {fileID: 4149220613960017731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stacy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1235,6 +1273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 13
+  enemyType: 3
+  stagerDur: 0
   knockbackDur: 3
   backRayHight: 1
   backRayLenght: 0.5
@@ -1411,6 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponSo: {fileID: 11400000, guid: c016de0ef2db9cd42820fac74d1c36f7, type: 2}
   <IsEnemyWeapon>k__BackingField: 1
+  otherWeapon: {fileID: 7382432168784436047}
 --- !u!135 &454349213578003267
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
 	public bool UseScoreBar;
 	[SerializeField] Image bar;
 	Coroutine coroutine;
-
+	public static Action<float> OnScoreChanged;
 	public static Action<int> OnDmg;
 	private void OnEnable()
 	{
@@ -63,6 +63,7 @@ public class Score : MonoBehaviour
 		}
 
 		score += totDmg * numberOfHits;
+		OnScoreChanged?.Invoke(score);
 		scoreTxt.text = $"{score}";
 		totDmg = 0;
 		numberOfHits = 0;
