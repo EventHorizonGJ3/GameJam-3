@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff41eb1a46e8694fa14935ece2f111f, type: 3}
+  m_Name: AudioDatabase
+  m_EditorClassIdentifier: 
+  Music_nome: {fileID: 0}
+  SFX_OpenPauseMenu: {fileID: 8300000, guid: c33f51290a917a147927490a8d5fb9a7, type: 3}
+  SFX_UI_Navigate: {fileID: 8300000, guid: 21e25a38ab2262c47985373e23d2ce78, type: 3}
+  SFX_UI_Select: {fileID: 8300000, guid: 539afa5c6ccde074f819d60968761d11, type: 3}

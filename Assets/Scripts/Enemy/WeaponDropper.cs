@@ -14,6 +14,7 @@ public class WeaponDropper : MonoBehaviour
     {
         var x = GetComponent<EnemyCombo>();
         droppableWeapon = x.defaultWeapon.WeaponSo;
+        init = 0;
     }
 
     private void OnDisable()
