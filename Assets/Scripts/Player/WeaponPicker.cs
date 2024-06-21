@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class WeaponPicker : MonoBehaviour
 {
-	[SerializeField] Transform handTransfrom;
+	[SerializeField] Transform rightHand;
+	[SerializeField] Transform leftHand;
 	[SerializeField] LayerMask weaponLayer;
 	[SerializeField] PlayerComboM playerComboM;
 
@@ -82,8 +83,9 @@ public class WeaponPicker : MonoBehaviour
 			}
 			currentWeapon = pickableWeapon.Transform.gameObject;
 
-			pickableWeapon.Transform.position = handTransfrom.position; // mette l'arma in mano
-			pickableWeapon.Transform.parent = handTransfrom;
+			pickableWeapon.Transform.position = rightHand.position; // mette l'arma in mano
+			pickableWeapon.MyWeapon.Grabbed?.Invoke(leftHand);
+			pickableWeapon.Transform.parent = rightHand;
 
 			weaponSpawner?.StartRespawn(); // triggera il respawn dell'arma
 			playerComboM.UpdateCurrentWeapon(pickableWeapon.MyWeapon);

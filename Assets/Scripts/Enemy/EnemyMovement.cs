@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +13,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	[field: Header("Settings: ")]
 	[field: SerializeField] public float HP { get; set; }
-	EnemyType enemyType = EnemyType.MANAGER;
+	[SerializeField] EnemyType enemyType;
+
+	[Header("Stager Settings: ")]
+	[SerializeField] float stagerDur;
+
+
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
 	[Header("knockback Settings")]
 	[SerializeField] float knockbackDur = 3;
@@ -25,6 +32,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	Vector3 startPos;
 	Vector3 endPos;
 	Vector3 dir;
+	bool canMove = true;
+	Coroutine stager;
 
 
 	private void Awake()
@@ -32,18 +41,31 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		TryGetComponent(out agent);
 	}
 
+	private void OnEnable()
+	{
+		GameManager.OnPause += Pause;
+	}
+
+	private void OnDisable()
+	{
+		GameManager.OnPause += Pause;
+	}
+
+	private void Pause()
+	{
+		if (GameManager.gameOnPause)
+		{
+			agent.SetDestination(transform.position);
+		}
+	}
+
 	private void Update()
 	{
+		if (GameManager.gameOnPause)
+			return;
+
 		if (isKnockbacked)
 		{
-			if (Physics.Raycast(transform.position + Vector3.up * backRayHight, dir, out RaycastHit hit, backRayLenght, obstacleLayer))
-			{
-
-				isKnockbacked = false;
-				backPower = 0;
-				return;
-			}
-
 			if (knockbackTimer < knockbackDur)
 			{
 				knockbackTimer += Time.deltaTime;
@@ -56,12 +78,18 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 				backPower = 0;
 				agent.enabled = true;
 			}
+			return;
+		}
+		if (canMove)
+		{
+			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
 		else
 		{
-			combo.CheckAttack();
-			agent.SetDestination(GameManager.enemyTargetPosition.position);
+			agent.SetDestination(transform.position);
 		}
+		transform.LookAt(GameManager.enemyTargetPosition);
+		combo.CheckAttack(out canMove);
 	}
 
 	public void Knockback(float _Power)
@@ -76,7 +104,6 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		dir = (startPos - _ColliderStartPos).normalized;
 		dir.y = 0;
 		backPower = _Power;
-
 		endPos = startPos + dir * _Power;
 
 		isKnockbacked = true;
@@ -85,6 +112,10 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	public void NoHP()
 	{
+		isKnockbacked = false;
+		knockbackTimer = 0;
+		canMove = true;
+		StopAllCoroutines();
 		gameObject.SetActive(false);
 	}
 
@@ -94,12 +125,27 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
 		RageBar.OnRage?.Invoke();
+		if (stager != null)
+		{
+			StopCoroutine(stager);
+			stager = null;
+		}
+		stager = StartCoroutine(HitStager());
+
 		if (HP <= 0)
 		{
 			NoHP();
 		}
 	}
 
+	private IEnumerator HitStager()
+	{
+		canMove = false;
+		yield return new WaitForSeconds(stagerDur);
+		canMove = true;
+	}
+
+#if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.yellow;
@@ -108,6 +154,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		Debug.DrawRay(transform.position + Vector3.up * backRayHight, dir * backPower);
 	}
 
+#endif
 
 }
 

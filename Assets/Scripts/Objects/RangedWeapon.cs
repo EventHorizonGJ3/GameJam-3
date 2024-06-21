@@ -7,7 +7,8 @@ public class RangedWeapon : Weapon
 	Vector3 startPos;
 
 	float timer = 0;
-	protected override void Awake()
+
+	private protected override void Awake()
 	{
 		base.Awake();
 	}
@@ -67,9 +68,9 @@ public class RangedWeapon : Weapon
 
 	}
 
-	protected override void OnGrabbed()
+	protected override void OnGrabbed(Transform _leftHand)
 	{
-		base.OnGrabbed();
+		base.OnGrabbed(_leftHand);
 	}
 	protected override void OnTriggerEnter(Collider _Other)
 	{ }

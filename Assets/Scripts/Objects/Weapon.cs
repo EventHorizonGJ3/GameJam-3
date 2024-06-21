@@ -10,8 +10,10 @@ public class Weapon : MonoBehaviour, IPickable
 	protected float currentKnockBack = 0;
 	protected Collider trigger;
 	protected IDamageable hp;
+	protected Vector3 initialPos;
 	[SerializeField] public Weapon MyWeapon { get => this; set => MyWeapon = value; }
 	public WeaponsSO WeaponSo;
+
 	[field: SerializeField] public bool IsEnemyWeapon { get; set; }
 
 	//- "Actions: "
@@ -20,22 +22,25 @@ public class Weapon : MonoBehaviour, IPickable
 	public Action AttackEnd;
 	public Action LastAttack;
 	public Action Break;
-	public Action Grabbed;
+	public Action<Transform> Grabbed;
 	public Action StartAttack;
 
-	protected virtual void Awake()
+	protected virtual private void Awake()
 	{
-		this.TryGetComponent(out this.trigger);
+		this.trigger = this.GetComponent<Collider>();
+
 	}
+
 	protected virtual void OnEnable()
 	{
+		this.initialPos = transform.position;
 		this.Grabbed += this.OnGrabbed;
 		this.Attack += this.OnAttack;
 		this.AttackEnd += this.OnAttackEnd;
 		this.Break += this.OnBreak;
 	}
 
-	protected virtual void OnGrabbed()
+	protected virtual void OnGrabbed(Transform _leftHand)
 	{
 		this.UpdateTrigger(false);
 	}
@@ -48,10 +53,11 @@ public class Weapon : MonoBehaviour, IPickable
 		this.AttackEnd -= this.OnAttackEnd;
 		this.Break -= this.OnBreak;
 		this.Grabbed -= this.OnGrabbed;
+		this.UpdateTrigger(true);
 	}
 	protected virtual void OnBreak()
 	{
-		this.transform.parent = null;
+		this.transform.parent = base.transform;
 		this.gameObject.SetActive(false);
 	}
 	protected virtual void OnAttack(int _Dmg)
@@ -59,6 +65,7 @@ public class Weapon : MonoBehaviour, IPickable
 		this.currentKnockBack = 0;
 		this.myDmg = _Dmg;
 		this.UpdateTrigger(true);
+
 	}
 
 	protected virtual void OnAttackEnd()
@@ -68,7 +75,9 @@ public class Weapon : MonoBehaviour, IPickable
 	}
 	protected virtual void UpdateTrigger(bool _X)
 	{
+
 		this.trigger.enabled = _X;
+
 	}
 
 	protected virtual void OnTriggerEnter(Collider _Other)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,11 +27,9 @@ public class RageBar : MonoBehaviour
 	[Tooltip("increments by value barReserDecrese every seconds the bar resets")]
 	[SerializeField] float secondExtraDecrese;
 
-
 	public static Action OnRage;
 	public static Action<int> OnBerserkExtraDmg;
 	public static Action<float, float> OnBerserkHeal;
-
 
 	float lastBerserkTime;
 	float currentBar = 0;
@@ -41,13 +38,14 @@ public class RageBar : MonoBehaviour
 	Vector2 lastRage;
 	float lastTot = 1;
 	bool isBerserkActive;
-	Coroutine coroutine;
+	Coroutine resetCoroutine;
 
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;
 		currentBar = 0;
 		startDecrese = barResetDecrese;
+		rageBar.fillAmount = currentBar / fullBarAmount;
 	}
 	private void OnEnable()
 	{
@@ -68,6 +66,7 @@ public class RageBar : MonoBehaviour
 				isBerserkActive = false;
 			}
 		}
+
 		rageBar.fillAmount = currentBar / fullBarAmount;
 	}
 	private void AddRage()
@@ -75,22 +74,24 @@ public class RageBar : MonoBehaviour
 		if (isBerserkActive)
 			return;
 
-		if (coroutine != null)
+		if (resetCoroutine != null)
 		{
-			StopCoroutine(coroutine);
-			coroutine = null;
+			StopCoroutine(resetCoroutine);
+			barResetDecrese = startDecrese;
+			resetCoroutine = null;
 		}
 
 		lastRage.y = lastRage.x;
 		lastRage.x = lastTot;
 		lastTot = lastRage.x + lastRage.y;
 		currentBar += lastTot;
+
 		if (currentBar > fullBarAmount)
 		{
 			currentBar = fullBarAmount;
 		}
 
-		coroutine = StartCoroutine(ResetRage());
+		resetCoroutine = StartCoroutine(ResetRage());
 	}
 
 	private IEnumerator ResetRage()
@@ -106,6 +107,7 @@ public class RageBar : MonoBehaviour
 			barResetDecrese += secondExtraDecrese * Time.deltaTime;
 			yield return null;
 		}
+		barResetDecrese = startDecrese;
 
 		currentBar = 0;
 	}

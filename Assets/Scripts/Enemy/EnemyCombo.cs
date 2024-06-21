@@ -15,6 +15,10 @@ public class EnemyCombo : Combo
 	protected override void OnDisable()
 	{
 		base.OnDisable();
+		comboCounter = 0;
+		lastAttackTime = 0;
+		lastComboTime = 0;
+		extraDmg = 0;
 	}
 
 	protected override void Start()
@@ -89,15 +93,7 @@ public class EnemyCombo : Combo
 	{
 		if (currentWeapon != null)
 		{
-			if (currentWeapon.WeaponSo.IsRanged)
-			{
-				currentWeapon.StartAttack -= RangedAttack;
-			}
-			else
-			{
-				currentWeapon.StartAttack -= MeleeAttack;
-			}
-
+			currentWeapon.StartAttack -= MeleeAttack;
 		}
 
 		currentWeapon = _NewWeapon;
@@ -105,27 +101,24 @@ public class EnemyCombo : Combo
 		lastComboTime = 0;
 		lastAttackTime = 0;
 
-		if (currentWeapon.WeaponSo.IsRanged)
-		{
-			currentWeapon.StartAttack += RangedAttack;
-			animStopTime = 0.7f;
-		}
-		else
-		{
-			currentWeapon.StartAttack += MeleeAttack;
-			animStopTime = 0.9f;
-		}
-
+		currentWeapon.StartAttack += MeleeAttack;
+		animStopTime = 0.9f;
 	}
 
-	public void CheckAttack()
+	public void CheckAttack(out bool canMove)
 	{
-		EndAttack();
 		var dir = (GameManager.enemyTargetPosition.position - transform.position).normalized;
+		Debug.Log("distance= " + Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) + "\nAttackRange= " + attackRange);
 		if (Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) < attackRange &&
 			Physics.Raycast(transform.position + Vector3.up * 0.5f, dir, attackRange))
 		{
+			canMove = false;
 			currentWeapon.StartAttack?.Invoke();
+			EndAttack();
+		}
+		else
+		{
+			canMove = true;
 		}
 	}
 	protected override int Damage()
