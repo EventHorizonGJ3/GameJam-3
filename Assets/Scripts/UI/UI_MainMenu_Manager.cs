@@ -10,21 +10,30 @@ using UnityEngine.InputSystem.Controls;
 public class UI_MainMenu_Manager : MonoBehaviour
 {
     //Refs
-    [Header("References")]
+    [Header("References: BUTTONS")]
     [SerializeField] TMP_Text init_text;
-    [SerializeField] GameObject mainMenu;
     [SerializeField] RectTransform playButton;
     [SerializeField] RectTransform optionsButton;
     [SerializeField] RectTransform controlsButton;
     [SerializeField] RectTransform creditsButton;
     [SerializeField] RectTransform quitButton;
+    [Header("Canvas")]
+    [SerializeField] GameObject menuCanvas;
+    [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject settingsMenu;
+    [SerializeField] GameObject controlsMenu;
+    [SerializeField] GameObject creditsMenu;
+    [SerializeField] GameObject prologueCanvas;
+
+
 
     bool init;
     bool usingGamepad;
 
     private void Awake()
     {
-        InputManager.SwitchToUIInputs();
+        InputManager.ActionMap.UI_Toggle.Enable();
+        InputManager.ActionMap.Player.Disable();
         InputManager.ActionMap.UI_Toggle.AnyKey.Enable();
     }
 
@@ -39,7 +48,16 @@ public class UI_MainMenu_Manager : MonoBehaviour
         InputManager.ActionMap.UI_Toggle.AnyKey.started -= CheckTypeOfDevice;
     }
 
-
+    private void Start()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+        prologueCanvas.SetActive(false);
+        
+    }
+        
 
 
 
@@ -57,7 +75,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
             usingGamepad = false;
         }
         InitMenu();
-        InputManager.ActionMap.UI_Toggle.AnyKey.Disable();
+        InputManager.ActionMap.UI_Toggle.Disable();
     }
 
     void InitMenu()
@@ -65,7 +83,9 @@ public class UI_MainMenu_Manager : MonoBehaviour
         //TODO: play a sound for pressing start
         init_text.gameObject.SetActive(false);
         mainMenu.SetActive(true);
-        if (usingGamepad) EventSystem.current.SetSelectedGameObject(playButton.gameObject);
-        
+        if (init && usingGamepad) EventSystem.current.SetSelectedGameObject(playButton.transform.gameObject);
+        else if(init && !usingGamepad) EventSystem.current.SetSelectedGameObject(null);
+        Debug.Log(EventSystem.current);
+
     }
 }
