@@ -29,6 +29,7 @@ public partial class GameManager : MonoBehaviour
     {
         gameOnPause = false; usingGamePad = false;
         InputManager.SwitchPlayerInputs();
+        InputManager.ActionMap.UI_Toggle.Enable();
     }
     private void OnEnable()
     {

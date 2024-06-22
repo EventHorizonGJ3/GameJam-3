@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 
 public class UI_MainMenu_Manager : MonoBehaviour
 {
@@ -124,6 +125,6 @@ public class UI_MainMenu_Manager : MonoBehaviour
     }
     public void PlayButton()
     {
-
+        SceneManager.LoadScene(1);
     }
 }
