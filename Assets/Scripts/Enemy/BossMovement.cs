@@ -1,40 +1,9 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
-
-public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
+public class BossMovement : EnemyMovement
 {
-	[Header("References:")]
-	protected NavMeshAgent agent;
-	public Transform colliderTransform { get; set; }
-	public Transform Transform { get => transform; }
-
-	[field: Header("Settings: ")]
-	[field: SerializeField] public float HP { get; set; }
-	[SerializeField] protected EnemyType enemyType;
-
-	[Header("Stager Settings: ")]
-	[SerializeField, Min(1f)] protected float stagerDur;
-
-
-	public EnemyType Type { get => enemyType; private set => enemyType = value; }
-	[Header("knockback Settings")]
-	[SerializeField] protected float knockbackDur = 3;
-	[SerializeField] protected float backRayHight;
-	[SerializeField] protected float backRayLenght;
-	[SerializeField] protected LayerMask obstacleLayer;
-	[SerializeField] protected EnemyCombo combo;
-	protected float backPower;
-	protected float knockbackTimer = 0;
-	protected bool isKnockbacked;
-	protected Vector3 startPos;
-	protected Vector3 endPos;
-	protected Vector3 dir;
-	protected bool canMove = true;
-	protected Coroutine stager;
-
+	[SerializeField] BossesSo bossSo;
 
 	private void Awake()
 	{
@@ -44,6 +13,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void OnEnable()
 	{
 		GameManager.OnPause += Pause;
+		bossSo.OnSpawn?.Invoke(HP);
 	}
 
 	private void OnDisable()
@@ -80,9 +50,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 				backPower = 0;
 				agent.enabled = true;
 			}
-			return;
 		}
-		if (canMove)
+		else if (canMove)
 		{
 			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
@@ -95,7 +64,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		combo.CheckAttack(out canMove);
 	}
 
-	public virtual void Knockback(float _Power)
+	public override void Knockback(float _Power)
 	{
 		if (_Power <= 0)
 			return;
@@ -113,21 +82,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		// ("kncokback");
 	}
 
-	public virtual void NoHP()
+	public override void TakeDamage(int _Dmg)
 	{
-		isKnockbacked = false;
-		knockbackTimer = 0;
-		canMove = true;
-		StopAllCoroutines();
-		gameObject.SetActive(false);
-	}
-
-	public virtual void TakeDamage(int _Dmg)
-	{
-		Debug.Log(_Dmg);
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
 		RageBar.OnRage?.Invoke();
+		bossSo.OnHit?.Invoke(HP);
 		if (stager != null)
 		{
 			StopCoroutine(stager);
@@ -139,6 +99,15 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		{
 			NoHP();
 		}
+	}
+
+	public override void NoHP()
+	{
+		isKnockbacked = false;
+		knockbackTimer = 0;
+		canMove = true;
+		StopAllCoroutines();
+		gameObject.SetActive(false);
 	}
 
 	private IEnumerator HitStager()
@@ -158,7 +127,4 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	}
 
 #endif
-
 }
-
-// states -> chaseing and attacking 

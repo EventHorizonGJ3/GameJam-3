@@ -4,19 +4,43 @@ using UnityEngine;
 
 public class BreakableObject : MonoBehaviour, IBreakable
 {
-    [SerializeField] int hp = 2;
-    bool isBroken;
 
-    public bool IsBroken { get => isBroken; set => isBroken = value; }
+	[field: SerializeField] public float HP { get; set; }
+	[field: SerializeField] public GameObject BrokenObj { get; set; }
+	[SerializeField] bool dealOneDmg;
 
-    public void Break()
-    {
-        if (IsBroken) return;
-        hp--;
-        if (hp <= 0)
-        {
-            isBroken = true;
-            gameObject.SetActive(false);
-        }
-    }
+	public bool IsBroken { get; set; }
+	public Transform colliderTransform { get => transform; set => colliderTransform = colliderTransform; }
+
+	public void Break()
+	{
+		if (IsBroken) return;
+		IsBroken = true;
+		gameObject.SetActive(false);
+
+	}
+
+
+	public void NoHP()
+	{
+		Break();
+	}
+
+	public void TakeDamage(int damage)
+	{
+		if (dealOneDmg)
+			HP--;
+		else
+			HP -= damage;
+
+		Score.OnDmg?.Invoke(damage);
+		RageBar.OnRage?.Invoke();
+
+		if (HP <= 0)
+		{
+			NoHP();
+		}
+	}
+	public void Knockback(float _Power)
+	{ }
 }
