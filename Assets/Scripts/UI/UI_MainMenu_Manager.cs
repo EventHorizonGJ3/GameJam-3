@@ -17,15 +17,16 @@ public class UI_MainMenu_Manager : MonoBehaviour
     [SerializeField] RectTransform controlsButton;
     [SerializeField] RectTransform creditsButton;
     [SerializeField] RectTransform quitButton;
+    [SerializeField] GameObject preselectedOnSettings;
     [Header("Canvas")]
     [SerializeField] GameObject menuCanvas;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject settingsMenu;
-    [SerializeField] GameObject controlsMenu;
-    [SerializeField] GameObject creditsMenu;
+    [SerializeField] GameObject mainButtons;
+    [SerializeField] GameObject settingsCanvas;
+    [SerializeField] GameObject controlsCanvas;
+    [SerializeField] GameObject creditsCanvas;
     [SerializeField] GameObject prologueCanvas;
 
-
+    AudioManager sound;
 
     bool init;
     bool usingGamepad;
@@ -50,13 +51,14 @@ public class UI_MainMenu_Manager : MonoBehaviour
 
     private void Start()
     {
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(false);
-        controlsMenu.SetActive(false);
-        creditsMenu.SetActive(false);
+        mainButtons.SetActive(false);
+        settingsCanvas.SetActive(false);
+        controlsCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
         prologueCanvas.SetActive(false);
-        
+        sound = AudioManager.instance;
     }
+        
         
 
 
@@ -82,10 +84,46 @@ public class UI_MainMenu_Manager : MonoBehaviour
     {
         //TODO: play a sound for pressing start
         init_text.gameObject.SetActive(false);
-        mainMenu.SetActive(true);
+        mainButtons.SetActive(true);
         if (init && usingGamepad) EventSystem.current.SetSelectedGameObject(playButton.transform.gameObject);
         else if(init && !usingGamepad) EventSystem.current.SetSelectedGameObject(null);
         Debug.Log(EventSystem.current);
+
+    }
+
+    public void OptionButton()
+    {
+        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        mainButtons.SetActive(false);
+        settingsCanvas.SetActive(true);
+        if(usingGamepad) EventSystem.current.SetSelectedGameObject(preselectedOnSettings.gameObject);
+    }
+    public void CreditsButton()
+    {
+        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        mainButtons.SetActive(false);
+        creditsCanvas.SetActive(true);
+    }
+    public void ControlsButton()
+    {
+        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        mainButtons.SetActive(false);
+        controlsCanvas.SetActive(true);
+    }
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+    public void ReturnToButtons()
+    {
+        settingsCanvas.SetActive(false);
+        controlsCanvas.SetActive(false);
+        creditsCanvas.SetActive(false);
+        prologueCanvas.SetActive(false);
+        mainButtons.SetActive(true);
+    }
+    public void PlayButton()
+    {
 
     }
 }
