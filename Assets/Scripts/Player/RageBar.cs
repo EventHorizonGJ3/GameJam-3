@@ -1,73 +1,129 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RageBar : MonoBehaviour
 {
-	public static Action Rage;
-	public static Action<int> OnBerserkActivate;
-	[SerializeField] int BerserkExtraDmg;
-	[SerializeField] int healAmount;
-	[SerializeField] float fullBarAmount;
+	[Header("Berserk settings: ")]
+	[SerializeField] float berserkDuration;
 	[SerializeField] float berserkCost;
-	[SerializeField] Image bar;
-	[SerializeField] float ResetTimer;
-	float currentRage = 99;
+	[SerializeField] float berserkCooldown;
+	[SerializeField, Min(1)] float BerserkMultiplier;
+	[SerializeField] float healAmount;
+	[Tooltip("make this < or = to berserkDuration")]
+	[SerializeField] float healDuration;
+
+	[Header("RageBar settings: ")]
+	[SerializeField] Image rageBar;
+	[SerializeField] float fullBarAmount;
+
+	[Tooltip("time after wich it starst decresing")]
+	[SerializeField] float barResetTimer;
+
+	[Tooltip("quanto toglie ogni secondo")]
+	[SerializeField] float barResetDecrese;
+
+	[Tooltip("increments by value barReserDecrese every seconds the bar resets")]
+	[SerializeField] float secondExtraDecrese;
+
+	public static Action OnRage;
+	public static Action<float> OnBerserkExtraDmg;
+	public static Action<float, float> OnBerserkHeal;
+
+	float lastBerserkTime;
+	float currentBar = 0;
+	float startDecrese;
 	ActionMap inputs;
 	Vector2 lastRage;
-	float lastTot;
-	Coroutine coroutine;
+	float lastTot = 1;
+	bool isBerserkActive;
+	Coroutine resetCoroutine;
 
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;
-		currentRage = 0;
+		currentBar = 0;
+		startDecrese = barResetDecrese;
+		rageBar.fillAmount = currentBar / fullBarAmount;
 	}
 	private void OnEnable()
 	{
 		inputs.Player.Berserk.performed += ActivateBerserk;
-		Rage += AddRage;
+		OnRage += AddRage;
 	}
 	private void OnDisable()
 	{
 		inputs.Player.Berserk.performed -= ActivateBerserk;
-		Rage -= AddRage;
+		OnRage -= AddRage;
 	}
+	private void Update()
+	{
+		if (isBerserkActive)
+		{
+			if (Time.time - lastBerserkTime >= berserkDuration)
+			{
+				isBerserkActive = false;
+			}
+		}
 
+		rageBar.fillAmount = currentBar / fullBarAmount;
+	}
 	private void AddRage()
 	{
-		Debug.Log("WOW");
+		if (isBerserkActive)
+			return;
+
+		if (resetCoroutine != null)
+		{
+			StopCoroutine(resetCoroutine);
+			barResetDecrese = startDecrese;
+			resetCoroutine = null;
+		}
+
 		lastRage.y = lastRage.x;
 		lastRage.x = lastTot;
 		lastTot = lastRage.x + lastRage.y;
-		currentRage += lastTot;
-		if (currentRage > fullBarAmount)
-		{
-			currentRage = fullBarAmount;
-		}
-		UpdateBar();
+		currentBar += lastTot;
 
-		//coroutine = StartCoroutine(ResetRage());
+		if (currentBar > fullBarAmount)
+		{
+			currentBar = fullBarAmount;
+		}
+
+		resetCoroutine = StartCoroutine(ResetRage());
 	}
 
-	// private string ResetRage()
-	// {
-
-	// }
-
-	private void UpdateBar()
+	private IEnumerator ResetRage()
 	{
-		bar.fillAmount = Mathf.Lerp(0, 1, currentRage / fullBarAmount);
+		yield return new WaitForSeconds(barResetTimer);
+
+		lastRage = Vector2.zero;
+		lastTot = 1;
+
+		while (currentBar > 0)
+		{
+			currentBar -= barResetDecrese * Time.deltaTime;
+			barResetDecrese += secondExtraDecrese * Time.deltaTime;
+			yield return null;
+		}
+		barResetDecrese = startDecrese;
+
+		currentBar = 0;
 	}
 
 	private void ActivateBerserk(UnityEngine.InputSystem.InputAction.CallbackContext context)
 	{
-		if (currentRage - berserkCost < 0)
+		if (Time.time - lastBerserkTime < berserkCooldown)
 			return;
 
-		currentRage -= berserkCost;
-		OnBerserkActivate?.Invoke(BerserkExtraDmg);
+		if (currentBar - berserkCost < 0)
+			return;
+
+		currentBar -= berserkCost;
+		lastBerserkTime = Time.time;
+		isBerserkActive = true;
+		OnBerserkExtraDmg?.Invoke(BerserkMultiplier);
+		OnBerserkHeal?.Invoke(healAmount, healDuration);
 	}
 }

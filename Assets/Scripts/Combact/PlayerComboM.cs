@@ -17,16 +17,18 @@ public class PlayerComboM : Combo
 		inputs = InputManager.ActionMap;
 	}
 
-	private void OnEnable()
+	protected override void OnEnable()
 	{
+		base.OnEnable();
 		inputs.Player.Attack.started += Attack;
-		RageBar.OnBerserkActivate += ActivateBerserk;
+		RageBar.OnBerserkExtraDmg += ActivateBerserk;
 	}
 
 	protected override void OnDisable()
 	{
 		base.OnDisable();
 		inputs.Player.Attack.started -= Attack;
+		RageBar.OnBerserkExtraDmg -= ActivateBerserk;
 	}
 
 	protected override void Start()
@@ -74,11 +76,11 @@ public class PlayerComboM : Combo
 		base.RangedAttack();
 	}
 
-	protected void ActivateBerserk(int _Dmg)
+	protected void ActivateBerserk(float _Dmg)
 	{
-		extraDmg = _Dmg;
+		multDmg = _Dmg;
 	}
-	protected override int Damage()
+	protected override float Damage()
 	{
 		return base.Damage();
 	}

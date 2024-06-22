@@ -9,15 +9,24 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
     [SerializeField] float respawnCooldown = 10f;
     [Header("References)")]
     [SerializeField] WeaponsSO weaponToSpawn;
+    [SerializeField] LayerMask ground;
+
 
     GameObject loadedWeapon;
     bool canSpawn;
 
+
+
+
     private void Start()
     {
         canSpawn = true;
+
+
         AutoCorrectPosition();
         SpawnWeapon();
+
+
     }
 
     void SpawnWeapon()
@@ -64,7 +73,7 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
     void AutoCorrectPosition()
     {
         Ray ray = new(transform.position, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, 50, ground))
         {
             Collider hitCollider = hit.collider;
             Vector3 colliderCenter = hitCollider.bounds.center;
@@ -74,6 +83,9 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
 
     public void StartRespawn()
     {
+
         StartCoroutine(StartCooldown());
     }
+
+
 }

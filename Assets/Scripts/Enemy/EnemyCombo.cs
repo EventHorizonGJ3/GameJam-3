@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,14 +7,22 @@ public class EnemyCombo : Combo
 	[Header("Enemy settings: ")]
 	[SerializeField] float attackRange;
 
+	protected override void OnEnable()
+	{
+		UpdateCurrentWeapon(defaultWeapon);
+		base.OnEnable();
+	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
+		comboCounter = 0;
+		lastAttackTime = 0;
+		lastComboTime = 0;
+		multDmg = 0;
 	}
 
 	protected override void Start()
 	{
-		UpdateCurrentWeapon(defaultWeapon);
 		anim = GetComponentInChildren<Animator>();
 	}
 
@@ -51,6 +60,7 @@ public class EnemyCombo : Combo
 				anim.Play("IdleHand");
 		}
 
+		currentWeapon.HitCounter = 0;
 		// animation: 
 		anim.runtimeAnimatorController = currentWeapon.WeaponSo.AttackCombo[comboCounter].AnimOverrider;
 		anim.Play(attackAnimationName);
@@ -76,22 +86,14 @@ public class EnemyCombo : Combo
 
 	protected override void RangedAttack()
 	{
-		base.RangedAttack();
+
 	}
 
 	public override void UpdateCurrentWeapon(Weapon _NewWeapon)
 	{
 		if (currentWeapon != null)
 		{
-			if (currentWeapon.WeaponSo.IsRanged)
-			{
-				currentWeapon.StartAttack -= RangedAttack;
-			}
-			else
-			{
-				currentWeapon.StartAttack -= MeleeAttack;
-			}
-			
+			currentWeapon.StartAttack -= MeleeAttack;
 		}
 
 		currentWeapon = _NewWeapon;
@@ -99,29 +101,27 @@ public class EnemyCombo : Combo
 		lastComboTime = 0;
 		lastAttackTime = 0;
 
-		if (currentWeapon.WeaponSo.IsRanged)
-		{
-			currentWeapon.StartAttack += RangedAttack;
-			animStopTime = 0.7f;
-		}
-		else
-		{
-			currentWeapon.StartAttack += MeleeAttack;
-			animStopTime = 0.9f;
-		}
+		currentWeapon.StartAttack += MeleeAttack;
+		animStopTime = 0.9f;
 	}
 
-	public void CheckAttack()
+	public void CheckAttack(out bool canMove)
 	{
-		EndAttack();
 		var dir = (GameManager.enemyTargetPosition.position - transform.position).normalized;
+		//Debug.Log("distance= " + Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) + "\nAttackRange= " + attackRange);
 		if (Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) < attackRange &&
 			Physics.Raycast(transform.position + Vector3.up * 0.5f, dir, attackRange))
 		{
+			canMove = false;
 			currentWeapon.StartAttack?.Invoke();
+			EndAttack();
+		}
+		else
+		{
+			canMove = true;
 		}
 	}
-	protected override int Damage()
+	protected override float Damage()
 	{
 		return base.Damage();
 	}

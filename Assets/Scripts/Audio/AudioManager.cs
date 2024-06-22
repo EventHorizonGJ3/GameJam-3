@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     [SerializeField] AudioMixer Mixer;
-    [SerializeField] AudioData AudioData;
+    [SerializeField] public AudioData AudioData;
     bool isPlaying;
 
     public const string MASTER_KEY = "MasterVolume";

@@ -4,36 +4,43 @@ using UnityEngine;
 public class Weapon : MonoBehaviour, IPickable
 {
 	public Transform Transform => this.transform;
-	protected int myDmg;
+	protected float myDmg;
 	protected int hitCounter;
+	public int HitCounter { get => hitCounter; set => hitCounter = value; }
 	protected float currentKnockBack = 0;
 	protected Collider trigger;
 	protected IDamageable hp;
+	protected Vector3 initialPos;
 	[SerializeField] public Weapon MyWeapon { get => this; set => MyWeapon = value; }
 	public WeaponsSO WeaponSo;
 
+	[field: SerializeField] public bool IsEnemyWeapon { get; set; }
+
 	//- "Actions: "
-	public Action<int> Attack;
+	public Action<float> Attack;
 	public Action<Transform> Target;
 	public Action AttackEnd;
 	public Action LastAttack;
 	public Action Break;
-	public Action Grabbed;
+	public Action<Transform> Grabbed;
 	public Action StartAttack;
 
-	protected virtual void Awake()
+	protected virtual private void Awake()
 	{
-		this.TryGetComponent(out this.trigger);
+		this.trigger = this.GetComponent<Collider>();
+
 	}
+
 	protected virtual void OnEnable()
 	{
+		this.initialPos = transform.position;
 		this.Grabbed += this.OnGrabbed;
 		this.Attack += this.OnAttack;
 		this.AttackEnd += this.OnAttackEnd;
 		this.Break += this.OnBreak;
 	}
 
-	protected virtual void OnGrabbed()
+	protected virtual void OnGrabbed(Transform _leftHand)
 	{
 		this.UpdateTrigger(false);
 	}
@@ -46,13 +53,14 @@ public class Weapon : MonoBehaviour, IPickable
 		this.AttackEnd -= this.OnAttackEnd;
 		this.Break -= this.OnBreak;
 		this.Grabbed -= this.OnGrabbed;
+		this.UpdateTrigger(true);
 	}
 	protected virtual void OnBreak()
 	{
-		this.transform.parent = null;
+		this.transform.parent = base.transform;
 		this.gameObject.SetActive(false);
 	}
-	protected virtual void OnAttack(int _Dmg)
+	protected virtual void OnAttack(float _Dmg)
 	{
 		this.currentKnockBack = 0;
 		this.myDmg = _Dmg;

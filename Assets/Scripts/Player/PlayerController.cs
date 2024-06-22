@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AnimationCurve dashCurve;
     [Header("Refs")]
     [SerializeField] Transform meshTransform;
+    [SerializeField] private Animator animator; //ByEma
 
 
     Rigidbody rb;
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if (InputManager.ActionMap.Player.Dash.WasPerformedThisFrame() && dashIsAvailable)
         {
             ApplyDash();
+            animator.SetTrigger("Dash"); //ByEma
         }
     }
 

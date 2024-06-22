@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 
 public class WeaponPicker : MonoBehaviour
 {
-	[SerializeField] Transform handTransfrom;
+	[SerializeField] Transform rightHand;
+	[SerializeField] Transform leftHand;
 	[SerializeField] LayerMask weaponLayer;
 	[SerializeField] PlayerComboM playerComboM;
 
 	Collider[] allWeaponsColliders;
 	IPickable pickableWeapon;
+	IWeaponSpawner weaponSpawner;
+	GameObject currentWeapon;
 
 	Vector3 interactPos = Vector3.zero;
 	[SerializeField] float interactionRadius = 2;
@@ -23,7 +26,7 @@ public class WeaponPicker : MonoBehaviour
 	}
 	private void OnDisable()
 	{
-		InputManager.ActionMap.Player.Interact.started += PickUpWeapon;
+		InputManager.ActionMap.Player.Interact.started -= PickUpWeapon;
 	}
 
 
@@ -45,31 +48,47 @@ public class WeaponPicker : MonoBehaviour
 	{
 		if (InputManager.IsMoving(out Vector3 direction))
 		{
-			interactPos = transform.position + direction;
+			interactPos = transform.position + direction / 2;
 		}
 		Collider[] colliderInRange = new Collider[allWeaponsColliders.Length];
 		int numberOfWeapons = Physics.OverlapSphereNonAlloc(interactPos, interactionRadius, colliderInRange, weaponLayer);
 		canInteract = false;
 
 
-		for (int i = 0; i < numberOfWeapons; i++)
+
+
+		if (numberOfWeapons > 0)
 		{
-			Collider weaponsCol = colliderInRange[i];
-			if (Vector3.Distance(transform.position, weaponsCol.transform.position) <= interactionOffest)
+			if (Vector3.Distance(transform.position, colliderInRange[0].transform.position) <= interactionOffest)
 			{
 				canInteract = true;
-				pickableWeapon = weaponsCol.GetComponent<IPickable>();
-				break;
+				weaponSpawner = colliderInRange[0].GetComponentInParent<IWeaponSpawner>();
+				pickableWeapon = colliderInRange[0].GetComponent<IPickable>();
+
 			}
 		}
+
 	}
 
 	void PickUpWeapon(InputAction.CallbackContext context)
 	{
 		if (canInteract)
 		{
-			pickableWeapon.Transform.position = handTransfrom.position;
-			pickableWeapon.Transform.parent = handTransfrom;
+			if (pickableWeapon.IsEnemyWeapon)
+				return;
+
+			if (currentWeapon != null && pickableWeapon.Transform.gameObject != currentWeapon)
+			{
+				currentWeapon.SetActive(false);
+				currentWeapon.transform.parent = null;
+			}
+			currentWeapon = pickableWeapon.Transform.gameObject;
+
+			pickableWeapon.Transform.position = rightHand.position; // mette l'arma in mano
+			pickableWeapon.MyWeapon.Grabbed?.Invoke(leftHand);
+			pickableWeapon.Transform.parent = rightHand;
+
+			weaponSpawner?.StartRespawn(); // triggera il respawn dell'arma
 			playerComboM.UpdateCurrentWeapon(pickableWeapon.MyWeapon);
 		}
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Combo : MonoBehaviour
 {
 	[Header("Weapon Settings:")]
-	[SerializeField] protected Weapon defaultWeapon;
+	[SerializeField] public Weapon defaultWeapon;
 	[SerializeField] protected string attackAnimationName;
 
 	[Tooltip("The angle that the player sees in fron of him")]
@@ -19,15 +19,21 @@ public class Combo : MonoBehaviour
 
 	[Tooltip("the time it waits before resetting the combo \nex: a = attack w= wait \nif comboReset = 3 sec then: \nif a1 w4 then it goes to a1 \nbut if a1 w1, then it goes to a2")]
 	[SerializeField] protected float ComboResetTime = 1f;
-	[SerializeField] protected Weapon currentWeapon;
 	[SerializeField] protected Transform meshHolder;
+	[SerializeField] protected Transform weaponHolder;
+	[SerializeField] public Weapon currentWeapon;
 	protected float lastAttackTime = 0, lastComboTime;
 	protected int comboCounter;
 	protected Coroutine resetCombo;
 	protected Animator anim;
 	[SerializeField] protected float animStopTime = 0.9f;
-	protected int extraDmg;
+	protected float multDmg;
 
+	protected virtual void OnEnable()
+	{
+		this.UpdateCurrentWeapon(defaultWeapon);
+
+	}
 	protected virtual void OnDisable()
 	{
 		this.currentWeapon.Break -= BackToPunches;
@@ -35,7 +41,6 @@ public class Combo : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		this.UpdateCurrentWeapon(defaultWeapon);
 		this.anim = GetComponentInChildren<Animator>();
 	}
 
@@ -55,6 +60,7 @@ public class Combo : MonoBehaviour
 		}
 
 		this.currentWeapon = _NewWeapon;
+		this.currentWeapon.AttackEnd();
 		this.comboCounter = 0;
 		this.lastComboTime = 0;
 		this.lastAttackTime = 0;
@@ -109,14 +115,15 @@ public class Combo : MonoBehaviour
 
 	protected virtual void MeleeAttack()
 	{
+
+		if (Time.time - this.lastComboTime < this.ComboDelay || Time.time - this.lastAttackTime < this.AttackDelay || this.comboCounter > this.currentWeapon.WeaponSo.AttackCombo.Count)
+			return;
+
 		if (this.resetCombo != null)
 		{
 			this.StopAllCoroutines();
 			this.resetCombo = null;
 		}
-
-		if (Time.time - this.lastComboTime < this.ComboDelay || Time.time - this.lastAttackTime < this.AttackDelay || this.comboCounter > this.currentWeapon.WeaponSo.AttackCombo.Count)
-			return;
 
 		if (this.comboCounter - 1 >= 0)
 		{
@@ -136,11 +143,7 @@ public class Combo : MonoBehaviour
 		if (this.comboCounter >= this.currentWeapon.WeaponSo.AttackCombo.Count)
 		{
 			// ("last attack: " + comboCounter);
-			if (this.resetCombo != null)
-			{
-				this.StopAllCoroutines();
-				this.resetCombo = null;
-			}
+
 			this.currentWeapon.LastAttack?.Invoke();
 			this.lastComboTime = Time.time;
 			this.comboCounter = 0;
@@ -152,7 +155,8 @@ public class Combo : MonoBehaviour
 		if (this.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > this.animStopTime && this.anim.GetCurrentAnimatorStateInfo(0).IsName(this.attackAnimationName))
 		{
 			//  if resetCombo == null then:
-			this.resetCombo ??= StartCoroutine(EndCombo());
+			if (this.resetCombo == null)
+				this.resetCombo = StartCoroutine(EndCombo());
 			this.currentWeapon.AttackEnd?.Invoke();
 		}
 	}
@@ -164,9 +168,12 @@ public class Combo : MonoBehaviour
 		this.comboCounter = 0;
 	}
 
-	protected virtual int Damage()
+	protected virtual float Damage()
 	{
-		return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg + this.extraDmg;
+		if (multDmg != 0)
+			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg * this.multDmg;
+		else
+			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg;
 	}
 
 

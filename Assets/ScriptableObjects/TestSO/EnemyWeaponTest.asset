@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
   m_Name: EnemyWeaponTest
   m_EditorClassIdentifier: 
-  NumberOfUses: 6
+  NumberOfUses: 99999
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  weaponPrefab: {fileID: 0}
   KnockBackPower: 0
   IsRanged: 0
   RangedRange: 0

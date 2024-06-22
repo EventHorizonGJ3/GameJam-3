@@ -44,7 +44,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        if (EnemyPooler.Instance == null)
+        if (EnemyPooler.Instance == null) //Pull all base enemies
         {
             Debug.LogError("EnemyPooler instance is null");
             return;
@@ -56,6 +56,9 @@ public class EnemySpawnManager : MonoBehaviour
             EnemyPooler.Instance.prefab = EnemyDictionary[enemyType];
             EnemyPooler.Instance.CreateEnemyPool(transform);
         }
+
+        EnemyPooler.Instance.PoolBosses(enemy_Stacy, enemy_Supreme, transform); //Pool bosses
+
         
     }
 }

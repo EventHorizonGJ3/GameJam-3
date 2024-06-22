@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,26 +7,34 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 {
 	[Header("References:")]
-	NavMeshAgent agent;
+	protected NavMeshAgent agent;
 	public Transform colliderTransform { get; set; }
 	public Transform Transform { get => transform; }
 
 	[field: Header("Settings: ")]
-	[field: SerializeField] public int HP { get; set; }
-	EnemyType enemyType = EnemyType.MANAGER;
+	[field: SerializeField] public float HP { get; set; }
+	[SerializeField] protected EnemyType enemyType;
+
+	[Header("Stager Settings: ")]
+	[SerializeField, Min(1f)] protected float stagerDur;
+
+
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
 	[Header("knockback Settings")]
-	[SerializeField] float knockbackDur = 3;
-	[SerializeField] float backRayHight;
-	[SerializeField] float backRayLenght;
-	[SerializeField] LayerMask obstacleLayer;
-	[SerializeField] EnemyCombo combo;
-	float backPower;
-	float knockbackTimer = 0;
-	bool isKnockbacked;
-	Vector3 startPos;
-	Vector3 endPos;
-	Vector3 dir;
+	[SerializeField] protected float knockbackDur = 3;
+	[SerializeField] protected float backRayHight;
+	[SerializeField] protected float backRayLenght;
+	[SerializeField] protected LayerMask obstacleLayer;
+	[SerializeField] protected EnemyCombo combo;
+	protected float backPower;
+	protected float knockbackTimer = 0;
+	protected bool isKnockbacked;
+	protected Vector3 startPos;
+	protected Vector3 endPos;
+	protected Vector3 dir;
+	protected bool canMove = true;
+	protected bool isStagered = false;
+	protected Coroutine stager;
 
 
 	private void Awake()
@@ -32,18 +42,35 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		TryGetComponent(out agent);
 	}
 
+	private void OnEnable()
+	{
+		GameManager.OnPause += Pause;
+	}
+
+	private void OnDisable()
+	{
+		GameManager.OnPause += Pause;
+		canMove = true;
+		isKnockbacked = false;
+	}
+
+	private void Pause()
+	{
+		if (GameManager.gameOnPause)
+		{
+			agent.SetDestination(transform.position);
+		}
+	}
+
 	private void Update()
 	{
+		if (GameManager.gameOnPause)
+			return;
+		if (isStagered)
+			return;
+
 		if (isKnockbacked)
 		{
-			if (Physics.Raycast(transform.position + Vector3.up * backRayHight, dir, out RaycastHit hit, backRayLenght, obstacleLayer))
-			{
-
-				isKnockbacked = false;
-				backPower = 0;
-				return;
-			}
-
 			if (knockbackTimer < knockbackDur)
 			{
 				knockbackTimer += Time.deltaTime;
@@ -56,15 +83,22 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 				backPower = 0;
 				agent.enabled = true;
 			}
+			return;
+		}
+		if (canMove)
+		{
+			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
 		else
 		{
-			combo.CheckAttack();
-			agent.SetDestination(GameManager.enemyTargetPosition.position);
+			agent.SetDestination(transform.position);
 		}
+		Vector3 _lookAtPos = new Vector3(GameManager.enemyTargetPosition.position.x, transform.position.y, GameManager.enemyTargetPosition.position.z);
+		transform.LookAt(_lookAtPos, Vector3.up);
+		combo.CheckAttack(out canMove);
 	}
 
-	public void Knockback(float _Power)
+	public virtual void Knockback(float _Power)
 	{
 		if (_Power <= 0)
 			return;
@@ -76,29 +110,48 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		dir = (startPos - _ColliderStartPos).normalized;
 		dir.y = 0;
 		backPower = _Power;
-
 		endPos = startPos + dir * _Power;
 
 		isKnockbacked = true;
 		// ("kncokback");
 	}
 
-	public void NoHP()
+	public virtual void NoHP()
 	{
+		isKnockbacked = false;
+		knockbackTimer = 0;
+		canMove = true;
+		StopAllCoroutines();
 		gameObject.SetActive(false);
 	}
 
-	public void TakeDamage(int _Dmg)
+	public virtual void TakeDamage(float _Dmg)
 	{
+		Debug.Log(_Dmg);
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
-		RageBar.Rage?.Invoke();
+		RageBar.OnRage?.Invoke();
+		if (stager != null)
+		{
+			StopCoroutine(stager);
+			stager = null;
+		}
+		stager = StartCoroutine(HitStager());
+
 		if (HP <= 0)
 		{
 			NoHP();
 		}
 	}
 
+	protected virtual IEnumerator HitStager()
+	{
+		isStagered = true;
+		yield return new WaitForSeconds(stagerDur);
+		isStagered = false;
+	}
+
+#if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.yellow;
@@ -107,6 +160,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		Debug.DrawRay(transform.position + Vector3.up * backRayHight, dir * backPower);
 	}
 
+#endif
 
 }
 

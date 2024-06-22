@@ -6,11 +6,21 @@ public class EnemySpawner : MonoBehaviour
 {
     EnemyType currentSpawned;
     [SerializeField][Tooltip("Intervallo tra un nemico e l'altro")] float spawnFrequancy;
+    [SerializeField][Tooltip("Distanza dal player minima per consentire lo spawn")] float distanceFromPlayer = 10f;
     [Header("Eventi di Spawn")]
     [SerializeField] List<Wave> waves;
 
     int currentWaveIndex = 0;
-    
+
+    private void OnEnable()
+    {
+        Score.OnScoreChanged += CheckScore;
+    }
+    private void OnDisable()
+    {
+        Score.OnScoreChanged -= CheckScore;
+    }
+
     private void Start()
     {
         if (waves.Count > 0)
@@ -30,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             while (GameManager.gameOnPause) yield return null;
-            
+
             float elapsedTime = 0f;
             while (elapsedTime < spawnFrequancy)
             {
@@ -41,11 +51,12 @@ public class EnemySpawner : MonoBehaviour
                 yield return null;
             }
 
+            yield return new WaitUntil(() => Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) >= distanceFromPlayer);
             SelectEnemyToSpawn();
         }
     }
 
-            
+
 
     void SelectEnemyToSpawn()
     {
@@ -58,18 +69,18 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        float sceltaCasuale = Random.Range(0f, totalChance);
+        float randomChoice = Random.Range(0f, totalChance);
         float cumulativeProbability = 0f;
 
         switch (true)
         {
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Manager_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Manager_Chance)):
                 currentSpawned = EnemyType.MANAGER;
                 break;
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Police_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Police_Chance)):
                 currentSpawned = EnemyType.POLICE;
                 break;
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Army_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Army_Chance)):
                 currentSpawned = EnemyType.ARMY;
                 break;
             default:
@@ -78,34 +89,40 @@ public class EnemySpawner : MonoBehaviour
         }
 
         SpawnEnemy();
-        
+
     }
 
     void SpawnEnemy()
     {
         List<IEnemy> selectedList = EnemyPooler.Instance.GetEnemy(currentSpawned);
-        foreach(IEnemy enemy in selectedList)
+        foreach (IEnemy enemy in selectedList)
         {
-            GameObject tmp;
-            if(!enemy.Transform.gameObject.activeInHierarchy)
+
+            if (!enemy.Transform.gameObject.activeInHierarchy)
             {
-                tmp = enemy.Transform.gameObject;
-                enemy.Transform.position = transform.position;
-                Debug.Log("tentativo di spawnare:"+tmp.name,tmp);
-                tmp.SetActive(true);
-                
+                enemy.Transform.position = transform.localPosition;
+                enemy.Transform.gameObject.SetActive(true);
                 break;
             }
         }
         //Debug.Log("Nemico spawnato: " + currentSpawned);
-        
     }
-
+    void CheckScore(float score)
+    {
+        if (currentWaveIndex + 1 >= waves.Count) return;
+        if (score >= waves[currentWaveIndex + 1].scoreForThisWave)
+        {
+            SetCurrentWave(currentWaveIndex + 1);
+        }
+        Debug.Log("Wave corrente " + currentWaveIndex);
+    }
     void SetCurrentWave(int index)
     {
         if (index >= 0 && index < waves.Count)
         {
             currentWaveIndex = index;
+            if (waves[currentWaveIndex].stacy) StacySpawner.OnStacy?.Invoke();
+            if (waves[currentWaveIndex].supremeManager) SupremeSpawner.OnFinalBoss?.Invoke();
             Debug.Log("Onda corrente impostata a: " + currentWaveIndex);
         }
         else
@@ -114,10 +131,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
+
+
+
     [System.Serializable]
     public class Wave
     {
         [Tooltip("Nome dell'onda")]
+        public float scoreForThisWave;
+        public bool stacy;
+        public bool supremeManager;
         public string waveName;
         public WaveProbabilities probabilities;
     }
@@ -129,6 +153,16 @@ public class EnemySpawner : MonoBehaviour
         [Range(0f, 1f)] public float Police_Chance;
         [Range(0f, 1f)] public float Army_Chance;
     }
+
+
+
+
+
+
+
+
+
+
 }
 
 

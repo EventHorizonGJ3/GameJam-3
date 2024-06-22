@@ -11,6 +11,8 @@ public class EnemyPooler : MonoBehaviour
     public List<IEnemy> managers;
     public List<IEnemy> police;
     public List<IEnemy> army;
+    public IEnemy stacy_boss;
+    public IEnemy supreme_boss;
 
     private void Awake()
     {
@@ -42,6 +44,16 @@ public class EnemyPooler : MonoBehaviour
         // ($"Army: {army.Count}");
     }
 
+    public void PoolBosses(GameObject midboss, GameObject finalboss, Transform transform)
+    {
+        var stacy = Instantiate(midboss, transform);
+        stacy.SetActive(false);
+        stacy_boss = stacy.GetComponent<IEnemy>();
+        var supreme = Instantiate(finalboss, transform);
+        supreme.SetActive(false);
+        supreme_boss = supreme.GetComponent<IEnemy>();
+    }
+
     public List<IEnemy> GetEnemy(EnemyType enemyType)
     {
         switch (enemyType)
@@ -49,6 +61,16 @@ public class EnemyPooler : MonoBehaviour
             case EnemyType.MANAGER: return managers;
             case EnemyType.POLICE: return police;
             case EnemyType.ARMY: return army;
+            default: return null;
+        }
+    }
+
+    public IEnemy GetBoss(EnemyType enemyType)
+    {
+        switch(enemyType)
+        {
+            case EnemyType.STACY: return stacy_boss;
+            case EnemyType.SUPREME: return supreme_boss;
             default: return null;
         }
     }
