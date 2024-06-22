@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     EnemyType currentSpawned;
     [SerializeField][Tooltip("Intervallo tra un nemico e l'altro")] float spawnFrequancy;
+    [SerializeField][Tooltip("Distanza dal player minima per consentire lo spawn")] float distanceFromPlayer = 10f;
     [Header("Eventi di Spawn")]
     [SerializeField] List<Wave> waves;
 
@@ -50,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return null;
             }
 
+            yield return new WaitUntil(() => Vector3.Distance(transform.position, GameManager.enemyTargetPosition.position) >= distanceFromPlayer);
             SelectEnemyToSpawn();
         }
     }
@@ -98,28 +100,22 @@ public class EnemySpawner : MonoBehaviour
 
             if (!enemy.Transform.gameObject.activeInHierarchy)
             {
-
                 enemy.Transform.position = transform.localPosition;
-
                 enemy.Transform.gameObject.SetActive(true);
-
                 break;
             }
         }
         //Debug.Log("Nemico spawnato: " + currentSpawned);
-
     }
-
     void CheckScore(float score)
     {
         if (currentWaveIndex + 1 >= waves.Count) return;
-        if (score >= waves[currentWaveIndex+1].scoreForThisWave)
+        if (score >= waves[currentWaveIndex + 1].scoreForThisWave)
         {
-            SetCurrentWave(currentWaveIndex+1);
+            SetCurrentWave(currentWaveIndex + 1);
         }
-        Debug.Log("Wave corrente "+currentWaveIndex);
+        Debug.Log("Wave corrente " + currentWaveIndex);
     }
-
     void SetCurrentWave(int index)
     {
         if (index >= 0 && index < waves.Count)
@@ -132,6 +128,10 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("Indice dell'onda non valido");
         }
     }
+
+
+
+
 
     [System.Serializable]
     public class Wave
@@ -149,6 +149,16 @@ public class EnemySpawner : MonoBehaviour
         [Range(0f, 1f)] public float Police_Chance;
         [Range(0f, 1f)] public float Army_Chance;
     }
+
+
+
+
+
+
+
+
+
+
 }
 
 
