@@ -10,11 +10,10 @@ public class BreakableObject : MonoBehaviour, IBreakable
 	[SerializeField] bool dealOneDmg;
 
 	public bool IsBroken { get; set; }
-	public Transform colliderTransform { get => transform; set => colliderTransform = colliderTransform; }
+	public Transform colliderTransform { get => transform; set => colliderTransform = value; }
 
 	public void Break()
 	{
-		if (IsBroken) return;
 		IsBroken = true;
 		gameObject.SetActive(false);
 
@@ -28,6 +27,9 @@ public class BreakableObject : MonoBehaviour, IBreakable
 
 	public void TakeDamage(int damage)
 	{
+		if (IsBroken)
+			return;
+
 		if (dealOneDmg)
 			HP--;
 		else
