@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BreakableObject : MonoBehaviour, IBreakable
 {
-
 	[field: SerializeField] public float HP { get; set; }
 	[field: SerializeField] public GameObject BrokenObj { get; set; }
 	[SerializeField] bool dealOneDmg;
 
 	public bool IsBroken { get; set; }
-	public Transform colliderTransform { get => transform; set => colliderTransform = value; }
+	public Transform colliderTransform { get; set; }
+
 
 	public void Break()
 	{
 		IsBroken = true;
+		BrokenObj.transform.position = transform.position;
+		BrokenObj.SetActive(true);
 		gameObject.SetActive(false);
 
 	}

@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &34413877
 PrefabInstance:
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &68864605
 PrefabInstance:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &125415380 stripped
 GameObject:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &126827919 stripped
 GameObject:
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &146524147 stripped
 Transform:
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &284563996 stripped
 GameObject:
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &293137409
 GameObject:
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &324473585 stripped
 GameObject:
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &337750721 stripped
 GameObject:
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &340522086 stripped
 GameObject:
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &389898841 stripped
 GameObject:
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &429227008
 PrefabInstance:
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &506497026
 PrefabInstance:
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &571262073 stripped
 GameObject:
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &598765954 stripped
 GameObject:
@@ -954,7 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &622330223 stripped
 GameObject:
@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &627654796 stripped
 GameObject:
@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &657960361 stripped
 GameObject:
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &658959844 stripped
 GameObject:
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &671556140
 PrefabInstance:
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &756262292 stripped
 Transform:
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &871306209 stripped
 Transform:
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &965570002 stripped
 GameObject:
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &977413248 stripped
 GameObject:
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &986245613 stripped
 GameObject:
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &986325300 stripped
 Transform:
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &1009405874 stripped
 Transform:
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &1083405410
 PrefabInstance:
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1184952431
 GameObject:
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1315179586 stripped
 GameObject:
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &1315705413
 PrefabInstance:
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &1355465091
 PrefabInstance:
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1418019629 stripped
 GameObject:
@@ -1686,7 +1686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1437669482 stripped
 GameObject:
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1465081732 stripped
 GameObject:
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &1509579725 stripped
 Transform:
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1541318599 stripped
 GameObject:
@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &1566932362
 PrefabInstance:
@@ -1944,7 +1944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1604019594 stripped
 GameObject:
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1615813305 stripped
 GameObject:
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 16b617dba7d902a4380ef20742a5bcaf, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1 &1651214789 stripped
 GameObject:
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1691118486 stripped
 GameObject:
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!4 &1702660574 stripped
 Transform:
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1 &1803791309 stripped
 GameObject:
@@ -2162,7 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &1842766836
 PrefabInstance:
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!135 &2068745970 stripped
 SphereCollider:
@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 1
-  <BrokenObj>k__BackingField: {fileID: 622330223}
+  <BrokenObj>k__BackingField: {fileID: 0}
   dealOneDmg: 0
 --- !u!1001 &3706609131999674247
 PrefabInstance:
