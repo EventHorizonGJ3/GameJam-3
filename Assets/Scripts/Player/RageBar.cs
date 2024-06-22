@@ -9,7 +9,7 @@ public class RageBar : MonoBehaviour
 	[SerializeField] float berserkDuration;
 	[SerializeField] float berserkCost;
 	[SerializeField] float berserkCooldown;
-	[SerializeField] int BerserkExtraDmg;
+	[SerializeField, Min(1)] float BerserkMultiplier;
 	[SerializeField] float healAmount;
 	[Tooltip("make this < or = to berserkDuration")]
 	[SerializeField] float healDuration;
@@ -28,7 +28,7 @@ public class RageBar : MonoBehaviour
 	[SerializeField] float secondExtraDecrese;
 
 	public static Action OnRage;
-	public static Action<int> OnBerserkExtraDmg;
+	public static Action<float> OnBerserkExtraDmg;
 	public static Action<float, float> OnBerserkHeal;
 
 	float lastBerserkTime;
@@ -123,7 +123,7 @@ public class RageBar : MonoBehaviour
 		currentBar -= berserkCost;
 		lastBerserkTime = Time.time;
 		isBerserkActive = true;
-		OnBerserkExtraDmg?.Invoke(BerserkExtraDmg);
+		OnBerserkExtraDmg?.Invoke(BerserkMultiplier);
 		OnBerserkHeal?.Invoke(healAmount, healDuration);
 	}
 }

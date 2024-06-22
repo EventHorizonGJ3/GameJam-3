@@ -33,6 +33,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	protected Vector3 endPos;
 	protected Vector3 dir;
 	protected bool canMove = true;
+	protected bool isStagered = false;
 	protected Coroutine stager;
 
 
@@ -64,6 +65,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void Update()
 	{
 		if (GameManager.gameOnPause)
+			return;
+		if (isStagered)
 			return;
 
 		if (isKnockbacked)
@@ -122,7 +125,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		gameObject.SetActive(false);
 	}
 
-	public virtual void TakeDamage(int _Dmg)
+	public virtual void TakeDamage(float _Dmg)
 	{
 		Debug.Log(_Dmg);
 		HP -= _Dmg;
@@ -141,11 +144,11 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		}
 	}
 
-	private IEnumerator HitStager()
+	protected virtual IEnumerator HitStager()
 	{
-		canMove = false;
+		isStagered = true;
 		yield return new WaitForSeconds(stagerDur);
-		canMove = true;
+		isStagered = false;
 	}
 
 #if UNITY_EDITOR

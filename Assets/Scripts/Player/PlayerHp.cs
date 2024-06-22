@@ -58,7 +58,7 @@ public class PlayerHp : MonoBehaviour, IDamageable
 		Debug.LogError("OH I'M DIE THANK YOU FOREVER");
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(float damage)
 	{
 		HP -= damage;
 		UpdateHpBar();

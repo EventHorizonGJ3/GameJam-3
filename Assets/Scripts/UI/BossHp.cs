@@ -75,7 +75,6 @@ public class BossHp : MonoBehaviour
 
 			if (i + 1 >= bosses.Length)
 				break;
-			Debug.Log(i);
 			pos += (boss.hpBarHight / 2) + (bosses[i + 1].hpBarHight / 2) + 1;
 		}
 	}

@@ -35,6 +35,8 @@ public class BossMovement : EnemyMovement
 	{
 		if (GameManager.gameOnPause)
 			return;
+		if (isStagered)
+			return;
 
 		if (isKnockbacked)
 		{
@@ -50,8 +52,10 @@ public class BossMovement : EnemyMovement
 				backPower = 0;
 				agent.enabled = true;
 			}
+			return;
 		}
-		else if (canMove)
+
+		if (canMove)
 		{
 			agent.SetDestination(GameManager.enemyTargetPosition.position);
 		}
@@ -82,7 +86,7 @@ public class BossMovement : EnemyMovement
 		// ("kncokback");
 	}
 
-	public override void TakeDamage(int _Dmg)
+	public override void TakeDamage(float _Dmg)
 	{
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
@@ -112,9 +116,9 @@ public class BossMovement : EnemyMovement
 
 	private IEnumerator HitStager()
 	{
-		canMove = false;
+		isStagered = false;
 		yield return new WaitForSeconds(stagerDur);
-		canMove = true;
+		isStagered = true;
 	}
 
 #if UNITY_EDITOR

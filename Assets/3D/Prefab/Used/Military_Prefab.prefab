@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 13
   enemyType: 2
-  stagerDur: 0
+  stagerDur: 1
   knockbackDur: 3
   backRayHight: 1
   backRayLenght: 0.5

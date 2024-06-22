@@ -27,7 +27,7 @@ public class Combo : MonoBehaviour
 	protected Coroutine resetCombo;
 	protected Animator anim;
 	[SerializeField] protected float animStopTime = 0.9f;
-	protected int extraDmg;
+	protected float multDmg;
 
 	protected virtual void OnEnable()
 	{
@@ -168,10 +168,10 @@ public class Combo : MonoBehaviour
 		this.comboCounter = 0;
 	}
 
-	protected virtual int Damage()
+	protected virtual float Damage()
 	{
-		if (extraDmg != 0)
-			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg * this.extraDmg;
+		if (multDmg != 0)
+			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg * this.multDmg;
 		else
 			return this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].Dmg;
 	}

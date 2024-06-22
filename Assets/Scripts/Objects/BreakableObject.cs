@@ -25,7 +25,7 @@ public class BreakableObject : MonoBehaviour, IBreakable
 		Break();
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(float damage)
 	{
 		if (IsBroken)
 			return;

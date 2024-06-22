@@ -4,7 +4,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour, IPickable
 {
 	public Transform Transform => this.transform;
-	protected int myDmg;
+	protected float myDmg;
 	protected int hitCounter;
 	public int HitCounter { get => hitCounter; set => hitCounter = value; }
 	protected float currentKnockBack = 0;
@@ -17,7 +17,7 @@ public class Weapon : MonoBehaviour, IPickable
 	[field: SerializeField] public bool IsEnemyWeapon { get; set; }
 
 	//- "Actions: "
-	public Action<int> Attack;
+	public Action<float> Attack;
 	public Action<Transform> Target;
 	public Action AttackEnd;
 	public Action LastAttack;
@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour, IPickable
 		this.transform.parent = base.transform;
 		this.gameObject.SetActive(false);
 	}
-	protected virtual void OnAttack(int _Dmg)
+	protected virtual void OnAttack(float _Dmg)
 	{
 		this.currentKnockBack = 0;
 		this.myDmg = _Dmg;

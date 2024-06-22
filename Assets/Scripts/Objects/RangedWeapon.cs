@@ -26,7 +26,7 @@ public class RangedWeapon : Weapon
 	{
 		//base.OnBreak();
 	}
-	protected override void OnAttack(int _Dmg)
+	protected override void OnAttack(float _Dmg)
 	{
 		currentKnockBack = 0;
 		this.myDmg = _Dmg;

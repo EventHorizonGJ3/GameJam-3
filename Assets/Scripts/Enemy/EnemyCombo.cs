@@ -18,7 +18,7 @@ public class EnemyCombo : Combo
 		comboCounter = 0;
 		lastAttackTime = 0;
 		lastComboTime = 0;
-		extraDmg = 0;
+		multDmg = 0;
 	}
 
 	protected override void Start()
@@ -121,7 +121,7 @@ public class EnemyCombo : Combo
 			canMove = true;
 		}
 	}
-	protected override int Damage()
+	protected override float Damage()
 	{
 		return base.Damage();
 	}
