@@ -69,18 +69,18 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        float sceltaCasuale = Random.Range(0f, totalChance);
+        float randomChoice = Random.Range(0f, totalChance);
         float cumulativeProbability = 0f;
 
         switch (true)
         {
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Manager_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Manager_Chance)):
                 currentSpawned = EnemyType.MANAGER;
                 break;
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Police_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Police_Chance)):
                 currentSpawned = EnemyType.POLICE;
                 break;
-            case bool _ when (sceltaCasuale <= (cumulativeProbability += currentWaveProbabilities.Army_Chance)):
+            case bool _ when (randomChoice <= (cumulativeProbability += currentWaveProbabilities.Army_Chance)):
                 currentSpawned = EnemyType.ARMY;
                 break;
             default:
@@ -121,6 +121,8 @@ public class EnemySpawner : MonoBehaviour
         if (index >= 0 && index < waves.Count)
         {
             currentWaveIndex = index;
+            if (waves[currentWaveIndex].stacy) StacySpawner.OnStacy?.Invoke();
+            if (waves[currentWaveIndex].supremeManager) SupremeSpawner.OnFinalBoss?.Invoke();
             Debug.Log("Onda corrente impostata a: " + currentWaveIndex);
         }
         else
@@ -138,6 +140,8 @@ public class EnemySpawner : MonoBehaviour
     {
         [Tooltip("Nome dell'onda")]
         public float scoreForThisWave;
+        public bool stacy;
+        public bool supremeManager;
         public string waveName;
         public WaveProbabilities probabilities;
     }
