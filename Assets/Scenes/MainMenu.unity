@@ -1168,6 +1168,14 @@ PrefabInstance:
     - target: {fileID: 6722698517071301889, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 3554638589560350142}
+    - target: {fileID: 6722698517071301889, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722698517071301889, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_MainMenu_Manager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7066021982473212107, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_Name
