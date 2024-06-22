@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class BossHp : MonoBehaviour
 {
 	[SerializeField] BossesSo[] bosses;
-	[SerializeField] Image hpBar;
 	int currentBoss;
 	float maxHp;
 
 	private void OnEnable()
 	{
-		hpBar.enabled = false;
+
 		foreach (var boss in bosses)
 		{
+			boss.hpBar.enabled = false;
 			boss.OnSpawn += GetMaxHP;
 			boss.OnHit += GetHp;
 		}
@@ -23,6 +23,7 @@ public class BossHp : MonoBehaviour
 	{
 		foreach (var boss in bosses)
 		{
+			boss.hpBar.enabled = false;
 			boss.OnSpawn -= GetMaxHP;
 			boss.OnHit -= GetHp;
 		}
@@ -36,8 +37,8 @@ public class BossHp : MonoBehaviour
 
 	private void UpdateBarSettings()
 	{
-		hpBar.rectTransform.localScale = new Vector3(bosses[currentBoss].hpBarWidth, bosses[currentBoss].hpBarHight);
-		hpBar.enabled = true;
+		bosses[currentBoss].hpBar.rectTransform.localScale = new Vector3(bosses[currentBoss].hpBarWidth, bosses[currentBoss].hpBarHight);
+		bosses[currentBoss].hpBar.enabled = true;
 	}
 
 	private void GetHp(float _Hp)
@@ -47,12 +48,12 @@ public class BossHp : MonoBehaviour
 			currentBoss++;
 			if (currentBoss >= bosses.Length)
 			{
-				hpBar.fillAmount = 0;
-				hpBar.enabled = false;
+				bosses[currentBoss].hpBar.fillAmount = 0;
+				bosses[currentBoss].hpBar.enabled = false;
 				gameObject.SetActive(false);
 			}
 		}
-		hpBar.fillAmount = _Hp / maxHp;
+		bosses[currentBoss].hpBar.fillAmount = _Hp / maxHp;
 	}
 
 #if UNITY_EDITOR
@@ -66,12 +67,12 @@ public class BossHp : MonoBehaviour
 		{
 			BossesSo boss = bosses[i];
 			Gizmos.color = Color.white;
-			Gizmos.DrawRay(hpBar.rectTransform.position + Vector3.up * pos, Vector3.up * boss.hpBarHight / 2);
-			Gizmos.DrawRay(hpBar.rectTransform.position + Vector3.up * pos, Vector3.down * boss.hpBarHight / 2);
+			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.up * boss.hpBarHight / 2);
+			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.down * boss.hpBarHight / 2);
 
 			Gizmos.color = Color.magenta;
-			Gizmos.DrawRay(hpBar.rectTransform.position + Vector3.up * pos, Vector3.right * boss.hpBarWidth / 2);
-			Gizmos.DrawRay(hpBar.rectTransform.position + Vector3.up * pos, Vector3.left * boss.hpBarWidth / 2);
+			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.right * boss.hpBarWidth / 2);
+			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.left * boss.hpBarWidth / 2);
 
 			if (i + 1 >= bosses.Length)
 				break;
