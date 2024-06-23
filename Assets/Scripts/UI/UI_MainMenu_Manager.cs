@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 
 public class UI_MainMenu_Manager : MonoBehaviour
 {
+
+
     //Refs
     [Header("References: BUTTONS")]
     [SerializeField] TMP_Text init_text;
@@ -127,4 +129,5 @@ public class UI_MainMenu_Manager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
 }

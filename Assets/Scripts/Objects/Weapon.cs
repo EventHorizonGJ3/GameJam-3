@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour, IPickable
 	}
 	protected virtual void OnBreak()
 	{
-		this.transform.parent = base.transform;
+		this.transform.parent = null;
 		this.gameObject.SetActive(false);
 	}
 	protected virtual void OnAttack(float _Dmg)

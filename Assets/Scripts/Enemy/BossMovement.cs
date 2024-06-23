@@ -35,7 +35,7 @@ public class BossMovement : EnemyMovement
 	{
 		if (GameManager.gameOnPause)
 			return;
-		if (isStagered)
+		if (isStaggered)
 			return;
 
 		if (isKnockbacked)
@@ -116,9 +116,9 @@ public class BossMovement : EnemyMovement
 
 	private IEnumerator HitStager()
 	{
-		isStagered = false;
+		isStaggered = false;
 		yield return new WaitForSeconds(stagerDur);
-		isStagered = true;
+		isStaggered = true;
 	}
 
 #if UNITY_EDITOR

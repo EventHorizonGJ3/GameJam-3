@@ -4,18 +4,27 @@ public class BreakableObject : MonoBehaviour, IBreakable
 {
 	[field: SerializeField] public float HP { get; set; }
 	[field: SerializeField] public GameObject BrokenObj { get; set; }
+	[SerializeField] private GameObject spawnPoint;
 	[SerializeField] bool dealOneDmg;
 
 	public bool IsBroken { get; set; }
 	public Transform colliderTransform { get; set; }
 
+	MeshRenderer mesh;
 
-	public void Break()
+    private void Awake()
+    {
+        mesh = GetComponent<MeshRenderer>();
+    }
+
+
+    public void Break()
 	{
 		IsBroken = true;
 		BrokenObj.transform.position = transform.position;
 		BrokenObj.SetActive(true);
-		gameObject.SetActive(false);
+		mesh.enabled = false;
+		spawnPoint.SetActive(false);
 
 	}
 

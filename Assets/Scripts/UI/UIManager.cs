@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -16,6 +17,17 @@ public class UIManager : MonoBehaviour
     //Refs
     [SerializeField] List<GameObject> allMainButtons = new List<GameObject>();
     [SerializeField] GameObject preselectedOnSetting;
+    [SerializeField] GameObject preselectedOnWin;
+    [SerializeField] GameObject preselectedOnLose;
+    [SerializeField] GameObject finalCanvas;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject loseScreen;
+    [SerializeField] GameObject statsImage;
+    [Header("Stats")]
+    //stats
+    [SerializeField] TMP_Text enemiesKilled;
+    [SerializeField] TMP_Text totalScore;
+    [SerializeField] TMP_Text gameTime;
 
 
 
@@ -29,15 +41,20 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnPause += PauseFunction;
+        GameManager.OnLose += LoseScreen;
+        GameManager.OnWin += WinScreen;
     }
     private void OnDisable()
     {
         GameManager.OnPause -= PauseFunction;
+        GameManager.OnLose -= LoseScreen;
+        GameManager.OnWin -= WinScreen;
     }
     private void Start()
     {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        finalCanvas.SetActive(false);
     }
 
     void PauseFunction()
@@ -134,6 +151,31 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_UI_Select);
+    }
+
+    void LoseScreen()
+    {
+        finalCanvas.SetActive(true);
+        winScreen.SetActive(false);
+        loseScreen.SetActive(true);
+        if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnLose);
+        ShowStats();
+    }
+    void WinScreen()
+    {
+        finalCanvas.SetActive(true);
+        winScreen.SetActive(true);
+        loseScreen.SetActive(false);
+        if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnWin);
+        ShowStats();
+    }
+
+    void ShowStats()
+    {
+        statsImage.SetActive(true);
+        enemiesKilled.text = "Enemy Killed:  " + GameManager.enemyKilled.ToString();
+        gameTime.text = "Your Time:   " + Time.time.ToString();
+        totalScore.text = "Score:   "; // aggiungere variabile dello score
     }
 
 

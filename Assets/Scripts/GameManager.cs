@@ -10,6 +10,9 @@ public partial class GameManager : MonoBehaviour
     
     public static Action OnPause;
     public static Action OnResume;
+    public static Action OnWin;
+    public static Action OnLose; // done
+
 
     public static bool PlayerIsAttacking;
     public static bool IsHoldingMelee;
@@ -19,6 +22,11 @@ public partial class GameManager : MonoBehaviour
     public static bool gameOnPause;
 
     public static bool usingGamePad;
+
+    //Stats
+    public static int enemyKilled;
+    
+    // score ?
 
     private void Awake()
     {

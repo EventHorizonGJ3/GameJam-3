@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    //TODO: events to spwan different enemy or different amount
+    
     public static Action<EnemySpawnManager> OnSpawnerReady;
 
     [Header("Prefabs Base Enemnies")]

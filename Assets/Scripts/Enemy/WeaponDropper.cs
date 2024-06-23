@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class WeaponDropper : MonoBehaviour
 {
-    WeaponsSO droppableWeapon;
-    IDamageable hp;
+    [SerializeField] WeaponsSO droppableWeapon;
+
+    [SerializeField] bool thisIsAnObject;
     int init;
     [SerializeField] LayerMask mapFloor;
 
     private void Awake()
     {
-        var x = GetComponent<EnemyCombo>();
-        droppableWeapon = x.defaultWeapon.WeaponSo;
+        Init();
         init = 0;
     }
 
     private void OnDisable()
     {
+        if (thisIsAnObject)
+        {
+            SpawnOnChance();
+            
+            return;
+        }
         init++;
         if (init > 1)
             SpawnOnChance();
@@ -27,8 +33,8 @@ public class WeaponDropper : MonoBehaviour
     void SpawnOnChance()
     {
         float chance = Random.Range(0, 1f);
-        Debug.Log("probabilit�:" + chance);
-        if (chance <= 0.5) DropWeapon();
+        Debug.Log("probabilità:" + chance);
+        if (chance <= 0.5f) DropWeapon();
 
     }
     void DropWeapon()
@@ -38,19 +44,13 @@ public class WeaponDropper : MonoBehaviour
         {
             if (weapon.MyWeapon.WeaponSo == droppableWeapon && !weapon.Transform.gameObject.activeInHierarchy)
             {
-
-
                 float targetY = SetSpawnHeight(weapon.Transform);
                 weapon.Transform.position = new(transform.position.x, targetY, transform.position.z);
                 weapon.Transform.gameObject.SetActive(true);
-
-
                 break;
-
             }
         }
     }
-
     float SetSpawnHeight(Transform obj)
     {
         float floorY = 0;
@@ -64,4 +64,20 @@ public class WeaponDropper : MonoBehaviour
         float targetY = floorY + Height + 0.1f;
         return targetY;
     }
+
+    void Init()
+    {
+        if (!thisIsAnObject)
+        {
+            var x = GetComponent<EnemyCombo>();
+            droppableWeapon = x.defaultWeapon.WeaponSo;
+            Debug.Log("eseguito");
+        }
+    }
+
+
+
+
+
+
 }
