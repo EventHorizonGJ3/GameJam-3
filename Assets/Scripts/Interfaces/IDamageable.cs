@@ -6,7 +6,7 @@ public interface IDamageable
 	public float HP { get; set; }
 	public Transform colliderTransform { get; set; }
 
-	public void TakeDamage(int damage);
+	public void TakeDamage(float damage);
 
 	///<summary>
 	/// deactivate navmesh and use power to applay an impulse force on RB

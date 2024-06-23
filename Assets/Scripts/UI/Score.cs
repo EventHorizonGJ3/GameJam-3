@@ -11,6 +11,8 @@ public class Score : MonoBehaviour
 	[SerializeField] float comboDur;
 	[Tooltip("how long it takes for the Gameobject canvas to dissapear")]
 	[SerializeField] float dissapearAfterTime;
+	[SerializeField, Range(0.0001f, 0.9f)] float multPerHits;
+	float totMult;
 	[SerializeField] GameObject canvas;
 	float score = 0;
 	float totDmg;
@@ -20,7 +22,7 @@ public class Score : MonoBehaviour
 	[SerializeField] Image bar;
 	Coroutine coroutine;
 	public static Action<float> OnScoreChanged;
-	public static Action<int> OnDmg;
+	public static Action<float> OnDmg;
 	private void OnEnable()
 	{
 		OnDmg += GetScore;
@@ -32,7 +34,7 @@ public class Score : MonoBehaviour
 		OnDmg -= GetScore;
 	}
 
-	void GetScore(int _Dmg)
+	void GetScore(float _Dmg)
 	{
 		canvas.SetActive(true);
 		if (coroutine != null)
@@ -43,13 +45,16 @@ public class Score : MonoBehaviour
 
 		totDmg += _Dmg;
 		numberOfHits++;
+		totMult = 1 + numberOfHits * multPerHits;
 		UpdateNumbers();
 		coroutine = StartCoroutine(Timer());
 	}
 	void UpdateNumbers()
 	{
-		totDmgTxt.text = totDmg.ToString();
-		numberOfHitsTxt.text = numberOfHits.ToString();
+
+		totDmgTxt.text = string.Format("{0:0.00}", totDmg);
+		numberOfHitsTxt.text = string.Format("{0:0.00}", totMult);
+		//numberOfHitsTxt.text = (int)totMult % totMult == 0 ? totMult.ToString() : totMult.ToString("0.00");
 	}
 	IEnumerator Timer()
 	{
@@ -62,13 +67,15 @@ public class Score : MonoBehaviour
 			yield return null;
 		}
 
-		score += totDmg * numberOfHits;
+		score += totDmg * totMult;
 		OnScoreChanged?.Invoke(score);
-		scoreTxt.text = $"{score}";
+
+		scoreTxt.text = string.Format("{0:0.00}", score);
 		totDmg = 0;
 		numberOfHits = 0;
-		UpdateNumbers();
+		totMult = 0;
 		time = 0;
+		UpdateNumbers();
 		while (time < dissapearAfterTime)
 		{
 			time += Time.deltaTime;

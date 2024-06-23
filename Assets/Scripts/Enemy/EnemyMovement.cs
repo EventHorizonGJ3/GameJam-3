@@ -7,38 +7,42 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 {
 	[Header("References:")]
-	NavMeshAgent agent;
+	protected NavMeshAgent agent;
 	public Transform colliderTransform { get; set; }
 	public Transform Transform { get => transform; }
 
 	[field: Header("Settings: ")]
 	[field: SerializeField] public float HP { get; set; }
-	[SerializeField] EnemyType enemyType;
+	[SerializeField] protected EnemyType enemyType;
 
 	[Header("Stager Settings: ")]
-	[SerializeField] float stagerDur;
+	[SerializeField, Min(1f)] protected float stagerDur;
+
+	protected float startHP;
 
 
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
 	[Header("knockback Settings")]
-	[SerializeField] float knockbackDur = 3;
-	[SerializeField] float backRayHight;
-	[SerializeField] float backRayLenght;
-	[SerializeField] LayerMask obstacleLayer;
-	[SerializeField] EnemyCombo combo;
-	float backPower;
-	float knockbackTimer = 0;
-	bool isKnockbacked;
-	Vector3 startPos;
-	Vector3 endPos;
-	Vector3 dir;
-	bool canMove = true;
-	Coroutine stager;
+	[SerializeField] protected float knockbackDur = 3;
+	[SerializeField] protected float backRayHight;
+	[SerializeField] protected float backRayLenght;
+	[SerializeField] protected LayerMask obstacleLayer;
+	[SerializeField] protected EnemyCombo combo;
+	protected float backPower;
+	protected float knockbackTimer = 0;
+	protected bool isKnockbacked;
+	protected Vector3 startPos;
+	protected Vector3 endPos;
+	protected Vector3 dir;
+	protected bool canMove = true;
+	protected bool isStaggered = false;
+	protected Coroutine stager;
 
 
 	private void Awake()
 	{
 		TryGetComponent(out agent);
+		startHP = HP;
 	}
 
 	private void OnEnable()
@@ -48,7 +52,10 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	private void OnDisable()
 	{
+		HP = startHP;
 		GameManager.OnPause += Pause;
+		canMove = true;
+		isKnockbacked = false;
 	}
 
 	private void Pause()
@@ -62,6 +69,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void Update()
 	{
 		if (GameManager.gameOnPause)
+			return;
+		if (isStaggered)
 			return;
 
 		if (isKnockbacked)
@@ -88,11 +97,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		{
 			agent.SetDestination(transform.position);
 		}
-		transform.LookAt(GameManager.enemyTargetPosition);
+		Vector3 _lookAtPos = new Vector3(GameManager.enemyTargetPosition.position.x, transform.position.y, GameManager.enemyTargetPosition.position.z);
+		transform.LookAt(_lookAtPos, Vector3.up);
 		combo.CheckAttack(out canMove);
 	}
 
-	public void Knockback(float _Power)
+	public virtual void Knockback(float _Power)
 	{
 		if (_Power <= 0)
 			return;
@@ -110,8 +120,9 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		// ("kncokback");
 	}
 
-	public void NoHP()
+	public virtual void NoHP()
 	{
+		isStaggered = false;
 		isKnockbacked = false;
 		knockbackTimer = 0;
 		canMove = true;
@@ -119,7 +130,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		gameObject.SetActive(false);
 	}
 
-	public void TakeDamage(int _Dmg)
+	public virtual void TakeDamage(float _Dmg)
 	{
 		Debug.Log(_Dmg);
 		HP -= _Dmg;
@@ -138,11 +149,11 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		}
 	}
 
-	private IEnumerator HitStager()
+	protected virtual IEnumerator HitStager()
 	{
-		canMove = false;
+		isStaggered = true;
 		yield return new WaitForSeconds(stagerDur);
-		canMove = true;
+		isStaggered = false;
 	}
 
 #if UNITY_EDITOR

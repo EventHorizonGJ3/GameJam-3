@@ -10,6 +10,9 @@ public partial class GameManager : MonoBehaviour
     
     public static Action OnPause;
     public static Action OnResume;
+    public static Action OnWin;
+    public static Action OnLose; // done
+
 
     public static bool PlayerIsAttacking;
     public static bool IsHoldingMelee;
@@ -20,6 +23,11 @@ public partial class GameManager : MonoBehaviour
 
     public static bool usingGamePad;
 
+    //Stats
+    public static int enemyKilled;
+    
+    // score ?
+
     private void Awake()
     {
         Application.targetFrameRate = 100;
@@ -29,6 +37,7 @@ public partial class GameManager : MonoBehaviour
     {
         gameOnPause = false; usingGamePad = false;
         InputManager.SwitchPlayerInputs();
+        InputManager.ActionMap.UI_Toggle.Enable();
     }
     private void OnEnable()
     {

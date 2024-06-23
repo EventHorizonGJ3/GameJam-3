@@ -253,6 +253,15 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""37301be7-0ee8-4738-a589-d04200ddbf3b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +286,17 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87437432-b2f6-4866-a0b1-b8d96c0c5f0f"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -289,7 +309,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""4b5fe1b5-f89a-4f15-8d45-43c3c82efbb2"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -385,6 +405,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
         // UI_Toggle
         m_UI_Toggle = asset.FindActionMap("UI_Toggle", throwIfNotFound: true);
         m_UI_Toggle_Pause = m_UI_Toggle.FindAction("Pause", throwIfNotFound: true);
+        m_UI_Toggle_AnyKey = m_UI_Toggle.FindAction("AnyKey", throwIfNotFound: true);
         // UserInterface
         m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
         m_UserInterface_Navigate = m_UserInterface.FindAction("Navigate", throwIfNotFound: true);
@@ -529,11 +550,13 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI_Toggle;
     private List<IUI_ToggleActions> m_UI_ToggleActionsCallbackInterfaces = new List<IUI_ToggleActions>();
     private readonly InputAction m_UI_Toggle_Pause;
+    private readonly InputAction m_UI_Toggle_AnyKey;
     public struct UI_ToggleActions
     {
         private @ActionMap m_Wrapper;
         public UI_ToggleActions(@ActionMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_UI_Toggle_Pause;
+        public InputAction @AnyKey => m_Wrapper.m_UI_Toggle_AnyKey;
         public InputActionMap Get() { return m_Wrapper.m_UI_Toggle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -546,6 +569,9 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @AnyKey.started += instance.OnAnyKey;
+            @AnyKey.performed += instance.OnAnyKey;
+            @AnyKey.canceled += instance.OnAnyKey;
         }
 
         private void UnregisterCallbacks(IUI_ToggleActions instance)
@@ -553,6 +579,9 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @AnyKey.started -= instance.OnAnyKey;
+            @AnyKey.performed -= instance.OnAnyKey;
+            @AnyKey.canceled -= instance.OnAnyKey;
         }
 
         public void RemoveCallbacks(IUI_ToggleActions instance)
@@ -635,6 +664,7 @@ public partial class @ActionMap: IInputActionCollection2, IDisposable
     public interface IUI_ToggleActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnAnyKey(InputAction.CallbackContext context);
     }
     public interface IUserInterfaceActions
     {

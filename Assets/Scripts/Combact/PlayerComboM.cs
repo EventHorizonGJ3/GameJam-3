@@ -76,11 +76,11 @@ public class PlayerComboM : Combo
 		base.RangedAttack();
 	}
 
-	protected void ActivateBerserk(int _Dmg)
+	protected void ActivateBerserk(float _Dmg)
 	{
-		extraDmg = _Dmg;
+		multDmg = _Dmg;
 	}
-	protected override int Damage()
+	protected override float Damage()
 	{
 		return base.Damage();
 	}

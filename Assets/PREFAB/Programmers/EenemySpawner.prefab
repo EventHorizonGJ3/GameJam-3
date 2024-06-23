@@ -46,8 +46,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnFrequancy: 5
   waves:
-  - waveName: Wave_1
+  - scoreForThisWave: 0
+    waveName: Wave_0
+    probabilities:
+      Manager_Chance: 0
+      Police_Chance: 0
+      Army_Chance: 0
+  - scoreForThisWave: 1
+    waveName: Wave_1
+    probabilities:
+      Manager_Chance: 1
+      Police_Chance: 0
+      Army_Chance: 0
+  - scoreForThisWave: 450
+    waveName: Wave_2
     probabilities:
       Manager_Chance: 0
       Police_Chance: 1
       Army_Chance: 0
+  - scoreForThisWave: 800
+    waveName: Wave_3
+    probabilities:
+      Manager_Chance: 0
+      Police_Chance: 0
+      Army_Chance: 1
+  - scoreForThisWave: 1300
+    waveName: Wave_3
+    probabilities:
+      Manager_Chance: 0
+      Police_Chance: 0
+      Army_Chance: 1

@@ -9,4 +9,5 @@ public class AudioData : ScriptableObject
     [SerializeField] public AudioClip SFX_OpenPauseMenu;
     [SerializeField] public AudioClip SFX_UI_Navigate;
     [SerializeField] public AudioClip SFX_UI_Select;
+    [SerializeField] public AudioClip SFX_UIMAIN_ButtonClick;
 }

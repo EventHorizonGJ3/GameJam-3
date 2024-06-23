@@ -77,9 +77,10 @@ public class WeaponPicker : MonoBehaviour
 			if (pickableWeapon.IsEnemyWeapon)
 				return;
 
-			if (currentWeapon != null)
+			if (currentWeapon != null && pickableWeapon.Transform.gameObject != currentWeapon)
 			{
-				currentWeapon.SetActive(false); currentWeapon.transform.parent = null;
+				currentWeapon.SetActive(false);
+				currentWeapon.transform.parent = null;
 			}
 			currentWeapon = pickableWeapon.Transform.gameObject;
 

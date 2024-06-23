@@ -57,11 +57,12 @@ public class MeleeWeapon : Weapon
 
 	protected virtual void ActivateKnockBack()
 	{
+		this.UpdateTrigger(true);
 		currentKnockBack = WeaponSo.KnockBackPower;
 		otherWeapon?.ActivateKnockBack();
 	}
 
-	protected override void OnAttack(int _Dmg)
+	protected override void OnAttack(float _Dmg)
 	{
 		firstHit = true;
 		otherWeapon?.OnAttack(_Dmg);

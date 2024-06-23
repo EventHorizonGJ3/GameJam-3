@@ -21,7 +21,7 @@ public class OtherWeapon : MeleeWeapon
 		transform.parent = _leftHand.parent;
 	}
 
-	protected override void OnAttack(int _Dmg)
+	protected override void OnAttack(float _Dmg)
 	{
 		firstHit = true;
 		currentKnockBack = 0;

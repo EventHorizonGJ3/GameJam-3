@@ -16,3 +16,4 @@ MonoBehaviour:
   SFX_OpenPauseMenu: {fileID: 8300000, guid: c33f51290a917a147927490a8d5fb9a7, type: 3}
   SFX_UI_Navigate: {fileID: 8300000, guid: 21e25a38ab2262c47985373e23d2ce78, type: 3}
   SFX_UI_Select: {fileID: 8300000, guid: 539afa5c6ccde074f819d60968761d11, type: 3}
+  SFX_UIMAIN_ButtonClick: {fileID: 8300000, guid: 86e68fbee08dec445afd43ae6d133ffc, type: 3}
