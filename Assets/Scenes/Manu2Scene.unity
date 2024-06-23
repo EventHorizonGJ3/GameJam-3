@@ -1457,6 +1457,7 @@ MonoBehaviour:
   bosses:
   - {fileID: 11400000, guid: 3702d2c0235894e49801819e4dfa83f4, type: 2}
   - {fileID: 11400000, guid: cdf434230c72ab741bcf5a37cd34604c, type: 2}
+  hpBar: {fileID: 1013661176}
 --- !u!4 &1184952433
 Transform:
   m_ObjectHideFlags: 0
@@ -1758,11 +1759,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1511191564 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 167126244644250239, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
-  m_PrefabInstance: {fileID: 2037667511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1519866985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6444041810784425536, guid: 1982c138f671d2d4aa84008fd11f5733, type: 3}
@@ -1886,15 +1882,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2069281515613029375, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262164642506428879, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2302209234909664150, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: multPerHits
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4124062988370048789, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_IsActive
@@ -1902,22 +1898,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4406390116671858459, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6424240991164354518, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6426126683973350296, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8673155922768296651, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8818561412864908944, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8897598895489516264, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
@@ -2517,14 +2509,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 66.552
       objectReference: {fileID: 0}
-    - target: {fileID: 3495261545807659984, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
-      propertyPath: leftHand
-      value: 
-      objectReference: {fileID: 1511191564}
-    - target: {fileID: 3495261545807659984, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
-      propertyPath: rightHand
-      value: 
-      objectReference: {fileID: 2068745971}
     - target: {fileID: 4058409256692725187, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
       propertyPath: m_Height
       value: 1
@@ -2689,11 +2673,6 @@ MonoBehaviour:
 --- !u!135 &2068745970 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 532607607859916032, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
-  m_PrefabInstance: {fileID: 2037667511}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2068745971 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2949072798763041045, guid: 5eb0a3c0fccbe5340b2de252dcd7fe0e, type: 3}
   m_PrefabInstance: {fileID: 2037667511}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2119610454 stripped
