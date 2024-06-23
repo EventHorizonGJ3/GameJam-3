@@ -18,6 +18,8 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	[Header("Stager Settings: ")]
 	[SerializeField, Min(1f)] protected float stagerDur;
 
+	protected float startHP;
+
 
 	public EnemyType Type { get => enemyType; private set => enemyType = value; }
 	[Header("knockback Settings")]
@@ -33,13 +35,14 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	protected Vector3 endPos;
 	protected Vector3 dir;
 	protected bool canMove = true;
-	protected bool isStagered = false;
+	protected bool isStaggered = false;
 	protected Coroutine stager;
 
 
 	private void Awake()
 	{
 		TryGetComponent(out agent);
+		startHP = HP;
 	}
 
 	private void OnEnable()
@@ -49,6 +52,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	private void OnDisable()
 	{
+		HP = startHP;
 		GameManager.OnPause += Pause;
 		canMove = true;
 		isKnockbacked = false;
@@ -66,7 +70,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	{
 		if (GameManager.gameOnPause)
 			return;
-		if (isStagered)
+		if (isStaggered)
 			return;
 
 		if (isKnockbacked)
@@ -118,6 +122,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	public virtual void NoHP()
 	{
+		isStaggered = false;
 		isKnockbacked = false;
 		knockbackTimer = 0;
 		canMove = true;
@@ -146,9 +151,9 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	protected virtual IEnumerator HitStager()
 	{
-		isStagered = true;
+		isStaggered = true;
 		yield return new WaitForSeconds(stagerDur);
-		isStagered = false;
+		isStaggered = false;
 	}
 
 #if UNITY_EDITOR
