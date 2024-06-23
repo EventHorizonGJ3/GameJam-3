@@ -12,8 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff41eb1a46e8694fa14935ece2f111f, type: 3}
   m_Name: AudioDatabase
   m_EditorClassIdentifier: 
-  Music_nome: {fileID: 0}
   SFX_OpenPauseMenu: {fileID: 8300000, guid: c33f51290a917a147927490a8d5fb9a7, type: 3}
   SFX_UI_Navigate: {fileID: 8300000, guid: 21e25a38ab2262c47985373e23d2ce78, type: 3}
   SFX_UI_Select: {fileID: 8300000, guid: 539afa5c6ccde074f819d60968761d11, type: 3}
   SFX_UIMAIN_ButtonClick: {fileID: 8300000, guid: 86e68fbee08dec445afd43ae6d133ffc, type: 3}
+  SFX_HitBonk: {fileID: 8300000, guid: 4994bae996d58cc43ac1afa84c072a9b, type: 3}
+  SFX_BrokenWood: {fileID: 8300000, guid: e3839067a8790b640b2d4ef53bd531a1, type: 3}
+  SFX_BrokenGlass: {fileID: 8300000, guid: 7e77fbc3a46dce94aa83e09ac892c670, type: 3}
+  SFX_HitCar: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
+  SFX_Dash: {fileID: 8300000, guid: 91d6bc0845d8cca42aa8515fc3991644, type: 3}
+  SFX_BrokenHydrant: {fileID: 8300000, guid: ac6fd29e424457245b6fb95b8ee0b22f, type: 3}
+  SFX_Money: {fileID: 8300000, guid: 576e3175cfda6fe438613757a11f510d, type: 3}
+  SFX_BrokenStreetLight: {fileID: 8300000, guid: 6e2e8e5e318b94940b32a56bb61e670f, type: 3}
+  SFX_BrokenTree: {fileID: 8300000, guid: 27d8f65c9f8ab704a82324bc13829472, type: 3}
+  WeaponPickUp: {fileID: 8300000, guid: c44d9a288bc9ab8439bbbb7e8cd3351d, type: 3}
+  OST_Main: {fileID: 8300000, guid: 75a56ccfc5bb9634f98807e0424827d7, type: 3}
+  OST_Menu: {fileID: 8300000, guid: b5a0b8c8f02ad2d44a9bf580558ab375, type: 3}
+  OST_Intro: {fileID: 8300000, guid: a6ff4323bc7a4f444904a4ed0a1a58be, type: 3}
+  OST_Berserk: {fileID: 8300000, guid: 217598bd420065a40aab518c7c6ad766, type: 3}
+  OST_Stacy: {fileID: 8300000, guid: 2410c9bbdb174bd49824a4dee03298cb, type: 3}
+  OST_Boss: {fileID: 8300000, guid: af42efeb4a9ac7e41b985f00315ee24a, type: 3}
