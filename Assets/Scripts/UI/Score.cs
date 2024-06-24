@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
 	[SerializeField] float comboDur;
 	[Tooltip("how long it takes for the Gameobject canvas to dissapear")]
 	[SerializeField] float dissapearAfterTime;
-	[SerializeField, Range(0.0001f, 0.9f)] float multPerHits;
+	[SerializeField, Range(0.1f, 0.9f)] float multPerHits; //ByEma minRaange 0.1
 	float totMult;
 	[SerializeField] GameObject canvas;
 	float score = 0;
@@ -52,8 +52,8 @@ public class Score : MonoBehaviour
 	void UpdateNumbers()
 	{
 
-		totDmgTxt.text = string.Format("{0:0.00}", totDmg);
-		numberOfHitsTxt.text = string.Format("{0:0.00}", totMult);
+		totDmgTxt.text = string.Format("{0:0.0}", totDmg); //Byema remove second digit
+		numberOfHitsTxt.text = string.Format("{0:0.0}", totMult); //Byema remove second digit
 		//numberOfHitsTxt.text = (int)totMult % totMult == 0 ? totMult.ToString() : totMult.ToString("0.00");
 	}
 	IEnumerator Timer()

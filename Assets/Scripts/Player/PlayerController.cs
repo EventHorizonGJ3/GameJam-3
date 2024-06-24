@@ -88,9 +88,8 @@ public class PlayerController : MonoBehaviour
             curveDuration += Time.deltaTime;
             rb.velocity = dashCurve.Evaluate(curveDuration / dashDuration) * dashSpeed * rb.velocity.normalized;
             yield return null;
+            //Temp Disable rotation in different directions?
         }
         isDashing = false;
     }
-
-
 }
