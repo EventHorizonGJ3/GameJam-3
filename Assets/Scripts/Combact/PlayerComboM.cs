@@ -11,7 +11,6 @@ using UnityEngine.InputSystem;
 public class PlayerComboM : Combo
 {
 	ActionMap inputs;
-
 	private void Awake()
 	{
 		inputs = InputManager.ActionMap;

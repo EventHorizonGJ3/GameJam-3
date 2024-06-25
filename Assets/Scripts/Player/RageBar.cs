@@ -64,6 +64,8 @@ public class RageBar : MonoBehaviour
 			if (Time.time - lastBerserkTime >= berserkDuration)
 			{
 				isBerserkActive = false;
+				OnBerserkExtraDmg?.Invoke(0);
+				
 			}
 		}
 
