@@ -14,7 +14,10 @@ public class OtherWeapon : MeleeWeapon
 	{
 
 	}
-
+	protected override void OnInizialize()
+	{
+		base.OnInizialize();
+	}
 	protected override void OnGrabbed(Transform _leftHand)
 	{
 		transform.position = _leftHand.position;

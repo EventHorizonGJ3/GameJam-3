@@ -22,6 +22,10 @@ public class RangedWeapon : Weapon
 		Target -= GetTarget;
 		base.OnDisable();
 	}
+	protected override void OnInizialize()
+	{
+		base.OnInizialize();
+	}
 	protected override void OnBreak()
 	{
 		//base.OnBreak();
@@ -75,7 +79,6 @@ public class RangedWeapon : Weapon
 	void GetTarget(Transform _Target)
 	{
 		target = _Target;
-
 	}
 
 	protected override void OnGrabbed(Transform _leftHand)

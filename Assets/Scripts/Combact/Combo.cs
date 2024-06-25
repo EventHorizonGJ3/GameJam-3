@@ -37,6 +37,7 @@ public class Combo : MonoBehaviour
 	protected virtual void OnDisable()
 	{
 		this.currentWeapon.Break -= BackToPunches;
+		this.currentWeapon = null;
 	}
 
 	protected virtual void Start()
@@ -60,7 +61,7 @@ public class Combo : MonoBehaviour
 		}
 
 		this.currentWeapon = _NewWeapon;
-		this.currentWeapon.AttackEnd();
+		this.currentWeapon.Inizialize?.Invoke();
 		this.comboCounter = 0;
 		this.lastComboTime = 0;
 		this.lastAttackTime = 0;

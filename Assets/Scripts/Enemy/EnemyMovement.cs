@@ -127,6 +127,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		knockbackTimer = 0;
 		canMove = true;
 		StopAllCoroutines();
+		EndStats.EnemyDeath?.Invoke();
 		gameObject.SetActive(false);
 	}
 
@@ -141,6 +142,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 			StopCoroutine(stager);
 			stager = null;
 		}
+
 		stager = StartCoroutine(HitStager());
 
 		if (HP <= 0)
@@ -155,17 +157,6 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		yield return new WaitForSeconds(stagerDur);
 		isStaggered = false;
 	}
-
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawRay(transform.position + Vector3.up * backRayHight, dir * backRayLenght);
-		Gizmos.color = Color.magenta;
-		Debug.DrawRay(transform.position + Vector3.up * backRayHight, dir * backPower);
-	}
-
-#endif
 
 }
 

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Weapon : MonoBehaviour, IPickable
 {
@@ -17,6 +18,7 @@ public class Weapon : MonoBehaviour, IPickable
 	[field: SerializeField] public bool IsEnemyWeapon { get; set; }
 
 	//- "Actions: "
+	public Action Inizialize;
 	public Action<float> Attack;
 	public Action<Transform> Target;
 	public Action AttackEnd;
@@ -28,16 +30,27 @@ public class Weapon : MonoBehaviour, IPickable
 	protected virtual private void Awake()
 	{
 		this.trigger = this.GetComponent<Collider>();
+		this.Inizialize += OnInizialize;
+	}
 
+	protected virtual void OnInizialize()
+	{
+		this.UpdateTrigger(false);
 	}
 
 	protected virtual void OnEnable()
 	{
+		SceneManager.sceneUnloaded += OnSceneUnloaded;
 		this.initialPos = transform.position;
 		this.Grabbed += this.OnGrabbed;
 		this.Attack += this.OnAttack;
 		this.AttackEnd += this.OnAttackEnd;
 		this.Break += this.OnBreak;
+	}
+
+	private void OnSceneUnloaded(Scene arg0)
+	{
+		this.Inizialize -= OnInizialize;
 	}
 
 	protected virtual void OnGrabbed(Transform _leftHand)
@@ -70,7 +83,7 @@ public class Weapon : MonoBehaviour, IPickable
 	protected virtual void OnAttackEnd()
 	{
 		this.currentKnockBack = 0;
-		this.UpdateTrigger(false);
+
 	}
 	protected virtual void UpdateTrigger(bool _X)
 	{

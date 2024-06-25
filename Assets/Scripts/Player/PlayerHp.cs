@@ -55,7 +55,6 @@ public class PlayerHp : MonoBehaviour, IDamageable
 	public void NoHP()
 	{
 		GameManager.OnLose?.Invoke();
-		Debug.LogError("OH I'M DIE THANK YOU FOREVER");
 	}
 
 	public void TakeDamage(float damage)

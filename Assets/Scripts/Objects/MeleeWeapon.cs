@@ -61,7 +61,10 @@ public class MeleeWeapon : Weapon
 		currentKnockBack = WeaponSo.KnockBackPower;
 		otherWeapon?.ActivateKnockBack();
 	}
-
+	protected override void OnInizialize()
+	{
+		base.OnInizialize();
+	}
 	protected override void OnAttack(float _Dmg)
 	{
 		firstHit = true;

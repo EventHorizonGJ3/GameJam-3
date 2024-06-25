@@ -14,11 +14,11 @@ public class Score : MonoBehaviour
 	[SerializeField, Range(0.1f, 0.9f)] float multPerHits; //ByEma minRaange 0.1
 	float totMult;
 	[SerializeField] GameObject canvas;
-	float score = 0;
+	protected float score = 0;
 	float totDmg;
 	float numberOfHits;
 	[SerializeField] TextMeshProUGUI scoreTxt, totDmgTxt, numberOfHitsTxt;
-	public bool UseScoreBar;
+	[SerializeField] bool UseScoreBar;
 	[SerializeField] Image bar;
 	Coroutine coroutine;
 	public static Action<float> OnScoreChanged;
@@ -54,7 +54,7 @@ public class Score : MonoBehaviour
 
 		totDmgTxt.text = string.Format("{0:0.0}", totDmg); //Byema remove second digit
 		numberOfHitsTxt.text = string.Format("{0:0.0}", totMult); //Byema remove second digit
-		//numberOfHitsTxt.text = (int)totMult % totMult == 0 ? totMult.ToString() : totMult.ToString("0.00");
+																  //numberOfHitsTxt.text = (int)totMult % totMult == 0 ? totMult.ToString() : totMult.ToString("0.00");
 	}
 	IEnumerator Timer()
 	{

@@ -111,10 +111,11 @@ public class BossMovement : EnemyMovement
 		knockbackTimer = 0;
 		canMove = true;
 		StopAllCoroutines();
+		EndStats.EnemyDeath?.Invoke();
 		gameObject.SetActive(false);
 	}
 
-	private IEnumerator HitStager()
+	protected override IEnumerator HitStager()
 	{
 		isStaggered = false;
 		yield return new WaitForSeconds(stagerDur);
