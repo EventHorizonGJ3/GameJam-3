@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1258316034044521342}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268363, z: -0, w: -0.9238795}
-  m_LocalPosition: {x: -0.087, y: 1, z: 1.381}
+  m_LocalPosition: {x: 0.1, y: 1, z: 0.88}
   m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5657,6 +5657,8 @@ MonoBehaviour:
   OriginalObj: {fileID: 3987621510424691585}
   spawnPoint: {fileID: 1258316034044521342}
   dealOneDmg: 1
+  deactivateColliderOnBreak: 0
+  respawnTime: 60
 --- !u!1 &8557611737798882779
 GameObject:
   m_ObjectHideFlags: 0
