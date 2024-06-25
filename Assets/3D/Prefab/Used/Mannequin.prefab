@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 1661171138361785923}
   - component: {fileID: 3433230526947793242}
   - component: {fileID: 4287905800708678230}
+  - component: {fileID: 5308480435572163849}
   m_Layer: 3
   m_Name: Mannequin
   m_TagString: Untagged
@@ -472,6 +473,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 5106838907111240908}
   dealOneDmg: 1
   deactivateColliderOnBreak: 1
+  respawnTime: 10
 --- !u!136 &4287905800708678230
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -495,6 +497,22 @@ CapsuleCollider:
   m_Height: 2.37
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &5308480435572163849
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480086999790216846}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6745686223481880438
 GameObject:
   m_ObjectHideFlags: 0

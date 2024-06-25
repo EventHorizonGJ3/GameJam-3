@@ -14,12 +14,15 @@ public class BreakableObject : MonoBehaviour, IBreakable
 	
 	private Collider objectCollider;
 	
+	private float initialHP; //ByEma
+	
 	//MeshRenderer mesh;
 
     private void Awake()
     {
         //mesh = GetComponent<MeshRenderer>(); //ByEma
         objectCollider = GetComponent<Collider>(); //ByEma
+        initialHP = HP; //ByEma
     }
 
 
@@ -82,6 +85,6 @@ public class BreakableObject : MonoBehaviour, IBreakable
 		{
 			objectCollider.enabled = true;
 		}
-		HP = 4f;
+		HP = initialHP;
 	}
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5917856156236071841}
   - component: {fileID: 3019696590634718547}
   - component: {fileID: 565979928648665774}
+  - component: {fileID: 3684474626291765129}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3684474626291765129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823777202726802630}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0715373, y: 1.0722272, z: 1.1368867}
+  m_Center: {x: 0.0000019073486, y: 0.5361136, z: -0.0000019073486}
 --- !u!1 &8093495231959574638
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7380099043620938878}
+  - component: {fileID: 8414759517069626483}
   m_Layer: 0
   m_Name: Cash_desk
   m_TagString: Untagged
@@ -116,6 +139,22 @@ Transform:
   - {fileID: 5917856156236071841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &8414759517069626483
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093495231959574638}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8101627382307754645
 GameObject:
   m_ObjectHideFlags: 0
