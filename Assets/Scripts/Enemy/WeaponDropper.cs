@@ -34,11 +34,13 @@ public class WeaponDropper : MonoBehaviour
 	{
 		float chance = Random.Range(0, 1f);
 		Debug.Log("probabilità:" + chance);
-		if (chance <= 1f) DropWeapon();
+		if (chance <= 0.8f) DropWeapon();
 
 	}
 	void DropWeapon()
 	{
+		
+		
 		if (WeaponsPooler.SharedInstance == null)
 			return;
 

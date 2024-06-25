@@ -37,7 +37,7 @@ public class BreakableObject : MonoBehaviour, IBreakable, ISoundable
 		BrokenObj.SetActive(true);
 		OriginalObj.SetActive(false); //ByEma
 		//mesh.enabled = false; //CommentedByEma
-		//spawnPoint.SetActive(false); 
+		spawnPoint?.SetActive(false); 
 		//ByEmaStart
 		if (deactivateColliderOnBreak && objectCollider != null)
 		{

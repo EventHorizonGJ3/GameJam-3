@@ -4813,12 +4813,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d8f87405a95dc4fa9bc8d226fbfb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berserkDuration: 50
-  berserkCost: 20
-  berserkCooldown: 0
-  BerserkMultiplier: 0
-  healAmount: 10
-  healDuration: 3
+  berserkDuration: 15
+  berserkCost: 80
+  berserkCooldown: 10
+  BerserkMultiplier: 3
+  healAmount: 20
+  healDuration: 10
   rageBar: {fileID: 2098376065758898494}
   fullBarAmount: 100
   barResetTimer: 2
