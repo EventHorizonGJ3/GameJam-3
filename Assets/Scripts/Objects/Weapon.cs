@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Weapon : MonoBehaviour, IPickable
+public class Weapon : MonoBehaviour, IPickable, ISoundable
 {
 	public Transform Transform => this.transform;
 	protected float myDmg;
@@ -92,5 +92,11 @@ public class Weapon : MonoBehaviour, IPickable
 
 	protected virtual void OnTriggerEnter(Collider _Other)
 	{
+		
 	}
+
+    public void PlaySound()
+    {
+		AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_HitBonk,transform);
+    }
 }

@@ -38,6 +38,7 @@ public class OtherWeapon : MeleeWeapon
 		{
 			hp.colliderTransform = transform.root;
 			hp.TakeDamage(myDmg);
+			if (myDmg > 0) base.PlaySound();
 			hp.Knockback(currentKnockBack);
 			if (firstHit)
 			{

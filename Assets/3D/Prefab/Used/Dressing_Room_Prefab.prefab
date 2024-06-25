@@ -321,6 +321,8 @@ MonoBehaviour:
   dealOneDmg: 1
   deactivateColliderOnBreak: 1
   respawnTime: 10
+  clip: {fileID: 0}
+  onHitClip: {fileID: 0}
 --- !u!65 &1932534753437059989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -615,6 +617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2103551932791841553}
     m_Modifications:
+    - target: {fileID: 260998134450328175, guid: 8fb9b4d30b4410643ac8c4422881bd16, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e77fbc3a46dce94aa83e09ac892c670, type: 3}
     - target: {fileID: 807027910007465795, guid: 8fb9b4d30b4410643ac8c4422881bd16, type: 3}
       propertyPath: m_IsActive
       value: 1

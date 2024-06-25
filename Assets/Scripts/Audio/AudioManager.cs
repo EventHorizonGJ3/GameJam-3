@@ -50,14 +50,26 @@ public class AudioManager : MonoBehaviour
         Mixer.SetFloat(VolumeSettings.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip, Transform soundSource)
     {
         AudioSource audioSource = AudioObjectPooler.SharedInstance.GetPooledObject().GetComponent<AudioSource>();
         audioSource.clip = clip;
+        audioSource.transform.position = soundSource.position;
         audioSource.gameObject.SetActive(true);
         audioSource.Play();
         StartCoroutine(DeactivationTimer(audioSource.gameObject, audioSource.clip.length));
     }
+    public void PlaySFX(AudioClip clip)
+    {
+        AudioSource audioSource = AudioObjectPooler.SharedInstance.GetPooledObject().GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        
+        audioSource.gameObject.SetActive(true);
+        audioSource.Play();
+        StartCoroutine(DeactivationTimer(audioSource.gameObject, audioSource.clip.length));
+    }
+
+
 
    
     IEnumerator DeactivationTimer(GameObject obj, float time)

@@ -12,16 +12,16 @@ public class AudioData : ScriptableObject
     [SerializeField] public AudioClip SFX_UIMAIN_ButtonClick;
     
     [Header("SFXs")]
-    [SerializeField] public AudioClip SFX_HitBonk; //Reproduce when hit enemy or hitten by enemy
-    [SerializeField] public AudioClip SFX_BrokenWood; //Reproduce when destroy shelves and Mannequines
-    [SerializeField] public AudioClip SFX_BrokenGlass; //Reproduce when destroy Mirror and GlassObjects
-    [SerializeField] public AudioClip SFX_HitCar; //Reproduce when hit Cars
-    [SerializeField] public AudioClip SFX_Dash; //WhenPlayerDash
-    [SerializeField] public AudioClip SFX_BrokenHydrant; //Reproduce when destroy Hydrant
-    [SerializeField] public AudioClip SFX_Money; //Reproduce when destroy Money register
-    [SerializeField] public AudioClip SFX_BrokenStreetLight; //Reproduce when destroy Street Lamps
-    [SerializeField] public AudioClip SFX_BrokenTree; //Reproduce when destroy Tree
-    [SerializeField] public AudioClip WeaponPickUp; //Reproduce when pick up weapon
+    [SerializeField] public AudioClip SFX_HitBonk; //DONE
+    [SerializeField] public AudioClip SFX_BrokenWood; //missin shelves
+    [SerializeField] public AudioClip SFX_BrokenGlass; //DONE
+    [SerializeField] public AudioClip SFX_HitCar; //DONE
+    [SerializeField] public AudioClip SFX_Dash; //DONE
+    [SerializeField] public AudioClip SFX_BrokenHydrant; //DONE
+    [SerializeField] public AudioClip SFX_Money; //Reproduce when destroy Money register - MISSING PREFAB
+    [SerializeField] public AudioClip SFX_BrokenStreetLight; //DONE
+    [SerializeField] public AudioClip SFX_BrokenTree; //DISPOSED
+    [SerializeField] public AudioClip SFX_WeaponPickUp; //DONE
     
     [Header("OSTs")]
     [SerializeField] public AudioClip OST_Main; //MainScene Soundtrack

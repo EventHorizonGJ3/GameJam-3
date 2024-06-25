@@ -25,7 +25,7 @@ MonoBehaviour:
   SFX_Money: {fileID: 8300000, guid: 576e3175cfda6fe438613757a11f510d, type: 3}
   SFX_BrokenStreetLight: {fileID: 8300000, guid: 6e2e8e5e318b94940b32a56bb61e670f, type: 3}
   SFX_BrokenTree: {fileID: 8300000, guid: 27d8f65c9f8ab704a82324bc13829472, type: 3}
-  WeaponPickUp: {fileID: 8300000, guid: c44d9a288bc9ab8439bbbb7e8cd3351d, type: 3}
+  SFX_WeaponPickUp: {fileID: 8300000, guid: c44d9a288bc9ab8439bbbb7e8cd3351d, type: 3}
   OST_Main: {fileID: 8300000, guid: 75a56ccfc5bb9634f98807e0424827d7, type: 3}
   OST_Menu: {fileID: 8300000, guid: b5a0b8c8f02ad2d44a9bf580558ab375, type: 3}
   OST_Intro: {fileID: 8300000, guid: a6ff4323bc7a4f444904a4ed0a1a58be, type: 3}

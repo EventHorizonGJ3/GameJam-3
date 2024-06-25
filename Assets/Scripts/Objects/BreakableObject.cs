@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class BreakableObject : MonoBehaviour, IBreakable
+public class BreakableObject : MonoBehaviour, IBreakable, ISoundable
 {
 	[field: SerializeField] public float HP { get; set; }
 	[field: SerializeField] public GameObject BrokenObj { get; set; }
@@ -15,6 +15,9 @@ public class BreakableObject : MonoBehaviour, IBreakable
 	private Collider objectCollider;
 	
 	private float initialHP; //ByEma
+
+	[SerializeField] AudioClip clip;
+	[SerializeField] AudioClip onHitClip;
 	
 	//MeshRenderer mesh;
 
@@ -26,6 +29,7 @@ public class BreakableObject : MonoBehaviour, IBreakable
     }
 
 
+
     public void Break()
 	{
 		IsBroken = true;
@@ -33,12 +37,13 @@ public class BreakableObject : MonoBehaviour, IBreakable
 		BrokenObj.SetActive(true);
 		OriginalObj.SetActive(false); //ByEma
 		//mesh.enabled = false; //CommentedByEma
-		spawnPoint.SetActive(false); 
+		//spawnPoint.SetActive(false); 
 		//ByEmaStart
 		if (deactivateColliderOnBreak && objectCollider != null)
 		{
 			objectCollider.enabled = false; // Deactivate the collider
 		}
+		PlaySound();
 		StartCoroutine(Respawn());
 		//ByEmaEnd
 	}
@@ -51,6 +56,7 @@ public class BreakableObject : MonoBehaviour, IBreakable
 
 	public void TakeDamage(float damage)
 	{
+		if (onHitClip != null) AudioManager.instance.PlaySFX(onHitClip, transform);
 		if (IsBroken)
 			return;
 
@@ -87,4 +93,12 @@ public class BreakableObject : MonoBehaviour, IBreakable
 		}
 		HP = initialHP;
 	}
+
+    public void PlaySound()
+    {
+		if (clip == null) return; 
+		AudioManager.instance.PlaySFX(clip,transform);
+		Debug.Log(transform.name);
+    }
+
 }

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        InputManager.ActionMap.Player.Movement.Enable();
         if (InputManager.IsMoving(out Vector3 direction) && !isDashing)
         {
             rb.velocity = new Vector3(direction.x * movingSpeed, 0, direction.z * movingSpeed);
@@ -48,10 +49,12 @@ public class PlayerController : MonoBehaviour
         else if (InputManager.IsMoving(out _) && isDashing)
         {
             rb.velocity = dashCurve.Evaluate(curveDuration / dashDuration) * dashSpeed * rb.velocity.normalized;
+            InputManager.ActionMap.Player.Movement.Disable();
         }
         else if(!InputManager.IsMoving(out _) && isDashing)
         {
             rb.velocity = dashCurve.Evaluate(curveDuration / dashDuration) * dashSpeed * meshTransform.forward;
+            InputManager.ActionMap.Player.Movement.Disable();
         }
     }
 
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if (InputManager.ActionMap.Player.Dash.WasPerformedThisFrame() && dashIsAvailable)
         {
             ApplyDash();
+            AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_Dash, transform);
             animator.SetTrigger("Dash"); //ByEma
         }
     }

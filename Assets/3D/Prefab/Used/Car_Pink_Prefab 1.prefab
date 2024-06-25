@@ -473,6 +473,10 @@ MonoBehaviour:
   OriginalObj: {fileID: 4517578565746737299}
   spawnPoint: {fileID: 0}
   dealOneDmg: 1
+  deactivateColliderOnBreak: 0
+  respawnTime: 10
+  clip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
+  onHitClip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
 --- !u!1 &8996983757703615485
 GameObject:
   m_ObjectHideFlags: 0

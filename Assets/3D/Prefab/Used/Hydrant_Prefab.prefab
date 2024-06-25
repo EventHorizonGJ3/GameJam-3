@@ -79,6 +79,8 @@ MonoBehaviour:
   dealOneDmg: 1
   deactivateColliderOnBreak: 0
   respawnTime: 60
+  clip: {fileID: 8300000, guid: ac6fd29e424457245b6fb95b8ee0b22f, type: 3}
+  onHitClip: {fileID: 0}
 --- !u!1 &1687289734837730604
 GameObject:
   m_ObjectHideFlags: 0
