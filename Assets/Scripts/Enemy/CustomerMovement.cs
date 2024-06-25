@@ -50,7 +50,7 @@ public class CustomerMovement : EnemyMovement
 		knockbackTimer = 0;
 		canMove = true;
 		StopAllCoroutines();
-		EndStats.EnemyDeath?.Invoke();
+		GameManager.EnemyDeath?.Invoke();
 		gameObject.SetActive(false);
 	}
 	protected override IEnumerator HitStager()

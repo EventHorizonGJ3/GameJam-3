@@ -126,7 +126,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		knockbackTimer = 0;
 		canMove = true;
 		StopAllCoroutines();
-		EndStats.EnemyDeath?.Invoke();
+		GameManager.EnemyDeath?.Invoke();
 		gameObject.SetActive(false);
 	}
 

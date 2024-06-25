@@ -111,7 +111,7 @@ public class BossMovement : EnemyMovement
 		knockbackTimer = 0;
 		canMove = true;
 		StopAllCoroutines();
-		EndStats.EnemyDeath?.Invoke();
+		GameManager.EnemyDeath?.Invoke();
 		gameObject.SetActive(false);
 	}
 

@@ -6,72 +6,80 @@ using UnityEngine.InputSystem;
 
 public partial class GameManager : MonoBehaviour
 {
-    //Events
-    
-    public static Action OnPause;
-    public static Action OnResume;
-    public static Action OnWin;
-    public static Action OnLose; // done
+	//Events
+
+	public static Action OnPause;
+	public static Action OnResume;
+	public static Action OnWin;
+	public static Action OnLose; // done
+	public static Action EnemyDeath;
 
 
-    public static bool PlayerIsAttacking;
-    public static bool IsHoldingMelee;
-    public static bool IsHoldingRanged;
-    public static Transform enemyTargetPosition;
+	public static bool PlayerIsAttacking;
+	public static bool IsHoldingMelee;
+	public static bool IsHoldingRanged;
+	public static Transform enemyTargetPosition;
 
-    public static bool gameOnPause;
+	public static bool gameOnPause;
 
-    public static bool usingGamePad;
+	public static bool usingGamePad;
 
-    //Stats
-    public static int enemyKilled;
-    
-    // score ?
+	//Stats
+	public static int enemyKilled;
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 100;
-    }
+	// score ?
 
-    private void Start()
-    {
-        gameOnPause = false; usingGamePad = false;
-        InputManager.SwitchPlayerInputs();
-        InputManager.ActionMap.UI_Toggle.Enable();
-    }
-    private void OnEnable()
-    {
-        InputManager.ActionMap.UI_Toggle.Pause.performed += PauseFunction;
-        OnResume += UnPauseByUI;
-    }
-    private void OnDisable()
-    {
-        InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
-        OnResume -= UnPauseByUI;
-    }
+	private void Awake()
+	{
+		Application.targetFrameRate = 100;
+	}
 
-    void PauseFunction(InputAction.CallbackContext used)
-    {
-        var usedDevice = used.control;
-        if (usedDevice.device is Gamepad) usingGamePad = true; else usingGamePad = false;
+	private void Start()
+	{
+		gameOnPause = false; usingGamePad = false;
+		InputManager.SwitchPlayerInputs();
+		InputManager.ActionMap.UI_Toggle.Enable();
+	}
+	private void OnEnable()
+	{
+		InputManager.ActionMap.UI_Toggle.Pause.performed += PauseFunction;
+		OnResume += UnPauseByUI;
+		EnemyDeath += OnEnemyDeath;
+	}
+	private void OnDisable()
+	{
+		InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
+		OnResume -= UnPauseByUI;
+		EnemyDeath += OnEnemyDeath;
+	}
 
-        gameOnPause = !gameOnPause;
-        
-        if(gameOnPause ) InputManager.SwitchToUIInputs();Time.timeScale = 0;
-        if(!gameOnPause ) InputManager.SwitchPlayerInputs();Time.timeScale = 1;
-        OnPause?.Invoke();
+	private void OnEnemyDeath()
+	{
+		enemyKilled++;
+	}
 
-        Debug.Log("uso del gamepad:"+usingGamePad);
-    }
+	void PauseFunction(InputAction.CallbackContext used)
+	{
+		var usedDevice = used.control;
+		if (usedDevice.device is Gamepad) usingGamePad = true; else usingGamePad = false;
 
-    void UnPauseByUI()
-    {
-        gameOnPause = !gameOnPause;
+		gameOnPause = !gameOnPause;
 
-        if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0;
-        if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
-        OnPause?.Invoke();
-    }
+		if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0;
+		if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
+		OnPause?.Invoke();
 
-  
+		Debug.Log("uso del gamepad:" + usingGamePad);
+	}
+
+	void UnPauseByUI()
+	{
+		gameOnPause = !gameOnPause;
+
+		if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0;
+		if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
+		OnPause?.Invoke();
+	}
+
+
 }
