@@ -2907,37 +2907,6 @@ Transform:
   - {fileID: 6520638164754027791}
   m_Father: {fileID: 3996293788622895336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &712235028204784882
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7934225248580614773}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7934225248580614773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712235028204784882}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8810246243741174678}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734666626175672889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,6 +4868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1382010194765474828}
+  - component: {fileID: 8928825145615279407}
   m_Layer: 3
   m_Name: Rods
   m_TagString: Untagged
@@ -4923,6 +4893,20 @@ Transform:
   - {fileID: 958631698885555925}
   m_Father: {fileID: 8370274699888987603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8928825145615279407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100587772026739265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a54bbaf77bfca468a548c0f95c834d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChanceToSpawn: 0.6
+  Cars: []
 --- !u!1 &1129979595242514347
 GameObject:
   m_ObjectHideFlags: 0
@@ -36251,7 +36235,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3574829125343484137}
   m_Father: {fileID: 8370274699888987603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8163030558813730704
@@ -42254,7 +42239,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -42552,7 +42538,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -44823,6 +44810,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6426757193722874359, guid: 221cd6c08566d9140ab50c837364f348, type: 3}
   m_PrefabInstance: {fileID: 929716263434596396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &936432330583648446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4135005967647122801}
+    m_Modifications:
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -64.20612
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.049999833
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 55.786976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.38268325
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9238796
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047092191391112168, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_Name
+      value: Fire_Extinguisher_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047092191391112168, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+--- !u!4 &3574829125343484137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4423300199136407639, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+  m_PrefabInstance: {fileID: 936432330583648446}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &938092061018591298
 PrefabInstance:
@@ -47386,7 +47439,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -53022,7 +53076,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -58230,7 +58285,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -60776,7 +60832,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -61744,7 +61801,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -63542,7 +63600,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -64386,7 +64445,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -65448,10 +65508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3081751467641581548, guid: bdb060869d4f34b4ea2ca4c559ffdb07, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7934225248580614773}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdb060869d4f34b4ea2ca4c559ffdb07, type: 3}
 --- !u!4 &8810246243741174678 stripped
@@ -70509,7 +70566,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -71227,7 +71285,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -72213,7 +72272,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -72473,17 +72533,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2726145905733616428}
     m_Modifications:
-    - target: {fileID: 1057568843937670907, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3490425615461769506, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.525997
       objectReference: {fileID: 0}
     - target: {fileID: 3490425615461769506, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.275
+      value: 1.664
       objectReference: {fileID: 0}
     - target: {fileID: 3490425615461769506, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72520,18 +72576,6 @@ PrefabInstance:
     - target: {fileID: 4094716761358813517, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
       propertyPath: m_Name
       value: Wall_rod
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094716761358813517, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6671531605138322730, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7732004602137125805, guid: a51c21ba47822f34fb6114dfe9aacb79, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74615,7 +74659,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -77905,7 +77950,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -78045,7 +78091,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dressing_Room_Prefab (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4490170621464027935, guid: db0a046b84344d44ebfa966f290cccb7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
