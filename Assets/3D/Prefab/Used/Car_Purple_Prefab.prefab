@@ -438,9 +438,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HP>k__BackingField: 4
   <BrokenObj>k__BackingField: {fileID: 4480502617321098645}
-  OriginalObj: {fileID: 5077014791495972264}
+  OriginalObj: {fileID: 8638999756532992928}
   spawnPoint: {fileID: 0}
   dealOneDmg: 1
+  deactivateColliderOnBreak: 0
+  respawnTime: 10
+  clip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
+  onHitClip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
 --- !u!1 &6693751972081533180
 GameObject:
   m_ObjectHideFlags: 0

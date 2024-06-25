@@ -67,6 +67,7 @@ public class RangedWeapon : Weapon
 		if (target.TryGetComponent(out IDamageable _Hp))
 		{
 			_Hp.TakeDamage(myDmg);
+			if (myDmg > 0) base.PlaySound();
 		}
 		gameObject.SetActive(false);
 		Break?.Invoke();

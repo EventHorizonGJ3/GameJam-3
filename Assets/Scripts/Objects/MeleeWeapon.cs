@@ -39,6 +39,7 @@ public class MeleeWeapon : Weapon
 					Break?.Invoke();
 				}
 			}
+			if (myDmg > 0) base.PlaySound();
 		}
 	}
 

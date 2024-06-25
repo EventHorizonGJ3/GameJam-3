@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (!enemy.Transform.gameObject.activeInHierarchy)
             {
-                enemy.Transform.position = transform.localPosition;
+                enemy.Transform.position = transform.position;
                 enemy.Transform.gameObject.SetActive(true);
                 break;
             }

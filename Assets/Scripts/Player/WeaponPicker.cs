@@ -82,6 +82,7 @@ public class WeaponPicker : MonoBehaviour
 				currentWeapon.SetActive(false);
 				currentWeapon.transform.parent = null;
 			}
+			AudioManager.instance.PlaySFX(AudioManager.instance.AudioData.SFX_WeaponPickUp, transform);
 			currentWeapon = pickableWeapon.Transform.gameObject;
 
 			pickableWeapon.Transform.position = rightHand.position; // mette l'arma in mano

@@ -474,6 +474,7 @@ MonoBehaviour:
   dealOneDmg: 1
   deactivateColliderOnBreak: 1
   respawnTime: 10
+  clip: {fileID: 8300000, guid: e3839067a8790b640b2d4ef53bd531a1, type: 3}
 --- !u!136 &4287905800708678230
 CapsuleCollider:
   m_ObjectHideFlags: 0
