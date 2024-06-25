@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
   m_Name: Punches military
   m_EditorClassIdentifier: 
-  NumberOfUses: 6
+  NumberOfUses: 9999
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -22,5 +22,9 @@ MonoBehaviour:
   RangedRange: 0
   ThrowDuration: 0.5
   AttackCombo:
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+  - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
+    Dmg: 10
+  - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
+    Dmg: 10
+  - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
     Dmg: 10
