@@ -5541,6 +5541,10 @@ PrefabInstance:
       value: WeaponsPooler
       objectReference: {fileID: 0}
     - target: {fileID: 2092311063018018879, guid: 8dd092e60ab7e274ab3fa012200e060a, type: 3}
+      propertyPath: amountToPool
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092311063018018879, guid: 8dd092e60ab7e274ab3fa012200e060a, type: 3}
       propertyPath: weaponsToPull.Array.data[3]
       value: 
       objectReference: {fileID: 147730472768366063, guid: c26245ad2620a084696b59a8ac46088b, type: 3}
