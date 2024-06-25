@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
-  m_Name: MetalBar
+  m_Name: FireEstinguisher
   m_EditorClassIdentifier: 
   NumberOfUses: 6
   EnemyLayer:
     serializedVersion: 2
-    m_Bits: 384
-  weaponPrefab: {fileID: 0}
-  KnockBackPower: 100
-  IsRanged: 0
-  RangedRange: 0
+    m_Bits: 128
+  weaponPrefab: {fileID: 5047092191391112168, guid: ceaf7e3fcdc327247bb6955619d6917f, type: 3}
+  KnockBackPower: 10
+  IsRanged: 1
+  RangedRange: 10
   ThrowDuration: 0.5
   AttackCombo:
   - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    Dmg: 1
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
-    Dmg: 3
+    Dmg: 10

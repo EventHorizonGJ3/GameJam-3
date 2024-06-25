@@ -4,7 +4,7 @@ public class BreakableObject : MonoBehaviour, IBreakable
 {
 	[field: SerializeField] public float HP { get; set; }
 	[field: SerializeField] public GameObject BrokenObj { get; set; }
-	[field: SerializeField] public GameObject OriginalObj { get; set; } //ByEma
+	[SerializeField] public GameObject OriginalObj; //ByEma
 	[SerializeField] private GameObject spawnPoint;
 	[SerializeField] bool dealOneDmg;
 

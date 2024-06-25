@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4423300199136407639}
-  m_Layer: 0
+  - component: {fileID: -3463966301688925566}
+  - component: {fileID: 2212396808314431189}
+  m_Layer: 6
   m_Name: Fire_Extinguisher_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +34,43 @@ Transform:
   - {fileID: 6259512061078380938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3463966301688925566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047092191391112168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bad0b57e2a0d2a4e8899183e8a4404d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponSo: {fileID: 11400000, guid: c171b5f60d0a3364f8f414366c7322ee, type: 2}
+  <IsEnemyWeapon>k__BackingField: 0
+--- !u!136 &2212396808314431189
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047092191391112168}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6923809186783728820
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +80,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6259512061078380938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: --MESH--
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +114,7 @@ GameObject:
   - component: {fileID: 1133239943162832437}
   - component: {fileID: 962830671103358649}
   - component: {fileID: 4507987665908907919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire_Extinguisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -36,7 +36,17 @@ public class RangedWeapon : Weapon
 		transform.parent = null;
 		startPos = transform.position;
 		timer = 0;
-		StartCoroutine(ThrowObject());
+		//StartCoroutine(ThrowObject()); CommentedByEma
+		//ByEma
+		if (target != null)
+		{
+			StartCoroutine(ThrowObject());
+		}
+		else
+		{
+			Debug.LogError("Target not assigned!");
+		}
+		//ByEmaEnd
 	}
 
 	IEnumerator ThrowObject()
@@ -71,6 +81,9 @@ public class RangedWeapon : Weapon
 	protected override void OnGrabbed(Transform _leftHand)
 	{
 		base.OnGrabbed(_leftHand);
+		transform.parent = _leftHand; //ByEma
+		transform.localPosition = Vector3.zero; //ByEma
+		transform.localRotation = Quaternion.identity; //ByEma
 	}
 	protected override void OnTriggerEnter(Collider _Other)
 	{ }

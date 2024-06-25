@@ -47,4 +47,5 @@ MonoBehaviour:
   weaponsToPull:
   - {fileID: 7442446482291474942, guid: 864474a20c648084a86e05d1afd98c8c, type: 3}
   - {fileID: 5874383237660608682, guid: 72e0d8feff712cd49b994a968a28a792, type: 3}
+  - {fileID: 8165182011330845881, guid: 6ce0c0c38ef06ac45bb7ff5f5b62be19, type: 3}
   amountToPool: 5

@@ -27,14 +27,14 @@ public class WeaponDropper : MonoBehaviour
         }
         init++;
         if (init > 1)
-            SpawnOnChance();
+           SpawnOnChance();
     }
 
     void SpawnOnChance()
     {
         float chance = Random.Range(0, 1f);
         Debug.Log("probabilità:" + chance);
-        if (chance <= 0.5f) DropWeapon();
+        if (chance <= 1f) DropWeapon();
 
     }
     void DropWeapon()
@@ -58,6 +58,7 @@ public class WeaponDropper : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 50, mapFloor))
         {
             floorY = hit.point.y;
+            Debug.Log(hit.transform.name);
         }
         obj.transform.gameObject.SetActive(true);
         float Height = obj.GetComponent<Collider>().bounds.extents.y;
