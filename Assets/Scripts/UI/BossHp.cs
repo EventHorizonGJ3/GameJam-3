@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BossHp : MonoBehaviour
 {
-	[SerializeField] BossesSo[] bosses;
+	[SerializeField] Bosses[] bosses;
 	int currentBoss;
 	float maxHp;
 
@@ -13,9 +13,10 @@ public class BossHp : MonoBehaviour
 
 		foreach (var boss in bosses)
 		{
-			boss.hpBar.enabled = false;
-			boss.OnSpawn += GetMaxHP;
-			boss.OnHit += GetHp;
+			boss.hpBarFill.enabled = false;
+			boss.hpBarBackground.enabled = false;
+            boss.bossSO.OnSpawn += GetMaxHP;
+			boss.bossSO.OnHit += GetHp;
 		}
 	}
 
@@ -23,62 +24,50 @@ public class BossHp : MonoBehaviour
 	{
 		foreach (var boss in bosses)
 		{
-			boss.hpBar.enabled = false;
-			boss.OnSpawn -= GetMaxHP;
-			boss.OnHit -= GetHp;
+			boss.hpBarFill.enabled = false;
+			boss.hpBarBackground.enabled = false;
+			boss.bossSO.OnSpawn -= GetMaxHP;
+			boss.bossSO.OnHit -= GetHp;
 		}
 	}
 
 	private void GetMaxHP(float _Hp)
 	{
 		maxHp = _Hp;
-		UpdateBarSettings();
+		UpdateBarSettings(true);
 	}
 
-	private void UpdateBarSettings()
+	private void UpdateBarSettings(bool _x)
 	{
-		bosses[currentBoss].hpBar.rectTransform.localScale = new Vector3(bosses[currentBoss].hpBarWidth, bosses[currentBoss].hpBarHight);
-		bosses[currentBoss].hpBar.enabled = true;
-	}
+        bosses[currentBoss].hpBarFill.enabled = _x;
+        bosses[currentBoss].hpBarBackground.enabled = _x;
+    }
 
 	private void GetHp(float _Hp)
 	{
 		if (_Hp <= 0)
 		{
 			currentBoss++;
+
 			if (currentBoss >= bosses.Length)
 			{
-				bosses[currentBoss].hpBar.fillAmount = 0;
-				bosses[currentBoss].hpBar.enabled = false;
+				bosses[currentBoss].hpBarFill.fillAmount = 0;
+
+                UpdateBarSettings(false);
+
+                GameManager.OnWin();
 				gameObject.SetActive(false);
 			}
 		}
-		bosses[currentBoss].hpBar.fillAmount = _Hp / maxHp;
+		bosses[currentBoss].hpBarFill.fillAmount = _Hp / maxHp;
 	}
+}
 
-#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		if (bosses.Length <= 0)
-			return;
-
-		float pos = 0;
-		for (int i = 0; i < bosses.Length; i++)
-		{
-			BossesSo boss = bosses[i];
-			Gizmos.color = Color.white;
-			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.up * boss.hpBarHight / 2);
-			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.down * boss.hpBarHight / 2);
-
-			Gizmos.color = Color.magenta;
-			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.right * boss.hpBarWidth / 2);
-			Gizmos.DrawRay(boss.hpBar.rectTransform.position + Vector3.up * pos, Vector3.left * boss.hpBarWidth / 2);
-
-			if (i + 1 >= bosses.Length)
-				break;
-			pos += (boss.hpBarHight / 2) + (bosses[i + 1].hpBarHight / 2) + 1;
-		}
-	}
-#endif
+[System.Serializable]
+public class Bosses
+{
+    public BossesSo bossSO;
+    public Image hpBarFill;
+	public Image hpBarBackground;
 }
 
