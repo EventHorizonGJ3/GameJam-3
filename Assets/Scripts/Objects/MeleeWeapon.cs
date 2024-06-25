@@ -74,6 +74,7 @@ public class MeleeWeapon : Weapon
 	protected override void OnAttackEnd()
 	{
 		base.OnAttackEnd();
+		UpdateTrigger(false);
 		otherWeapon?.OnAttackEnd();
 	}
 	protected override void UpdateTrigger(bool _X)
