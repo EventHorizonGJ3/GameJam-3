@@ -66,6 +66,7 @@ public class RangedWeapon : Weapon
 		transform.position = target.position;
 		if (target.TryGetComponent(out IDamageable _Hp))
 		{
+			WeaponParticleOnHit.OnHitPos?.Invoke(transform.position);
 			_Hp.TakeDamage(myDmg);
 			if (myDmg > 0) base.PlaySound();
 		}

@@ -36,6 +36,7 @@ public class OtherWeapon : MeleeWeapon
 		Debug.Log("UwU");
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
+			WeaponParticleOnHit.OnHitPos?.Invoke(transform.position);
 			hp.colliderTransform = transform.root;
 			hp.TakeDamage(myDmg);
 			if (myDmg > 0) base.PlaySound();

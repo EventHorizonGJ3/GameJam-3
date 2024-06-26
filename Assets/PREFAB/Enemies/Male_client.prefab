@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3cec127dc8de340893a02ae1caa926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 1
+  <HP>k__BackingField: 10
   enemyType: 0
   stagerDur: 0
   knockbackDur: 3
@@ -503,7 +503,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   combo: {fileID: 0}
-  endPoints: []
+  endPoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8660548457237667125
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class MeleeWeapon : Weapon
 	{
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
+			WeaponParticleOnHit.OnHitPos?.Invoke(transform.position);
 			hp.colliderTransform = transform.root;
 			hp.TakeDamage(myDmg);
 			hp.Knockback(currentKnockBack);

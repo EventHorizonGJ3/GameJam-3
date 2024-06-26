@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 public class BossMovement : EnemyMovement
 {
 	[SerializeField] BossesSo bossSo;
@@ -18,7 +17,7 @@ public class BossMovement : EnemyMovement
 
 	private void OnDisable()
 	{
-		GameManager.OnPause += Pause;
+		GameManager.OnPause -= Pause;
 		canMove = true;
 		isKnockbacked = false;
 	}
@@ -112,7 +111,7 @@ public class BossMovement : EnemyMovement
 		canMove = true;
 		StopAllCoroutines();
 		GameManager.EnemyDeath?.Invoke();
-		GetEnemyPos?.Invoke(transform.position+Vector3.up*0.5f);
+		EnemyPoolerOnDeath.GetEnemyPosOnDeath?.Invoke(transform.position + Vector3.up * 0.5f);
 		gameObject.SetActive(false);
 	}
 

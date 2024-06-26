@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	protected bool canMove = true;
 	protected bool isStaggered = false;
 	protected Coroutine stager;
-	public static Action<Vector3> GetEnemyPos;
+
 
 	private void Awake()
 	{
@@ -53,13 +53,16 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void OnDisable()
 	{
 		HP = startHP;
-		GameManager.OnPause += Pause;
+		GameManager.OnPause -= Pause;
 		canMove = true;
 		isKnockbacked = false;
 	}
 
 	private void Pause()
 	{
+		if (gameObject.activeInHierarchy == false)
+			return;
+
 		if (GameManager.gameOnPause)
 		{
 			agent.SetDestination(transform.position);
@@ -128,7 +131,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		canMove = true;
 		StopAllCoroutines();
 		GameManager.EnemyDeath?.Invoke();
-		GetEnemyPos?.Invoke(transform.position+Vector3.up*0.5f);;
+		EnemyPoolerOnDeath.GetEnemyPosOnDeath?.Invoke(transform.position + Vector3.up * 0.5f); ;
 		gameObject.SetActive(false);
 	}
 

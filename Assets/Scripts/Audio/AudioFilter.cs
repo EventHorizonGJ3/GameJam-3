@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioFilter : MonoBehaviour
@@ -21,7 +19,7 @@ public class AudioFilter : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameManager.OnPause += HandleFilter;
+        GameManager.OnPause -= HandleFilter;
     }
 
     void HandleFilter()
@@ -29,5 +27,5 @@ public class AudioFilter : MonoBehaviour
         if (GameManager.gameOnPause) lowPassFilter.cutoffFrequency = 1900;
         if (!GameManager.gameOnPause) lowPassFilter.cutoffFrequency = 22000;
     }
-    
+
 }

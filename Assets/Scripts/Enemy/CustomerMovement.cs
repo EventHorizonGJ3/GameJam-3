@@ -32,20 +32,20 @@ public class CustomerMovement : EnemyMovement
 	private void OnDisable()
 	{
 		HP = startHP;
-		GameManager.OnPause += Pause;
+		GameManager.OnPause -= Pause;
 		canMove = true;
 		isKnockbacked = false;
 	}
 
-    private void Update()
-    {
-        if(Vector3.Distance(agent.destination,transform.position)<= 0.2f)
-        {
+	private void Update()
+	{
+		if (Vector3.Distance(endPoint.position, transform.position) <= 0.5f)
+		{
 			gameObject.SetActive(false);
-        }
-    }
+		}
+	}
 
-    public override void Knockback(float _Power)
+	public override void Knockback(float _Power)
 	{
 		base.Knockback(_Power);
 	}
@@ -57,7 +57,7 @@ public class CustomerMovement : EnemyMovement
 		canMove = true;
 		StopAllCoroutines();
 		GameManager.EnemyDeath?.Invoke();
-		GetEnemyPos?.Invoke(transform.position+Vector3.up*0.5f);;
+		EnemyPoolerOnDeath.GetEnemyPosOnDeath?.Invoke(transform.position + Vector3.up * 0.5f); ;
 		gameObject.SetActive(false);
 	}
 	protected override IEnumerator HitStager()
@@ -70,6 +70,11 @@ public class CustomerMovement : EnemyMovement
 	}
 	private void Pause()
 	{
+		if (gameObject == null)
+			return;
+		if (gameObject.activeInHierarchy == false)
+			return;
+
 		if (GameManager.gameOnPause)
 		{
 			agent.SetDestination(transform.position);

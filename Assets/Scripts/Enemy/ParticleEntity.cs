@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyParticles : MonoBehaviour
+public class ParticleEntity : MonoBehaviour
 {
     ParticleSystem particles;
     [SerializeField] float duration = 2;
@@ -20,7 +18,7 @@ public class EnemyParticles : MonoBehaviour
 
     private void Update()
     {
-        if(timer < duration)
+        if (timer < duration)
         {
             timer += Time.deltaTime;
         }
