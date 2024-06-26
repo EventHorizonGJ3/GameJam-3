@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3cec127dc8de340893a02ae1caa926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 20
+  <HP>k__BackingField: 1
   enemyType: 0
   stagerDur: 0
   knockbackDur: 3
