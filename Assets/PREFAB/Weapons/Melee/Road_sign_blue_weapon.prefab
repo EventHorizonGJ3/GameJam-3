@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2373306339305620237}
   - component: {fileID: 7685691818697044420}
   - component: {fileID: 5750619405827299838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2785481580975373247}
   - component: {fileID: 2737615017501181457}
   - component: {fileID: 9188949065497693169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6203344493365564705}
   - component: {fileID: 1514497423112528473}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 2136761485883009634}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268363, z: -0, w: -0.9238795}
-  m_LocalPosition: {x: -0.037, y: 0.5, z: 0.935}
+  m_LocalPosition: {x: -0.037, y: 1, z: 0.935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 11400000, guid: c5c721fd37cb8034b991c725c255b87a, type: 2}
+  droppableWeapon: {fileID: 11400000, guid: 1f9b1ad328849cd459f2c46fa93aac26, type: 2}
   thisIsAnObject: 1
   mapFloor:
     serializedVersion: 2
@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8003815829436726213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 2010110189991977567}
   - component: {fileID: 8837846470450986855}
   - component: {fileID: 845350116448935361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,9 +276,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783417024138783618}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0.04}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8003815829436726213}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7398796348946826654}
   - component: {fileID: 2446080954144481227}
   - component: {fileID: 8319542442138311168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,9 +426,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8416477112005032653}
   - component: {fileID: 7236343695678346210}
-  - component: {fileID: 8300001414025053702}
-  m_Layer: 0
-  m_Name: Road_sign_blue
+  - component: {fileID: -1094616895692384060}
+  m_Layer: 6
+  m_Name: Road_sign_blue_weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,8 +444,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8003815829436726213}
   - {fileID: 540396221409531989}
@@ -475,7 +475,7 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8300001414025053702
+--- !u!114 &-1094616895692384060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,18 +484,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6185333772904026919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70dac84eb34fe254896debdd1c2a2cfe, type: 3}
+  m_Script: {fileID: 11500000, guid: bf813a67cbfaec542af3665a7a71ecae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 2
-  <BrokenObj>k__BackingField: {fileID: 1748246620239247039}
-  OriginalObj: {fileID: 2293308425805345462}
-  spawnPoint: {fileID: 2136761485883009634}
-  dealOneDmg: 1
-  deactivateColliderOnBreak: 1
-  respawnTime: 60
-  clip: {fileID: 0}
-  onHitClip: {fileID: 0}
+  WeaponSo: {fileID: 11400000, guid: c5c721fd37cb8034b991c725c255b87a, type: 2}
+  <IsEnemyWeapon>k__BackingField: 0
 --- !u!1001 &1003471237768400812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -544,13 +537,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1546436948565992653, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1562202407103035667, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
       propertyPath: m_Name
       value: Broken_Road_sign_blue 1
       objectReference: {fileID: 0}
     - target: {fileID: 1562202407103035667, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562202407103035667, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742295236483226504, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766153415236870220, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163514489683013269, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567197748151336738, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715333580635113588, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -560,10 +581,5 @@ PrefabInstance:
 --- !u!4 &540396221409531989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 761904684672079865, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
-  m_PrefabInstance: {fileID: 1003471237768400812}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1748246620239247039 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1562202407103035667, guid: bce3bcb3d5377a248863d223a4d40c66, type: 3}
   m_PrefabInstance: {fileID: 1003471237768400812}
   m_PrefabAsset: {fileID: 0}
