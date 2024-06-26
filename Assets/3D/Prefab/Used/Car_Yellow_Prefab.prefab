@@ -285,6 +285,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5668622234890965647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4052068714501774470}
+  - component: {fileID: 8396575763825713118}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4052068714501774470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668622234890965647}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.38268363, z: -0, w: -0.9238795}
+  m_LocalPosition: {x: -0.037, y: 1, z: 0.935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 431186712162613191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8396575763825713118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668622234890965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableWeapon: {fileID: 11400000, guid: 4a36eca0155363c4789269dbafb2a888, type: 2}
+  thisIsAnObject: 1
+  mapFloor:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &6126690003013894550
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +450,7 @@ Transform:
   m_Children:
   - {fileID: 2105080770395721632}
   - {fileID: 5456561432854131365}
+  - {fileID: 4052068714501774470}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &-8029345450273437713
@@ -439,10 +489,10 @@ MonoBehaviour:
   <HP>k__BackingField: 4
   <BrokenObj>k__BackingField: {fileID: 4972876671084357453}
   OriginalObj: {fileID: 9135782414197954275}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 5668622234890965647}
   dealOneDmg: 1
   deactivateColliderOnBreak: 0
-  respawnTime: 10
+  respawnTime: 60
   clip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
   onHitClip: {fileID: 8300000, guid: a643571e801593147997a54b3fc308f6, type: 3}
 --- !u!1 &9135782414197954275

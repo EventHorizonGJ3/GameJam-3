@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 195515739871670080}
   - component: {fileID: 1269283590958313001}
   - component: {fileID: 4659421054495856633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2748425486086880826}
   - component: {fileID: 5968749892187406136}
   - component: {fileID: 3506299442071322498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Teeth2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7962194314310200020}
   - component: {fileID: 2934917811732765595}
   - component: {fileID: 4038093363153269723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CrownJam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4703655867717508727}
   - component: {fileID: 9057582897541845722}
   - component: {fileID: 1143982199742288466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 647957318687686140}
   - component: {fileID: 2532962905563450424}
   - component: {fileID: 6868783920110982430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand_dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3100956900548415466}
   - component: {fileID: 2434401143813478051}
   - component: {fileID: 6076992460992419405}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 4143528227660753464}
   - component: {fileID: 7197993963493179667}
   - component: {fileID: 3959354302278376206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 7154859118699259672}
   - component: {fileID: 6155239383165676785}
   - component: {fileID: 6284557384045979197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 4088677847397533166}
   - component: {fileID: 7711923885450686713}
   - component: {fileID: 6413034187443953305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715948371861414598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandSx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 4740794805714052425}
   - component: {fileID: 8774058558811844661}
   - component: {fileID: 2365706772217078968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 2674780566884740620}
   - component: {fileID: -7198869950104226442}
   - component: {fileID: 159782618437918074}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 7756555477386198747}
   - component: {fileID: 43312030830379935}
   - component: {fileID: 5286176159388510947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Necktie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 9173644092202002792}
   - component: {fileID: 4813220402440611363}
   - component: {fileID: 6651116746089936249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand_sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1178,7 +1178,7 @@ GameObject:
   - component: {fileID: 5139536075180443544}
   - component: {fileID: 3456263208130421712}
   - component: {fileID: 4590705907233285530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2138540471781787754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandDx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 7089327316409372095}
   - component: {fileID: 1886991084223868380}
   - component: {fileID: 5017535107129970854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 7355355232917178713}
   - component: {fileID: 5232343727105738785}
   - component: {fileID: 3552168783207423425}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Teeth1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5464716884770025592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

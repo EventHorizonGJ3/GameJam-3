@@ -16,7 +16,7 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  weaponPrefab: {fileID: 5401476162704112913, guid: 7c42e6e97308e7c428efa19ebe5d2f31, type: 3}
+  weaponPrefab: {fileID: 1722147810971817479, guid: c552dcb8cec483e42acc929c7331fe84, type: 3}
   KnockBackPower: 10
   IsRanged: 1
   RangedRange: 10
