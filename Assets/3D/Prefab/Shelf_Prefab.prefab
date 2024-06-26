@@ -139,7 +139,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1, z: 1}
-  m_Center: {x: -0.21, y: 0, z: 0}
+  m_Center: {x: -0.21, y: -0.4, z: 0}
 --- !u!114 &2153132383027591528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   OriginalObj: {fileID: 5685612011385818654}
   spawnPoint: {fileID: 7847040417561096842}
   dealOneDmg: 1
-  deactivateColliderOnBreak: 0
+  deactivateColliderOnBreak: 1
   respawnTime: 60
   clip: {fileID: 0}
   onHitClip: {fileID: 8300000, guid: e3839067a8790b640b2d4ef53bd531a1, type: 3}
@@ -626,6 +626,10 @@ PrefabInstance:
       value: -0.318
       objectReference: {fileID: 0}
     - target: {fileID: 813496032608292056, guid: c896c21c3e67e3b4eaa62f59d3cb2a38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.713
+      objectReference: {fileID: 0}
+    - target: {fileID: 813496032608292056, guid: c896c21c3e67e3b4eaa62f59d3cb2a38, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
@@ -635,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4834408363062607128, guid: c896c21c3e67e3b4eaa62f59d3cb2a38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.713
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4834408363062607128, guid: c896c21c3e67e3b4eaa62f59d3cb2a38, type: 3}
       propertyPath: m_LocalPosition.z
