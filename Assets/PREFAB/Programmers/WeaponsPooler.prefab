@@ -45,10 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsToPull:
-  - {fileID: 7442446482291474942, guid: 864474a20c648084a86e05d1afd98c8c, type: 3}
-  - {fileID: 5874383237660608682, guid: 72e0d8feff712cd49b994a968a28a792, type: 3}
-  - {fileID: 8165182011330845881, guid: 6ce0c0c38ef06ac45bb7ff5f5b62be19, type: 3}
   - {fileID: 147730472768366063, guid: c26245ad2620a084696b59a8ac46088b, type: 3}
   - {fileID: 160373414089080325, guid: 99074fd2e4f27624c85cbabb4f5db976, type: 3}
   - {fileID: 4135811975367229277, guid: 435a83b20473ec84697db430b83d1019, type: 3}
-  amountToPool: 15
+  - {fileID: 1722147810971817479, guid: c552dcb8cec483e42acc929c7331fe84, type: 3}
+  - {fileID: 7193087408734022143, guid: f346687ab6babf24cb9e73a98392c045, type: 3}
+  - {fileID: 6185333772904026919, guid: 2ff63a8e93e1d394eb515a2531e6247f, type: 3}
+  - {fileID: 663416404256956868, guid: 8f64210595570274dad052cdbbde4539, type: 3}
+  - {fileID: 6905586074753166281, guid: e9bf0dbca9faaf94f867c8808051e3cb, type: 3}
+  - {fileID: 8165182011330845881, guid: 6ce0c0c38ef06ac45bb7ff5f5b62be19, type: 3}
+  amountToPool: 1
