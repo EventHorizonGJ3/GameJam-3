@@ -756,15 +756,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1852215007599971961, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1854689974685659703, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4091360610592933674, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6182394576366401066, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -808,19 +808,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6642179444404567582, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6917108265336466478, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7066021982473212107, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7422014469847679691, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572169357285116694, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9060389123722025722, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
