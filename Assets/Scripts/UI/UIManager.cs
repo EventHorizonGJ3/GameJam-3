@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] GameObject pauseMenu;
 	[SerializeField] GameObject settingsMenu;
 	[SerializeField] RectTransform menuHolder;
+	[SerializeField] GameObject controlsMenu;
 	Vector3 menuHolderOriginPos;
 
 	//Refs

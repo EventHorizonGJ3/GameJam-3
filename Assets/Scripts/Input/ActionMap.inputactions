@@ -108,6 +108,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "38c1ddbf-8dcb-4b8d-8de6-a2c3330b6ffb",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "8a0ce7d6-a3cf-4213-b036-2a643edbc020",
                     "path": "<Keyboard>/d",
@@ -122,6 +133,17 @@
                     "name": "right",
                     "id": "7d35caf3-b0aa-4097-9524-a9c16e7c2d9e",
                     "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "76fb8502-480c-4cb2-8cb8-daf7982fc8dd",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -152,6 +174,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "forward",
+                    "id": "d0289b2d-3112-4f62-a0ec-e5bc56e3b667",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "backward",
                     "id": "3a4e5686-396c-4dba-bd73-6bf95597686a",
                     "path": "<Keyboard>/s",
@@ -174,9 +207,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "backward",
+                    "id": "18132b82-cd94-489e-bc15-6e12ccc7e8ae",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "66ceba54-47dd-4165-9bda-67e87d956ccf",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2ea5052-f94c-4e19-af04-8bb9cf2d6b21",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -197,6 +252,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c1d2ee46-bce3-4da3-9588-bd5511eadcbf",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "58a716c3-1235-4c49-a023-a8dbcccea1ca",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -208,7 +274,29 @@
                 },
                 {
                     "name": "",
+                    "id": "d22a5162-7d55-41d2-90ba-36ec29d1401d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9adf8103-021e-43dc-8951-e37d67bb21d9",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Berserk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ef67a7a-8d82-41d0-8950-1782923fae20",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",

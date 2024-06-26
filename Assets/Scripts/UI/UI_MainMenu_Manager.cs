@@ -21,6 +21,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
     [SerializeField] RectTransform creditsButton;
     [SerializeField] RectTransform quitButton;
     [SerializeField] GameObject preselectedOnSettings;
+    [SerializeField] GameObject preselectedOnControls;
     [Header("Canvas")]
     [SerializeField] GameObject menuCanvas;
     [SerializeField] GameObject mainButtons;
@@ -121,6 +122,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
         PlayButtonSound();
         mainButtons.SetActive(false);
         controlsCanvas.SetActive(true);
+        if (usingGamepad) EventSystem.current.SetSelectedGameObject(preselectedOnControls);
     }
     public void QuitButton()
     {
