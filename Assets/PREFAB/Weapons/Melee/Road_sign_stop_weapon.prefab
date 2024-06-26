@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2345874940615257355}
   - component: {fileID: 2587617840500569394}
   - component: {fileID: 316993401581940451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4046051181043078410}
   - component: {fileID: 4484493952564361052}
   - component: {fileID: 7233196793642730666}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,9 +109,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5623224798929829400}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.000000014901159, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0.033}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4572042741962005787}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5600759120826323933}
   - component: {fileID: 1761648341572816028}
   - component: {fileID: 4612816781377587338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324084413268070431}
   - component: {fileID: 8601282171274361269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 11400000, guid: cdc7b7d6bc33c214b85bb7396384c5f9, type: 2}
+  droppableWeapon: {fileID: 11400000, guid: 1f9b1ad328849cd459f2c46fa93aac26, type: 2}
   thisIsAnObject: 1
   mapFloor:
     serializedVersion: 2
@@ -308,9 +308,9 @@ GameObject:
   m_Component:
   - component: {fileID: 520088263260896358}
   - component: {fileID: 1249250088154848166}
-  - component: {fileID: 2981346749263165069}
-  m_Layer: 0
-  m_Name: Road_sign_stop
+  - component: {fileID: -2389956976605573550}
+  m_Layer: 6
+  m_Name: Road_sign_stop_weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,8 +326,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4572042741962005787}
   - {fileID: 5700667437968597978}
@@ -357,7 +357,7 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2981346749263165069
+--- !u!114 &-2389956976605573550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,18 +366,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6905586074753166281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70dac84eb34fe254896debdd1c2a2cfe, type: 3}
+  m_Script: {fileID: 11500000, guid: bf813a67cbfaec542af3665a7a71ecae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 0
-  <BrokenObj>k__BackingField: {fileID: 1087218688266403626}
-  OriginalObj: {fileID: 8793376397017206251}
-  spawnPoint: {fileID: 6085832169252408301}
-  dealOneDmg: 1
-  deactivateColliderOnBreak: 1
-  respawnTime: 60
-  clip: {fileID: 0}
-  onHitClip: {fileID: 0}
+  WeaponSo: {fileID: 11400000, guid: cdc7b7d6bc33c214b85bb7396384c5f9, type: 2}
+  <IsEnemyWeapon>k__BackingField: 0
 --- !u!1 &7253792005941616538
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +382,7 @@ GameObject:
   - component: {fileID: 1654685938558570092}
   - component: {fileID: 3399656242916311079}
   - component: {fileID: 2171528805244551479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Piece5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4572042741962005787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,8 +502,24 @@ PrefabInstance:
       value: Broken_Road_sign_stop 1
       objectReference: {fileID: 0}
     - target: {fileID: 288346179086849737, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 288346179086849737, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921519968837867912, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588718210685839376, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519969738152965448, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4902779678908598841, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
       propertyPath: m_LocalPosition.x
@@ -552,16 +561,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5914478902155821548, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923177069345226494, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
---- !u!1 &1087218688266403626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 288346179086849737, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}
-  m_PrefabInstance: {fileID: 799101894811773411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5700667437968597978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4902779678908598841, guid: 82ef0764848c58d4faf480aabac4bd88, type: 3}

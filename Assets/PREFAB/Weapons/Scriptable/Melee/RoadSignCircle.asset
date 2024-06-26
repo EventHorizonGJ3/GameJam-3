@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
+  m_Name: RoadSignCircle
+  m_EditorClassIdentifier: 
+  NumberOfUses: 8
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  weaponPrefab: {fileID: 663416404256956868, guid: 8f64210595570274dad052cdbbde4539, type: 3}
+  KnockBackPower: 20
+  IsRanged: 0
+  RangedRange: 0
+  ThrowDuration: 0.5
+  AttackCombo:
+  - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
+    Dmg: 15
+  - AnimOverrider: {fileID: 22100000, guid: 2c68592fc389a7742b85863564a86518, type: 2}
+    Dmg: 15
+  - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}
+    Dmg: 25
