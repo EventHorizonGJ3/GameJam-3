@@ -10,7 +10,6 @@ public class CustomerMovement : EnemyMovement
 	{
 		TryGetComponent(out agent);
 		startHP = HP;
-
 	}
 
 	private void OnEnable()
@@ -38,8 +37,15 @@ public class CustomerMovement : EnemyMovement
 		isKnockbacked = false;
 	}
 
+    private void Update()
+    {
+        if(Vector3.Distance(agent.destination,transform.position)<= 0.2f)
+        {
+			gameObject.SetActive(false);
+        }
+    }
 
-	public override void Knockback(float _Power)
+    public override void Knockback(float _Power)
 	{
 		base.Knockback(_Power);
 	}
