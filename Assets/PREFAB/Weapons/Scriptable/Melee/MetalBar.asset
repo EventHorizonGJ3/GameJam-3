@@ -27,4 +27,4 @@ MonoBehaviour:
   - AnimOverrider: {fileID: 22100000, guid: 2c68592fc389a7742b85863564a86518, type: 2}
     Dmg: 10
   - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}
-    Dmg: 20
+    Dmg: 15
