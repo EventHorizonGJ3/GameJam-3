@@ -109,7 +109,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
         PlayButtonSound();
         mainButtons.SetActive(false);
         settingsCanvas.SetActive(true);
-        if(usingGamepad) EventSystem.current.SetSelectedGameObject(preselectedOnSettings.gameObject);
+        if(usingGamepad) EventSystem.current.SetSelectedGameObject(preselectedOnSettings);
     }
     public void CreditsButton()
     {

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        InputManager.ActionMap.Player.Movement.Enable();
+        if(!GameManager.gameOnPause) InputManager.ActionMap.Player.Movement.Enable();
         if (InputManager.IsMoving(out Vector3 direction) && !isDashing)
         {
             rb.velocity = new Vector3(direction.x * movingSpeed, 0, direction.z * movingSpeed);

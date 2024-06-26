@@ -50,7 +50,7 @@ public partial class GameManager : MonoBehaviour
 	{
 		InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
 		OnResume -= UnPauseByUI;
-		EnemyDeath += OnEnemyDeath;
+		EnemyDeath -= OnEnemyDeath;
 	}
 
 	private void OnEnemyDeath()
@@ -65,7 +65,7 @@ public partial class GameManager : MonoBehaviour
 
 		gameOnPause = !gameOnPause;
 
-		if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0;
+		if (gameOnPause) InputManager.SwitchToUIInputs(); Time.timeScale = 0; 
 		if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
 		OnPause?.Invoke();
 
