@@ -15,7 +15,6 @@ public class WeaponsPooler : MonoBehaviour
         SharedInstance = this;
         //pooledObjects = new List<GameObject>();
         pooledWeapons = new List<IPickable>();
-        weaponsToPull = new List<GameObject>();
 
         CreatePool();
     }
