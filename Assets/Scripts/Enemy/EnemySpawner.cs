@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     EnemyType currentSpawned;
-    [SerializeField][Tooltip("Intervallo tra un nemico e l'altro")] float spawnFrequancy;
+    [SerializeField] float SpawnFrequecyMin= 0;
+
+    [SerializeField][Tooltip("Intervallo tra un nemico e l'altro")] float spawnFrequancyMax = 1;
     [SerializeField][Tooltip("Distanza dal player minima per consentire lo spawn")] float distanceFromPlayer = 10f;
     [Header("Eventi di Spawn")]
     [SerializeField] List<Wave> waves;
+
+    float spawnFrequency;
 
     int currentWaveIndex = 0;
 
@@ -32,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     void StartSpawn()
     {
+        spawnFrequency = Random.Range(SpawnFrequecyMin, spawnFrequancyMax);
         StartCoroutine(StartSpawning());
     }
 
@@ -42,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
             while (GameManager.gameOnPause) yield return null;
 
             float elapsedTime = 0f;
-            while (elapsedTime < spawnFrequancy)
+            while (elapsedTime < spawnFrequency)
             {
                 if (!GameManager.gameOnPause)
                 {

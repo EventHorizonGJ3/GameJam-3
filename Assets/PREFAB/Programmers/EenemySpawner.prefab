@@ -45,32 +45,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnFrequancy: 5
+  distanceFromPlayer: 10
   waves:
   - scoreForThisWave: 0
+    stacy: 0
+    supremeManager: 0
     waveName: Wave_0
     probabilities:
       Manager_Chance: 0
       Police_Chance: 0
       Army_Chance: 0
-  - scoreForThisWave: 1
+  - scoreForThisWave: 100
+    stacy: 0
+    supremeManager: 0
     waveName: Wave_1
     probabilities:
       Manager_Chance: 1
       Police_Chance: 0
       Army_Chance: 0
-  - scoreForThisWave: 450
+  - scoreForThisWave: 800
+    stacy: 0
+    supremeManager: 0
     waveName: Wave_2
     probabilities:
-      Manager_Chance: 0
-      Police_Chance: 1
+      Manager_Chance: 0.3
+      Police_Chance: 0.7
       Army_Chance: 0
-  - scoreForThisWave: 800
+  - scoreForThisWave: 1600
+    stacy: 0
+    supremeManager: 0
+    waveName: Wave_3
+    probabilities:
+      Manager_Chance: 0.1
+      Police_Chance: 0.4
+      Army_Chance: 0.5
+  - scoreForThisWave: 2600
+    stacy: 0
+    supremeManager: 0
     waveName: Wave_3
     probabilities:
       Manager_Chance: 0
-      Police_Chance: 0
-      Army_Chance: 1
-  - scoreForThisWave: 1300
+      Police_Chance: 0.2
+      Army_Chance: 0.7
+  - scoreForThisWave: 4000
+    stacy: 0
+    supremeManager: 0
     waveName: Wave_3
     probabilities:
       Manager_Chance: 0

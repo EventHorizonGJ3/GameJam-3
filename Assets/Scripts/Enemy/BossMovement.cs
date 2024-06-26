@@ -112,6 +112,7 @@ public class BossMovement : EnemyMovement
 		canMove = true;
 		StopAllCoroutines();
 		GameManager.EnemyDeath?.Invoke();
+		GetEnemyPos?.Invoke(transform.position+Vector3.up*0.5f);
 		gameObject.SetActive(false);
 	}
 

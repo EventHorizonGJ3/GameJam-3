@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 
 public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
@@ -36,7 +37,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	protected bool canMove = true;
 	protected bool isStaggered = false;
 	protected Coroutine stager;
-
+	public static Action<Vector3> GetEnemyPos;
 
 	private void Awake()
 	{
@@ -127,6 +128,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		canMove = true;
 		StopAllCoroutines();
 		GameManager.EnemyDeath?.Invoke();
+		GetEnemyPos?.Invoke(transform.position+Vector3.up*0.5f);;
 		gameObject.SetActive(false);
 	}
 
