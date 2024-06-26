@@ -426,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8416477112005032653}
   - component: {fileID: 7236343695678346210}
-  - component: {fileID: -1094616895692384060}
+  - component: {fileID: 1656899221762543907}
   m_Layer: 6
   m_Name: Road_sign_blue_weapon
   m_TagString: Untagged
@@ -465,9 +465,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -475,7 +475,7 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1094616895692384060
+--- !u!114 &1656899221762543907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,11 +484,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6185333772904026919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf813a67cbfaec542af3665a7a71ecae, type: 3}
+  m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponSo: {fileID: 11400000, guid: c5c721fd37cb8034b991c725c255b87a, type: 2}
   <IsEnemyWeapon>k__BackingField: 0
+  otherWeapon: {fileID: 0}
 --- !u!1001 &1003471237768400812
 PrefabInstance:
   m_ObjectHideFlags: 0
