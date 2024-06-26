@@ -543,8 +543,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7766768217581603765}
-  - component: {fileID: 5661696992272829894}
-  - component: {fileID: 4611325273315985939}
   - component: {fileID: 6099717752742987842}
   - component: {fileID: 3466617654054236655}
   - component: {fileID: 1776458124311208247}
@@ -573,52 +571,6 @@ Transform:
   - {fileID: 7989359722379751918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5661696992272829894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8999477677117052710}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <HP>k__BackingField: 10
-  enemyType: 0
-  stagerDur: 1
-  knockbackDur: 3
-  backRayHight: 1
-  backRayLenght: 0.5
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  combo: {fileID: 4611325273315985939}
---- !u!114 &4611325273315985939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8999477677117052710}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5721d913806252b46a9b15816e473938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: 8650260514565389913}
-  attackAnimationName: Attack
-  fieldOfView: 0.7
-  animTime: 0.3
-  AttackDelay: 0.2
-  ComboDelay: 0.5
-  ComboResetTime: 1
-  meshHolder: {fileID: 0}
-  weaponHolder: {fileID: 0}
-  currentWeapon: {fileID: 0}
-  animStopTime: 0.9
-  attackRange: 2
 --- !u!195 &6099717752742987842
 NavMeshAgent:
   m_ObjectHideFlags: 0

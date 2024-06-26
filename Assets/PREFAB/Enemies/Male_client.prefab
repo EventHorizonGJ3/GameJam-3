@@ -405,8 +405,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295380539629602531}
-  - component: {fileID: 522864301613292126}
-  - component: {fileID: 2894763935641738903}
   - component: {fileID: 6983333986950872550}
   - component: {fileID: 6226059233574931978}
   - component: {fileID: 479977451198985635}
@@ -416,7 +414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8295380539629602531
 Transform:
   m_ObjectHideFlags: 0
@@ -438,52 +436,6 @@ Transform:
   - {fileID: 5615101670096753173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &522864301613292126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687119924224728626}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <HP>k__BackingField: 10
-  enemyType: 0
-  stagerDur: 1
-  knockbackDur: 3
-  backRayHight: 1
-  backRayLenght: 0.5
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  combo: {fileID: 2894763935641738903}
---- !u!114 &2894763935641738903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687119924224728626}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5721d913806252b46a9b15816e473938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: 5749470402044780558}
-  attackAnimationName: Attack
-  fieldOfView: 0.7
-  animTime: 0.3
-  AttackDelay: 0.2
-  ComboDelay: 0.5
-  ComboResetTime: 1
-  meshHolder: {fileID: 8295380539629602531}
-  weaponHolder: {fileID: 5097681525128403184}
-  currentWeapon: {fileID: 0}
-  animStopTime: 0.9
-  attackRange: 2
 --- !u!195 &6983333986950872550
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -718,11 +670,6 @@ MonoBehaviour:
   WeaponSo: {fileID: 11400000, guid: c016de0ef2db9cd42820fac74d1c36f7, type: 2}
   <IsEnemyWeapon>k__BackingField: 1
   otherWeapon: {fileID: 3973639361932243660}
---- !u!4 &5097681525128403184 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5536900506248007615, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
-  m_PrefabInstance: {fileID: 750306709373605711}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6306707584200165081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6767910613114753430, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}

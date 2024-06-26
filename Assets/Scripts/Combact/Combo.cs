@@ -69,12 +69,12 @@ public class Combo : MonoBehaviour
 		if (this.currentWeapon.WeaponSo.IsRanged)
 		{
 			this.currentWeapon.StartAttack += this.RangedAttack;
-			this.animStopTime = 0.7f;
+			
 		}
 		else
 		{
 			this.currentWeapon.StartAttack += this.MeleeAttack;
-			this.animStopTime = 0.9f;
+			
 		}
 		this.currentWeapon.Break += this.BackToPunches;
 	}

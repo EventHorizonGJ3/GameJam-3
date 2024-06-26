@@ -113,7 +113,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 1480648197498032547}
   currentWeapon: {fileID: 0}
   animStopTime: 0.9
-  attackRange: 3
+  attackRange: 1.5
 --- !u!195 &7172865488761075323
 NavMeshAgent:
   m_ObjectHideFlags: 0
