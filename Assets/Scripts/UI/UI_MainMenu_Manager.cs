@@ -28,6 +28,14 @@ public class UI_MainMenu_Manager : MonoBehaviour
     [SerializeField] GameObject controlsCanvas;
     [SerializeField] GameObject creditsCanvas;
     [SerializeField] GameObject prologueCanvas;
+    [Header("Prologue")]
+    [SerializeField] List<GameObject> prologueList;
+    [Space]
+    [SerializeField] List<GameObject> preselectedOnPrologue;
+
+    
+
+    int prologueIndex;
 
     AudioManager sound;
 
@@ -60,6 +68,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
         creditsCanvas.SetActive(false);
         prologueCanvas.SetActive(false);
         sound = AudioManager.instance;
+        prologueIndex = 0;
     }
         
         
@@ -96,20 +105,20 @@ public class UI_MainMenu_Manager : MonoBehaviour
 
     public void OptionButton()
     {
-        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        PlayButtonSound();
         mainButtons.SetActive(false);
         settingsCanvas.SetActive(true);
         if(usingGamepad) EventSystem.current.SetSelectedGameObject(preselectedOnSettings.gameObject);
     }
     public void CreditsButton()
     {
-        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        PlayButtonSound();
         mainButtons.SetActive(false);
         creditsCanvas.SetActive(true);
     }
     public void ControlsButton()
     {
-        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
+        PlayButtonSound();
         mainButtons.SetActive(false);
         controlsCanvas.SetActive(true);
     }
@@ -125,9 +134,34 @@ public class UI_MainMenu_Manager : MonoBehaviour
         prologueCanvas.SetActive(false);
         mainButtons.SetActive(true);
     }
-    public void PlayButton()
+    public void NextPrologueScreen()
     {
-        SceneManager.LoadScene(1);
+        if (prologueIndex == 0)
+        {
+            settingsCanvas.SetActive(false);
+            controlsCanvas.SetActive(false);
+            creditsCanvas.SetActive(false);
+            mainButtons.SetActive(false);
+            prologueCanvas.SetActive(true);
+        }
+        else if(prologueIndex > 2)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
+        if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnPrologue[prologueIndex]);
+        prologueList[prologueIndex].SetActive(true);
+        prologueIndex++;
+        PlayButtonSound();
+    }
+            
+            
+        
+        
+
+    void PlayButtonSound()
+    {
+        sound.PlaySFX(sound.AudioData.SFX_UIMAIN_ButtonClick);
     }
 
 }

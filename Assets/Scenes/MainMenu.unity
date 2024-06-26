@@ -2625,6 +2625,17 @@ MonoBehaviour:
   MasterSlider: {fileID: 972261481}
   MusicSlider: {fileID: 1712986774}
   SFXSlider: {fileID: 1128089092}
+--- !u!114 &1424884940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+  m_PrefabInstance: {fileID: 3554638589560350138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424884936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19aed3f43d36b8b45a318292aa7072a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1459679150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1466531593}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1424884940}
+        m_TargetAssemblyTypeName: UI_MainMenu_Manager, Assembly-CSharp
+        m_MethodName: NextPrologueScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1466531593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3550,7 +3573,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2099914535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1424884940}
+        m_TargetAssemblyTypeName: UI_MainMenu_Manager, Assembly-CSharp
+        m_MethodName: NextPrologueScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2099914535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3615,7 +3650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1935872785199252299, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2504850710396385039, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_Sprite
@@ -3645,13 +3680,53 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1c2c6f09586e3ad4abd3e48292737c4c, type: 3}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: scene_1
+      value: 
+      objectReference: {fileID: 1580864902}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: scene_2
+      value: 
+      objectReference: {fileID: 1479683313}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: scene_3
+      value: 
+      objectReference: {fileID: 879208949}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: button_prologue_1
+      value: 
+      objectReference: {fileID: 1466531590}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: button_prologue_2
+      value: 
+      objectReference: {fileID: 2099914532}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: button_prologue_3
+      value: 
+      objectReference: {fileID: 233979662}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: prologueList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: prologueList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1580864902}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: prologueList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1479683313}
+    - target: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: prologueList.Array.data[2]
+      value: 
+      objectReference: {fileID: 879208949}
     - target: {fileID: 5518804222935657904, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5698077687636298074, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6182394576366401066, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3795,8 +3870,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3578340069783101358, guid: 86afb0775c9d2424ba296dc79e600c19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6361125697601221985, guid: 86afb0775c9d2424ba296dc79e600c19, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ed46415fb8ef94682c6a4847e965fa, type: 3}
     - target: {fileID: 8531362136562659895, guid: 86afb0775c9d2424ba296dc79e600c19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.181171
