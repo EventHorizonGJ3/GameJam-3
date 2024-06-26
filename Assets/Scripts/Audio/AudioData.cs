@@ -24,10 +24,10 @@ public class AudioData : ScriptableObject
     [SerializeField] public AudioClip SFX_WeaponPickUp; //DONE
     
     [Header("OSTs")]
-    [SerializeField] public AudioClip OST_Main; //MainScene Soundtrack
-    [SerializeField] public AudioClip OST_Menu; //MainMenu
+    [SerializeField] public AudioClip OST_Main; //DISPOSED
+    [SerializeField] public AudioClip OST_Menu; //DONE
     [SerializeField] public AudioClip OST_Intro; //Reproduce during Prologue scenes
-    [SerializeField] public AudioClip OST_Berserk; //Reproduce when Berserk mode is active
-    [SerializeField] public AudioClip OST_Stacy; //Reproduce when Stacy is summoned
-    [SerializeField] public AudioClip OST_Boss; //Reproduce when Supreme Manager is summoned
+    [SerializeField] public AudioClip OST_Berserk; //DISPOSED
+    [SerializeField] public AudioClip OST_Stacy; //DONE
+    [SerializeField] public AudioClip OST_Boss; //DONE
 }

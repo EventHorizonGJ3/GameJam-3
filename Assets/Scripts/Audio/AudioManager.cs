@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = AudioObjectPooler.SharedInstance.GetPooledObject().GetComponent<AudioSource>();
         audioSource.clip = clip;
         audioSource.transform.position = soundSource.position;
+        if (GameManager.gameOnPause) { audioSource.spatialBlend = 0; } else { audioSource.spatialBlend = 1; }
         audioSource.gameObject.SetActive(true);
         audioSource.Play();
         StartCoroutine(DeactivationTimer(audioSource.gameObject, audioSource.clip.length));
@@ -63,7 +65,14 @@ public class AudioManager : MonoBehaviour
     {
         AudioSource audioSource = AudioObjectPooler.SharedInstance.GetPooledObject().GetComponent<AudioSource>();
         audioSource.clip = clip;
-        
+        if(SceneManager.GetSceneByBuildIndex(0) == SceneManager.GetActiveScene() || GameManager.gameOnPause)
+        {
+            audioSource.spatialBlend = 0;
+        }
+        else
+        {
+            audioSource.spatialBlend = 1;
+        }
         audioSource.gameObject.SetActive(true);
         audioSource.Play();
         StartCoroutine(DeactivationTimer(audioSource.gameObject, audioSource.clip.length));
