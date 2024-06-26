@@ -69,12 +69,12 @@ public class Combo : MonoBehaviour
 		if (this.currentWeapon.WeaponSo.IsRanged)
 		{
 			this.currentWeapon.StartAttack += this.RangedAttack;
-			
+
 		}
 		else
 		{
 			this.currentWeapon.StartAttack += this.MeleeAttack;
-			
+
 		}
 		this.currentWeapon.Break += this.BackToPunches;
 	}
@@ -86,21 +86,31 @@ public class Combo : MonoBehaviour
 
 	protected virtual void RangedAttack()
 	{
+		bool hasEnemy = true;
 		Collider[] _Colliders = new Collider[10];
 		var _NumberOfColl = Physics.OverlapSphereNonAlloc(this.transform.position, this.currentWeapon.WeaponSo.RangedRange, _Colliders, this.currentWeapon.WeaponSo.EnemyLayer);
+		if (_NumberOfColl <= 0)
+		{
+			hasEnemy = false;
+			_NumberOfColl = Physics.OverlapSphereNonAlloc(this.transform.position, this.currentWeapon.WeaponSo.RangedRange, _Colliders);
+		}
 		var _minDistance = Mathf.Infinity;
 		Transform _target = null;
 		for (int i = 0; i < _NumberOfColl; i++)
 		{
 			var _coll = _Colliders[i];
-			var _Dir = (_coll.transform.position - transform.position).normalized;
-			if (Vector3.Dot(_Dir, this.meshHolder.forward) >= this.fieldOfView)
+
+			if (_coll.TryGetComponent(out IDamageable _) || hasEnemy == true)
 			{
-				var _dist = Vector3.Distance(this.transform.position, _coll.transform.position);
-				if (_dist <= _minDistance)
+				var _Dir = (_coll.transform.position - transform.position).normalized;
+				if (Vector3.Dot(_Dir, this.meshHolder.forward) >= this.fieldOfView)
 				{
-					_target = _coll.transform;
-					_minDistance = _dist;
+					var _dist = Vector3.Distance(this.transform.position, _coll.transform.position);
+					if (_dist <= _minDistance)
+					{
+						_target = _coll.transform;
+						_minDistance = _dist;
+					}
 				}
 			}
 		}
