@@ -98,7 +98,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 		}
 		Vector3 _lookAtPos = new Vector3(GameManager.enemyTargetPosition.position.x, transform.position.y, GameManager.enemyTargetPosition.position.z);
 		transform.LookAt(_lookAtPos, Vector3.up);
-		combo.CheckAttack(out canMove);
+		combo?.CheckAttack(out canMove); //Added "?" ByEma
 	}
 
 	public virtual void Knockback(float _Power)

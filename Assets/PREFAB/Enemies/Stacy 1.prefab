@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3034d3b2f7c5be498619b101daaedbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 13
+  <HP>k__BackingField: 200
   enemyType: 3
   stagerDur: 1
   knockbackDur: 3
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 7481416777373288640}
   currentWeapon: {fileID: 0}
   animStopTime: 0.9
-  attackRange: 2
+  attackRange: 4
 --- !u!195 &8171428306144270271
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1316,7 +1316,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
