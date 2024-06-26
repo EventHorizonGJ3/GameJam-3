@@ -12,6 +12,7 @@ public class AudioObjectPooler : MonoBehaviour
     void Awake()
     {
         SharedInstance = this;
+        transform.position = Vector3.zero;
     }
 
     void Start()
@@ -20,7 +21,8 @@ public class AudioObjectPooler : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool);
+            tmp = Instantiate(objectToPool, transform);
+            
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
