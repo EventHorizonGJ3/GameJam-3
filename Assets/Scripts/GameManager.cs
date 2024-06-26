@@ -39,19 +39,24 @@ public partial class GameManager : MonoBehaviour
 		gameOnPause = false; usingGamePad = false;
 		InputManager.SwitchPlayerInputs();
 		InputManager.ActionMap.UI_Toggle.Enable();
+		Time.timeScale = 1f;
 	}
 	private void OnEnable()
 	{
 		InputManager.ActionMap.UI_Toggle.Pause.performed += PauseFunction;
 		OnResume += UnPauseByUI;
 		EnemyDeath += OnEnemyDeath;
+		OnWin += EndGame;
+		OnLose += EndGame;
 	}
 	private void OnDisable()
 	{
 		InputManager.ActionMap.UI_Toggle.Pause.performed -= PauseFunction;
 		OnResume -= UnPauseByUI;
 		EnemyDeath -= OnEnemyDeath;
-	}
+		OnWin -= EndGame;
+        OnLose -= EndGame;
+    }
 
 	private void OnEnemyDeath()
 	{
@@ -80,6 +85,12 @@ public partial class GameManager : MonoBehaviour
 		if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
 		OnPause?.Invoke();
 	}
+
+	void EndGame()
+	{
+        InputManager.SwitchToUIInputs();
+		Time.timeScale = 0;
+    }
 
 
 }

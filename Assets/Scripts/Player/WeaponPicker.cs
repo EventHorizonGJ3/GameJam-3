@@ -64,10 +64,13 @@ public class WeaponPicker : MonoBehaviour
 				canInteract = true;
 				weaponSpawner = colliderInRange[0].GetComponentInParent<IWeaponSpawner>();
 				pickableWeapon = colliderInRange[0].GetComponent<IPickable>();
-				UIManager.OnHint?.Invoke(true);
+                if(currentWeapon != null && pickableWeapon.Transform.gameObject != currentWeapon) UIManager.OnHint?.Invoke(true);
+				else if(currentWeapon == null) { UIManager.OnHint?.Invoke(true); }
 			}
 		}
 		else UIManager.OnHint?.Invoke(false);
+
+
 
     }
 

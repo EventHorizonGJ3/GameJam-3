@@ -48,13 +48,17 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 	private void OnEnable()
 	{
 		GameManager.OnPause += Pause;
+		GameManager.OnWin += Endgame;
+		GameManager.OnLose += Endgame;
 	}
 
 	private void OnDisable()
 	{
 		HP = startHP;
 		GameManager.OnPause -= Pause;
-		canMove = true;
+        GameManager.OnWin -= Endgame;
+        GameManager.OnLose -= Endgame;
+        canMove = true;
 		isKnockbacked = false;
 	}
 
@@ -68,6 +72,12 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 			agent.SetDestination(transform.position);
 		}
 	}
+
+	void Endgame()
+	{
+		isStaggered = true;
+	}
+		
 
 	private void Update()
 	{

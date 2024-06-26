@@ -15,13 +15,13 @@ public class WeaponsPooler : MonoBehaviour
         SharedInstance = this;
         //pooledObjects = new List<GameObject>();
         pooledWeapons = new List<IPickable>();
+        CreatePool();
 
-        
     }
 
     private void Start()
     {
-        CreatePool();
+        
     }
 
 

@@ -12,13 +12,17 @@ public class BossMovement : EnemyMovement
 	private void OnEnable()
 	{
 		GameManager.OnPause += Pause;
-		bossSo.OnSpawn?.Invoke(HP);
+        GameManager.OnWin += Endgame;
+        GameManager.OnLose += Endgame;
+        bossSo.OnSpawn?.Invoke(HP);
 	}
 
 	private void OnDisable()
 	{
 		GameManager.OnPause -= Pause;
-		canMove = true;
+        GameManager.OnWin -= Endgame;
+        GameManager.OnLose -= Endgame;
+        canMove = true;
 		isKnockbacked = false;
 	}
 
@@ -30,7 +34,12 @@ public class BossMovement : EnemyMovement
 		}
 	}
 
-	private void Update()
+    void Endgame()
+    {
+        isStaggered = true;
+    }
+
+    private void Update()
 	{
 		if (GameManager.gameOnPause)
 			return;
