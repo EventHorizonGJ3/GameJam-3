@@ -16,6 +16,11 @@ public class WeaponsPooler : MonoBehaviour
         //pooledObjects = new List<GameObject>();
         pooledWeapons = new List<IPickable>();
 
+        
+    }
+
+    private void Start()
+    {
         CreatePool();
     }
 

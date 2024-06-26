@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
-  m_Name: MetalBar
+  m_Name: Metal_Bar
   m_EditorClassIdentifier: 
-  NumberOfUses: 6
+  NumberOfUses: 8
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  weaponPrefab: {fileID: 8165182011330845881, guid: 6ce0c0c38ef06ac45bb7ff5f5b62be19, type: 3}
-  KnockBackPower: 10
+  weaponPrefab: {fileID: 6185333772904026919, guid: 42c4a8cfa5edcf34494f31cd5844d138, type: 3}
+  KnockBackPower: 20
   IsRanged: 0
   RangedRange: 0
   ThrowDuration: 0.5
@@ -25,6 +25,6 @@ MonoBehaviour:
   - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
     Dmg: 10
   - AnimOverrider: {fileID: 22100000, guid: 2c68592fc389a7742b85863564a86518, type: 2}
-    Dmg: 10
-  - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}
     Dmg: 15
+  - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}
+    Dmg: 30

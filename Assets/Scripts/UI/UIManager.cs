@@ -10,6 +10,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+	//events
+	public static Action<bool> OnHint;
+
 	[SerializeField] GameObject pauseMenu;
 	[SerializeField] GameObject settingsMenu;
 	[SerializeField] RectTransform menuHolder;
@@ -25,6 +28,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] GameObject winScreen;
 	[SerializeField] GameObject loseScreen;
 	[SerializeField] GameObject statsImage;
+	[SerializeField] GameObject hintText;
 	[Header("Stats")]
 	//stats
 	[SerializeField] TMP_Text enemiesKilled;
@@ -46,6 +50,7 @@ public class UIManager : MonoBehaviour
 		GameManager.OnLose += LoseScreen;
 		GameManager.OnWin += WinScreen;
 		Score.OnScoreChanged += GetScore;
+		OnHint += HintFunction;
 
 	}
 	private void OnDisable()
@@ -54,7 +59,8 @@ public class UIManager : MonoBehaviour
 		GameManager.OnLose -= LoseScreen;
 		GameManager.OnWin -= WinScreen;
 		Score.OnScoreChanged -= GetScore;
-	}
+        OnHint -= HintFunction;
+    }
 
 
 
@@ -68,6 +74,7 @@ public class UIManager : MonoBehaviour
 		pauseMenu.SetActive(false);
 		settingsMenu.SetActive(false);
 		finalCanvas.SetActive(false);
+		hintText.SetActive(false);
 	}
 
 	void PauseFunction()
@@ -127,7 +134,10 @@ public class UIManager : MonoBehaviour
 			button.SetActive(value);
 	}
 
-
+	void HintFunction(bool value)
+	{
+		hintText.SetActive(value);
+	}
 
 
 

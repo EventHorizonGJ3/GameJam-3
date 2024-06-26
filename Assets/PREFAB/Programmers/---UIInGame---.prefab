@@ -8056,7 +8056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2623052485902958102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9047,6 +9047,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 8244264000874464633}
   settingsMenu: {fileID: 8818561412864908944}
   menuHolder: {fileID: 158762282476737470}
+  controlsMenu: {fileID: 0}
   allMainButtons:
   - {fileID: 1655048781022941067}
   - {fileID: 6791637518856668373}
@@ -9059,6 +9060,7 @@ MonoBehaviour:
   winScreen: {fileID: 7030771170694455601}
   loseScreen: {fileID: 3447458694775916624}
   statsImage: {fileID: 924546779305594308}
+  hintText: {fileID: 3926092195257305739}
   enemiesKilled: {fileID: 5354742970055586576}
   totalScore: {fileID: 4100382040408811860}
   gameTime: {fileID: 4764425982443173032}
