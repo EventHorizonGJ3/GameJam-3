@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 2674780566884740620}
   - component: {fileID: -7198869950104226442}
   - component: {fileID: 159782618437918074}
+  - component: {fileID: 1328592706102551662}
   m_Layer: 7
   m_Name: BOSS
   m_TagString: Untagged
@@ -1001,6 +1002,18 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1328592706102551662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215891528684076633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558fb5b7824f14a49b0bab105705a274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4977160799523975959
 GameObject:
   m_ObjectHideFlags: 0
