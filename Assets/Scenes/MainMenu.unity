@@ -766,6 +766,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4925609657872779373, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3554638589560350139}
+    - target: {fileID: 4925609657872779373, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925609657872779373, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_MainMenu_Manager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6182394576366401066, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1717.2067
@@ -835,6 +847,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+--- !u!114 &3554638589560350139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4942089986408467738, guid: 01b90665d7cc8a5458807903be79883b, type: 3}
+  m_PrefabInstance: {fileID: 3554638589560350138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19aed3f43d36b8b45a318292aa7072a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6646390375629939618
 PrefabInstance:
   m_ObjectHideFlags: 0
