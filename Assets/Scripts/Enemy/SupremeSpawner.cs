@@ -28,5 +28,6 @@ public class SupremeSpawner : MonoBehaviour
     {
         enemyToSpawn.Transform.position = transform.position;
         enemyToSpawn.Transform.gameObject.SetActive(true);
+        
     }
 }

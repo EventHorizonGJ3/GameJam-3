@@ -17,7 +17,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   weaponPrefab: {fileID: 6905586074753166281, guid: e9bf0dbca9faaf94f867c8808051e3cb, type: 3}
-  KnockBackPower: 20
+  KnockBackPower: 3
   IsRanged: 0
   RangedRange: 0
   ThrowDuration: 0.5

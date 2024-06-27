@@ -61,7 +61,7 @@ public class BossHp : MonoBehaviour
 
                 UpdateBarSettings(false);
 
-                GameManager.OnWin();
+                GameManager.OnWin?.Invoke();
                 gameObject.SetActive(false);
             }
         }
