@@ -12154,6 +12154,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8336876754435390550, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8645568845596904462, guid: 11c68e31ee3f73e4bbb99ddd720979c8, type: 3}
       propertyPath: m_fontSize
       value: 70
