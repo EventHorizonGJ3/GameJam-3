@@ -59,7 +59,7 @@ public class WeaponSpawner : MonoBehaviour, IWeaponSpawner
         }
         obj.transform.gameObject.SetActive(true);
         float Height = obj.GetComponent<Collider>().bounds.extents.y;
-        float targetY = floorY + Height + offset;
+        float targetY = floorY + offset;
         return targetY;
     }
 

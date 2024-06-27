@@ -70,7 +70,7 @@ public class WeaponDropper : MonoBehaviour
 		}
 		obj.transform.gameObject.SetActive(true);
 		float Height = obj.GetComponent<Collider>().bounds.extents.y;
-		float targetY = floorY + Height + 0.1f;
+		float targetY = floorY + 0.1f;
 		return targetY;
 	}
 
@@ -83,10 +83,4 @@ public class WeaponDropper : MonoBehaviour
 			Debug.Log("eseguito");
 		}
 	}
-
-
-
-
-
-
 }

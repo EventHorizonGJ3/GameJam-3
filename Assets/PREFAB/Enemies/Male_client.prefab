@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 6983333986950872550}
   - component: {fileID: 6226059233574931978}
   - component: {fileID: 479977451198985635}
+  - component: {fileID: -6377450158019767134}
   m_Layer: 7
   m_Name: Male_client
   m_TagString: Untagged
@@ -506,6 +507,23 @@ MonoBehaviour:
   endPoints:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &-6377450158019767134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687119924224728626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableWeapon: {fileID: 0}
+  thisIsAnObject: 0
+  mapFloor:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8660548457237667125
 GameObject:
   m_ObjectHideFlags: 0

@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 8341724933714046518}
   - component: {fileID: 1001877010753460952}
   - component: {fileID: 6736938124101405336}
+  - component: {fileID: 6858126513922859229}
   m_Layer: 7
   m_Name: Manager_Prefab
   m_TagString: Untagged
@@ -543,6 +544,23 @@ CapsuleCollider:
   m_Height: 1.53
   m_Direction: 1
   m_Center: {x: 0, y: 0.52, z: 0}
+--- !u!114 &6858126513922859229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962459586497144723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableWeapon: {fileID: 0}
+  thisIsAnObject: 0
+  mapFloor:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3715098609015247645
 GameObject:
   m_ObjectHideFlags: 0
