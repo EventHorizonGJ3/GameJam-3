@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 0}
+  droppableWeapon: {fileID: 11400000, guid: d90f989cb012d2c46bdad88182970f09, type: 2}
   thisIsAnObject: 0
   mapFloor:
     serializedVersion: 2

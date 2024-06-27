@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a553c1106c2f0445b979c3d8a06a08c, type: 3}
-  m_Name: TreeBranch 1
+  m_Name: Metal_Bar 1
   m_EditorClassIdentifier: 
-  NumberOfUses: 999
+  NumberOfUses: 8
   EnemyLayer:
     serializedVersion: 2
-    m_Bits: 256
-  weaponPrefab: {fileID: 7668026860894701278, guid: 93651e3410c7aaf4b892efd5ea7d027f, type: 3}
-  KnockBackPower: 10
+    m_Bits: 128
+  weaponPrefab: {fileID: 6185333772904026919, guid: 42c4a8cfa5edcf34494f31cd5844d138, type: 3}
+  KnockBackPower: 3
   IsRanged: 0
   RangedRange: 0
   ThrowDuration: 0.5
   AttackCombo:
   - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
-    Dmg: 15
+    Dmg: 10
   - AnimOverrider: {fileID: 22100000, guid: 2c68592fc389a7742b85863564a86518, type: 2}
     Dmg: 15
   - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}

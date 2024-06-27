@@ -116,7 +116,7 @@ Transform:
   m_Children:
   - {fileID: 7629390169334726823}
   - {fileID: 3479566888503283112}
-  - {fileID: 2600934517356083579}
+  - {fileID: 9055388549465484576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3349510831992064555
@@ -155,7 +155,7 @@ MonoBehaviour:
   <HP>k__BackingField: 2
   <BrokenObj>k__BackingField: {fileID: 8314201447427345247}
   OriginalObj: {fileID: 5685612011385818654}
-  spawnPoint: {fileID: 7847040417561096842}
+  spawnPoint: {fileID: 6720402193080536945}
   dealOneDmg: 1
   deactivateColliderOnBreak: 1
   respawnTime: 60
@@ -196,7 +196,7 @@ Transform:
   - {fileID: 6317960104436538590}
   m_Father: {fileID: 7369110708532460005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7847040417561096842
+--- !u!1 &6720402193080536945
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,29 +204,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2600934517356083579}
+  - component: {fileID: 9055388549465484576}
+  - component: {fileID: 4779873340348461958}
   m_Layer: 0
-  m_Name: Empty
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2600934517356083579
+--- !u!4 &9055388549465484576
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7847040417561096842}
+  m_GameObject: {fileID: 6720402193080536945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.004, y: 1.0573952, z: 0.392}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7369110708532460005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4779873340348461958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6720402193080536945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableWeapon: {fileID: 11400000, guid: e1cedda6d0656d34597efb3a2190eab5, type: 2}
+  thisIsAnObject: 1
+  mapFloor:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &63161164191330324
 PrefabInstance:
   m_ObjectHideFlags: 0
