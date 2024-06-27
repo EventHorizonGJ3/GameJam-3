@@ -14,11 +14,10 @@ public class BossHp : MonoBehaviour
     {
         foreach (var boss in bosses)
         {
-            boss.hpBarFill.enabled = false;
-            boss.hpBarBackground.enabled = false;
-            boss.bossSO.OnSpawn += GetMaxHP;
+            boss.UpdateBars(false);
+
             boss.bossSO.OnSpawn += boss.Spawn;
-            boss.bossSO.OnHit += GetHp;
+            boss.bossSO.OnHit += boss.OnHit;
         }
     }
 
@@ -26,36 +25,14 @@ public class BossHp : MonoBehaviour
     {
         foreach (var boss in bosses)
         {
-            boss.hpBarFill.enabled = false;
-            boss.hpBarBackground.enabled = false;
-            boss.bossSO.OnSpawn -= GetMaxHP;
+            boss.UpdateBars(false);
+
             boss.bossSO.OnSpawn -= boss.Spawn;
-            boss.bossSO.OnHit -= GetHp;
+            boss.bossSO.OnHit -= boss.OnHit;
         }
     }
 
-    private void GetMaxHP(float _Hp)
-    {
-        maxHp = _Hp;
-    }
 
-    private void GetHp(float _Hp)
-    {
-        bosses[currentBoss].hpBarFill.fillAmount = _Hp / maxHp;
-        if (_Hp <= 0)
-        {
-            bosses[currentBoss].hpBarFill.fillAmount = 0;
-            bosses[currentBoss].Death();
-            OnBossDead?.Invoke();
-            currentBoss++;
-
-            if (currentBoss >= bosses.Length)
-            {
-                GameManager.OnWin?.Invoke();
-                gameObject.SetActive(false);
-            }
-        }
-    }
 }
 
 [System.Serializable]
@@ -64,19 +41,32 @@ public class Bosses
     public BossesSo bossSO;
     public Image hpBarFill;
     public Image hpBarBackground;
+    float maxHp;
 
 
     public void Death()
     {
+        BossHp.OnBossDead?.Invoke();
         UpdateBars(false);
     }
-    
-    public void Spawn(float _)
+
+    public void OnHit(float _HP)
     {
+        hpBarFill.fillAmount = _HP / maxHp;
+        if (_HP <= 0)
+        {
+            hpBarFill.fillAmount = 0;
+            Death();
+        }
+    }
+
+    public void Spawn(float _HP)
+    {
+        maxHp = _HP;
         UpdateBars(true);
     }
 
-    void UpdateBars(bool _X)
+    public void UpdateBars(bool _X)
     {
         hpBarFill.enabled = _X;
         hpBarBackground.enabled = _X;

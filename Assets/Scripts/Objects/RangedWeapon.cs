@@ -40,17 +40,12 @@ public class RangedWeapon : Weapon
 		transform.parent = null;
 		startPos = transform.position;
 		timer = 0;
-		StartCoroutine(ThrowObject()); //CommentedByEma
-		/*ByEma
+
 		if (target != null)
 		{
 			StartCoroutine(ThrowObject());
 		}
-		else
-		{
-			Debug.LogError("Target not assigned!");
-		}
-		//ByEmaEnd*/
+
 	}
 
 	IEnumerator ThrowObject()
