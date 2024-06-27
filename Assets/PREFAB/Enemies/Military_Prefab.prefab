@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5721d913806252b46a9b15816e473938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: 1825094548276505475}
+  defaultWeapon: {fileID: 1656899221762543907, guid: 42c4a8cfa5edcf34494f31cd5844d138, type: 3}
   attackAnimationName: Attack
   fieldOfView: 0.7
   animTime: 0.3
@@ -172,11 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 0}
+  droppableWeapon: {fileID: 11400000, guid: 970cd90135da51f46825fc201ed61388, type: 2}
   thisIsAnObject: 0
   mapFloor:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1 &1145474252054137316
 GameObject:
   m_ObjectHideFlags: 0

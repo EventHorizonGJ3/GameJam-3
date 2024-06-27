@@ -11,10 +11,10 @@ public class RageParticles : MonoBehaviour
     {
         RageBar.OnBerserkExtraDmg += UpdateParticles;
     }
-
+    
     private void OnDisable()
     {
-        RageBar.OnBerserkExtraDmg += UpdateParticles;
+        RageBar.OnBerserkExtraDmg -= UpdateParticles;
     }
 
     private void UpdateParticles(float floatBool)

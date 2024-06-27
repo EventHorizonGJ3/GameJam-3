@@ -16,15 +16,15 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  weaponPrefab: {fileID: 160373414089080325, guid: 99074fd2e4f27624c85cbabb4f5db976, type: 3}
+  weaponPrefab: {fileID: 7668026860894701278, guid: e13e5c4f037eed144855fbc94fd178fa, type: 3}
   KnockBackPower: 10
   IsRanged: 0
   RangedRange: 0
   ThrowDuration: 0.5
   AttackCombo:
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+  - AnimOverrider: {fileID: 22100000, guid: a5ccd249e1ebf514a8205e05d35a0b75, type: 2}
     Dmg: 10
-  - AnimOverrider: {fileID: 22100000, guid: 5c99dd273e983684593ceaf7f765aedf, type: 2}
+  - AnimOverrider: {fileID: 22100000, guid: 2c68592fc389a7742b85863564a86518, type: 2}
     Dmg: 10
   - AnimOverrider: {fileID: 22100000, guid: b93d3c3243e979a43aec856859eb0474, type: 2}
     Dmg: 20
