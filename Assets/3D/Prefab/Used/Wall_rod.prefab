@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 11400000, guid: 1f9b1ad328849cd459f2c46fa93aac26, type: 2}
+  droppableWeapon: {fileID: 11400000, guid: 970cd90135da51f46825fc201ed61388, type: 2}
   thisIsAnObject: 1
   mapFloor:
     serializedVersion: 2
@@ -451,6 +451,8 @@ MonoBehaviour:
   dealOneDmg: 1
   deactivateColliderOnBreak: 1
   respawnTime: 40
+  clip: {fileID: 0}
+  onHitClip: {fileID: 0}
 --- !u!1 &6671531605138322730
 GameObject:
   m_ObjectHideFlags: 0

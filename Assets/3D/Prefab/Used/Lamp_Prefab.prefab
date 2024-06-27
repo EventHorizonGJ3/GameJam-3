@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1258316034044521342}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268363, z: -0, w: -0.9238795}
-  m_LocalPosition: {x: 0.1, y: 1, z: 0.88}
+  m_LocalPosition: {x: 0.1296, y: 0.0354, z: 0.6886}
   m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ea8a8e2ca81a4b8ad193119cdcb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableWeapon: {fileID: 11400000, guid: 1f9b1ad328849cd459f2c46fa93aac26, type: 2}
+  droppableWeapon: {fileID: 11400000, guid: 970cd90135da51f46825fc201ed61388, type: 2}
   thisIsAnObject: 1
   mapFloor:
     serializedVersion: 2
@@ -5660,6 +5660,7 @@ MonoBehaviour:
   deactivateColliderOnBreak: 0
   respawnTime: 60
   clip: {fileID: 8300000, guid: 6e2e8e5e318b94940b32a56bb61e670f, type: 3}
+  onHitClip: {fileID: 0}
 --- !u!1 &8557611737798882779
 GameObject:
   m_ObjectHideFlags: 0
