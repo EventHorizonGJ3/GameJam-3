@@ -33,7 +33,7 @@ public class OtherWeapon : MeleeWeapon
 
 	protected override void OnTriggerEnter(Collider _Other)
 	{
-		Debug.Log("UwU");
+		
 		if (_Other.TryGetComponent(out IDamageable hp))
 		{
 			WeaponParticleOnHit.OnHitPos?.Invoke(transform.position);

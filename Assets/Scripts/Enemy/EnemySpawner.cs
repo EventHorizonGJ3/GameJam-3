@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (totalChance <= 0f)
         {
-            Debug.Log("chance impostata male");
+            //Debug.Log("chance impostata male");
             return;
         }
 
@@ -119,7 +119,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SetCurrentWave(currentWaveIndex + 1);
         }
-        Debug.Log("Wave corrente " + currentWaveIndex);
+        //Debug.Log("Wave corrente " + currentWaveIndex);
     }
     void SetCurrentWave(int index)
     {
@@ -128,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
             currentWaveIndex = index;
             if (waves[currentWaveIndex].stacy) StacySpawner.OnStacy?.Invoke();
             if (waves[currentWaveIndex].supremeManager) SupremeSpawner.OnFinalBoss?.Invoke();
-            Debug.Log("Onda corrente impostata a: " + currentWaveIndex);
+            //"Onda corrente impostata a: " + currentWaveIndex);
         }
         else
         {

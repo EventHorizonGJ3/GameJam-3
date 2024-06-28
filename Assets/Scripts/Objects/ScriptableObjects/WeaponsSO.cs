@@ -20,6 +20,14 @@ public class WeaponsSO : ScriptableObject
 
 	[Header("Combo: ")]
 	public List<AttackG> AttackCombo;
+
+    private void OnValidate()
+    {
+        foreach(var attack in AttackCombo)
+		{
+			attack.GetLengts();
+		}
+    }
 }
 
 

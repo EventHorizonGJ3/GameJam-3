@@ -74,7 +74,7 @@ public partial class GameManager : MonoBehaviour
 		if (!gameOnPause) InputManager.SwitchPlayerInputs(); Time.timeScale = 1;
 		OnPause?.Invoke();
 
-		Debug.Log("uso del gamepad:" + usingGamePad);
+		//Debug.Log("uso del gamepad:" + usingGamePad);
 	}
 
 	void UnPauseByUI()

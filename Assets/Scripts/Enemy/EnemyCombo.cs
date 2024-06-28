@@ -7,7 +7,8 @@ public class EnemyCombo : Combo
 	[Header("Enemy settings: ")]
 	[SerializeField] float attackRange;
 
-	protected override void OnEnable()
+   
+    protected override void OnEnable()
 	{
 		UpdateCurrentWeapon(defaultWeapon);
 		base.OnEnable();
@@ -31,9 +32,9 @@ public class EnemyCombo : Combo
 		base.BackToPunches();
 	}
 
-	protected override void EndAttack()
+	protected override IEnumerator EndAttack()
 	{
-		base.EndAttack();
+		return base.EndAttack();
 	}
 
 	protected override IEnumerator EndCombo()
@@ -114,7 +115,7 @@ public class EnemyCombo : Combo
 		{
 			canMove = false;
 			currentWeapon.StartAttack?.Invoke();
-			EndAttack();
+			//EndAttack();
 		}
 		else
 		{

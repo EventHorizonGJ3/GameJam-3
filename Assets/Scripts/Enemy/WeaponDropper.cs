@@ -33,7 +33,7 @@ public class WeaponDropper : MonoBehaviour
 	void SpawnOnChance()
 	{
 		float chance = Random.Range(0, 1f);
-		Debug.Log("probabilità:" + chance);
+		//Debug.Log("probabilità:" + chance);
 		if (chance <= 0.8f) DropWeapon();
 
 	}
@@ -66,7 +66,7 @@ public class WeaponDropper : MonoBehaviour
 		if (Physics.Raycast(ray, out RaycastHit hit, 50, mapFloor))
 		{
 			floorY = hit.point.y;
-			Debug.Log(hit.transform.name);
+			//Debug.Log(hit.transform.name);
 		}
 		obj.transform.gameObject.SetActive(true);
 		float Height = obj.GetComponent<Collider>().bounds.extents.y;
@@ -80,7 +80,7 @@ public class WeaponDropper : MonoBehaviour
 		{
 			var x = GetComponent<EnemyCombo>();
 			droppableWeapon = x.defaultWeapon.WeaponSo;
-			Debug.Log("eseguito");
+			//Debug.Log("eseguito");
 		}
 	}
 }

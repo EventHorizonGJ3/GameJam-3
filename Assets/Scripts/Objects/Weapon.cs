@@ -75,9 +75,9 @@ public class Weapon : MonoBehaviour, IPickable, ISoundable
 	}
 	protected virtual void OnAttack(float _Dmg)
 	{
+		this.UpdateTrigger(true);
 		this.currentKnockBack = 0;
 		this.myDmg = _Dmg;
-		this.UpdateTrigger(true);
 	}
 
 	protected virtual void OnAttackEnd()
@@ -87,6 +87,9 @@ public class Weapon : MonoBehaviour, IPickable, ISoundable
 	}
 	protected virtual void UpdateTrigger(bool _X)
 	{
+		if (this.trigger.enabled == _X)
+			return;
+		
 		this.trigger.enabled = _X;
 	}
 

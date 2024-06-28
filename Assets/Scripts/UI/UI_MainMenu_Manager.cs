@@ -101,7 +101,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
         mainButtons.SetActive(true);
         if (init && usingGamepad) EventSystem.current.SetSelectedGameObject(playButton.transform.gameObject);
         else if(init && !usingGamepad) EventSystem.current.SetSelectedGameObject(null);
-        Debug.Log(EventSystem.current);
+        //Debug.Log(EventSystem.current);
 
     }
 

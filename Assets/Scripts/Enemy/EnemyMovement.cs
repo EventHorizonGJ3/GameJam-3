@@ -147,7 +147,7 @@ public class EnemyMovement : MonoBehaviour, IEnemy, IDamageable
 
 	public virtual void TakeDamage(float _Dmg)
 	{
-		Debug.Log(_Dmg);
+		//Debug.Log(_Dmg);
 		HP -= _Dmg;
 		Score.OnDmg?.Invoke(_Dmg);
 		RageBar.OnRage?.Invoke();

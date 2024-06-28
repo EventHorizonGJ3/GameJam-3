@@ -40,7 +40,7 @@ public class PlayerHp : MonoBehaviour, IDamageable
 		{
 			HP += _healTick * Time.deltaTime;
 			_healAmount += _healTick * Time.deltaTime;
-			Debug.Log("healAmount = " + _healAmount);
+			//Debug.Log("healAmount = " + _healAmount);
 			UpdateHpBar();
 			yield return null;
 		}

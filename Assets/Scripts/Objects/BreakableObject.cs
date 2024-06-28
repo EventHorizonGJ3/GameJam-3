@@ -98,7 +98,7 @@ public class BreakableObject : MonoBehaviour, IBreakable, ISoundable
     {
 		if (clip == null) return; 
 		AudioManager.instance.PlaySFX(clip,transform);
-		Debug.Log(transform.name);
+		//Debug.Log(transform.name);
     }
 
 }

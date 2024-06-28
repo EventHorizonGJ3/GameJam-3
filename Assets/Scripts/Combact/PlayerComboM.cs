@@ -8,8 +8,9 @@ using UnityEngine.InputSystem;
 public class PlayerComboM : Combo
 {
 	ActionMap inputs;
-	private void Awake()
+	protected void Awake()
 	{
+
 		inputs = InputManager.ActionMap;
 	}
 
@@ -32,10 +33,10 @@ public class PlayerComboM : Combo
 		base.Start();
 	}
 
-	void Update()
-	{
-		this.EndAttack();
-	}
+	//void Update()
+	//{
+	//	this.EndAttack();
+	//}
 
 	private void Attack(InputAction.CallbackContext context)
 	{
@@ -52,9 +53,9 @@ public class PlayerComboM : Combo
 		base.BackToPunches();
 	}
 
-	protected override void EndAttack()
+	protected override IEnumerator EndAttack()
 	{
-		base.EndAttack();
+		return base.EndAttack();
 	}
 
 	protected override IEnumerator EndCombo()
