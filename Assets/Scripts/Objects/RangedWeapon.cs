@@ -82,9 +82,9 @@ public class RangedWeapon : Weapon
 	protected override void OnGrabbed(Transform _leftHand)
 	{
 		base.OnGrabbed(_leftHand);
-		transform.parent = _leftHand; //ByEma
-		transform.localPosition = Vector3.zero; //ByEma
-		transform.localRotation = Quaternion.identity; //ByEma
+		//transform.parent = _leftHand; //ByEma
+		//transform.localPosition = Vector3.zero; //ByEma
+		//transform.localRotation = Quaternion.identity; //ByEma
 	}
 	protected override void OnTriggerEnter(Collider _Other)
 	{ }

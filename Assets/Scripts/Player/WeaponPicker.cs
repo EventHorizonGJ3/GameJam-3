@@ -90,9 +90,9 @@ public class WeaponPicker : MonoBehaviour
 			currentWeapon = pickableWeapon.Transform.gameObject;
 
 			pickableWeapon.Transform.position = rightHand.position; // mette l'arma in mano
-			pickableWeapon.MyWeapon.Grabbed?.Invoke(leftHand);
 			pickableWeapon.Transform.parent = rightHand;
 			pickableWeapon.Transform.rotation = rightHand.rotation;
+			pickableWeapon.MyWeapon.Grabbed?.Invoke(leftHand);
 
 			weaponSpawner?.StartRespawn(); // triggera il respawn dell'arma
 			playerComboM.UpdateCurrentWeapon(pickableWeapon.MyWeapon);
