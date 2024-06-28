@@ -34,6 +34,7 @@ public class RangedWeapon : Weapon
 	{
 		currentKnockBack = 0;
 		this.myDmg = _Dmg;
+		OnAttackEnd();
 	}
 	protected override void OnAttackEnd()
 	{

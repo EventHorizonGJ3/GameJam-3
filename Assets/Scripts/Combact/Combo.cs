@@ -122,8 +122,9 @@ public class Combo : MonoBehaviour
 
         if (_target != null)
         {
-            this.currentWeapon.Attack?.Invoke(Damage());
             this.currentWeapon.Target?.Invoke(_target);
+            this.currentWeapon.Attack?.Invoke(Damage());
+            
             this.anim.runtimeAnimatorController = this.currentWeapon.WeaponSo.AttackCombo[this.comboCounter].AnimOverrider;
             this.anim.Play(attackAnimationName);
         }
