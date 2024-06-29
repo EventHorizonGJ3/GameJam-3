@@ -1554,9 +1554,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LoadSceneProvvisorio, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 4942089986408467738}
+        m_TargetAssemblyTypeName: UI_MainMenu_Manager, Assembly-CSharp
+        m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2568,7 +2568,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4037,7 +4037,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 1645512991, guid: 3fe9ac75ed09bf7498b0f3f23ecdd877, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -7511,7 +7511,10 @@ MonoBehaviour:
   - {fileID: 5698077687636298074}
   - {fileID: 1426421743988536543}
   - {fileID: 7422014469847679691}
-  preselectedOnPrologue: []
+  preselectedOnPrologue:
+  - {fileID: 2225899026777393182}
+  - {fileID: 3853456675619758950}
+  - {fileID: 1764294101063850002}
 --- !u!114 &7306732479549737195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9228,7 +9231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7476568386604033242
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9427,7 +9430,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 957193580285215274, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2609120904932225196, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_fontColor.b
@@ -9451,11 +9454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3231779792668747470, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3389755640780993790, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3596766646652188007, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9483,7 +9486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5202567236875067386, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336718192258349985, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_Name
@@ -9491,11 +9494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7584121311203956393, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7586730487430851303, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7780028053551769074, guid: 7a385e01f3fc62144a9444840d1cf853, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423300199136407639}
   - component: {fileID: -3463966301688925566}
-  - component: {fileID: 2212396808314431189}
+  - component: {fileID: 5058169737320146212}
   m_Layer: 6
   m_Name: Passeggino
   m_TagString: Untagged
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponSo: {fileID: 11400000, guid: 8ae680061889dea49af9970f3e04aefb, type: 2}
   <IsEnemyWeapon>k__BackingField: 0
---- !u!136 &2212396808314431189
-CapsuleCollider:
+--- !u!65 &5058169737320146212
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,11 +66,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.21408291, y: 0.3276274, z: 0.2731503}
+  m_Center: {x: 0, y: 0.17806117, z: 0}
 --- !u!1001 &286653173180901751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,39 +152,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8404827823751015215, guid: efb81b572b6bd764fa6c7db799aab44f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6041536501765870571}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb81b572b6bd764fa6c7db799aab44f, type: 3}
 --- !u!4 &7078364371294029295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7043915064321813656, guid: efb81b572b6bd764fa6c7db799aab44f, type: 3}
   m_PrefabInstance: {fileID: 286653173180901751}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8600071998238884440 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8404827823751015215, guid: efb81b572b6bd764fa6c7db799aab44f, type: 3}
-  m_PrefabInstance: {fileID: 286653173180901751}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &6041536501765870571
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8600071998238884440}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.7, z: 0.6}
-  m_Center: {x: 0, y: -0.27, z: -0.2}

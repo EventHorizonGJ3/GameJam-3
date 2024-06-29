@@ -181,7 +181,8 @@ public class UIManager : MonoBehaviour
 		finalCanvas.SetActive(true);
 		winScreen.SetActive(false);
 		loseScreen.SetActive(true);
-		if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnLose);
+		EventSystem.current.SetSelectedGameObject(preselectedOnLose);
+		Debug.Log(preselectedOnLose.transform.name);
 		ShowStats();
 	}
 	void WinScreen()
@@ -189,7 +190,7 @@ public class UIManager : MonoBehaviour
 		finalCanvas.SetActive(true);
 		winScreen.SetActive(true);
 		loseScreen.SetActive(false);
-		if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnWin);
+		EventSystem.current.SetSelectedGameObject(preselectedOnWin);
 		ShowStats();
 	}
 
@@ -198,7 +199,7 @@ public class UIManager : MonoBehaviour
 		statsImage.SetActive(true);
 		enemiesKilled.text = "Enemy Killed: " + GameManager.enemyKilled.ToString();
 		gameTime.text = "Your Time: " + Time.time.ToString();
-		totalScore.text = "Score: " + score; // aggiungere variabile dello score
+		totalScore.text = "Score: " + score; 
 	}
 
 

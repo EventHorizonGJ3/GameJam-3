@@ -64,6 +64,7 @@ public class UI_MainMenu_Manager : MonoBehaviour
 
     private void Start()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         mainButtons.SetActive(false);
         settingsCanvas.SetActive(false);
         controlsCanvas.SetActive(false);
@@ -137,6 +138,8 @@ public class UI_MainMenu_Manager : MonoBehaviour
         creditsCanvas.SetActive(false);
         prologueCanvas.SetActive(false);
         mainButtons.SetActive(true);
+        if (init && usingGamepad) EventSystem.current.SetSelectedGameObject(playButton.transform.gameObject);
+        else if (init && !usingGamepad) EventSystem.current.SetSelectedGameObject(null);
     }
     public void NextPrologueScreen()
     {
@@ -151,9 +154,10 @@ public class UI_MainMenu_Manager : MonoBehaviour
         else if(prologueIndex > 2)
         {
             SceneManager.LoadScene(1);
+            prologueIndex = 0;
             return;
         }
-        if (GameManager.usingGamePad) EventSystem.current.SetSelectedGameObject(preselectedOnPrologue[prologueIndex]);
+        EventSystem.current.SetSelectedGameObject(preselectedOnPrologue[prologueIndex]);
         prologueList[prologueIndex].SetActive(true);
         prologueIndex++;
         PlayButtonSound();

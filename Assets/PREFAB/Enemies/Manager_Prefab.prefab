@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_Branch 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7668026860894701278, guid: 93651e3410c7aaf4b892efd5ea7d027f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

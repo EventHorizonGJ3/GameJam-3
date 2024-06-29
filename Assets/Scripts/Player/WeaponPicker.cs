@@ -56,7 +56,11 @@ public class WeaponPicker : MonoBehaviour
 
 
 
-
+		if (numberOfWeapons <= 0)
+		{
+            UIManager.OnHint?.Invoke(false);
+			return;
+        }
 		if (numberOfWeapons > 0)
 		{
 			if (Vector3.Distance(transform.position, colliderInRange[0].transform.position) <= interactionOffest)
@@ -64,7 +68,7 @@ public class WeaponPicker : MonoBehaviour
 				canInteract = true;
 				weaponSpawner = colliderInRange[0].GetComponentInParent<IWeaponSpawner>();
 				pickableWeapon = colliderInRange[0].GetComponent<IPickable>();
-                if(currentWeapon != null && pickableWeapon.Transform.gameObject != currentWeapon) UIManager.OnHint?.Invoke(true);
+                if(currentWeapon != null && pickableWeapon.Transform.gameObject != currentWeapon || !pickableWeapon.IsEnemyWeapon) UIManager.OnHint?.Invoke(true);
 				else if(currentWeapon == null) { UIManager.OnHint?.Invoke(true); }
 			}
 		}

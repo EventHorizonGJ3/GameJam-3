@@ -9864,7 +9864,7 @@ MonoBehaviour:
   meshHolder: {fileID: 4276272281254428665}
   weaponHolder: {fileID: 5274953472615206250}
   currentWeapon: {fileID: 0}
-  animStopTime: 0.3
+  animStopTime: 0.9
 --- !u!114 &3495261545807659984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9897,7 +9897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fb64925d565b24d854491449b8c740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 100
+  <HP>k__BackingField: 1000
   hpBar: {fileID: 0}
 --- !u!114 &8855624236160665885
 MonoBehaviour:
@@ -10095,7 +10095,8 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 256
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 528533195994327564, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9045274206855610350, guid: 1b078a3f44e3fcf43bd9658b4359cd4d, type: 3}
     m_AddedGameObjects: []
@@ -10119,7 +10120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396226950584773678}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ce2181a2946a24bb3d980bf8aa6451, type: 3}
   m_Name: 
@@ -10139,7 +10140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630327636019789496}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16f539386945fcf419853c597c8a008c, type: 3}
   m_Name: 
@@ -10239,7 +10240,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041740412141500770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e696d12ec0d66845bbc628b7800d190, type: 3}
   m_Name: 
