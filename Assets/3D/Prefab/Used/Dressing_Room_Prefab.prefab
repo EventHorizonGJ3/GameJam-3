@@ -620,7 +620,11 @@ PrefabInstance:
     - target: {fileID: 260998134450328175, guid: 8fb9b4d30b4410643ac8c4422881bd16, type: 3}
       propertyPath: clip
       value: 
-      objectReference: {fileID: 8300000, guid: 7e77fbc3a46dce94aa83e09ac892c670, type: 3}
+      objectReference: {fileID: 8300000, guid: d2fc8e0f4642c04418bec3b543d9e0e7, type: 3}
+    - target: {fileID: 260998134450328175, guid: 8fb9b4d30b4410643ac8c4422881bd16, type: 3}
+      propertyPath: onHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d2fc8e0f4642c04418bec3b543d9e0e7, type: 3}
     - target: {fileID: 807027910007465795, guid: 8fb9b4d30b4410643ac8c4422881bd16, type: 3}
       propertyPath: m_IsActive
       value: 1
